@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Blank</title>
+  <title>IVON</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,7 +26,8 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="line-height: 0.4em; ">
+    <!--style="line-height: 0.4em; "--> 
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" >
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -189,54 +190,182 @@
           <span>Tous les demande</span></a>
       </li>
       <!-- Heading -->
-      
-
-      <!-- Nav Item - Pages Collapse Menu 
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Comptes
+      </div>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
+          <i class="fas fa-street-view"></i>
+          <span>Directeur de la CIR </span>
         </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseTen" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item active" href="blank.html">Blank Page</a>
+            <h6 class="collapse-header" >Directeur de la CIR</h6>
+            <a class="collapse-item" href="index.html">Ajouter compte </a>
+            <a class="collapse-item" href="index.html">Lister les Directeur</a>
           </div>
         </div>
       </li>
--->
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
+          <i class="fas fa-user-shield"></i>
+          <span>Responsable de la CIR </span>
+        </a>
+        <div id="collapseEleven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Responsable de la CIR</h6>
+            <a class="collapse-item" href="index.html">Ajouter compte </a>
+            <a class="collapse-item" href="index.html">Lister les comptes</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="true" aria-controls="collapseTwelve">
+          <i class="fas fa-globe"></i>
+          <span>Guichet Unique </span>
+        </a>
+        <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Guichet Unique</h6>
+            <a class="collapse-item" href="index.html">Ajouter compte </a>
+            <a class="collapse-item" href="index.html">Lister les comptes</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh3" aria-expanded="true" aria-controls="collapseTh3">
+          <i class="fas fa-user-tie"></i>
+          <span>Résp pool compétence </span>
+        </a>
+        <div id="collapseTh3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Résp pool compétence</h6>
+            <a class="collapse-item" href="index.html">Ajouter compte </a>
+            <a class="collapse-item" href="index.html">Lister les comptes</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh6" aria-expanded="true" aria-controls="collapseTh6">
+          <i class="fas fa-user"></i>
+          <span>Administratif </span>
+        </a>
+        <div id="collapseTh6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Administratif</h6>
+            <a class="collapse-item" href="index.html">Ajouter compte </a>
+            <a class="collapse-item" href="index.html">Lister les comptes</a>
+          </div>
+        </div>
       </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Services et gestions
+      </div>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh4" aria-expanded="true" aria-controls="collapseTh4">
+          <i class="fas fa-bookmark"></i>
+          <span>Pool de compétences </span>
+        </a>
+        <div id="collapseTh4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Pool de compétences</h6>
+            <a class="collapse-item" href="index.html">Ajouter pool </a>
+            <a class="collapse-item" href="index.html">Lister les pools</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh7" aria-expanded="true" aria-controls="collapseTh7">
+         <i class="fas fa-map-marked-alt"></i>
+          <span>Point Nodal </span>
+        </a>
+        <div id="collapseTh7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Point Nodal</h6>
+            <a class="collapse-item" href="index.html">Ajouter point nodal </a>
+            <a class="collapse-item" href="index.html">Lister les points nodaux</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh8" aria-expanded="true" aria-controls="collapseTh8">
+          <i class="fas fa-school"></i>
+          <span>établissement </span>
+        </a>
+        <div id="collapseTh8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >établissement</h6>
+            <a class="collapse-item" href="index.html">Ajouter établissement </a>
+            <a class="collapse-item" href="index.html">Lister les établissements</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh9" aria-expanded="true" aria-controls="collapseTh9">
+          <i class="fas fa-project-diagram"></i>
+          <span>Structure de recherche </span>
+        </a>
+        <div id="collapseTh9" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Structure de recherche</h6>
+            <a class="collapse-item" href="index.html">Ajouter structures </a>
+            <a class="collapse-item" href="index.html">Lister les structures</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh10" aria-expanded="true" aria-controls="collapseTh10">
+          <i class="fas fa-users"></i>
+          <span>Clubs étudiant </span>
+        </a>
+        <div id="collapseTh10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Clubs étudiant</h6>
+            <a class="collapse-item" href="index.html">Ajouter clubs </a>
+            <a class="collapse-item" href="index.html">Lister les clubs</a>
+          </div>
+        </div>
       </li>
 
-      <!-- Divider -->
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh12" aria-expanded="true" aria-controls="collapseTh12">
+          <i class="fas fa-map-marked"></i>
+          <span>Centre universitaire </span>
+        </a>
+        <div id="collapseTh12" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Centre universitaire</h6>
+            <a class="collapse-item" href="index.html">Ajouter centre </a>
+            <a class="collapse-item" href="index.html">Lister les centres</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh11" aria-expanded="true" aria-controls="collapseTh11">
+          <i class="fab fa-cuttlefish"></i>
+          <span>Cluster techologique </span>
+        </a>
+        <div id="collapseTh11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Cluster techologique</h6>
+            <a class="collapse-item" href="index.html">Ajouter cluster </a>
+            <a class="collapse-item" href="index.html">Lister les cluster</a>
+          </div>
+        </div>
+      </li>
+      
+
+      
       <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
 
     </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
@@ -308,94 +437,19 @@
                     <span class="font-weight-bold">A new monthly report is ready to download!</span>
                   </div>
                 </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
               </div>
             </li>
 
             <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
+            
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nom et prénom comptes</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -429,7 +483,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          <h1 class="h3 mb-4 text-gray-800"><?php $contenu = "Contenu de notre page "; echo $contenu; ?></h1>
 
         </div>
         <!-- /.container-fluid -->
