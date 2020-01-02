@@ -1,1 +1,194 @@
 //////**** fichier contier les tables créer ******///////
+
+
+///Creer la table responsable cir avec triigger d'autoincrementation
+--> AUTO INCREMENTATION pour la table responsable CIR 
+	CREATE SEQUENCE resonsable_cir_seq START WITH 1;
+--> creer la table RESPONSABLE cir 
+ create table responsable_cir(
+ 	id_cir INTEGER NOT NULL,
+	nom_cir VARCHAR(50),
+	prenom_cir VARCHAR(50),
+	date_naissance_cir VARCHAR(50),
+	email_cir VARCHAR(50),
+	mot_de_passe_cir VARCHAR(50),
+	telephone_cir VARCHAR(50)
+ ); 
+
+ALTER TABLE responsable_cir ADD (CONSTRAINT pk_idcir PRIMARY KEY (id_cir));
+ALTER TABLE responsable_cir ADD id_pc INTEGER;
+
+
+CREATE OR REPLACE TRIGGER responsable_cir_auto_incre
+BEFORE INSERT ON responsable_cir
+FOR EACH ROW
+
+BEGIN
+  SELECT resonsable_cir_seq.NEXTVAL
+  INTO   :new.id_cir
+  FROM   dual;
+END;
+/
+
+---> insersion dans la table ---> fichier de test 
+insert into responsable_cir (nom_cir,prenom_cir,date_naissance_cir,email_cir,mot_de_passe_cir,telephone_cir) values('ghazlane', 'mohammed', '03/11/1997', 'med.ghazlane@gmail.com','123456789','0655681244');
+
+---> Auto increment pour la table pools de competences 
+	CREATE SEQUENCE pool_competence_seq START WITH 1;
+
+---> creer la table pool de competence
+	CREATE TABLE pool_Competences 
+( id_pc number(3) NOT NULL ,
+  nom_pc varchar2(50) NOT NULL,
+  fonc_pc varchar2(50),
+  date_creation date
+);
+
+---> Foreinkey
+	ALTER TABLE pool_Competences ADD (CONSTRAINT pk_idpc PRIMARY KEY (id_pc));
+---> Trigger 
+CREATE OR REPLACE TRIGGER pool_competence_auto_incre
+BEFORE INSERT ON pool_Competences
+FOR EACH ROW
+
+BEGIN
+  SELECT pool_competence_seq.NEXTVAL
+  INTO   :new.id_pc
+  FROM   dual;
+END;
+/
+
+---> inserer dans la base de données
+insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpement', 'developper idee', '03/11/2019');
+
+
+///////Table ADMINISTRATIFS /////////////
+--> creer la table 
+	CREATE TABLE Administratif
+( code_admin VARCHAR(50) NOT NULL ,
+  nom_admin varchar2(50) NOT NULL,
+  prenom_admin varchar2(50),
+  date_naissance_admin VARCHAR2(50),
+  email_admin varchar2(50),
+  mot_de_passe_admin varchar(50),
+  matricule varchar(50),
+  telephone_admin varchar(50)
+);
+ALTER TABLE Administratif ADD (CONSTRAINT code_pk_admin PRIMARY KEY (code_admin));
+
+
+/////Professeur ///////
+create table professeur (
+	Code_prof Varchar(50) not null,
+	Nom_prof Varchar(50),
+	prenom_prof Varchar(50), 
+	Date_naissance_prof VARCHAR(50),
+	Email_prof Varchar(50),
+	Mot_de_passe_prof Varchar(50),
+	Num_aff Varchar(50),
+	Telephone_prof Varchar(50)
+);
+ALTER TABLE professeur ADD (CONSTRAINT code_pk_profess PRIMARY KEY (Code_prof));
+
+insert into administratif values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'ABCGDHG14587', '0655681244');
+insert into professeur values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'ABCGDHG14587', '0655681244');
+//table Chercheur
+create table chercheur (
+	code_cher Varchar(50) not null, 
+	Nom_cher Varchar(50), 
+	Prenom_cher Varchar(50),
+	Date_naissance_cher VARCHAR(50),
+	email_cher Varchar(50),
+	Mot_de_passe_cher Varchar(50), 
+	Theme_recherche Varchar(50),
+	Telephone_cher Varchar(50)
+);
+
+ALTER TABLE chercheur ADD (CONSTRAINT code_pk_cherche PRIMARY KEY (Code_cher));
+insert into chercheur values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'Theme de la recherche', '0655681244');
+
+//responsable pc
+----> auto increment
+	CREATE SEQUENCE resonsable_pc_seq START WITH 1;
+----> Creation table
+
+	CREATE TABLE Responsable_PC
+( id_resp_pc INTEGER NOT NULL ,
+  nom_resp_pc varchar2(50) NOT NULL,
+  prenom_resp_pc varchar2(50),
+  date_naissance_pc date,
+  email_resp_pc varchar2(50),
+  mot_de_passe_pc varchar(50),
+  telephone_pc varchar(50), 
+  id_pc INTEGER
+); 
+
+ALTER TABLE Responsable_PC ADD (CONSTRAINT code_pk_respo_pc PRIMARY KEY (id_resp_pc));
+ALTER TABLE Responsable_PC ADD (CONSTRAINT code_fk_id_pc FOREIGN KEY (id_pc) REFERENCES pool_Competences(id_pc));
+
+--> auto incrementation 
+CREATE OR REPLACE TRIGGER Responsable_PC_auto_incre
+BEFORE INSERT ON Responsable_PC
+FOR EACH ROW
+
+BEGIN
+  SELECT resonsable_pc_seq.NEXTVAL
+  INTO   :new.id_resp_pc
+  FROM   dual;
+END;
+/
+
+--> insertion 
+insert into Responsable_PC (nom_resp_pc,prenom_resp_pc,date_naissance_pc,email_resp_pc,mot_de_passe_pc ,telephone_pc,id_pc) values('ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', '0655681244',1);
+
+
+
+
+//demande services declaration invention
+---> auto increment
+CREATE SEQUENCE declaration_inventio_seq START WITH 1;
+---> creer la table
+create table declaration_invention(
+	Id_dmd INTEGER not null, 
+	Date_dmd VARCHAR(20), 
+	Statut_dmd Varchar(20),
+	Statut_resp_gu Varchar(50),
+	Statut_cir Varchar(50) ,
+	Rps_pc INTEGER, 
+	Description_dmd Varchar(50),
+	categorie_invention VARCHAR(50), 
+	objet_invention VARCHAR(50),
+	description_invention VARCHAR(50), 
+	classement VARCHAR(50), 
+	id_pc INTEGER, 
+	code_admin VARCHAR(50), 
+	id_cir INTEGER, 
+	id_demandeur VARCHAR(50), 
+	type_demandeur VARCHAR(50)
+); 
+ALTER TABLE declaration_invention ADD (CONSTRAINT pk_id_dmd PRIMARY KEY (Id_dmd));
+ALTER TABLE declaration_invention ADD (CONSTRAINT fk_idRpc FOREIGN KEY (rps_pc) REFERENCES Responsable_pc(id_resp_pc));
+ALTER TABLE declaration_invention ADD (CONSTRAINT fk_id_pc FOREIGN KEY (id_pc) REFERENCES pool_Competences(id_pc));
+ALTER TABLE declaration_invention ADD (CONSTRAINT fk_code_admin FOREIGN KEY (code_admin) REFERENCES Administratif(code_admin)); 
+ALTER TABLE declaration_invention ADD (CONSTRAINT fk_id_cir FOREIGN KEY (id_cir) REFERENCES responsable_cir(id_cir));
+
+	--> trigger 
+
+CREATE OR REPLACE TRIGGER decl_invention_auto_incre
+BEFORE INSERT ON declaration_invention
+FOR EACH ROW
+
+BEGIN
+  SELECT declaration_inventio_seq.NEXTVAL
+  INTO   :new.Id_dmd
+  FROM   dual;
+END;
+/
+
+
+
+
+
+//adapter affichage 
+set linesize 9999
+set pagesize 9999
