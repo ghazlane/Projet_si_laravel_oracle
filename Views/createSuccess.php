@@ -1,2 +1,2 @@
 <?php 
-echo "la demande a bien ete ajouter";
+echo "la demande a bien été ajoutée";

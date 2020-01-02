@@ -2,6 +2,7 @@
 	require_once 'Views\Vue.php';
 	require_once ("Controllers/InventionController.php");
 	require_once ("Controllers/BrevetController.php");
+	require_once ("Controllers/FormationController.php");
 	//require_once("controllers\DeclarationInventionController.php");
 	
 	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
@@ -37,5 +38,22 @@
 		$controller = new BrevetController(); 
 		$statement= $controller->Lister();
 		$vue = new Vue('listeDeclarationBrevet'); 
+		$vue->generer(array( "statement" => $statement)); 
+	}
+
+	//Formation 
+	else if($action == 'declarationFormation'){
+		$vue = new Vue('declarationFormation'); 
+		$vue->generer(array()); 
+	}else if($action == "saveDeclarationFormation"){
+		$controller = new FormationController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "listeDeclarationFormation"){
+		$controller = new FormationController(); 
+		$statement= $controller->Lister();
+		$vue = new Vue('listeDeclarationFormation'); 
 		$vue->generer(array( "statement" => $statement)); 
 	}
