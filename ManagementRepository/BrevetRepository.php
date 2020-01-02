@@ -30,7 +30,6 @@
     $connexion = $this->getConnexion(); 
     $statement = $connexion->query($Rq);
     $statement->setFetchMode(PDO::FETCH_ASSOC);
-    //require('Views/listeDeclarationBrevet.php');
     return $statement;
     }
 
