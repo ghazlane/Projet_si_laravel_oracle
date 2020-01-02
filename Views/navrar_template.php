@@ -82,7 +82,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration de brevets</h6>
             <a class="collapse-item" href="index.php?action=declarationBrevet">Ajouter Brevet</a>
-            <a class="collapse-item" href="index.html">Lister déclaration</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationBrevet">Lister déclaration</a>
           </div>
         </div>
       </li>

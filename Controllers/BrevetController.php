@@ -19,5 +19,10 @@ class BrevetController {
 		$this->brevet->setTypeDemandeur("professeur"); 
 		$this->brevetRepository->Ajouter($this->brevet); 
 	}
+
+	public function Lister(){
+		$statement = $this->brevetRepository->Lister(); 
+		return $statement;
+	}
 	
 }

@@ -29,3 +29,9 @@
 		$vue = new Vue('createSuccess'); 
 		$vue->generer(array()); 
 	}
+	else if($action == "listeDeclarationBrevet"){
+		$controller = new BrevetController(); 
+		$statement= $controller->Lister();
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$vue->generer(array( "statement" => $statement)); 
+	}
