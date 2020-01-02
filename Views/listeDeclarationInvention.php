@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                   <thead>
                     <tr>
                       <th>Id Demande</th>
@@ -33,7 +33,7 @@
                       <th>Outils</th>
                     </tr>
                   </tfoot>
-                  <tbody>
+                  <tbody style="color: black;">
                     <?php while($row = $statement->fetch()) { ?>
                       <tr>
                           <td><?php echo $row['ID_DMD']  ?></td>
@@ -51,13 +51,16 @@
                                   echo '<button type="button" class="btn btn-info btn-sm">En attente</button> '; 
                           ?></td>
                           <td>
-                              <a href="#" class="btn btn-info btn-circle btn-sm" title="Ouvrir">
+                              <?php echo '<a href="index.php?action=detailDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-info btn-circle btn-sm" title="Ouvrir">'; ?>
+                              
                                 <i class="far fa-folder-open"></i>
                               </a>
                               <a href="#" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">
                                 <i class="fas fa-sync"></i>
                               </a>
-                              <a href="#" class="btn btn-danger btn-circle btn-sm" title="Supprimer">
+                              <?php
+                                echo '<a href="index.php?action=deleteDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
+                              ?>
                                 <i class="fas fa-trash"></i>
                               </a>
                           </td>

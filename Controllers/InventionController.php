@@ -27,5 +27,13 @@ class InventionController {
 	public function Lister(){
 		return $this->inventionRepository->Lister(); 
 	}
+
+	public function Details($id){
+		return $this->inventionRepository->Details($id); 
+	}
+
+	public funCtion Delete($id){
+		$this->inventionRepository->Delete($id);
+	}
 	
 }

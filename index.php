@@ -22,6 +22,15 @@
 		$controller = new InventionController(); 
 		$vue = new Vue('listeDeclarationInvention'); 
 		$vue->generer(array("statement" => $controller->Lister())); 
+	}else if($action == "detailDeclarationInvention"){ 
+		$controller = new InventionController(); 
+		$vue = new Vue('detailsDeclarationInvention');
+		$vue->generer(array("statement" => $controller->Details($_GET['id']))); 
+	}else if($action == "deleteDeclarationInvention"){
+		$controller = new InventionController(); 
+		$controller->Delete($_GET['id']); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->Lister()));
 	}
 
     //brevet

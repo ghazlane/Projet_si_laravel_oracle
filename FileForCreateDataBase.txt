@@ -1,4 +1,4 @@
-//////**** fichier contier les tables cr�er ******///////
+﻿//////**** fichier contier les tables cr�er ******///////
 
 
 ///Creer la table responsable cir avec triigger d'autoincrementation
@@ -248,10 +248,10 @@ create table lancement_formation(
 	id_cir INTEGER, 
 	id_demandeur VARCHAR(50), 
 	type_demandeur VARCHAR(50),
-	CONSTRAINT pk_id_dmd PRIMARY KEY (Id_dmd),
-	CONSTRAINT fk_idRpc FOREIGN KEY (rps_pc) REFERENCES Responsable_pc(id_resp_pc),
-	CONSTRAINT fk_code_admin FOREIGN KEY (code_admin) REFERENCES Administratif(code_admin),
-	CONSTRAINT fk_id_cir FOREIGN KEY (id_cir) REFERENCES responsable_cir(id_cir)
+	CONSTRAINT pk_id3_dmd PRIMARY KEY (Id_dmd),
+	CONSTRAINT fk_id3Rpc FOREIGN KEY (rps_pc) REFERENCES Responsable_pc(id_resp_pc),
+	CONSTRAINT fk_code3_admin FOREIGN KEY (code_admin) REFERENCES Administratif(code_admin),
+	CONSTRAINT fk_id3_cir FOREIGN KEY (id_cir) REFERENCES responsable_cir(id_cir)
 ); 
 
 

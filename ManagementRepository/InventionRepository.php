@@ -24,5 +24,20 @@ public function Lister() {
     return $statement;
     }
 
+public function Details($id){
+    $Rq = "select * from declaration_invention where id_dmd = ".$id;     
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+}
+
+public function Delete($id){
+    $Rq = "delete from declaration_invention where id_dmd = ".$id;     
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->prepare($Rq);
+    $statement->execute();
+    $connexion->exec("commit");
+}
 	
 }
