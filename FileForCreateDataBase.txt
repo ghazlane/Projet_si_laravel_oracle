@@ -5,15 +5,14 @@
 --> AUTO INCREMENTATION pour la table responsable CIR 
 	CREATE SEQUENCE resonsable_cir_seq START WITH 1;
 --> creer la table RESPONSABLE cir 
- create table responsable_cir(
- 	id_cir INTEGER NOT NULL,
+ create table responsable_cir 
+ (id_cir INTEGER NOT NULL,
 	nom_cir VARCHAR(50),
 	prenom_cir VARCHAR(50),
 	date_naissance_cir VARCHAR(50),
 	email_cir VARCHAR(50),
 	mot_de_passe_cir VARCHAR(50),
-	telephone_cir VARCHAR(50)
- ); 
+	telephone_cir VARCHAR(50)); 
 
 ALTER TABLE responsable_cir ADD (CONSTRAINT pk_idcir PRIMARY KEY (id_cir));
 ALTER TABLE responsable_cir ADD id_pc INTEGER;
@@ -180,6 +179,50 @@ FOR EACH ROW
 
 BEGIN
   SELECT declaration_inventio_seq.NEXTVAL
+  INTO   :new.Id_dmd
+  FROM   dual;
+END;
+/
+
+
+
+//demande services declaration brevet
+---> auto increment
+CREATE SEQUENCE declaration_brevet_seq START WITH 1;
+---> creer la table
+create table declaration_brevet(
+	Id_dmd INTEGER not null, 
+	Date_dmd VARCHAR(20), 
+	Statut_dmd Varchar(20),
+	Statut_resp_gu Varchar(50),
+	Statut_cir Varchar(50) ,
+	Rps_pc INTEGER, 
+	Description_dmd Varchar(50),
+	nom_brevet VARCHAR(50),
+	categorie_brevet VARCHAR(50), 	
+	domaine_brevet VARCHAR(50), 
+	id_pc INTEGER, 
+	code_admin VARCHAR(50), 
+	id_cir INTEGER, 
+	id_demandeur VARCHAR(50), 
+	type_demandeur VARCHAR(50),
+	CONSTRAINT pk_id_dmd PRIMARY KEY (Id_dmd),
+	CONSTRAINT fk_idRpc FOREIGN KEY (rps_pc) REFERENCES Responsable_pc(id_resp_pc),
+	CONSTRAINT fk_id_pc FOREIGN KEY (id_pc) REFERENCES pool_Competences(id_pc),
+	CONSTRAINT fk_code_admin FOREIGN KEY (code_admin) REFERENCES Administratif(code_admin),
+	CONSTRAINT fk_id_cir FOREIGN KEY (id_cir) REFERENCES responsable_cir(id_cir)
+); 
+
+
+
+	--> trigger 
+
+CREATE OR REPLACE TRIGGER decl_brevet_auto_incre
+BEFORE INSERT ON declaration_brevet
+FOR EACH ROW
+
+BEGIN
+  SELECT declaration_brevet_seq.NEXTVAL
   INTO   :new.Id_dmd
   FROM   dual;
 END;

@@ -1,6 +1,7 @@
 <?php
 	require_once 'Views\Vue.php';
 	require_once ("Controllers/InventionController.php");
+	require_once ("Controllers/BrevetController.php");
 	//require_once("controllers\DeclarationInventionController.php");
 	
 	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
@@ -18,4 +19,13 @@
 		$vue->generer(array()); 
 	}
 
-
+    //brevet
+    else if($action == 'declarationBrevet'){
+		$vue = new Vue('declarationBrevet'); 
+		$vue->generer(array()); 
+	}else if($action == "saveDeclarationBrevet"){
+		$controller = new BrevetController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
+	}

@@ -81,7 +81,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration de brevets</h6>
-            <a class="collapse-item" href="index.html">Ajouter déclaration</a>
+            <a class="collapse-item" href="index.php?action=declarationBrevet">Ajouter Brevet</a>
             <a class="collapse-item" href="index.html">Lister déclaration</a>
           </div>
         </div>
