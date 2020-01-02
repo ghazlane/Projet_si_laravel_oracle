@@ -1,20 +1,11 @@
 <?php
 require_once ("Models/Invention.php");
-class InventionRepository {
+require_once ("ManagementRepository/ConnexionRepository.php");
+class InventionRepository extends Connexion {
 
     /** Objet PDO d'accès à la BD */
     private $connexion;
     
-    private function getConnexion() {
-    	$db_username = "system";
-		$db_password = "btna";
-		$db = "oci:dbname=//localhost:1521/ORCL";
-   
-        if ($this->connexion == null) {
-            $this->connexion = new PDO($db,$db_username,$db_password);
-        }
-        return $this->connexion;
-    }
 
 public function Ajouter(Invention $invention) {	
 	
