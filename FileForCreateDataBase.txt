@@ -1,4 +1,4 @@
-//////**** fichier contier les tables créer ******///////
+//////**** fichier contier les tables crï¿½er ******///////
 
 
 ///Creer la table responsable cir avec triigger d'autoincrementation
@@ -57,7 +57,7 @@ BEGIN
 END;
 /
 
----> inserer dans la base de données
+---> inserer dans la base de donnï¿½es
 insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpement', 'developper idee', '03/11/2019');
 
 
@@ -227,6 +227,47 @@ BEGIN
 END;
 /
 
+//demande services declaration formation
+---> auto increment
+CREATE SEQUENCE declaration_formation_seq START WITH 1;
+---> creer la table
+create table lancement_formation(
+	Id_dmd INTEGER not null, 
+	Date_dmd VARCHAR(20), 
+	Statut_dmd Varchar(20),
+	Statut_resp_gu Varchar(50),
+	Statut_cir Varchar(50) ,
+	Rps_pc INTEGER, 
+	Description_dmd Varchar(50),
+	sujet_formation VARCHAR(50),
+	theme_formation VARCHAR(50), 
+	nombre_participants INTEGER,	
+	plan_formation VARCHAR(50), 
+	id_pc INTEGER, 
+	code_admin VARCHAR(50), 
+	id_cir INTEGER, 
+	id_demandeur VARCHAR(50), 
+	type_demandeur VARCHAR(50),
+	CONSTRAINT pk_id_dmd PRIMARY KEY (Id_dmd),
+	CONSTRAINT fk_idRpc FOREIGN KEY (rps_pc) REFERENCES Responsable_pc(id_resp_pc),
+	CONSTRAINT fk_code_admin FOREIGN KEY (code_admin) REFERENCES Administratif(code_admin),
+	CONSTRAINT fk_id_cir FOREIGN KEY (id_cir) REFERENCES responsable_cir(id_cir)
+); 
+
+
+//CONSTRAINT fk_id_pc FOREIGN KEY (id_pc) REFERENCES pool_Competences(id_pc),
+	--> trigger 
+
+CREATE OR REPLACE TRIGGER decl_formation_auto_incre
+BEFORE INSERT ON lancement_formation
+FOR EACH ROW
+
+BEGIN
+  SELECT declaration_formation_seq.NEXTVAL
+  INTO   :new.Id_dmd
+  FROM   dual;
+END;
+/
 
 
 

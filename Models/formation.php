@@ -1,5 +1,6 @@
 <?php
-class Invention{
+
+class Formation{
 private $id_dmd;
 private $date_dmd;
 private $status_dmd;
@@ -7,23 +8,26 @@ private $status_respo_gu;
 private $status_cir; 
 private $responsable_pc; 
 private $description_dmd; 
-private $description_invention; 
-private $categorie_invention; 
-private $objet_invention; 
-private $classement; 
+private $sujet_formation;   
+private $theme_formation;   
+private $nombre_participants;  
+private $plan_formation;  
 private $id_cir; 
 private $id_pc;
 private $id_respo_pc; 
 private $id_administratif; 
 private $id_demandeur; 
-private $type_demandeur; 
-public function __construct ($classement, $objet_invention, $categorie_invention,$description_invention,$description_dmd) {
-$this->setClassement($classement);
-$this->setObjetInvention($objet_invention);
-$this->setCategorieInvention($categorie_invention);
-$this->setDescriptionInvention($description_invention); 
-$this->setDescriptionDemande($description_dmd); 
+private $type_demandeur;
+
+
+public function __construct ($sujet_formation, $theme_formation, $nombre_participants, $plan_formation, $description_dmd) {
+	$this->setSujetFormation($sujet_formation);
+	$this->setThemeFormation($theme_formation);
+	$this->setNombreParticipants($nombre_participants);
+	$this->setPlanFormation($plan_formation); 
+	$this->setDescriptionDemande($description_dmd); 
 }
+
 //setters
 public function setIdCir ($id_cir) {
 	$this->id_cir =$id_cir;
@@ -61,17 +65,17 @@ public function setStatusCir ($status_cir) {
 public function setResponsablePc ($responsable_pc) {
 	$this->responsable_pc =$responsable_pc;
 }
-public function setClassement ($classement) {
-	$this->classement =$classement;
+public function setSujetFormation($sujet_formation) {
+	$this->sujet_formation =$sujet_formation;
 }
-public function setObjetInvention ($objet_invention) {
-	$this->objet_invention =$objet_invention;
+public function setThemeFormation($theme_formation) {
+	$this->theme_formation =$theme_formation;
 }
-public function setCategorieInvention ($categorie_invention) {
-	$this->categorie_invention =$categorie_invention;
+public function setNombreParticipants($nombre_participants) {
+	$this->nombre_participants =$nombre_participants;
 }
-public function setDescriptionInvention ($description_invention) {
-	$this->description_invention =$description_invention;
+public function setPlanFormation($plan_formation) {
+	$this->plan_formation =$plan_formation;
 }
 public function setDescriptionDemande ($description_dmd) {
 	$this->description_dmd =$description_dmd;
@@ -113,17 +117,17 @@ public function getStatusCir () {
 public function getResponsablePc () {
 	return $this->responsable_pc;
 }
-public function getClassement () {
-	return $this->classement;
+public function getSujetFormation () {
+	return $this->sujet_formation;
 }
-public function getObjetInvention () {
-	return $this->objet_invention;
+public function getThemeFormation () {
+	return $this->theme_formation;
 }
-public function getCategorieInvention () {
-	return $this->categorie_invention ;
+public function getNombreParticipants () {
+	return $this->nombre_participants ;
 }
-public function getDescriptionInvention () {
-	return $this->description_invention ;
+public function getPlanFormation () {
+	return $this->plan_formation;
 }
 public function getDescriptionDemande () {
 	return $this->description_dmd ;

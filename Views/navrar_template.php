@@ -86,6 +86,21 @@
           </div>
         </div>
       </li>
+
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseeight" aria-expanded="true" aria-controls="collapseeight">
+          <i class="fas fa-receipt"></i>
+          <span>Lancer une formation</span>
+        </a>
+        <div id="collapseeight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Lancer une formation</h6>
+            <a class="collapse-item" href="index.php?action=declarationFormation">Ajouter demande </a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationFormation">Lister demande</a>
+          </div>
+        </div>
+      </li>
+
       <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefoor" aria-expanded="true" aria-controls="collapsefoor">
           <i class="fas fa-star"></i>
@@ -139,19 +154,7 @@
         </div>
       </li>
 
-      <li class="nav-item" >
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseeight" aria-expanded="true" aria-controls="collapseeight">
-          <i class="fas fa-receipt"></i>
-          <span>Lancer une formation</span>
-        </a>
-        <div id="collapseeight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header" >Lancer une formation</h6>
-            <a class="collapse-item" href="index.html">Ajouter demande </a>
-            <a class="collapse-item" href="index.html">Lister demande</a>
-          </div>
-        </div>
-      </li>
+      
 
       <li class="nav-item" >
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
