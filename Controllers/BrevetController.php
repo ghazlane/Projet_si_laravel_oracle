@@ -24,5 +24,21 @@ class BrevetController {
 		$statement = $this->brevetRepository->Lister(); 
 		return $statement;
 	}
+
+	public function Detail($id){
+		$row = $this->brevetRepository->Rechercher($id); 
+		return $row;
+	}
+
+	public function Modifier($inputs,$id){
+		
+		$this->brevet = new Brevet($inputs['nomBrevet'],$inputs['categorieBrevet'],$inputs['domaineBrevet'],$inputs['descriptionDeclaration']); 
+        $this->brevetRepository->Modifier($this->brevet,$id); 
+	}
+
+	public function Supprimer($id){
+		
+        $this->brevetRepository->Supprimer($id); 
+	}
 	
 }

@@ -31,14 +31,48 @@
 	}else if($action == "saveDeclarationBrevet"){
 		$controller = new BrevetController(); 
 		$controller->Ajouter($_POST);
-		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$statement= $controller->Lister();
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$alert="la demande a été bien crée"; 
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert)); 
 	}
 	else if($action == "listeDeclarationBrevet"){
 		$controller = new BrevetController(); 
 		$statement= $controller->Lister();
 		$vue = new Vue('listeDeclarationBrevet'); 
 		$vue->generer(array( "statement" => $statement)); 
+	}
+	else if($action == "rechercheBrevet"){
+		$controller = new BrevetController();
+		$id = $_GET["id"]; 
+		$row= $controller->Detail($id);
+		$vue = new Vue('detailDeclarationBrevet'); 
+		$vue->generer(array( "row" => $row)); 
+	}
+    else if($action == "detailModifierBrevet"){
+		$controller = new BrevetController();
+		$id = $_GET["id"]; 
+		$row= $controller->Detail($id);
+		$vue = new Vue('ModifierDeclarationBrevet'); 
+		$vue->generer(array( "row" => $row)); 
+	}
+	else if($action == "modifierDeclarationBrevet"){
+		$controller = new BrevetController(); 
+		$id = $_GET["id"]; 
+		$controller->Modifier($_POST,$id);
+		$statement= $controller->Lister();
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$alert="la demande a été bien modifiée";
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
+	}
+	else if($action == "supprimerBrevet"){
+		$controller = new BrevetController(); 
+		$id = $_GET["id"]; 
+		$controller->Supprimer($id);
+		$statement= $controller->Lister();
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$alert="la demande a été bien supprimée";
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 
 	//Formation 
