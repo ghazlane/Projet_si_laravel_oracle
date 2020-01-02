@@ -17,6 +17,10 @@
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
 		$vue->generer(array()); 
+	}else if($action == "listeDeclarationInvention"){
+		$controller = new InventionController(); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->Lister())); 
 	}
 
     //brevet

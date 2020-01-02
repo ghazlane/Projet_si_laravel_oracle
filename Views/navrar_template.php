@@ -17,6 +17,10 @@
 
   <!-- Custom styles for this template-->
   <link href="css_js/css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- style table --> 
+  <link href="css_js/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="css_js/formularstyle.css">
 
 </head>
@@ -69,7 +73,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration d’invention</h6>
             <a class="collapse-item" href="index.php?action=declarationInvention">Ajouter déclaration</a>
-            <a class="collapse-item" href="index.html">Lister déclaration</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Lister déclaration</a>
           </div>
         </div>
       </li>
@@ -541,6 +545,13 @@
 
   <!-- Custom scripts for all pages-->
   <script src="css_js/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="css_js/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="css_js/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="css_js/js/demo/datatables-demo.js"></script>
 
 </body>
 
