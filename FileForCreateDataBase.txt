@@ -208,13 +208,12 @@ create table declaration_brevet(
 	type_demandeur VARCHAR(50),
 	CONSTRAINT pk_id_dmd PRIMARY KEY (Id_dmd),
 	CONSTRAINT fk_idRpc FOREIGN KEY (rps_pc) REFERENCES Responsable_pc(id_resp_pc),
-	CONSTRAINT fk_id_pc FOREIGN KEY (id_pc) REFERENCES pool_Competences(id_pc),
 	CONSTRAINT fk_code_admin FOREIGN KEY (code_admin) REFERENCES Administratif(code_admin),
 	CONSTRAINT fk_id_cir FOREIGN KEY (id_cir) REFERENCES responsable_cir(id_cir)
 ); 
 
 
-
+//CONSTRAINT fk_id_pc FOREIGN KEY (id_pc) REFERENCES pool_Competences(id_pc),
 	--> trigger 
 
 CREATE OR REPLACE TRIGGER decl_brevet_auto_incre
