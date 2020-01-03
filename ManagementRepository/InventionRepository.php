@@ -16,6 +16,13 @@ $Rq = "insert into declaration_invention (DESCRIPTION_DMD, CATEGORIE_INVENTION,O
 		$connexion->exec("commit");
 }
 
+public function Update(Invention $invention){
+    $Rq = "update declaration_invention set DESCRIPTION_DMD='" . $invention->getDescriptionDemande() . "', CATEGORIE_INVENTION = '" . $invention->getCategorieInvention() . "', OBJET_INVENTION= '" . $invention->getObjetInvention() . "', DESCRIPTION_INVENTION = '" . $invention->getDescriptionInvention() . "', CLASSEMENT = '" . $invention->getClassement() . "' where id_dmd =".$invention->getIdDmd();
+    $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
 public function Lister() {   
     $Rq = "select * from declaration_invention ";     
     $connexion = $this->getConnexion(); 
@@ -30,6 +37,36 @@ public function Details($id){
     $statement = $connexion->query($Rq);
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     return $statement;
+}
+
+public function getInfoDemandeur($id_demande){
+    $Rq = "select * from declaration_invention where id_dmd = ".$id_demande;     
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    $row = $statement->fetch(); 
+    if($row['TYPE_DEMANDEUR'] == 'professeur'){
+        $Rq = "select * from professeur where CODE_PROF = '".$row['ID_DEMANDEUR']."'";
+        $connexion = $this->getConnexion(); 
+        $statement = $connexion->query($Rq);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $statement->fetch(); 
+        return array("nom"=> $row['NOM_PROF'], "prenom"=>$row['PRENOM_PROF']); 
+    }else if($row['TYPE_DEMANDEUR'] == 'administratif'){
+        $Rq = "select * from administratif where CODE_ADMIN = '".$row['ID_DEMANDEUR']."'";
+        $connexion = $this->getConnexion(); 
+        $statement = $connexion->query($Rq);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $statement->fetch(); 
+        return array("nom"=> $row['NOM_ADMIN'], "prenom"=>$row['PRENOM_ADMIN']); 
+    }else if($row['TYPE_DEMANDEUR'] == 'chercheur'){
+        $Rq = "select * from chercheur where CODE_CHER = '".$row['ID_DEMANDEUR']."'";
+        $connexion = $this->getConnexion(); 
+        $statement = $connexion->query($Rq);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $statement->fetch(); 
+        return array("nom"=> $row['NOM_CHER'], "prenom"=>$row['PRENOM_CHER']); 
+    }
 }
 
 public function Delete($id){

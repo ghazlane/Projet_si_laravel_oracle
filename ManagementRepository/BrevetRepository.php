@@ -22,5 +22,26 @@
     return $statement;
     }
 
-    	
+    public function Rechercher($id){
+    $Rq = "select * from declaration_brevet where id_dmd =".$id; 
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $row=$statement->fetch();
+    return $row;
+    }
+
+    public function Modifier(Brevet $brevet,$id){
+    $Rq = "update declaration_brevet set DESCRIPTION_DMD='" . $brevet->getDescriptionDemande() . "', CATEGORIE_BREVET = '" . $brevet->getCategorieBrevet() . "', NOM_BREVET= '" . $brevet->getNomBrevet() . "', DOMAINE_BREVET = '" . $brevet->getDomaineBrevet() . "' where id_dmd =".$id;
+        
+    $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+    }
+    
+    public function Supprimer($id){
+    $Rq = "delete from declaration_brevet where id_dmd =".$id; 
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->prepare($Rq);
+    $statement->execute();
+    }	
     }

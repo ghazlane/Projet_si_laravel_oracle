@@ -248,10 +248,13 @@ create table lancement_formation(
 	id_cir INTEGER, 
 	id_demandeur VARCHAR(50), 
 	type_demandeur VARCHAR(50),
+
 	CONSTRAINT pk_id3_dmd PRIMARY KEY (Id_dmd),
 	CONSTRAINT fk_id3Rpc FOREIGN KEY (rps_pc) REFERENCES Responsable_pc(id_resp_pc),
 	CONSTRAINT fk_code3_admin FOREIGN KEY (code_admin) REFERENCES Administratif(code_admin),
 	CONSTRAINT fk_id3_cir FOREIGN KEY (id_cir) REFERENCES responsable_cir(id_cir)
+
+	
 ); 
 
 
@@ -270,6 +273,9 @@ END;
 /
 
 
+//////modification 03/01/2019
+ALTER TABLE declaration_invention DROP COLUMN CODE_ADMIN;
+ALTER TABLE responsable_cir DROP COLUMN ID_PC;
 
 
 //adapter affichage 

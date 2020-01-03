@@ -17,16 +17,27 @@ class InventionController {
 	//actions
 	public funCtion Ajouter($inputs){
 		$this->invention = new Invention($inputs['classement'],$inputs['objetInvention'],$inputs['categorieInvention'],$inputs['descriptionInvention'],$inputs['descriptionDeclaration']); 
-		$this->invention->setIdDemandeur(1); 
+		$this->invention->setIdDemandeur('ABC123'); 
 		$this->invention->setTypeDemandeur("professeur");
 		$this->invention->setStatusDemande("En attente"); 
 		$this->invention->setDateDemande(date("j-n-Y")); 
 		$this->inventionRepository->Ajouter($this->invention); 
 	}
+	public function Update( $inputs){
+		$this->invention = new Invention($inputs['classement'],$inputs['objetInvention'],$inputs['categorieInvention'],$inputs['descriptionInvention'],$inputs['descriptionDeclaration']);
+		$this->invention->setIdDmd($inputs['id_dmd']); 
+		$this->inventionRepository->Update($this->invention); 
+	}
 
 	public function Lister(){
 		return $this->inventionRepository->Lister(); 
 	}
+
+	public function getInfoDemandeur($id_demande){
+		return $this->inventionRepository->getInfoDemandeur($id_demande); 
+	}
+
+
 
 	public function Details($id){
 		return $this->inventionRepository->Details($id); 

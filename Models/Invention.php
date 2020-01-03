@@ -29,6 +29,9 @@ $this->setDescriptionDemande($description_dmd);
 }
 
 //setters
+public function setIdDmd($id_dmd){
+	$this->id_dmd = $id_dmd; 
+}
 public function setIdCir ($id_cir) {
 	$this->id_cir =$id_cir;
 }
@@ -86,6 +89,9 @@ public function setDescriptionDemande ($description_dmd) {
 
 
 //getters
+public function getIdDmd(){
+	return $this->id_dmd;
+}
 public function getIdCir () {
 	return $this->id_cir;
 }

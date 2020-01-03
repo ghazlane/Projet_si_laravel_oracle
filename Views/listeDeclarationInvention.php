@@ -55,7 +55,8 @@
                               
                                 <i class="far fa-folder-open"></i>
                               </a>
-                              <a href="#" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">
+                              <?php echo '<a href="index.php?action=updateDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
+                              
                                 <i class="fas fa-sync"></i>
                               </a>
                               <?php
