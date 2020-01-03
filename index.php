@@ -64,15 +64,19 @@
 		$controller = new BrevetController();
 		$id = $_GET["id"]; 
 		$row= $controller->Detail($id);
+		$prof = $controller->getInfoDemandeur($id);
 		$vue = new Vue('detailDeclarationBrevet'); 
-		$vue->generer(array( "row" => $row)); 
+		$vue->generer(array( "row" => $row, "nomAndPrenomDemandeur"=> $prof)); 
+		 
+
 	}
     else if($action == "detailModifierBrevet"){
 		$controller = new BrevetController();
 		$id = $_GET["id"]; 
 		$row= $controller->Detail($id);
 		$vue = new Vue('ModifierDeclarationBrevet'); 
-		$vue->generer(array( "row" => $row)); 
+		$vue->generer(array( "row" => $row));
+
 	}
 	else if($action == "modifierDeclarationBrevet"){
 		$controller = new BrevetController(); 

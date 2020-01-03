@@ -2,11 +2,13 @@
 <div class="container-fluid" style="font-size: 16px; ">
 
   <!-- Page Heading -->
+   <?php if(!empty($alert)){  ?>
   <div class="card mb-4 py-1 border-bottom-success">
                 <div class="card-body">
-                  <?php if(!empty($alert)){ echo $alert; }?>
+                  <?php  echo $alert; ?>
                 </div>
               </div>
+    <?php  }?>
   <br>
   <h1 class="h3 mb-2 text-gray-800">Liste des Déclarations de Brevet</h1>
   <br>

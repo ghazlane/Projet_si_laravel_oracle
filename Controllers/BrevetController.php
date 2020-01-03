@@ -14,9 +14,11 @@ class BrevetController {
 		
 	//actions
 	public function Ajouter($inputs){
-		$this->brevet = new Brevet($inputs['nomBrevet'],$inputs['categorieBrevet'],$inputs['domaineBrevet'],$inputs['descriptionDeclaration']);  
+		$this->brevet = new Brevet($inputs['nomBrevet'],$inputs['categorieBrevet'],$inputs['domaineBrevet'],$inputs['descriptionDeclaration']); 
 		$this->brevet->setIdDemandeur(1); 
 		$this->brevet->setTypeDemandeur("professeur"); 
+		$this->brevet->setStatusDemande("En attente"); 
+		$this->brevet->setDateDemande(date("j-n-Y")); 
 		$this->brevetRepository->Ajouter($this->brevet); 
 	}
 
@@ -24,6 +26,11 @@ class BrevetController {
 		$statement = $this->brevetRepository->Lister(); 
 		return $statement;
 	}
+
+	public function getInfoDemandeur($id_demande){
+		return $this->brevetRepository->getInfoDemandeur($id_demande); 
+	}
+
 
 	public function Detail($id){
 		$row = $this->brevetRepository->Rechercher($id); 
