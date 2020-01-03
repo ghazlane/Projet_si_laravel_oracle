@@ -15,7 +15,7 @@
       <label for="input" class="control-label" style="left: 0;">Domaine Brevet</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <textarea required="required" name="descriptionDeclaration" value="<?php echo $row['DESCRIPTION_DMD']  ?>"></textarea>
+      <textarea required="required" name="descriptionDeclaration"><?php echo $row['DESCRIPTION_DMD']?></textarea>
       <label for="textarea" class="control-label" style="left: 0;">Description déclaration</label><i class="bar"></i>
     </div>
 

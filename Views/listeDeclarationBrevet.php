@@ -57,7 +57,7 @@
                 else
                   echo '<button type="button" class="btn btn-info btn-sm">En attente</button> '; 
                 ?></td>
-                <td><?php echo $row['ID_DMD']  ?>
+                <td>
                   <a href="index.php?action=rechercheBrevet&id=<?php echo $row['ID_DMD']  ?>"
                   class="btn btn-info btn-circle btn-sm" title="Ouvrir">
                     <i class="far fa-folder-open"></i>
