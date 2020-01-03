@@ -29,6 +29,9 @@ public function __construct ($sujet_formation, $theme_formation, $nombre_partici
 }
 
 //setters
+public function setIdDmd($id_dmd){
+	$this->id_dmd = $id_dmd; 
+}
 public function setIdCir ($id_cir) {
 	$this->id_cir =$id_cir;
 }
@@ -80,7 +83,12 @@ public function setPlanFormation($plan_formation) {
 public function setDescriptionDemande ($description_dmd) {
 	$this->description_dmd =$description_dmd;
 }
+
+
 //getters
+public function getIdDmd(){
+	return $this->id_dmd;
+}
 public function getIdCir () {
 	return $this->id_cir;
 }

@@ -105,7 +105,28 @@
 	}
 	else if($action == "listeDeclarationFormation"){
 		$controller = new FormationController(); 
-		$statement= $controller->Lister();
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array( "statement" => $statement)); 
+		$vue->generer(array( "statement" => $controller->Lister())); 
+	}
+	else if($action == "detailsDeclarationFormation"){ 
+		$controller = new FormationController(); 
+		$vue = new Vue('detailsDeclarationFormation');
+		$vue->generer(array("statement" => $controller->Details($_GET['id']), "nomAndPrenomDemandeur"=> $controller->getInfoDemandeur($_GET['id']))); 
+	}
+	else if($action == "deleteDeclarationFormation"){
+		$controller = new FormationController(); 
+		$controller->Supprimer($_GET['id']); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	else if($action =="updateDeclarationFormation"){
+		$controller = new FormationController();
+		$vue = new Vue('updateDeclarationFormation'); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
+	}
+	else if($action == "saveUpdateDeclarationFormation"){
+		$controller = new FormationController();
+		$controller->Update($_POST); 
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
 	}
