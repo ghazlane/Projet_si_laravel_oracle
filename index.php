@@ -97,6 +97,7 @@
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 
+
 	//Formation 
 	else if($action == 'declarationFormation'){
 		$vue = new Vue('declarationFormation'); 
@@ -133,4 +134,31 @@
 		$controller->Update($_POST); 
 		$vue = new Vue('createSuccess'); 
 		$vue->generer(array()); 
+	}
+
+
+    //liste demandes
+    else if($action == "listeDemandeEnCours"){
+		$brevet= (new BrevetController())->Lister();
+		$invention= (new InventionController())->Lister();
+		$formation= (new FormationController())->Lister();
+
+		$vue = new Vue('listeDemandeEncours'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
+	}
+	else if($action == "listeDemandeTraite"){
+		$brevet= (new BrevetController())->Lister();
+		$invention= (new InventionController())->Lister();
+		$formation= (new FormationController())->Lister();
+
+		$vue = new Vue('listeDemandeTraite'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
+	}
+	else if($action == "listeTousDemande"){
+		$brevet= (new BrevetController())->Lister();
+		$invention= (new InventionController())->Lister();
+		$formation= (new FormationController())->Lister();
+
+		$vue = new Vue('listeTousDemande'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
 	}

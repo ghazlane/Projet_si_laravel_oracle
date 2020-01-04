@@ -180,20 +180,20 @@
         Demandes
       </div>
       <li class="nav-item" >
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="index.php?action=listeDemandeEnCours">
           <i class="fas fa-spinner"></i>
           <span>Demande en cours</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="index.php?action=listeDemandeTraite">
           <i class="fas fa-list-ul"></i>
           <span>Demande traité</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="index.php?action=listeTousDemande">
           <i class="fas fa-tasks"></i>
           <span>Tous les demande</span></a>
       </li>
