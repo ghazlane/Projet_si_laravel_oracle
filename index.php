@@ -3,10 +3,51 @@
 	require_once ("Controllers/InventionController.php");
 	require_once ("Controllers/BrevetController.php");
 	require_once ("Controllers/FormationController.php");
+	require_once ("Controllers/GuichetUniqueController.php");
 	//require_once("controllers\DeclarationInventionController.php");
 	
 	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
-	if($action == 'Accueil'){
+	//Guichet unique;
+	if($action == "ajouterGuichetUnique"){
+		$vue = new Vue('ajouterGuichetUnique'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveAjoutGuichetUnique"){
+		$controller = new GuichetUniqueController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
+	}else if($action == "listerGuichetUnique"){
+		$controller = new GuichetUniqueController(); 
+		$vue = new Vue('listeGuichetUnique'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}else if($action == "updateGuichetUnique"){
+		$controller = new GuichetUniqueController();
+		$vue = new Vue('updateGuichetUnique'); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
+	}else if($action =="saveUpdateGuichetUnique"){
+		$controller = new GuichetUniqueController();
+		$resultat = $controller->Update($_POST); 
+		if($resultat == true){
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
+		}else {
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
+		}
+	}else if($action == "detailGuichetUnique"){
+		$controller = new GuichetUniqueController(); 
+		$vue = new Vue('detailsGuichetUnique');
+		$vue->generer(array("statement" => $controller->Details($_GET['id']))); 
+	}else if($action == "deleteGuichetUnique"){
+		$controller = new GuichetUniqueController(); 
+		$controller->Delete($_GET['id']); 
+		$vue = new Vue('listeGuichetUnique'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+
+	//Invention 
+	else if($action == 'Accueil'){
 		$vue = new Vue('accueil'); 
 		$vue->generer(array()); 
 	}
@@ -97,6 +138,7 @@
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 
+
 	//Formation 
 	else if($action == 'declarationFormation'){
 		$vue = new Vue('declarationFormation'); 
@@ -134,4 +176,34 @@
 		$vue = new Vue('createSuccess'); 
 		$vue->generer(array()); 
 	}
+<<<<<<< HEAD
 		
+=======
+
+
+    //liste demandes
+    else if($action == "listeDemandeEnCours"){
+		$brevet= (new BrevetController())->Lister();
+		$invention= (new InventionController())->Lister();
+		$formation= (new FormationController())->Lister();
+
+		$vue = new Vue('listeDemandeEncours'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
+	}
+	else if($action == "listeDemandeTraite"){
+		$brevet= (new BrevetController())->Lister();
+		$invention= (new InventionController())->Lister();
+		$formation= (new FormationController())->Lister();
+
+		$vue = new Vue('listeDemandeTraite'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
+	}
+	else if($action == "listeTousDemande"){
+		$brevet= (new BrevetController())->Lister();
+		$invention= (new InventionController())->Lister();
+		$formation= (new FormationController())->Lister();
+
+		$vue = new Vue('listeTousDemande'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
+	}
+>>>>>>> 24854130f185de7b68c1aa0007d0245e9f540c05

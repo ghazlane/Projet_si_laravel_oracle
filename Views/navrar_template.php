@@ -180,20 +180,20 @@
         Demandes
       </div>
       <li class="nav-item" >
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="index.php?action=listeDemandeEnCours">
           <i class="fas fa-spinner"></i>
           <span>Demande en cours</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="index.php?action=listeDemandeTraite">
           <i class="fas fa-list-ul"></i>
           <span>Demande traité</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="index.php?action=listeTousDemande">
           <i class="fas fa-tasks"></i>
           <span>Tous les demande</span></a>
       </li>
@@ -237,8 +237,8 @@
         <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Guichet Unique</h6>
-            <a class="collapse-item" href="index.html">Ajouter compte </a>
-            <a class="collapse-item" href="index.html">Lister les comptes</a>
+            <a class="collapse-item" href="index.php?action=ajouterGuichetUnique">Ajouter compte </a>
+            <a class="collapse-item" href="index.php?action=listerGuichetUnique">Lister les comptes</a>
           </div>
         </div>
       </li>

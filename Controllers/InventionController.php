@@ -37,8 +37,6 @@ class InventionController {
 		return $this->inventionRepository->getInfoDemandeur($id_demande); 
 	}
 
-
-
 	public function Details($id){
 		return $this->inventionRepository->Details($id); 
 	}
