@@ -176,10 +176,6 @@
 		$vue = new Vue('createSuccess'); 
 		$vue->generer(array()); 
 	}
-<<<<<<< HEAD
-		
-=======
-
 
     //liste demandes
     else if($action == "listeDemandeEnCours"){
@@ -206,4 +202,4 @@
 		$vue = new Vue('listeTousDemande'); 
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
 	}
->>>>>>> 24854130f185de7b68c1aa0007d0245e9f540c05
+

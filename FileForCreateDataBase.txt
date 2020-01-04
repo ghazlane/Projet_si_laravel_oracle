@@ -258,5 +258,5 @@ END;
 
 
 //adapter affichage 
-set linesize 9999
 set pagesize 9999
+set linesize 9999
