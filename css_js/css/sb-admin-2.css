@@ -9795,7 +9795,7 @@ a:focus {
 }
 
 .text-gray-900 {
-  color: #3a3b45 !important;
+  color: #202024 !important;
 }
 
 .icon-circle {
@@ -9948,7 +9948,7 @@ a:focus {
 }
 
 .topbar #sidebarToggleTop:active {
-  background-color: #dddfeb;
+  background-color: #97e1f3;
 }
 
 .topbar .navbar-search {
@@ -10995,4 +10995,28 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+}
+
+.mySlides {
+  display:none;
+  height: 470px;
+  
+  border: 5px solid rgb(152, 197, 252);
+}
+.hero-image {
+  
+  background-color: #cccccc;
+  background-image: linear-gradient(rgb(146, 176, 209), rgb(106, 150, 106), rgb(189, 175, 221));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover ;
+  position: relative;
+}
+
+.box {
+  background-color: white;
+  border: 9px solid rgb(96, 151, 165);
+  margin: 10px;
+  height : 480px;
+  
 }

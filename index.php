@@ -134,3 +134,4 @@
 		$vue = new Vue('createSuccess'); 
 		$vue->generer(array()); 
 	}
+		
