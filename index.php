@@ -178,7 +178,6 @@
 		$vue->generer(array()); 
 	}
 
-
     //liste demandes
     else if($action == "listeDemandeEnCours"){
 		$brevet= (new BrevetController())->Lister();
@@ -204,6 +203,7 @@
 		$vue = new Vue('listeTousDemande'); 
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
 	}
+
 
 	//services & gestions
 	else if($action == "ajouterPoolCompetence"){
@@ -247,3 +247,4 @@
 		$alert="la demande a été bien supprimée";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
+

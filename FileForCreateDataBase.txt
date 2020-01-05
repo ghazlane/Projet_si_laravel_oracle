@@ -273,5 +273,5 @@ insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpe
 
 
 //adapter affichage 
-set linesize 9999
 set pagesize 9999
+set linesize 9999
