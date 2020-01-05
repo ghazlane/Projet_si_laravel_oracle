@@ -79,8 +79,9 @@ session_start();
 		$vue->generer(array()); 
 	}else if($action == "listeDeclarationInvention"){
 		$controller = new InventionController(); 
+		$statut =$_GET['statut']; 
 		$vue = new Vue('listeDeclarationInvention'); 
-		$vue->generer(array("statement" => $controller->Lister())); 
+		$vue->generer(array("statement" => $controller->Lister($statut))); 
 	}else if($action == "detailDeclarationInvention"){ 
 		$controller = new InventionController(); 
 		$vue = new Vue('detailsDeclarationInvention');
@@ -115,9 +116,9 @@ session_start();
 	}
 	else if($action == "listeDeclarationBrevet"){
 		$controller = new BrevetController(); 
-		$statement= $controller->Lister();
+		$statut =$_GET['statut']; 
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$vue->generer(array( "statement" => $statement)); 
+		$vue->generer(array("statement" => $controller->Lister($statut))); 
 	}
 	else if($action == "rechercheBrevet"){
 		$controller = new BrevetController();
@@ -169,8 +170,9 @@ session_start();
 	}
 	else if($action == "listeDeclarationFormation"){
 		$controller = new FormationController(); 
+		$statut =$_GET['statut']; 
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array( "statement" => $controller->Lister())); 
+		$vue->generer(array( "statement" => $controller->Lister($statut))); 
 	}
 	else if($action == "detailsDeclarationFormation"){ 
 		$controller = new FormationController(); 

@@ -19,9 +19,14 @@ public function Ajouter(Formation $formation) {
 	$connexion->exec("commit");
 }
 
-public function Lister() {
-      
-    $Rq = "select * from lancement_formation ";     
+public function Lister($statut) {
+    if(!empty($statut)){
+        if($statut == 'Encours') $Rq = "select * from lancement_formation where STATUT_DMD = 'En cours' or STATUT_CIR not null ";
+        else if($statut == 'Enattente') $Rq = "select * from lancement_formation where STATUT_DMD = 'En attente' ";
+        else $Rq = "select * from lancement_formation where STATUT_DMD = 'Accepter' or  STATUT_DMD = 'Non accepter'";
+    } 
+    else $Rq = "select * from lancement_formation ";    
+            
     $connexion = $this->getConnexion(); 
     $statement = $connexion->query($Rq);
     $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -83,3 +88,6 @@ public function Lister() {
             }
         }
     }
+
+
+    

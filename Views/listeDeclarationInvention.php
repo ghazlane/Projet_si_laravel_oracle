@@ -34,7 +34,7 @@
                     </tr>
                   </tfoot>
                   <tbody style="color: black;">
-                    <?php while($row = $statement->fetch()) { ?>
+                    <?php while($row = $statement->fetch()) {  ?>
                       <tr>
                           <td><?php echo $row['ID_DMD']  ?></td>
                           <td><?php echo $row['OBJET_INVENTION']  ?></td>

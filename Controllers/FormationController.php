@@ -24,8 +24,8 @@ class FormationController {
 		$this->formationRepository->Ajouter($this->formation); 
 	}
 
-	public function Lister(){
-		$statement = $this->formationRepository->Lister(); 
+	public function Lister($statut){
+		$statement = $this->formationRepository->Lister($statut); 
 		return $statement;
 	}
 	

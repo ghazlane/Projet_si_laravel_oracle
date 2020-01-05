@@ -29,8 +29,8 @@ class InventionController {
 		$this->inventionRepository->Update($this->invention); 
 	}
 
-	public function Lister(){
-		return $this->inventionRepository->Lister(); 
+	public function Lister($statut){
+		return $this->inventionRepository->Lister($statut); 
 	}
 
 	public function getInfoDemandeur($id_demande){

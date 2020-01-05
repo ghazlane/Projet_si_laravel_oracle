@@ -22,8 +22,8 @@ class BrevetController {
 		$this->brevetRepository->Ajouter($this->brevet); 
 	}
 
-	public function Lister(){
-		$statement = $this->brevetRepository->Lister(); 
+	public function Lister($statut){
+		$statement = $this->brevetRepository->Lister($statut); 
 		return $statement;
 	}
 

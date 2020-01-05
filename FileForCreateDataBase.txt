@@ -272,6 +272,41 @@ END;
 insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpement', 'developper idee', '03/11/2019');
 
 
+//point nodal
+
+CREATE SEQUENCE point_nodal_seq START WITH 1;
+
+creer la table point_nodal
+	CREATE TABLE point_nodal
+( id_pn number(3) NOT NULL ,
+  nom_pn varchar2(50) NOT NULL,
+  nb_et number(3),
+  nb_et number(3),
+  nb_et number(3),
+);
+
+ALTER TABLE pool_Competences ADD (CONSTRAINT pk_idpc PRIMARY KEY (id_pc));
+ALTER TABLE pool_Competences ADD (id_gu number(3) );
+ALTER TABLE pool_Competences ADD ( CONSTRAINT id_gu FOREIGN KEY (id_gu) REFERENCES guichet_unique(id_gu));
+
+
+
+---> Trigger 
+CREATE OR REPLACE TRIGGER pool_competence_auto_incre
+BEFORE INSERT ON pool_Competences
+FOR EACH ROW
+
+BEGIN
+  SELECT pool_competence_seq.NEXTVAL
+  INTO   :new.id_pc
+  FROM   dual;
+END;
+/
+
+insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpement', 'developper idee', '03/11/2019');
+
+
+
 //adapter affichage 
 set pagesize 9999
 set linesize 9999

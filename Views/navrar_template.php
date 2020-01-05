@@ -67,14 +67,15 @@
          <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
-          <span>Déclaration d’invention</span>
+          <span>Déclaration d'invention</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Déclaration d’invention</h6>
+            <h6 class="collapse-header">Déclaration d'invention</h6>
             <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Enattente">Demandes en attentes</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Encours">Demandes prêtes</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Acceptee">Demandes traitées</a>
           </div>
         </div>
       </li>
@@ -86,9 +87,10 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration de brevets</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
+            <a class="collapse-item" href="index.php?action=declarationBrevet">Nouveau Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationBrevet&statut=Enattente">Demandes en attentes</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationBrevet&statut=Encours">Demandes prêtes</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationBrevet&statut=Acceptee">Demandes traitées</a>
           </div>
         </div>
       </li>
@@ -101,9 +103,10 @@
         <div id="collapseeight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Lancer une formation</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
+            <a class="collapse-item" href="index.php?action=declarationFormation">Nouveau Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Enattente">Demandes en attentes</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Encours">Demandes prêtes</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Acceptee">Demandes traitées</a>
           </div>
         </div>
       </li>
