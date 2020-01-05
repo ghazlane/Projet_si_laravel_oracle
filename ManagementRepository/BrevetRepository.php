@@ -17,7 +17,7 @@
 
     public function Lister($statut) {
     if(!empty($statut)){
-        if($statut == 'Encours') $Rq = "select * from declaration_brevet where STATUT_DMD = 'En cours' or STATUT_CIR not null  ";
+        if($statut == 'Encours') $Rq = "select * from declaration_brevet where STATUT_DMD = 'En cours' or STATUT_CIR is not null  ";
         else if($statut == 'Enattente') $Rq = "select * from declaration_brevet where STATUT_DMD = 'En attente' ";
         else $Rq = "select * from declaration_brevet where STATUT_DMD = 'Accepter' or  STATUT_DMD = 'Non accepter'";
     } 
