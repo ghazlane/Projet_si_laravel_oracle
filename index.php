@@ -5,6 +5,7 @@ session_start();
 	require_once ("Controllers/BrevetController.php");
 	require_once ("Controllers/FormationController.php");
 	require_once ("Controllers/GuichetUniqueController.php");
+	require_once ("Controllers/PoolCompetenceController.php");
 	//require_once("controllers\DeclarationInventionController.php");
 	
 	$action = empty($_GET["action"])?"Home":$_GET["action"];
@@ -221,5 +222,49 @@ session_start();
 	}else if($action == "Home"){
 		$vue = new Vue('listeTousDemande');
 		$vue->genererHome();
+	}
+
+
+	//services & gestions
+	else if($action == "ajouterPoolCompetence"){
+		$vue = new Vue('ajouterPoolCompetence'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveAjoutPoolCompetence"){
+		$controller = new PoolCompetenceController(); 
+		$controller->Ajouter($_POST);
+		$statement= $controller->Lister();
+		$vue = new Vue('listePoolCompetence'); 
+		$alert="la demande a été bien crée"; 
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
+	}
+	else if($action == "listePoolCompetence"){
+		$controller = new PoolCompetenceController(); 
+		$statement= $controller->Lister();
+		$vue = new Vue('listePoolCompetence'); 
+		$vue->generer(array( "statement" => $statement)); 
+	}
+	else if($action =="updatePoolCompetence"){
+		$controller = new PoolCompetenceController(); 
+		$vue = new Vue('updatePoolCompetence'); 
+		$vue->generer(array("row" => $controller->Detail($_GET['id'])));
+	}
+	else if($action == "saveUpdatePoolCompetence"){
+		$controller = new PoolCompetenceController(); 
+		$id = $_GET["id"]; 
+		$controller->Modifier($_POST,$id);
+		$statement= $controller->Lister();
+		$vue = new Vue('listePoolCompetence'); 
+		$alert="la demande a été bien modifiée";
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert)); 
+	}
+	else if($action == "deletePoolCompetence"){
+		$controller = new PoolCompetenceController(); 
+		$id = $_GET["id"]; 
+		$controller->Supprimer($id);
+		$statement= $controller->Lister();
+		$vue = new Vue('listePoolCompetence'); 
+		$alert="la demande a été bien supprimée";
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 
