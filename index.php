@@ -100,6 +100,20 @@ session_start();
 		$controller->Update($_POST); 
 		$vue = new Vue('createSuccess'); 
 		$vue->generer(array()); 
+	}else if($action == "transmettreInventionCir"){
+		$controller = new InventionController();
+		$controller->TransmettreInventionCir($_GET['id_dmd']); 
+		$vue = new Vue('TransmettreDosiierCir'); 
+		$vue->generer(array()); 
+	}else if($action == "RefuserDemandeGu"){
+		$controller = new InventionController();
+		$controller->RefuserInventionGu($_GET['id_dmd']); 
+		$vue = new Vue('RefuserInventionGu'); 
+		$vue->generer(array());
+	}else if($action =="InventionPretes"){
+		$controller = new InventionController(); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->ListePretes()));
 	}
 
     //brevet

@@ -47,4 +47,19 @@
     		<div class="col"><strong><?php echo $row['TYPE_DEMANDEUR']  ?></strong></div>
     	</div>
 	</div>
+
+  <?php if($_SESSION['type'] =='GuichetUnique'){?>
+                  <a href="index.php?action=transmettreInventionCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span class="text">Transmettre le dossier au directeur de la CIR</span>
+                  </a><br><br>
+                  <a href="index.php?action=RefuserDemandeGu&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-times"></i>
+                    </span>
+                    <span class="text">Refuser la demande</span>
+                  </a>
+  <?php } ?>
 </div>

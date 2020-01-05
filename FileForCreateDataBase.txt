@@ -280,9 +280,7 @@ creer la table point_nodal
 	CREATE TABLE point_nodal
 ( id_pn number(3) NOT NULL ,
   nom_pn varchar2(50) NOT NULL,
-  nb_et number(3),
-  nb_et number(3),
-  nb_et number(3),
+  nb_et number(3)
 );
 
 ALTER TABLE pool_Competences ADD (CONSTRAINT pk_idpc PRIMARY KEY (id_pc));
@@ -305,6 +303,9 @@ END;
 
 insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpement', 'developper idee', '03/11/2019');
 
+
+/*/*/*/*/*/*/ 05/01/2020*/*/*/*/*/*/*/
+alter table declaration_invention add (decision_finale VARCHAR(200));
 
 
 //adapter affichage 

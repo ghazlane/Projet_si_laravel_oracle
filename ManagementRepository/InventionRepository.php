@@ -23,11 +23,33 @@ public function Update(Invention $invention){
             $connexion->exec("commit");
 }
 
+public function TransmettreInventionCir($id){
+    $Rq = "update declaration_invention set STATUT_RESP_GU='Demande accépter par le Guichet Unique', STATUT_DMD='En cours' where id_dmd =".$id;
+    $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
+public function RefuserInventionGu($id){
+    $Rq = "update declaration_invention set STATUT_DMD='Non accepter' where id_dmd =".$id;
+    $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
+public function ListePretes(){
+    $Rq = "select * from declaration_invention where DECISION_FINALE IS NOT NULL "; 
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+}
+
 public function Lister($statut) {  
     if(!empty($statut)){
         if($statut == 'Encours') $Rq = "select * from declaration_invention where STATUT_DMD = 'En cours' or STATUT_CIR is not null ";
         else if($statut == 'Enattente') $Rq = "select * from declaration_invention where STATUT_DMD = 'En attente' ";
-        else $Rq = "select * from declaration_invention where STATUT_DMD = 'Accepter' or  STATUT_DMD = 'Non accepter'";
+        else $Rq = "select * from declaration_invention where STATUT_DMD = 'Accepter' ";
     } 
     else $Rq = "select * from declaration_invention "; 
 

@@ -44,5 +44,17 @@ class InventionController {
 	public funCtion Delete($id){
 		$this->inventionRepository->Delete($id);
 	}
+
+	public funCtion TransmettreInventionCir($id){
+		$this->inventionRepository->TransmettreInventionCir($id); 
+	}
+
+	public function RefuserInventionGu($id){
+		$this->inventionRepository->RefuserInventionGu($id); 
+	}
+
+	public function ListePretes(){
+		return $this->inventionRepository->ListePretes(); 
+	}
 	
 }
