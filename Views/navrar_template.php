@@ -281,8 +281,8 @@
         <div id="collapseTh4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Pool de compétences</h6>
-            <a class="collapse-item" href="index.html">Ajouter pool </a>
-            <a class="collapse-item" href="index.html">Lister les pools</a>
+            <a class="collapse-item" href="index.php?action=ajouterPoolCompetence">Ajouter pool </a>
+            <a class="collapse-item" href="index.php?action=listePoolCompetence">Lister les pools</a>
           </div>
         </div>
       </li>
