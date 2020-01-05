@@ -1,4 +1,5 @@
 <?php
+session_start();
 	require_once 'Views\Vue.php';
 	require_once ("Controllers/InventionController.php");
 	require_once ("Controllers/BrevetController.php");
@@ -6,7 +7,7 @@
 	require_once ("Controllers/GuichetUniqueController.php");
 	//require_once("controllers\DeclarationInventionController.php");
 	
-	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
+	$action = empty($_GET["action"])?"Home":$_GET["action"];
 	//Guichet unique;
 	if($action == "ajouterGuichetUnique"){
 		$vue = new Vue('ajouterGuichetUnique'); 
@@ -44,6 +45,22 @@
 		$controller->Delete($_GET['id']); 
 		$vue = new Vue('listeGuichetUnique'); 
 		$vue->generer(array("statement" => $controller->Lister()));
+	}else if($action == "connexionGuichetUnique"){
+		$controller = new GuichetUniqueController(); 
+		$statement = $controller->Lister(); 
+		while ($row = $statement->fetch()) {
+			if(($_POST['username'] == $row['EMAIL_GU']) && ($_POST['password'] == $row['MOT_DE_PASSE_GU'])){
+				$_SESSION['id_gu'] = $row['ID_GU'];
+				$_SESSION['nom'] = $row['NOM_GU'];
+				$_SESSION['prenom'] = $row['PRENOM_GU'];
+				$_SESSION['type'] = 'GuichetUnique'; 
+				$vue = new Vue('accueil'); 
+				$vue->generer(array());
+				return;  
+			}
+		}
+				$vue = new Vue('MotDePasseIncorrectGU');
+				$vue->genererPageSansTemplate();
 	}
 
 	//Invention 
@@ -201,5 +218,8 @@
 
 		$vue = new Vue('listeTousDemande'); 
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
+	}else if($action == "Home"){
+		$vue = new Vue('listeTousDemande');
+		$vue->genererHome();
 	}
 

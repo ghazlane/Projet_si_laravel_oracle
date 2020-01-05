@@ -33,31 +33,24 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block " style="background-image: url('img/Universite-Mohammed-V-de-Rabat.jpg');"></div>
+              <div class="col-lg-6 d-none d-lg-block " style="background-image: url('css_js/img/Universite-Mohammed-V-de-Rabat.jpg');"></div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Connexion</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Connexion Guichet Unique</h1>
+                    <h5 style="color: red;">Mot de passe ou username est incorrect</h5>
                   </div>
                   <br>
-                  <form class="user">
+                  <form class="user" method="post" action="index.php?action=connexionGuichetUnique">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Votre email">
+                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Votre email" name="username">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
+                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe" name="password">
                     </div>
-                    
-                   
                     <hr>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      Se connecter
-                    </a>
-                   
+                      <input type="submit" class="btn btn-primary btn-user btn-block" value="Se connecter">
                   </form>
-                 
-                  
-                  
                 </div>
               </div>
             </div>
