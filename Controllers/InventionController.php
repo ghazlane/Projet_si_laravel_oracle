@@ -53,6 +53,10 @@ class InventionController {
 		$this->inventionRepository->RefuserInventionGu($id); 
 	}
 
+	public funCtion AccepterInventionGu($id){
+		$this->inventionRepository->AccepterInventionGu($id); 
+	}
+
 	public function ListePretes(){
 		return $this->inventionRepository->ListePretes(); 
 	}

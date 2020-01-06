@@ -23,8 +23,19 @@ class BrevetController {
 	}
 
 	public function Lister($statut){
-		$statement = $this->brevetRepository->Lister($statut); 
-		return $statement;
+		return $this->brevetRepository->Lister($statut); 
+	}
+
+	public function TransmettreBrevetCir($id){
+        $this->brevetRepository->TransmettreBrevetCir($id); 
+	}
+
+	public function RefuserBrevetGu($id){
+        $this->brevetRepository->RefuserBrevetGu($id); 
+	}
+	
+	public function ListePretes(){
+		return $this->brevetRepository->ListePretes(); 
 	}
 
 	public function getInfoDemandeur($id_demande){

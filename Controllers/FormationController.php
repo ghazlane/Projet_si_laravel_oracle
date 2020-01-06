@@ -49,4 +49,16 @@ class FormationController {
 	public function getInfoDemandeur($id_demande){
 		return $this->formationRepository->getInfoDemandeur($id_demande); 
 	}
+
+		public function TransmettreFormationCir($id){
+		$this->formationRepository->TransmettreFormationCir($id); 		
+	}
+
+	public function RefuserFormationGu($id){
+		$this->formationRepository->RefuserFormationGu($id); 
+	}
+
+	public function ListePretes(){
+		return $this->formationRepository->ListePretes(); 
+	}
 }

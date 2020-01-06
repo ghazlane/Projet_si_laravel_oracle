@@ -38,18 +38,25 @@ public function RefuserInventionGu($id){
 }
 
 public function ListePretes(){
-    $Rq = "select * from declaration_invention where DECISION_FINALE IS NOT NULL "; 
+    $Rq = "select * from declaration_invention where DECISION_FINALE IS NOT NULL and STATUT_DMD = 'En cours'"; 
     $connexion = $this->getConnexion(); 
     $statement = $connexion->query($Rq);
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     return $statement;
 }
 
+public function AccepterInventionGu($id){
+    $Rq = "update declaration_invention set STATUT_DMD='Accepter' where id_dmd =".$id;
+    $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
 public function Lister($statut) {  
     if(!empty($statut)){
-        if($statut == 'Encours') $Rq = "select * from declaration_invention where STATUT_DMD = 'En cours' or STATUT_CIR is not null ";
-        else if($statut == 'Enattente') $Rq = "select * from declaration_invention where STATUT_DMD = 'En attente' ";
-        else $Rq = "select * from declaration_invention where STATUT_DMD = 'Accepter' ";
+        if($statut == 'Encours') $Rq = "select * from declaration_invention where STATUT_DMD = 'En cours'";
+        else if($statut == 'Enattente') $Rq = "select * from declaration_invention where STATUT_DMD = 'En attente'";
+        else $Rq = "select * from declaration_invention where STATUT_DMD = 'Accepter' or  STATUT_DMD = 'Non accepter'";
     } 
     else $Rq = "select * from declaration_invention "; 
 

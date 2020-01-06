@@ -73,7 +73,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration d'invention</h6>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Enattente">Demandes en attentes</a>
-            <a class="collapse-item" href="index.php?action=InventionPretes">Demandes prêtes</a>
+            <a class="collapse-item" href="index.php?action=InventionPretes">Déclaration prêtes</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Encours">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Acceptee">Demandes traitées</a>
           </div>
@@ -88,7 +88,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration de brevets</h6>
             <a class="collapse-item" href="index.php?action=listeDeclarationBrevet&statut=Enattente">Demandes en attentes</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationBrevet&statut=Encours">Demandes prêtes</a>
+             <a class="collapse-item" href="index.php?action=brevetsPretes">Demande prêtes</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationBrevet&statut=Encours">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationBrevet&statut=Acceptee">Demandes traitées</a>
           </div>
         </div>
@@ -103,7 +104,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Lancer une formation</h6>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Enattente">Demandes en attentes</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Encours">Demandes prêtes</a>
+            <a class="collapse-item" href="index.php?action=FormationPretes">Demande prêtes</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Encours">Demandes en cours </a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Acceptee">Demandes traitées</a>
           </div>
         </div>
@@ -589,7 +591,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nom et prénom comptes</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['nom'].' '.$_SESSION['prenom']; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -607,7 +609,7 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="index.php?action=deconnexion"  >
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>

@@ -62,6 +62,11 @@ session_start();
 		}
 				$vue = new Vue('MotDePasseIncorrectGU');
 				$vue->genererPageSansTemplate();
+	}else if($action == "deconnexion"){
+			session_unset ();
+			session_destroy ();
+			$vue = new Vue('listeTousDemande');
+		$vue->genererHome();
 	}
 
 	//Invention 
@@ -79,7 +84,7 @@ session_start();
 		$vue->generer(array()); 
 	}else if($action == "listeDeclarationInvention"){
 		$controller = new InventionController(); 
-		$statut =$_GET['statut']; 
+		$statut = $_GET['statut']; 
 		$vue = new Vue('listeDeclarationInvention'); 
 		$vue->generer(array("statement" => $controller->Lister($statut))); 
 	}else if($action == "detailDeclarationInvention"){ 
@@ -114,6 +119,12 @@ session_start();
 		$controller = new InventionController(); 
 		$vue = new Vue('listeDeclarationInvention'); 
 		$vue->generer(array("statement" => $controller->ListePretes()));
+	}else if($action =="AccepterInventionCir"){
+		$controller = new InventionController();
+		$controller->AccepterInventionGu($_GET['id_dmd']); 
+		$vue = new Vue('AccepterDeamnde'); 
+		$vue->generer(array());
+
 	}
 
     //brevet
@@ -141,8 +152,6 @@ session_start();
 		$prof = $controller->getInfoDemandeur($id);
 		$vue = new Vue('detailDeclarationBrevet'); 
 		$vue->generer(array( "row" => $row, "nomAndPrenomDemandeur"=> $prof)); 
-		 
-
 	}
     else if($action == "detailModifierBrevet"){
 		$controller = new BrevetController();
@@ -150,7 +159,6 @@ session_start();
 		$row= $controller->Detail($id);
 		$vue = new Vue('ModifierDeclarationBrevet'); 
 		$vue->generer(array( "row" => $row));
-
 	}
 	else if($action == "modifierDeclarationBrevet"){
 		$controller = new BrevetController(); 
@@ -169,6 +177,20 @@ session_start();
 		$vue = new Vue('listeDeclarationBrevet'); 
 		$alert="la demande a été bien supprimée";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
+	}else if($action =="brevetsPretes"){
+		$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$vue->generer(array("statement" => $controller->ListePretes()));
+	}else if($action=="transmettreBrevetCir"){
+		$controller = new BrevetController();
+		$controller->TransmettreBrevetCir($_GET['id_dmd']); 
+		$vue = new Vue('TransmettreDosiierCir'); 
+		$vue->generer(array()); 
+	}else if($action == "RefuserBrevetGu"){
+		$controller = new BrevetController();
+		$controller->RefuserBrevetGu($_GET['id_dmd']); 
+		$vue = new Vue('RefuserInventionGu'); 
+		$vue->generer(array());
 	}
 
 
@@ -209,6 +231,20 @@ session_start();
 		$controller->Update($_POST); 
 		$vue = new Vue('createSuccess'); 
 		$vue->generer(array()); 
+	}else if($action == "transmettreFormationCir"){
+		$controller = new FormationController();
+		$controller->TransmettreFormationCir($_GET['id_dmd']); 
+		$vue = new Vue('TransmettreDosiierCir'); 
+		$vue->generer(array());
+	}else if($action == "RefuserFormationGu"){
+		$controller = new FormationController();
+		$controller->RefuserFormationGu($_GET['id_dmd']); 
+		$vue = new Vue('RefuserInventionGu'); 
+		$vue->generer(array());
+	}else if($action == "FormationPretes"){
+		$controller = new FormationController(); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("statement" => $controller->ListePretes()));
 	}
 
     //liste demandes

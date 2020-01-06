@@ -32,6 +32,34 @@ END;
 ---> insersion dans la table ---> fichier de test 
 insert into responsable_cir (nom_cir,prenom_cir,date_naissance_cir,email_cir,mot_de_passe_cir,telephone_cir) values('ghazlane', 'mohammed', '03/11/1997', 'med.ghazlane@gmail.com','123456789','0655681244');
 
+---> Auto increment pour la table pools de competences 
+	CREATE SEQUENCE pool_competence_seq START WITH 1;
+
+---> creer la table pool de competence
+	CREATE TABLE pool_Competences 
+( id_pc number(3) NOT NULL ,
+  nom_pc varchar2(50) NOT NULL,
+  fonc_pc varchar2(50),
+  date_creation date
+);
+
+---> Foreinkey
+	ALTER TABLE pool_Competences ADD (CONSTRAINT pk_idpc PRIMARY KEY (id_pc));
+---> Trigger 
+CREATE OR REPLACE TRIGGER pool_competence_auto_incre
+BEFORE INSERT ON pool_Competences
+FOR EACH ROW
+
+BEGIN
+  SELECT pool_competence_seq.NEXTVAL
+  INTO   :new.id_pc
+  FROM   dual;
+END;
+/
+
+---> inserer dans la base de données
+insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpement', 'developper idee', '03/11/2019');
+
 
 ///////Table ADMINISTRATIFS /////////////
 --> creer la table 
@@ -113,9 +141,7 @@ END;
 insert into Responsable_PC (nom_resp_pc,prenom_resp_pc,date_naissance_pc,email_resp_pc,mot_de_passe_pc ,telephone_pc,id_pc) values('ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', '0655681244',1);
 
 
-//==========================================================================================================================
-//=====================================================SERVICES DE DECLARATION==============================================
-//==========================================================================================================================
+
 
 //demande services declaration invention
 ---> auto increment
@@ -202,11 +228,6 @@ END;
 /
 
 
-//==========================================================================================================================
-//==========================================================LES COMPTES=====================================================
-//==========================================================================================================================
-
-
 **************Table guichet unique ******************
 --> auto increment 
 CREATE SEQUENCE guichet_unique_seq START WITH 1;
@@ -235,77 +256,9 @@ BEGIN
 END;
 /
 
-
-//==========================================================================================================================
-//=====================================================SERVICES ET GESTIONS=================================================
-//==========================================================================================================================
-drop table pool_Competences;
-
-CREATE SEQUENCE pool_competence_seq START WITH 1;
-
-creer la table pool de competence
-	CREATE TABLE pool_Competences 
-( id_pc number(3) NOT NULL ,
-  nom_pc varchar2(50) NOT NULL,
-  fonc_pc varchar2(50),
-  date_creation varchar2(50)
-);
-
-ALTER TABLE pool_Competences ADD (CONSTRAINT pk_idpc PRIMARY KEY (id_pc));
-ALTER TABLE pool_Competences ADD (id_gu number(3) );
-ALTER TABLE pool_Competences ADD ( CONSTRAINT id_gu FOREIGN KEY (id_gu) REFERENCES guichet_unique(id_gu));
-
-
-
----> Trigger 
-CREATE OR REPLACE TRIGGER pool_competence_auto_incre
-BEFORE INSERT ON pool_Competences
-FOR EACH ROW
-
-BEGIN
-  SELECT pool_competence_seq.NEXTVAL
-  INTO   :new.id_pc
-  FROM   dual;
-END;
-/
-
-insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpement', 'developper idee', '03/11/2019');
-
-
-//point nodal
-
-CREATE SEQUENCE point_nodal_seq START WITH 1;
-
-creer la table point_nodal
-	CREATE TABLE point_nodal
-( id_pn number(3) NOT NULL ,
-  nom_pn varchar2(50) NOT NULL,
-  nb_et number(3)
-);
-
-ALTER TABLE pool_Competences ADD (CONSTRAINT pk_idpc PRIMARY KEY (id_pc));
-ALTER TABLE pool_Competences ADD (id_gu number(3) );
-ALTER TABLE pool_Competences ADD ( CONSTRAINT id_gu FOREIGN KEY (id_gu) REFERENCES guichet_unique(id_gu));
-
-
-
----> Trigger 
-CREATE OR REPLACE TRIGGER pool_competence_auto_incre
-BEFORE INSERT ON pool_Competences
-FOR EACH ROW
-
-BEGIN
-  SELECT pool_competence_seq.NEXTVAL
-  INTO   :new.id_pc
-  FROM   dual;
-END;
-/
-
-insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpement', 'developper idee', '03/11/2019');
-
-
-/*/*/*/*/*/*/ 05/01/2020*/*/*/*/*/*/*/
-alter table declaration_invention add (decision_finale VARCHAR(200));
+alter table declaration_brevet add ( decision_finale VARCHAR(200));
+alter table declaration_invention add ( decision_finale VARCHAR(200));
+alter table lancement_formation  add ( decision_finale VARCHAR(200));
 
 
 //adapter affichage 
