@@ -15,6 +15,13 @@
     		$connexion->exec("commit");
     }
 
+    public function AccepterBrevetGu($id){
+            $Rq = "update declaration_brevet set STATUT_DMD='Accepter' where id_dmd =".$id;
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
     public function TransmettreBrevetCir($id){
             $Rq = "update declaration_brevet set STATUT_RESP_GU='Demande accépter par le Guichet Unique', STATUT_DMD='En cours' where id_dmd =".$id;
             $connexion = $this->getConnexion(); 

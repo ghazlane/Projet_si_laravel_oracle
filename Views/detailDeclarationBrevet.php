@@ -40,7 +40,7 @@
   </div>
 </div>
 
- <?php if($_SESSION['type'] =='GuichetUnique'){?>
+ <?php if($_SESSION['type'] =='GuichetUnique' && $row['DECISION_FINALE'] == ''){?>
                   <a href="index.php?action=transmettreBrevetCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-50">
                       <i class="fas fa-check"></i>
@@ -54,3 +54,18 @@
                     <span class="text">Refuser la demande</span>
                   </a>
   <?php } ?>
+  <?php if($row['DECISION_FINALE'] != ''){?>
+                    <p style="font-size: 20px; ">La décision finale du CIR est : <strong style="color:green; "><?php echo $row['DECISION_FINALE'] ?> </strong></p>
+                     <a href="index.php?action=AccepterBrevetGu&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span class="text">Accepter</span>
+                  </a>
+                  <a href="index.php?action=RefuserBrevetGu&&id_dmd=<?php echo $row['ID_DMD'] ?>" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-times"></i>
+                    </span>
+                    <span class="text">Refuser</span>
+                  </a>
+  <?php }?>

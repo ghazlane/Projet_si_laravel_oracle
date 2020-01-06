@@ -58,5 +58,9 @@ class BrevetController {
 		
         $this->brevetRepository->Supprimer($id); 
 	}
+
+	public function AccepterBrevetGu($id){
+		$this->brevetRepository->AccepterBrevetGu($id); 
+	}
 	
 }

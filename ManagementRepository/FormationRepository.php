@@ -25,7 +25,12 @@ public function TransmettreFormationCir($id){
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
-
+public function AccepterFormationGu($id){
+    $Rq = "update lancement_formation set STATUT_DMD='Accepter' where id_dmd =".$id;
+    $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
 public function RefuserFormationGu($id){
     $Rq = "update lancement_formation set STATUT_DMD='Non accepter' where id_dmd =".$id;
     $connexion = $this->getConnexion(); 

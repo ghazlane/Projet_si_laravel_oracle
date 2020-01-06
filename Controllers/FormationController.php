@@ -61,4 +61,8 @@ class FormationController {
 	public function ListePretes(){
 		return $this->formationRepository->ListePretes(); 
 	}
+
+	public function AccepterFormationGu($id){
+		$this->formationRepository->AccepterFormationGu($id); 
+	}
 }

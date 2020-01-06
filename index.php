@@ -191,6 +191,11 @@ session_start();
 		$controller->RefuserBrevetGu($_GET['id_dmd']); 
 		$vue = new Vue('RefuserInventionGu'); 
 		$vue->generer(array());
+	}else if($action =="AccepterBrevetGu"){
+		$controller = new BrevetController();
+		$controller->AccepterBrevetGu($_GET['id_dmd']); 
+		$vue = new Vue('AccepterDeamnde'); 
+		$vue->generer(array());
 	}
 
 
@@ -245,6 +250,11 @@ session_start();
 		$controller = new FormationController(); 
 		$vue = new Vue('listeDeclarationFormation'); 
 		$vue->generer(array("statement" => $controller->ListePretes()));
+	}else if($action =="AccepterFormationGu"){
+		$controller = new FormationController();
+		$controller->AccepterFormationGu($_GET['id_dmd']); 
+		$vue = new Vue('AccepterDeamnde'); 
+		$vue->generer(array());
 	}
 
     //liste demandes
