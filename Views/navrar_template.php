@@ -81,6 +81,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration d'invention</h6>
+
              <a class="collapse-item" href="index.php?action=inventionsAccepterParGU">Demande transmis par GU</a>
             <a class="collapse-item" href="index.php?action=inventionsEncoursCIR">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Acceptee">Demandes traitées</a>
@@ -126,9 +127,9 @@
         <div id="collapsefoor" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Lancement de startups</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prête</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traitée</a>
           </div>
         </div>
       </li>
@@ -140,9 +141,9 @@
         <div id="collapsefive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Demande de prototypage</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prête</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traitée</a>
           </div>
         </div>
       </li>
@@ -154,9 +155,9 @@
         <div id="collapsesex" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Organiser un événement</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>     
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prête</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traitée</a>     
           </div>
         </div>
       </li>
@@ -168,9 +169,9 @@
         <div id="collapseseven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Cluster technologique</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prête</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traitée</a>
           </div>
         </div>
       </li>
@@ -185,9 +186,9 @@
         <div id="collapseNine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Financement d'action</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prête</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traitée</a>
           </div>
         </div>
       </li>
@@ -205,9 +206,9 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration d'invention</h6>
-            <a class="collapse-item" href="index.php?action=NouvelleDeclarationPoolsCompetences">Nouvelles déclaration</a>
-            <a class="collapse-item" href="index.php?action=InventionPretes">Déclaration en cours</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Acceptee">Déclaraton traitées</a>
+            <a class="collapse-item" href="index.php?action=NouvelleDeclarationPoolsCompetences">Nouvelle déclaration</a>
+            <a class="collapse-item" href="index.php?action=InventionPretes">Déclarations en cours</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Acceptee">Déclaratons traitées</a>
           </div>
         </div>
       </li>
@@ -248,9 +249,9 @@
         <div id="collapsefoor" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Lancement de startups</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prête</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traitée</a>
           </div>
         </div>
       </li>
@@ -262,9 +263,9 @@
         <div id="collapsefive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Demande de prototypage</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prête</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traitée</a>
           </div>
         </div>
       </li>
@@ -276,9 +277,9 @@
         <div id="collapsesex" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Organiser un événement</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
-            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>     
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prête</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traitée</a>     
           </div>
         </div>
       </li>
