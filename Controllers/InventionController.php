@@ -48,9 +48,16 @@ class InventionController {
 	public funCtion TransmettreInventionCir($id){
 		$this->inventionRepository->TransmettreInventionCir($id); 
 	}
+	public function TransmettreInventionPc($id){
+        $this->inventionRepository->TransmettreInventionPc($id); 
+	}
+
 
 	public function RefuserInventionGu($id){
 		$this->inventionRepository->RefuserInventionGu($id); 
+	}
+	public function RefuserInventionCir($id){
+        $this->inventionRepository->RefuserInventionCir($id); 
 	}
 
 	public funCtion AccepterInventionGu($id){
@@ -59,6 +66,13 @@ class InventionController {
 
 	public function ListePretes(){
 		return $this->inventionRepository->ListePretes(); 
+	}
+
+	public function ListeAccepterParGU(){
+		return $this->inventionRepository->ListeAccepterParGU(); 
+	}
+	public function ListeAccepterParGUEncours(){
+		return $this->inventionRepository->ListeAccepterParGUEncours(); 
 	}
 
 	public function ListeNouvelleDecalarationInventionRspPoolCompetences($id_pc){

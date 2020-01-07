@@ -30,12 +30,27 @@ class BrevetController {
         $this->brevetRepository->TransmettreBrevetCir($id); 
 	}
 
+	public function TransmettreBrevetPc($id){
+        $this->brevetRepository->TransmettreBrevetPc($id); 
+	}
+
 	public function RefuserBrevetGu($id){
         $this->brevetRepository->RefuserBrevetGu($id); 
+	}
+
+	public function RefuserBrevetCir($id){
+        $this->brevetRepository->RefuserBrevetCir($id); 
 	}
 	
 	public function ListePretes(){
 		return $this->brevetRepository->ListePretes(); 
+	}
+
+	public function ListeAccepterParGU(){
+		return $this->brevetRepository->ListeAccepterParGU(); 
+	}
+	public function ListeAccepterParGUEncours(){
+		return $this->brevetRepository->ListeAccepterParGUEncours(); 
 	}
 
 	public function getInfoDemandeur($id_demande){

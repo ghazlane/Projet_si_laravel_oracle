@@ -28,8 +28,21 @@
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
+public function TransmettreBrevetPc($id){
+            $Rq = "update declaration_brevet set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' where id_dmd =".$id;
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
 
 public function RefuserBrevetGu($id){
+            $Rq = "update declaration_brevet set STATUT_DMD='Non accepter' where id_dmd =".$id;
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
+public function RefuserBrevetCir($id){
             $Rq = "update declaration_brevet set STATUT_DMD='Non accepter' where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
@@ -43,6 +56,22 @@ public function RefuserBrevetGu($id){
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     return $statement;
 }
+
+    public function ListeAccepterParGU(){
+    $Rq = "select * from declaration_brevet where DECISION_FINALE IS NULL and STATUT_DMD = 'En cours' and STATUT_RESP_GU='Demande accépter par le Guichet Unique' and STATUT_CIR IS NULL "; 
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+} 
+  
+    public function ListeAccepterParGUEncours(){
+    $Rq = "select * from declaration_brevet where DECISION_FINALE IS NULL and STATUT_DMD = 'En cours' and STATUT_CIR ='Demande accépter par le CIR' "; 
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+} 
 
     public function Lister($statut) {
     if(!empty($statut)){

@@ -25,6 +25,14 @@ public function TransmettreFormationCir($id){
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
+
+public function TransmettreFormationPc($id){
+            $Rq = "update lancement_formation set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' where id_dmd =".$id;
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
 public function AccepterFormationGu($id){
     $Rq = "update lancement_formation set STATUT_DMD='Accepter' where id_dmd =".$id;
     $connexion = $this->getConnexion(); 
@@ -38,6 +46,13 @@ public function RefuserFormationGu($id){
             $connexion->exec("commit");
 }
 
+public function RefuserFormationCir($id){
+            $Rq = "update lancement_formation set STATUT_DMD='Non accepter' where id_dmd =".$id;
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
 public function ListePretes(){
     $Rq = "select * from lancement_formation where DECISION_FINALE IS NOT NULL and STATUT_DMD = 'En cours'"; 
     $connexion = $this->getConnexion(); 
@@ -45,6 +60,22 @@ public function ListePretes(){
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     return $statement;
 }
+
+public function ListeAccepterParGU(){
+    $Rq = "select * from lancement_formation where DECISION_FINALE IS NULL and STATUT_DMD = 'En cours' and STATUT_RESP_GU='Demande accépter par le Guichet Unique' and STATUT_CIR IS NULL "; 
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+} 
+  
+    public function ListeAccepterParGUEncours(){
+    $Rq = "select * from lancement_formation where DECISION_FINALE IS NULL and STATUT_DMD = 'En cours' and STATUT_CIR ='Demande accépter par le CIR' "; 
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+} 
 
 public function Lister($statut) {
     if(!empty($statut)){
@@ -86,7 +117,7 @@ public function Lister($statut) {
         }	
 
         public function getInfoDemandeur($id_demande){
-            $Rq = "select * from declaration_invention where id_dmd = ".$id_demande;     
+            $Rq = "select * from lancement_invention where id_dmd = ".$id_demande;     
             $connexion = $this->getConnexion(); 
             $statement = $connexion->query($Rq);
             $statement->setFetchMode(PDO::FETCH_ASSOC);

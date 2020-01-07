@@ -97,4 +97,19 @@
 </div>
   <?php } ?>
 
+  <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == ''){?>
+                  <a href="index.php?action=transmettreInventionPc&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span class="text">Transmettre le dossier au reponsable de pool de competence</span>
+                  </a><br><br>
+                  <a href="index.php?action=RefuserInventionCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-times"></i>
+                    </span>
+                    <span class="text">Refuser la demande</span>
+                  </a>
+  <?php } ?>
+
 </div>

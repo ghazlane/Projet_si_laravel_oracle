@@ -53,13 +53,26 @@ class FormationController {
 		public function TransmettreFormationCir($id){
 		$this->formationRepository->TransmettreFormationCir($id); 		
 	}
+    public function TransmettreFormationPc($id){
+        $this->formationRepository->TransmettreFormationPc($id); 
+	}
 
 	public function RefuserFormationGu($id){
 		$this->formationRepository->RefuserFormationGu($id); 
 	}
 
+	public function RefuserFormationCir($id){
+        $this->formationRepository->RefuserFormationCir($id); 
+	}
 	public function ListePretes(){
 		return $this->formationRepository->ListePretes(); 
+	}
+
+	public function ListeAccepterParGU(){
+		return $this->formationRepository->ListeAccepterParGU(); 
+	}
+	public function ListeAccepterParGUEncours(){
+		return $this->formationRepository->ListeAccepterParGUEncours(); 
 	}
 
 	public function AccepterFormationGu($id){

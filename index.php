@@ -171,7 +171,17 @@ session_start();
 		$controller->TransmettreInventionCir($_GET['id_dmd']); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array()); 
+	}else if($action=="transmettreInventionPc"){
+		$controller = new InventionController();
+		$controller->TransmettreInventionPc($_GET['id_dmd']); 
+		$vue = new Vue('TransmettreDosiierCir'); 
+		$vue->generer(array()); 
 	}else if($action == "RefuserDemandeGu"){
+		$controller = new InventionController();
+		$controller->RefuserInventionGu($_GET['id_dmd']); 
+		$vue = new Vue('RefuserInventionGu'); 
+		$vue->generer(array());
+	}else if($action == "RefuserInventionCir"){
 		$controller = new InventionController();
 		$controller->RefuserInventionGu($_GET['id_dmd']); 
 		$vue = new Vue('RefuserInventionGu'); 
@@ -180,6 +190,14 @@ session_start();
 		$controller = new InventionController(); 
 		$vue = new Vue('listeDeclarationInvention'); 
 		$vue->generer(array("statement" => $controller->ListePretes()));
+	}else if($action =="inventionsAccepterParGU"){
+		$controller = new InventionController(); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->ListeAccepterParGU()));
+	}else if($action =="inventionsEncoursCIR"){
+		$controller = new InventionController(); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->ListeAccepterParGUEncours()));
 	}else if($action =="AccepterInventionCir"){
 		$controller = new InventionController();
 		$controller->AccepterInventionGu($_GET['id_dmd']); 
@@ -242,12 +260,31 @@ session_start();
 		$controller = new BrevetController(); 
 		$vue = new Vue('listeDeclarationBrevet'); 
 		$vue->generer(array("statement" => $controller->ListePretes()));
-	}else if($action=="transmettreBrevetCir"){
+	}else if($action =="brevetsAccepterParGU"){
+		$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$vue->generer(array("statement" => $controller->ListeAccepterParGU()));
+	}else if($action =="brevetsEncoursCIR"){
+		$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$vue->generer(array("statement" => $controller->ListeAccepterParGUEncours()));
+	}
+	else if($action=="transmettreBrevetCir"){
 		$controller = new BrevetController();
 		$controller->TransmettreBrevetCir($_GET['id_dmd']); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array()); 
+	}else if($action=="transmettreBrevetPc"){
+		$controller = new BrevetController();
+		$controller->TransmettreBrevetPc($_GET['id_dmd']); 
+		$vue = new Vue('TransmettreDosiierCir'); 
+		$vue->generer(array()); 
 	}else if($action == "RefuserBrevetGu"){
+		$controller = new BrevetController();
+		$controller->RefuserBrevetGu($_GET['id_dmd']); 
+		$vue = new Vue('RefuserInventionGu'); 
+		$vue->generer(array());
+	}else if($action == "RefuserBrevetCir"){
 		$controller = new BrevetController();
 		$controller->RefuserBrevetGu($_GET['id_dmd']); 
 		$vue = new Vue('RefuserInventionGu'); 
@@ -302,7 +339,17 @@ session_start();
 		$controller->TransmettreFormationCir($_GET['id_dmd']); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array());
+	}else if($action=="transmettreFormationPc"){
+		$controller = new FormationController();
+		$controller->TransmettreFormationPc($_GET['id_dmd']); 
+		$vue = new Vue('TransmettreDosiierCir'); 
+		$vue->generer(array()); 
 	}else if($action == "RefuserFormationGu"){
+		$controller = new FormationController();
+		$controller->RefuserFormationGu($_GET['id_dmd']); 
+		$vue = new Vue('RefuserInventionGu'); 
+		$vue->generer(array());
+	}else if($action == "RefuserFormationCir"){
 		$controller = new FormationController();
 		$controller->RefuserFormationGu($_GET['id_dmd']); 
 		$vue = new Vue('RefuserInventionGu'); 
@@ -311,6 +358,14 @@ session_start();
 		$controller = new FormationController(); 
 		$vue = new Vue('listeDeclarationFormation'); 
 		$vue->generer(array("statement" => $controller->ListePretes()));
+	}else if($action =="formationsAccepterParGU"){
+		$controller = new FormationController(); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("statement" => $controller->ListeAccepterParGU()));
+	}else if($action =="formationsEncoursCIR"){
+		$controller = new FormationController(); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("statement" => $controller->ListeAccepterParGUEncours()));
 	}else if($action =="AccepterFormationGu"){
 		$controller = new FormationController();
 		$controller->AccepterFormationGu($_GET['id_dmd']); 
