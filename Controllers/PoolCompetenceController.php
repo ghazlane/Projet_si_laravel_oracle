@@ -19,8 +19,8 @@ class PoolCompetenceController {
 	}
 
 	public function Lister(){
-		$statement = $this->poolCompetenceRepository->Lister(); 
-		return $statement;
+		return $this->poolCompetenceRepository->Lister(); 
+		
 	}
 
 	public function Detail($id){

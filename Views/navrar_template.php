@@ -383,8 +383,8 @@
         <div id="collapseTh3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Résp pool compétence</h6>
-            <a class="collapse-item" href="index.html">Ajouter compte </a>
-            <a class="collapse-item" href="index.html">Lister les comptes</a>
+            <a class="collapse-item" href="index.php?action=ajouterResponsablePoolCompetences">Ajouter compte </a>
+            <a class="collapse-item" href="index.php?action=ListerResponsablePoolCompetences">Lister les comptes</a>
           </div>
         </div>
       </li>
@@ -600,18 +600,10 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="index.php?action=deconnexion"  >
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  Se déconnecter
                 </a>
               </div>
             </li>

@@ -6,6 +6,8 @@ session_start();
 	require_once ("Controllers/FormationController.php");
 	require_once ("Controllers/GuichetUniqueController.php");
 	require_once ("Controllers/PoolCompetenceController.php");
+	require_once ("Controllers/RespPoolCompetenceController.php");
+	
 	//require_once("controllers\DeclarationInventionController.php");
 	
 	$action = empty($_GET["action"])?"Home":$_GET["action"];
@@ -328,5 +330,57 @@ session_start();
 		$vue = new Vue('listePoolCompetence'); 
 		$alert="la demande a été bien supprimée";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
+	}
+
+	// Responsable pool de competences ;;; 
+	else if($action =="ajouterResponsablePoolCompetences"){
+		$controller = new PoolCompetenceController(); 
+		$vue = new Vue('ajouterResponsablePoolCompetences'); 
+		$vue->generer(array("statement" => $controller->Lister())); 
+	}else if($action == "saveAjouterResponsablePoolCompetences"){
+		$controller = new RespPoolCompetenceController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess');  
+		$vue->generer(array()); 
+	}else if($action == "ListerResponsablePoolCompetences"){
+		$controller = new RespPoolCompetenceController(); 
+		$vue = new Vue('listerResponsablePoolCompetences'); 
+		$vue->generer(array( "statement" => $controller->Lister()));
+	}else if ($action =="deleteRspPoolCompetence"){
+		$controller = new RespPoolCompetenceController(); 
+		$controller->Delete($_GET['id']); 
+		$vue = new Vue('listerResponsablePoolCompetences'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}else if($action =="updateRspPoolCompetence"){
+		$controller = new RespPoolCompetenceController();  
+		$vue = new Vue('updateRspPoolCompetence'); 
+		$controller2 = new PoolCompetenceController();
+		$vue->generer(array("statement" => $controller->Details($_GET['id']), "pc"=>$controller2->Lister()));
+	}else if($action =="saveUpdateResponsablePoolCompetences"){
+		$controller = new RespPoolCompetenceController();
+		$resultat = $controller->Update($_POST); 
+		if($resultat == true){
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
+		}else {
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
+		}
+	}else if($action =="connexionRespPoolCompetence"){
+		$controller = new RespPoolCompetenceController(); 
+		$statement = $controller->Lister(); 
+		while ($row = $statement->fetch()) {
+			if(($_POST['username'] == $row['EMAIL_RESP_PC']) && ($_POST['password'] == $row['MOT_DE_PASSE_PC'])){
+				$_SESSION['id_pc'] = $row['ID_RESP_PC'];
+				$_SESSION['nom'] = $row['NOM_RESP_PC'];
+				$_SESSION['prenom'] = $row['PRENOM_RESP_PC'];
+				$_SESSION['type'] = 'RespPoolCompetence'; 
+				$vue = new Vue('accueil'); 
+				$vue->generer(array());
+				return;  
+			}
+		}
+				$vue = new Vue('MotDePasseIncorrectRespPoolCompetences');
+				$vue->genererPageSansTemplate();
 	}
 
