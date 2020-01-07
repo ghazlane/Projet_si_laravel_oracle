@@ -7,7 +7,7 @@ session_start();
 	require_once ("Controllers/GuichetUniqueController.php");
 	require_once ("Controllers/PoolCompetenceController.php");
 	require_once ("Controllers/RespPoolCompetenceController.php");
-	
+	require_once ("Controllers/ResponsableCirController.php");
 	//require_once("controllers\DeclarationInventionController.php");
 	
 	$action = empty($_GET["action"])?"Home":$_GET["action"];
@@ -64,7 +64,66 @@ session_start();
 		}
 				$vue = new Vue('MotDePasseIncorrectGU');
 				$vue->genererPageSansTemplate();
-	}else if($action == "deconnexion"){
+	}
+//Responsable CIR
+
+	if($action == "ajouterResponsableCir"){
+		$vue = new Vue('ajouterResponsableCir'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveAjoutResponsableCir"){
+		$controller = new ResponsableCirController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
+	}else if($action == "listerResponsableCir"){
+		$controller = new ResponsableCirController(); 
+		$vue = new Vue('listeResponsableCir'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}else if($action == "updateResponsableCir"){
+		$controller = new ResponsableCirController();
+		$vue = new Vue('updateResponsableCir'); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
+	}else if($action =="saveUpdateResponsableCir"){
+		$controller = new ResponsableCirController();
+		$resultat = $controller->Update($_POST); 
+		if($resultat == true){
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
+		}else {
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
+		}
+	}else if($action == "detailResponsableCir"){
+		$controller = new ResponsableCirController(); 
+		$vue = new Vue('detailsResponsableCir');
+		$vue->generer(array("statement" => $controller->Details($_GET['id']))); 
+	}else if($action == "deleteResponsableCir"){
+		$controller = new ResponsableCirController(); 
+		$controller->Delete($_GET['id']); 
+		$vue = new Vue('listeResponsableCir'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}else if($action == "connexionResponsableCir"){
+		$controller = new ResponsableCirController(); 
+		$statement = $controller->Lister(); 
+		while ($row = $statement->fetch()) {
+			if(($_POST['username'] == $row['EMAIL_CIR']) && ($_POST['password'] == $row['MOT_DE_PASSE_CIR'])){
+				$_SESSION['id_cir'] = $row['ID_CIR'];
+				$_SESSION['nom'] = $row['NOM_CIR'];
+				$_SESSION['prenom'] = $row['PRENOM_CIR'];
+				$_SESSION['type'] = 'ResponsableCir'; 
+				$vue = new Vue('accueil'); 
+				$vue->generer(array());
+				return;  
+			}
+		}
+				$vue = new Vue('MotDePasseIncorrectResponsableCir');
+				$vue->genererPageSansTemplate();
+	}
+
+
+
+	else if($action == "deconnexion"){
 			session_unset ();
 			session_destroy ();
 			$vue = new Vue('listeTousDemande');
@@ -136,7 +195,7 @@ session_start();
 	}else if($action == "saveDeclarationBrevet"){
 		$controller = new BrevetController(); 
 		$controller->Ajouter($_POST);
-		$statement= $controller->Lister();
+		$statement= $controller->Lister($statut);
 		$vue = new Vue('listeDeclarationBrevet'); 
 		$alert="la demande a été bien crée"; 
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert)); 
