@@ -44,7 +44,7 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-      <?php if($_SESSION['type'] =='GuichetUnique'){?>
+      <?php if($_SESSION['type'] =='GuichetUnique' or $_SESSION['type'] =='ResponsableCir'){?>
       <!-- Nav Item - Dashboard -->
       <li class="nav-item" >
         <a class="nav-link" href="index.html">
@@ -63,7 +63,7 @@
       <div class="sidebar-heading">
         Nouveaux demandes 
       </div>
-      <?php if($_SESSION['type'] =='GuichetUnique'){  ?>
+      <?php if($_SESSION['type'] =='GuichetUnique' or $_SESSION['type'] =='ResponsableCir'){  ?>
          <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
@@ -104,7 +104,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Lancer une formation</h6>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Enattente">Demandes en attentes</a>
-            <a class="collapse-item" href="index.php?action=FormationPretes">Demande prêtes</a>
+            <a class="collapse-item" href="index.php?action=FormationPretes">Demandes prêtes</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Encours">Demandes en cours </a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Acceptee">Demandes traitées</a>
           </div>

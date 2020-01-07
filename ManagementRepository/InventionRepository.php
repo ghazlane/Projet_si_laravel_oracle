@@ -30,6 +30,13 @@ public function TransmettreInventionCir($id){
             $connexion->exec("commit");
 }
 
+public function TransmettreInventionPool($id){
+    $Rq = "update declaration_invention set STATUT_RESP_CIR='Demande accépter par le Responsable CIR', STATUT_DMD='En cours' where id_dmd =".$id;
+    $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
 public function RefuserInventionGu($id){
     $Rq = "update declaration_invention set STATUT_DMD='Non accepter' where id_dmd =".$id;
     $connexion = $this->getConnexion(); 
@@ -51,6 +58,8 @@ public function AccepterInventionGu($id){
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
+
+
 
 public function Lister($statut) {  
     if(!empty($statut)){
