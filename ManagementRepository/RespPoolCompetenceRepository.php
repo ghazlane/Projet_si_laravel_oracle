@@ -39,7 +39,7 @@ class RespPoolCompetenceRepository extends Connexion
             $connexion->exec("commit");
 	}
 
-	public funCtion Delete($id){
+	public function Delete($id){
 		$Rq = "delete from Responsable_pc where ID_RESP_PC = ".$id;     
     	$connexion = $this->getConnexion(); 
     	$statement = $connexion->prepare($Rq);

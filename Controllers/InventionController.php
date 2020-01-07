@@ -60,5 +60,8 @@ class InventionController {
 	public function ListePretes(){
 		return $this->inventionRepository->ListePretes(); 
 	}
-	
+
+	public function ListeNouvelleDecalarationInventionRspPoolCompetences($id_pc){
+		return $this->inventionRepository->ListeNouvelleDecalarationInventionRspPoolCompetences($id_pc); 
+	}
 }

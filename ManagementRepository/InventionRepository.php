@@ -52,6 +52,14 @@ public function ListePretes(){
     return $statement;
 }
 
+public function ListeNouvelleDecalarationInventionRspPoolCompetences($id_pc){
+    $Rq = "select * from declaration_invention where STATUT_CIR IS NOT NULL and STATUT_DMD = 'En cours' and DECISION_FINALE IS NULL and RPS_PC IS  NULL and ID_PC = ".$id_pc; 
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+} 
+
 public function AccepterInventionGu($id){
     $Rq = "update declaration_invention set STATUT_DMD='Accepter' where id_dmd =".$id;
     $connexion = $this->getConnexion(); 

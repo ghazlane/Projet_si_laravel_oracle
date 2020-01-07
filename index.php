@@ -430,7 +430,8 @@ session_start();
 		$statement = $controller->Lister(); 
 		while ($row = $statement->fetch()) {
 			if(($_POST['username'] == $row['EMAIL_RESP_PC']) && ($_POST['password'] == $row['MOT_DE_PASSE_PC'])){
-				$_SESSION['id_pc'] = $row['ID_RESP_PC'];
+				$_SESSION['id_rsp_pc'] = $row['ID_RESP_PC'];
+				$_SESSION['id_pc'] = $row['ID_PC'];
 				$_SESSION['nom'] = $row['NOM_RESP_PC'];
 				$_SESSION['prenom'] = $row['PRENOM_RESP_PC'];
 				$_SESSION['type'] = 'RespPoolCompetence'; 
@@ -441,5 +442,9 @@ session_start();
 		}
 				$vue = new Vue('MotDePasseIncorrectRespPoolCompetences');
 				$vue->genererPageSansTemplate();
+	}else if($action == "NouvelleDeclarationPoolsCompetences"){
+				$controller = new InventionController(); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->ListeNouvelleDecalarationInventionRspPoolCompetences($_SESSION['id_pc']))); 
 	}
 
