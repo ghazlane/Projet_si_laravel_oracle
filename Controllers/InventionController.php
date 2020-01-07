@@ -64,4 +64,8 @@ class InventionController {
 	public function ListeNouvelleDecalarationInventionRspPoolCompetences($id_pc){
 		return $this->inventionRepository->ListeNouvelleDecalarationInventionRspPoolCompetences($id_pc); 
 	}
+
+	public function setReponsePoolCompetences($id_dmd, $reponse){
+		$this->inventionRepository->setReponsePoolCompetences($id_dmd, $reponse); 
+	}
 }

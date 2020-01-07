@@ -85,7 +85,7 @@
   <form method="post" action="index.php?action=RespPoolCompetenceInvention">
     <input type="hidden" name="id_dmd" value="<?php echo $row['ID_DMD'] ; ?>">
     <div class="form-group">
-      <textarea required="required" name="descriptionInvention"></textarea>
+      <textarea required="required" name="reponseDemande"></textarea>
       <label for="textarea" class="control-label" style="left: 0;">Réponse sur la demandes </label><i class="bar"></i>
     </div>
 

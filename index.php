@@ -446,5 +446,10 @@ session_start();
 				$controller = new InventionController(); 
 		$vue = new Vue('listeDeclarationInvention'); 
 		$vue->generer(array("statement" => $controller->ListeNouvelleDecalarationInventionRspPoolCompetences($_SESSION['id_pc']))); 
+	}else if ($action =="RespPoolCompetenceInvention"){
+		$controller = new InventionController(); 
+		$controller->setReponsePoolCompetences($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue  = new Vue('RespPoolCompetenceBienFait'); 
+		$vue->generer(array()); 
 	}
 

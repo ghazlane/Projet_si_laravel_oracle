@@ -60,6 +60,13 @@ public function ListeNouvelleDecalarationInventionRspPoolCompetences($id_pc){
     return $statement;
 } 
 
+public function setReponsePoolCompetences($id_dmd, $reponse){
+    $Rq = "update declaration_invention set RPS_PC = '".$reponse."' where id_dmd = ".$id_dmd; 
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
 public function AccepterInventionGu($id){
     $Rq = "update declaration_invention set STATUT_DMD='Accepter' where id_dmd =".$id;
     $connexion = $this->getConnexion(); 
