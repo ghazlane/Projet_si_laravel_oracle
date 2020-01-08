@@ -67,7 +67,7 @@ session_start();
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$vue->genererHome(); 
 	}
 	else if($action == "listerProfesseur"){
 		$controller = new ProfesseurController(); 
@@ -100,6 +100,23 @@ session_start();
 		$controller->Delete($_GET['id']); 
 		$vue = new Vue('listeProfesseur'); 
 		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	else if($action == "connexionProfesseur"){
+		$controller = new ProfesseurController(); 
+		$statement = $controller->Lister(); 
+		while ($row = $statement->fetch()) {
+			if(($_POST['email'] == $row['EMAIL_PROF']) && ($_POST['password'] == $row['MOT_DE_PASSE_PROF'])){
+				$_SESSION['code_prof'] = $row['CODE_PROF'];
+				$_SESSION['nom'] = $row['NOM_PROF'];
+				$_SESSION['prenom'] = $row['PRENOM_PROF'];
+				$_SESSION['type'] = 'Professeur'; 
+				$vue = new Vue('accueil'); 
+				$vue->genererHomeUser();
+				return;  
+			}
+		}
+				$vue = new Vue('MotDePasseIncorrectGU');
+				$vue->genererPageSansTemplate();
 	}
 
 	//Guichet unique;
@@ -221,11 +238,13 @@ session_start();
 		$vue->genererHome();
 	}
 
-	//Invention 
+	
 	else if($action == 'Accueil'){
 		$vue = new Vue('accueil'); 
+		//$vue->genererHome();
 		$vue->generer(array()); 
 	}
+	//Invention 
 	else if($action == 'declarationInvention'){
 		$vue = new Vue('declarationInvention'); 
 		$vue->generer(array()); 

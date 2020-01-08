@@ -58,7 +58,7 @@
 	<!--<div id="preloder">
 		<div class="loader"></div>
 	</div>-->
-
+	<!--php if($_SESSION['type'] =='Professeur' ?> -->
 	<!-- Header section -->
 	<header class="header-section">
 		<div class="container">
@@ -79,7 +79,14 @@
 					</div>
 				</div>
 				<div class="col-lg-9 col-md-9 ">
-									
+				
+				<div class="dropdown header-btn">
+					<!--	<button class="site-btn "> echo $row['NOM_PROF'].$row['PRENOM_PROF']  ?> </button>-->
+							<div class="dropdown-content" >
+							<a href="profilProfesseur.php">Voir le profil</a>
+							<a href="template.php">Se déconnecter</a>
+							</div>
+							</div>			
 					<nav class="main-menu" style = "margin-left : 250px;">
 						<ul>
 							<li><a href="template..php">Accueil</a></li>
@@ -190,8 +197,8 @@
 			</div>
 		</div>
 	</section>
-	<!-- categories section end -->
-
+	<!--  section end -->
+	<!--php } ?>-->
 
 	<!-- search section -->
 	<section class="search-section">

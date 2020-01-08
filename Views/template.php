@@ -69,8 +69,7 @@
 							  <div class="sidebar-brand-icon rotate-n-15">
 								<i class="fas fa-network-wired"><img src="css_js/icon.jpg" alt=""></i>
 							  </div>
-							
-						<div class="sidebar-brand-text mx-3" style="font-size: 50px; color:white;">IVON</div>
+						<div class="sidebar-brand-text mx-3" style="font-size: 50px; color:white; ">IVON</div>
 						</a>
 
 					</div>
@@ -78,16 +77,18 @@
 						<i class="fa fa-bars"></i>
 					</div>
 				</div>
+				
 				<div class="col-lg-9 col-md-9 ">
 				<div class="dropdown header-btn">
 						<button class="site-btn ">Login</button>
 							<div class="dropdown-content" >
-							<a href="index.php?action=loginProfesseur">Professeur</a>
-							<a href="index.php?action=loginEtudiant">Etudiant</a>
-							<a href="index.php?action=loginGuichetUnique">Responsable GU</a>
-							<a href="index.php?action=loginAdministrateur">Administrateur</a>
+							<a href="loginProfesseur.php">Professeur</a>
+							<a href="loginEtudiant.php">Etudiant</a>
+							<a href="loginGuichetUnique.php">Responsable GU</a>
+							<a href="loginAdministrateur.php">Administrateur</a>
 							</div>
-						</div>
+							</div>
+				
 									
 					<nav class="main-menu">
 						<ul>
@@ -119,9 +120,9 @@
 						<div class="dropdown">
 						<button class="site-btn">S'inscrire</button>
 							<div class="dropdown-content" >
-							<a href="index.php?action=registerProfesseur">Professeur</a>
+							<a href="registerProfesseur.php">Professeur</a>
 							<a href="index.php?action=registerEtudiant">Etudiant</a>
-							<a href="index.php?action=ajouterGuichetUnique">Responsable GU</a>
+							<a href="../index.php?action=ajouterGuichetUnique">Responsable GU</a>
 							<a href="index.php?action=registerAdministrateur">Administrateur</a>
 							</div>
 						</div>

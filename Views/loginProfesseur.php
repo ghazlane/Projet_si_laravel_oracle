@@ -31,7 +31,7 @@
                     <h1 class="h4 text-gray-900 mb-4">Connexion Professeur</h1>
                   </div>
                   <br>
-                  <form class="user" method="post" action="../index.php?action=loginProfesseur">
+                  <form class="user" method="post" action="../index.php?action=connexionProfesseur">
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="email_prof" aria-describedby="emailHelp" placeholder="Email" name="email">
                     </div>

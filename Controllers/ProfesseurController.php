@@ -14,7 +14,7 @@ class ProfesseurController
 	}
 
 	public funCtion Ajouter($inputs){
-		$this->professeur = new Professeur($inputs['nom_prof'],$inputs['prenom_prof'],$inputs['date_naissance_prof'],$inputs['email_prof'],$inputs['password_prof'],$inputs['num_aff'],$inputs['telephone_prof']); 
+		$this->professeur = new Professeur($inputs['nom_prof'],$inputs['prenom_prof'],$inputs['date_naissance_prof'],$inputs['email_prof'],$inputs['mot_de_passe_prof'],$inputs['num_aff'],$inputs['telephone_prof']); 
 		$this->professeurRepository->Ajouter($this->professeur); 
 	}
 

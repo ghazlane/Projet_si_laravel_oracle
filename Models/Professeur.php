@@ -19,7 +19,7 @@ class Professeur
 		$this->email_prof = $email_prof; 
         $this->mot_de_passe_prof = $mot_de_passe_prof; 
         $this->num_aff = $num_aff;
-		$this->telephone_prof = $telephone; 
+		$this->telephone_prof = $telephone_prof; 
 	}
 
 	//setters;; 

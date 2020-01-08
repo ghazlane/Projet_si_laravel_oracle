@@ -35,6 +35,10 @@ class Vue {
         include("template.php");
     }
 
+    public function genererHomeUser(){
+        include("templateAfterConnexion.php");
+    }
+
     public function genererPageSansTemplate(){
         include  ($this->fichier);
     }
