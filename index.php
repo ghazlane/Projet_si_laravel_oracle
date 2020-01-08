@@ -5,9 +5,11 @@ session_start();
 	require_once ("Controllers/BrevetController.php");
 	require_once ("Controllers/FormationController.php");
 	require_once ("Controllers/GuichetUniqueController.php");
-<<<<<<< HEAD
 	require_once ("Controllers/ProfesseurController.php");
 	require_once ("Controllers/ChercheurController.php");
+	require_once ("Controllers/PoolCompetenceController.php");
+	require_once ("Controllers/RespPoolCompetenceController.php");
+	require_once ("Controllers/ResponsableCirController.php");
 	//require_once("controllers\DeclarationInventionController.php");
 	
 	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
@@ -99,17 +101,6 @@ session_start();
 		$vue = new Vue('listeProfesseur'); 
 		$vue->generer(array("statement" => $controller->Lister()));
 	}
-	
-
-
-=======
-	require_once ("Controllers/PoolCompetenceController.php");
-	require_once ("Controllers/RespPoolCompetenceController.php");
-	require_once ("Controllers/ResponsableCirController.php");
-	//require_once("controllers\DeclarationInventionController.php");
-	
-	$action = empty($_GET["action"])?"Home":$_GET["action"];
->>>>>>> 2b7bb2681db31c24961557c07953360d70855526
 	//Guichet unique;
 	else if($action == "ajouterGuichetUnique"){
 		$vue = new Vue('ajouterGuichetUnique'); 
@@ -471,11 +462,6 @@ session_start();
 		$vue = new Vue('AccepterDeamnde'); 
 		$vue->generer(array());
 	}
-<<<<<<< HEAD
-		
-
-=======
->>>>>>> 2b7bb2681db31c24961557c07953360d70855526
 
     //liste demandes
     else if($action == "listeDemandeEnCours"){
@@ -520,8 +506,6 @@ session_start();
 		$alert="la demande a été bien crée"; 
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
-<<<<<<< HEAD
-=======
 	else if($action == "listePoolCompetence"){
 		$controller = new PoolCompetenceController(); 
 		$statement= $controller->Lister();

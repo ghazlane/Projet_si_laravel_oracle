@@ -19,19 +19,6 @@ class FormationRepository extends Connexion {
 	$connexion->exec("commit");
 }
 
-<<<<<<< HEAD
-    public function Lister() {
-        if(!empty($statut)){
-            if($statut == 'Encours') $Rq = "select * from lancement_formation where STATUT_DMD = 'En cours'";
-            else if($statut == 'Enattente') $Rq = "select * from lancement_formation where STATUT_DMD = 'En attente'";
-            else $Rq = "select * from lancement_formation where STATUT_DMD = 'Acceptée' or  STATUT_DMD = 'Non acceptée'";
-        } 
-        else $Rq = "select * from lancement_formation ";     
-        $connexion = $this->getConnexion(); 
-        $statement = $connexion->query($Rq);
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement;    
-=======
 public function TransmettreFormationCir($id){
     $Rq = "update lancement_formation set STATUT_RESP_GU='Demande accépter par le Guichet Unique', STATUT_DMD ='En cours' where id_dmd =".$id;
     $connexion = $this->getConnexion(); 
@@ -103,7 +90,6 @@ public function Lister($statut) {
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     return $statement;
     
->>>>>>> 2b7bb2681db31c24961557c07953360d70855526
     }
 
     public function Details($id){
@@ -130,23 +116,14 @@ public function Lister($statut) {
         $connexion->exec("commit");
     }	
 
-<<<<<<< HEAD
-    public function getInfoDemandeur($id_demande){
-        $Rq = "select * from lancement_formation where id_dmd = ".$id_demande;     
-        $connexion = $this->getConnexion(); 
-        $statement = $connexion->query($Rq);
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        $row = $statement->fetch(); 
-        if($row['TYPE_DEMANDEUR'] == 'professeur'){
-            $Rq = "select * from professeur where CODE_PROF = '".$row['ID_DEMANDEUR']."'";
-=======
         public function getInfoDemandeur($id_demande){
             $Rq = "select * from lancement_invention where id_dmd = ".$id_demande;     
->>>>>>> 2b7bb2681db31c24961557c07953360d70855526
             $connexion = $this->getConnexion(); 
             $statement = $connexion->query($Rq);
             $statement->setFetchMode(PDO::FETCH_ASSOC);
             $row = $statement->fetch(); 
+            if($row['TYPE_DEMANDEUR'] == 'professeur'){
+                $Rq = "select * from professeur where CODE_PROF = '".$row['ID_DEMANDEUR']."'";
             return array("nom"=> $row['NOM_PROF'], "prenom"=>$row['PRENOM_PROF']); 
         }else if($row['TYPE_DEMANDEUR'] == 'administratif'){
             $Rq = "select * from administratif where CODE_ADMIN = '".$row['ID_DEMANDEUR']."'";
@@ -165,59 +142,4 @@ public function Lister($statut) {
         }
     }
 
-<<<<<<< HEAD
-        
-    public function TransmettreFormationnCir($id){
-        $Rq = "update lancement_formation set STATUT_RESP_GU='Demande accéptée par le Guichet Unique', STATUT_DMD='En cours' where id_dmd =".$id;
-        $connexion = $this->getConnexion(); 
-                $connexion->exec($Rq);
-                $connexion->exec("commit");
-    }
 
-    public function TransmettreFormationPool($id){
-        $Rq = "update lancement_formation set STATUT_RESP_CIR='Demande accéptée par le Responsable CIR', STATUT_DMD='En cours' where id_dmd =".$id;
-        $connexion = $this->getConnexion(); 
-                $connexion->exec($Rq);
-                $connexion->exec("commit");
-    }
-
-    public function RefuserFormationGu($id){
-        $Rq = "update lancement_formation set STATUT_DMD='Non acceptée' where id_dmd =".$id;
-        $connexion = $this->getConnexion(); 
-                $connexion->exec($Rq);
-                $connexion->exec("commit");
-    }
-
-    public function ListePretes(){
-        $Rq = "select * from lancement_formation where DECISION_FINALE IS NOT NULL and STATUT_DMD = 'En cours'"; 
-        $connexion = $this->getConnexion(); 
-        $statement = $connexion->query($Rq);
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement;
-    }
-    public function ListeNouvelleDecalarationFormationRspPoolCompetences($id_pc){
-        $Rq = "select * from lancement_formation where STATUT_CIR IS NOT NULL and STATUT_DMD = 'En cours' and DECISION_FINALE IS NULL and RPS_PC IS  NULL and ID_PC = ".$id_pc; 
-        $connexion = $this->getConnexion(); 
-        $statement = $connexion->query($Rq);
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
-        return $statement;
-    } 
-
-    public function setReponsePoolCompetences($id_dmd, $reponse){
-        $Rq = "update lancement_formation set RPS_PC = '".$reponse."' where id_dmd = ".$id_dmd; 
-                $connexion = $this->getConnexion(); 
-                $connexion->exec($Rq);
-                $connexion->exec("commit");
-    }
-
-    public function AccepterFormationGu($id){
-        $Rq = "update lancement_formation set STATUT_DMD='Acceptée' where id_dmd =".$id;
-        $connexion = $this->getConnexion(); 
-                $connexion->exec($Rq);
-                $connexion->exec("commit");
-    }
-}
-=======
-
-    
->>>>>>> 2b7bb2681db31c24961557c07953360d70855526
