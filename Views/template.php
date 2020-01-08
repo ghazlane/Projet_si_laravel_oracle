@@ -77,7 +77,9 @@
 						<i class="fa fa-bars"></i>
 					</div>
 				</div>
-				
+	<?php
+      if(!isset($_SESSION['code_prof'])){ // Si on ne détecte pas de session alors on verra les liens ci-dessous
+    ?>			
 				<div class="col-lg-9 col-md-9 ">
 				<div class="dropdown header-btn">
 						<button class="site-btn ">Login</button>
@@ -88,7 +90,21 @@
 							<a href="loginAdministrateur.php">Administrateur</a>
 							</div>
 							</div>
+							<?php
+      }else{ // Sinon s'il y a une session alors on verra les liens ci-dessous
+    ?>				
+				<div class="col-lg-9 col-md-9 ">
+					<div class="dropdown header-btn">
+					<!--	<button class="site-btn "> echo $row['NOM_PROF'].$row['PRENOM_PROF']  ?> </button>-->
+							<div class="dropdown-content" >
+							<a href="profilProfesseur.php">Voir le profil</a>
+							<a href="template.php">Se déconnecter</a>
+							</div>
+							</div>			
 				
+	<?php
+      }
+    ?>
 									
 					<nav class="main-menu">
 						<ul>
@@ -112,6 +128,9 @@
 				<h2>Bienvenue à la cité d'innovation UM5R</h2>
 				<p>La cité où tout est possible <br/>Déposez votre demande et lancez vous vers l'avenir.</p>
 			</div>
+	<?php
+      if(!isset($_SESSION['code_prof'])){ // Si on ne détecte pas de session alors on verra les liens ci-dessous
+    ?>
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
 					<form class="intro-newslatter">
@@ -130,11 +149,24 @@
 					</form>
 				</div>
 			</div>
+	<?php
+      }
+    ?>
 		</div>
 	</section>
 	<!-- Hero section end -->
+	
 
-
+	<!-- Hero section -->
+	<section class="hero-section set-bg" data-setbg="css_js/img/bg.jpg" style = "height : 700px;">
+		<div class="container">
+			<div class="hero-text text-white ">
+				<h2>Bienvenue à la cité d'innovation UM5R</h2>
+				<p>La cité où tout est possible <br/>Déposez votre demande et lancez vous vers l'avenir.</p>
+			</div>
+		</div>
+	</section>
+	<!-- Hero section end -->
 	<!-- categories section -->
 	<section class="categories-section spad">
 		<div class="container">

@@ -102,6 +102,7 @@ session_start();
 		$vue->generer(array("statement" => $controller->Lister()));
 	}
 	else if($action == "connexionProfesseur"){
+    	session_start();
 		$controller = new ProfesseurController(); 
 		$statement = $controller->Lister(); 
 		while ($row = $statement->fetch()) {
@@ -111,7 +112,7 @@ session_start();
 				$_SESSION['prenom'] = $row['PRENOM_PROF'];
 				$_SESSION['type'] = 'Professeur'; 
 				$vue = new Vue('accueil'); 
-				$vue->genererHomeUser();
+				$vue->genererHome();
 				return;  
 			}
 		}
