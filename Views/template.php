@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +98,7 @@
     ?>				
 				<div class="col-lg-9 col-md-9 ">
 					<div class="dropdown header-btn">
-					<!--	<button class="site-btn "> echo $row['NOM_PROF'].$row['PRENOM_PROF']  ?> </button>-->
+						<button class="site-btn "><?php echo $row['NOM_PROF'].' '.$row['PRENOM_PROF']  ?> </button>-->
 							<div class="dropdown-content" >
 							<a href="profilProfesseur.php">Voir le profil</a>
 							<a href="template.php">Se déconnecter</a>
