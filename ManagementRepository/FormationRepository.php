@@ -140,6 +140,6 @@ public function Lister($statut) {
             $row = $statement->fetch(); 
             return array("nom"=> $row['NOM_CHER'], "prenom"=>$row['PRENOM_CHER']); 
         }
-    }
+   }
 
-
+}

@@ -1,6 +1,6 @@
 <?php
 session_start();
-	require_once 'Views\Vue.php';
+	require_once 'Views\Vue.php';	
 	require_once ("Controllers/InventionController.php");
 	require_once ("Controllers/BrevetController.php");
 	require_once ("Controllers/FormationController.php");
@@ -59,7 +59,7 @@ session_start();
 	}
 
 	//Professeur
-	if($action == "registerProfesseur"){
+	else if($action == "registerProfesseur"){
 		$vue = new Vue('registerProfesseur'); 
 		$vue->generer(array()); 
 	}
@@ -101,6 +101,7 @@ session_start();
 		$vue = new Vue('listeProfesseur'); 
 		$vue->generer(array("statement" => $controller->Lister()));
 	}
+
 	//Guichet unique;
 	else if($action == "ajouterGuichetUnique"){
 		$vue = new Vue('ajouterGuichetUnique'); 
@@ -598,4 +599,3 @@ session_start();
 		$vue->generer(array()); 
 	}
 
->>>>>>> 2b7bb2681db31c24961557c07953360d70855526
