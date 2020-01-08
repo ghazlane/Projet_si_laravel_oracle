@@ -49,4 +49,23 @@ class FormationController {
 	public function getInfoDemandeur($id_demande){
 		return $this->formationRepository->getInfoDemandeur($id_demande); 
 	}
+
+	public funCtion TransmettreFormationCir($id){
+		$this->formationRepository->TransmettreFormationCir($id); 
+	}
+	public function RefuserFormationGu($id){
+		$this->formationRepository->RefuserFormationGu($id); 
+	}
+	public funCtion AccepterFormationGu($id){
+		$this->formationRepository->AccepterFormationGu($id); 
+	}
+	public function ListePretes(){
+		return $this->formationRepository->ListePretes(); 
+	}
+	public function ListeNouvelleDecalarationFormationRspPoolCompetences($id_pc){
+		return $this->formationRepository->ListeNouvelleDecalarationFormationRspPoolCompetences($id_pc); 
+	}
+	public function setReponsePoolCompetences($id_dmd, $reponse){
+		$this->formationRepository->setReponsePoolCompetences($id_dmd, $reponse); 
+	}
 }

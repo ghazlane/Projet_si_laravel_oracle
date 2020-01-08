@@ -79,22 +79,13 @@
 					</div>
 				</div>
 				<div class="col-lg-9 col-md-9 ">
-				<div class="dropdown header-btn">
-						<button class="site-btn ">Login</button>
-							<div class="dropdown-content" >
-							<a href="index.php?action=loginProfesseur">Professeur</a>
-							<a href="index.php?action=loginEtudiant">Etudiant</a>
-							<a href="index.php?action=loginGuichetUnique">Responsable GU</a>
-							<a href="index.php?action=loginAdministrateur">Administrateur</a>
-							</div>
-						</div>
 									
-					<nav class="main-menu">
+					<nav class="main-menu" style = "margin-left : 250px;">
 						<ul>
 							<li><a href="template..php">Accueil</a></li>
 							<li><a href="#">A propos de nous</a></li>
-							<li><a href="">Nos Centres</a></li>
-							<li><a href="">Contact</a></li>
+							<li><a href="courses.html">Nos Centres</a></li>
+							<li><a href="blog.html">Contact</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -105,29 +96,11 @@
 
 
 	<!-- Hero section -->
-	<section class="hero-section set-bg" data-setbg="css_js/img/bg.jpg">
+	<section class="hero-section set-bg" data-setbg="css_js/img/bg.jpg" style = "height : 700px;">
 		<div class="container">
 			<div class="hero-text text-white ">
 				<h2>Bienvenue à la cité d'innovation UM5R</h2>
 				<p>La cité où tout est possible <br/>Déposez votre demande et lancez vous vers l'avenir.</p>
-			</div>
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					<form class="intro-newslatter">
-						<input type="text" placeholder="Nom">
-						<input type="text" class="last-s" placeholder="E-mail">
-						<div class="dropdown">
-						<button class="site-btn">S'inscrire</button>
-							<div class="dropdown-content" >
-							<a href="index.php?action=registerProfesseur">Professeur</a>
-							<a href="index.php?action=registerEtudiant">Etudiant</a>
-							<a href="index.php?action=ajouterGuichetUnique">Responsable GU</a>
-							<a href="index.php?action=registerAdministrateur">Administrateur</a>
-							</div>
-						</div>
-						
-					</form>
-				</div>
 			</div>
 		</div>
 	</section>
@@ -148,7 +121,9 @@
 						<div class="ci-thumb set-bg" data-setbg="css_js/img/1.jpg"></div>
 						<div class="ci-text">
 							<h5>Invention</h5>
-							<p>Connectez vous pour déposer votre demande d'invention</p>
+							<p>Cliquez pour déposer votre demande d'invention</p>
+							<a href="index.php?action=declarationInvention" style="color :rgb(75, 20, 20); text-decoration: underline;">Ajouter </a>&nbsp;
+							<a href="index.php?action=listeDeclarationInvention" style="color :rgb(75, 20, 20); text-decoration: underline;">Lister</a>
 						</div>
 					</div>
 				</div>
@@ -158,7 +133,9 @@
 						<div class="ci-thumb set-bg" data-setbg="css_js/img/2.jpg"></div>
 						<div class="ci-text">
 							<h5>Brevet</h5>
-							<p>Connectez vous pour déposer votre demande de brevet</p>
+							<p>Cliquez pour déposer votre demande de brevet</p>
+							<a href="index.php?action=declarationBrevet" style="color :rgb(75, 20, 20); text-decoration: underline;">Ajouter </a>&nbsp;
+							<a href="index.php?action=listeDeclarationBrevet" style="color :rgb(75, 20, 20); text-decoration: underline;">Lister</a>
 						</div>
 					</div>
 				</div>
@@ -168,8 +145,10 @@
 						<div class="ci-thumb set-bg" data-setbg="css_js/img/7.jpg"></div>
 						<div class="ci-text">
 							<h5>Formation</h5>
-							<p>Connectez vous pour lancer une formation</p><br/> 
-							</div>
+							<p>Cliquez pour lancer une formation</p><br/> 
+							<a href="index.php?action=declarationFormationtion" style="color :rgb(75, 20, 20); text-decoration: underline;">Ajouter </a>&nbsp;
+							<a href="index.php?action=listeDeclarationFormation" style="color :rgb(75, 20, 20); text-decoration: underline;">Lister</a>
+						</div>
 					</div>
 				</div>
 				<!-- categorie -->
@@ -178,8 +157,10 @@
 						<div class="ci-thumb set-bg" data-setbg="css_js/img/4.jpg"></div>
 						<div class="ci-text">
 							<h5>Startup</h5>
-							<p>Connectez vous pour introduire votre startup</p><br/>
-							</div>
+							<p>Cliquez pour introduire votre startup</p><br/>
+							<a href="#" style="color :rgb(75, 20, 20); text-decoration: underline;">Ajouter </a> &nbsp;
+							<a href="#" style="color :rgb(75, 20, 20); text-decoration: underline;">Lister</a>
+						</div>
 					</div>
 				</div>
 				<!-- categorie -->
@@ -188,8 +169,10 @@
 						<div class="ci-thumb set-bg" data-setbg="css_js/img/5.jpg"></div>
 						<div class="ci-text">
 							<h5>Cluster technoligique</h5>
-							<p>Connectez vous pour rejoindre notre cluster</p><br/>
-							</div>
+							<p>Cliquez pour rejoindre notre cluster</p><br/>
+							<a href="#" style="color :rgb(75, 20, 20); text-decoration: underline;">Ajouter </a>&nbsp;
+							<a href="#" style="color :rgb(75, 20, 20); text-decoration: underline;">Lister</a>
+						</div>
 					</div>
 				</div>
 				<!-- categorie -->
@@ -198,8 +181,10 @@
 						<div class="ci-thumb set-bg" data-setbg="css_js/img/6.jpg"></div>
 						<div class="ci-text">
 							<h5>Evenement</h5>
-							<p>Connectez vous pour organiser un événement</p><br/>
-							</div>
+							<p>Cliquez pour organiser un événement</p><br/>
+							<a href="#" style="color :rgb(75, 20, 20); text-decoration: underline;">Ajouter</a> &nbsp; 
+							<a href="#" style="color :rgb(75, 20, 20); text-decoration: underline;">Lister</a>
+						</div>
 					</div>
 				</div>
 			</div>

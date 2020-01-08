@@ -4,11 +4,104 @@
 	require_once ("Controllers/BrevetController.php");
 	require_once ("Controllers/FormationController.php");
 	require_once ("Controllers/GuichetUniqueController.php");
+	require_once ("Controllers/ProfesseurController.php");
+	require_once ("Controllers/ChercheurController.php");
 	//require_once("controllers\DeclarationInventionController.php");
 	
 	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
+	
+	//Chercheur
+	if($action == "registerChercheur"){
+		$vue = new Vue('registerChercheur'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveAjoutChercheur"){
+		$controller = new ChercheurController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "listerChercheur"){
+		$controller = new ChercheurController(); 
+		$vue = new Vue('listeChercheur'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	else if($action == "updateChercheur"){
+		$controller = new ChercheurController();
+		$vue = new Vue('updateChercheur'); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
+	}
+	else if($action =="saveUpdateChercheur"){
+		$controller = new ChercheurController();
+		$resultat = $controller->Update($_POST); 
+		if($resultat == true){
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
+		}else {
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
+		}
+	}
+	else if($action == "detailChercheur"){
+		$controller = new ChercheurController(); 
+		$vue = new Vue('detailsChercheur');
+		$vue->generer(array("statement" => $controller->Details($_GET['id']))); 
+	}
+	else if($action == "deleteChercheur"){
+		$controller = new ChercheurController(); 
+		$controller->Delete($_GET['id']); 
+		$vue = new Vue('listeChercheur'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+
+	//Professeur
+	if($action == "registerProfesseur"){
+		$vue = new Vue('registerProfesseur'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveAjoutProfesseur"){
+		$controller = new ProfesseurController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "listerProfesseur"){
+		$controller = new ProfesseurController(); 
+		$vue = new Vue('listeProfesseur'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	else if($action == "updateProfesseur"){
+		$controller = new ProfesseurController();
+		$vue = new Vue('updateProfesseur'); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
+	}
+	else if($action =="saveUpdateProfesseur"){
+		$controller = new ProfesseurController();
+		$resultat = $controller->Update($_POST); 
+		if($resultat == true){
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
+		}else {
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
+		}
+	}
+	else if($action == "detailProfesseur"){
+		$controller = new ProfesseurController(); 
+		$vue = new Vue('detailsProfesseur');
+		$vue->generer(array("statement" => $controller->Details($_GET['id']))); 
+	}
+	else if($action == "deleteProfesseur"){
+		$controller = new ProfesseurController(); 
+		$controller->Delete($_GET['id']); 
+		$vue = new Vue('listeProfesseur'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	
+
+
 	//Guichet unique;
-	if($action == "ajouterGuichetUnique"){
+	else if($action == "ajouterGuichetUnique"){
 		$vue = new Vue('ajouterGuichetUnique'); 
 		$vue->generer(array()); 
 	}
@@ -176,9 +269,7 @@
 		$vue = new Vue('createSuccess'); 
 		$vue->generer(array()); 
 	}
-<<<<<<< HEAD
 		
-=======
 
 
     //liste demandes
@@ -206,4 +297,3 @@
 		$vue = new Vue('listeTousDemande'); 
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
 	}
->>>>>>> 24854130f185de7b68c1aa0007d0245e9f540c05
