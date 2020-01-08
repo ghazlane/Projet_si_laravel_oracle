@@ -47,4 +47,69 @@
     		<div class="col"><strong><?php echo $row['TYPE_DEMANDEUR']  ?></strong></div>
     	</div>
 	</div>
+
+  <?php if($_SESSION['type'] =='GuichetUnique' && $row['DECISION_FINALE'] == ''){?>
+                  <a href="index.php?action=transmettreInventionCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span class="text">Transmettre le dossier au directeur de la CIR</span>
+                  </a><br><br>
+                  <a href="index.php?action=RefuserDemandeGu&&id_dmd=<?php echo $row['ID_DMD'] ?>" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-times"></i>
+                    </span>
+                    <span class="text">Refuser la demande</span>
+                  </a>
+
+  <?php } ?>
+  <hr>
+  <?php if($row['DECISION_FINALE'] != ''){?>
+                    <p style="font-size: 20px; ">La décision finale du CIR est : <strong style="color:green; "><?php echo $row['DECISION_FINALE'] ?> </strong></p>
+                     <a href="index.php?action=AccepterInventionCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span class="text">Accepter</span>
+                  </a>
+                  <a href="index.php?action=RefuserDemandeGu&&id_dmd=<?php echo $row['ID_DMD'] ?>" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-times"></i>
+                    </span>
+                    <span class="text">Refuser</span>
+                  </a>
+  <?php }?>
+
+<?php if($_SESSION['type'] =='RespPoolCompetence' && $row['RPS_PC'] == ''){?>
+  <div class="container">
+  <form method="post" action="index.php?action=RespPoolCompetenceInvention">
+    <input type="hidden" name="id_dmd" value="<?php echo $row['ID_DMD'] ; ?>">
+    <div class="form-group">
+      <textarea required="required" name="reponseDemande"></textarea>
+      <label for="textarea" class="control-label" style="left: 0;">Réponse sur la demandes </label><i class="bar"></i>
+    </div>
+
+    <div class="button-container">
+    <button type="Submit" class="button"><span>Ajouter utilisateur</span></button>
+  </div>
+  </form>
+
+</div>
+  <?php } ?>
+
+  <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == ''){?>
+                  <a href="index.php?action=transmettreInventionPc&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-check"></i>
+                    </span>
+                    <span class="text">Transmettre le dossier au reponsable de pool de competence</span>
+                  </a><br><br>
+                  <a href="index.php?action=RefuserInventionCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-times"></i>
+                    </span>
+                    <span class="text">Refuser la demande</span>
+                  </a>
+  <?php } ?>
+
 </div>

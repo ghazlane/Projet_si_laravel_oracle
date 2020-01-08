@@ -31,4 +31,11 @@ class Vue {
         }
 	
 	}
+    public function genererHome(){
+        include("template.php");
+    }
+
+    public function genererPageSansTemplate(){
+        include  ($this->fichier);
+    }
 }

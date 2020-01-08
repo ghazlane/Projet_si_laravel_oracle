@@ -1,1 +1,1 @@
-<p> Mot de passe incorrect </p>
+<p style="float: left;"> Mot de passe incorrect </p>

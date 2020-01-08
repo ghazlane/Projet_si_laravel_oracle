@@ -24,8 +24,8 @@ class FormationController {
 		$this->formationRepository->Ajouter($this->formation); 
 	}
 
-	public function Lister(){
-		$statement = $this->formationRepository->Lister(); 
+	public function Lister($statut){
+		$statement = $this->formationRepository->Lister($statut); 
 		return $statement;
 	}
 	
@@ -50,6 +50,7 @@ class FormationController {
 		return $this->formationRepository->getInfoDemandeur($id_demande); 
 	}
 
+<<<<<<< HEAD
 	public funCtion TransmettreFormationCir($id){
 		$this->formationRepository->TransmettreFormationCir($id); 
 	}
@@ -58,14 +59,42 @@ class FormationController {
 	}
 	public funCtion AccepterFormationGu($id){
 		$this->formationRepository->AccepterFormationGu($id); 
+=======
+		public function TransmettreFormationCir($id){
+		$this->formationRepository->TransmettreFormationCir($id); 		
+	}
+    public function TransmettreFormationPc($id){
+        $this->formationRepository->TransmettreFormationPc($id); 
+	}
+
+	public function RefuserFormationGu($id){
+		$this->formationRepository->RefuserFormationGu($id); 
+	}
+
+	public function RefuserFormationCir($id){
+        $this->formationRepository->RefuserFormationCir($id); 
+>>>>>>> 2b7bb2681db31c24961557c07953360d70855526
 	}
 	public function ListePretes(){
 		return $this->formationRepository->ListePretes(); 
 	}
+<<<<<<< HEAD
 	public function ListeNouvelleDecalarationFormationRspPoolCompetences($id_pc){
 		return $this->formationRepository->ListeNouvelleDecalarationFormationRspPoolCompetences($id_pc); 
 	}
 	public function setReponsePoolCompetences($id_dmd, $reponse){
 		$this->formationRepository->setReponsePoolCompetences($id_dmd, $reponse); 
+=======
+
+	public function ListeAccepterParGU(){
+		return $this->formationRepository->ListeAccepterParGU(); 
+	}
+	public function ListeAccepterParGUEncours(){
+		return $this->formationRepository->ListeAccepterParGUEncours(); 
+	}
+
+	public function AccepterFormationGu($id){
+		$this->formationRepository->AccepterFormationGu($id); 
+>>>>>>> 2b7bb2681db31c24961557c07953360d70855526
 	}
 }

@@ -3,13 +3,13 @@
   <!-- Page Heading -->
   
   <br>
-  <h1 class="h3 mb-2 text-gray-800">Liste de Tous Les Demandes</h1>
+  <h1 class="h3 mb-2 text-gray-800">Liste de Toutes Les Demandes</h1>
   <br>
 
   <!-- demande d invention  -->
   <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Tous les demandes de déclaration des inventions</h6>
+              <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Toutes les demandes de déclaration des inventions</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -76,7 +76,7 @@
   <!-- demande d brevet  -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Tous les demandes de déclaration des brevets</h6>
+      <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Toutes les demandes de déclaration des brevets</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -139,9 +139,11 @@
     </div>
   </div>
 
+<!--demande formation -->
+
   <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Tous les demandes de déclaration des formations</h6>
+    <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Toutes les demandes de déclaration des formations</h6>
   </div>
   <div class="card-body">
     <div class="table-responsive">

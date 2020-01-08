@@ -256,7 +256,11 @@ BEGIN
 END;
 /
 
+alter table declaration_brevet add ( decision_finale VARCHAR(200));
+alter table declaration_invention add ( decision_finale VARCHAR(200));
+alter table lancement_formation  add ( decision_finale VARCHAR(200));
+
 
 //adapter affichage 
-set linesize 9999
 set pagesize 9999
+set linesize 9999

@@ -29,8 +29,8 @@ class InventionController {
 		$this->inventionRepository->Update($this->invention); 
 	}
 
-	public function Lister(){
-		return $this->inventionRepository->Lister(); 
+	public function Lister($statut){
+		return $this->inventionRepository->Lister($statut); 
 	}
 
 	public function getInfoDemandeur($id_demande){
@@ -44,5 +44,42 @@ class InventionController {
 	public funCtion Delete($id){
 		$this->inventionRepository->Delete($id);
 	}
-	
+
+	public funCtion TransmettreInventionCir($id){
+		$this->inventionRepository->TransmettreInventionCir($id); 
+	}
+	public function TransmettreInventionPc($id){
+        $this->inventionRepository->TransmettreInventionPc($id); 
+	}
+
+
+	public function RefuserInventionGu($id){
+		$this->inventionRepository->RefuserInventionGu($id); 
+	}
+	public function RefuserInventionCir($id){
+        $this->inventionRepository->RefuserInventionCir($id); 
+	}
+
+	public funCtion AccepterInventionGu($id){
+		$this->inventionRepository->AccepterInventionGu($id); 
+	}
+
+	public function ListePretes(){
+		return $this->inventionRepository->ListePretes(); 
+	}
+
+	public function ListeAccepterParGU(){
+		return $this->inventionRepository->ListeAccepterParGU(); 
+	}
+	public function ListeAccepterParGUEncours(){
+		return $this->inventionRepository->ListeAccepterParGUEncours(); 
+	}
+
+	public function ListeNouvelleDecalarationInventionRspPoolCompetences($id_pc){
+		return $this->inventionRepository->ListeNouvelleDecalarationInventionRspPoolCompetences($id_pc); 
+	}
+
+	public function setReponsePoolCompetences($id_dmd, $reponse){
+		$this->inventionRepository->setReponsePoolCompetences($id_dmd, $reponse); 
+	}
 }

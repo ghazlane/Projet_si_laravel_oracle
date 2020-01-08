@@ -1,12 +1,12 @@
 
         <div class="container-fluid" style="font-size: 16px; ">
           <br>
-          <h1 class="h3 mb-2 text-gray-800">Liste des guichets unique</h1>
+          <h1 class="h3 mb-2 text-gray-800">Liste des responsables des competences</h1>
           <br>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Tous les demandes de déclaration d'nvention</h6>
+              <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Toutes la liste des responsables</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -18,6 +18,7 @@
                       <th>Date naissance</th>
                       <th>Email</th>
                       <th>Téléphone</th>
+                      <th>Pool de competences</th>
                       <th>Outils</th>
                     </tr>
                   </thead>
@@ -28,28 +29,27 @@
                       <th>Date naissance</th>
                       <th>Email</th>
                       <th>Téléphone</th>
+                      <th>Pool de competences</th>
                       <th>Outils</th>
                     </tr>
                   </tfoot>
                   <tbody style="color: black;">
                     <?php while($row = $statement->fetch()) { ?>
                       <tr>
-                          <td><?php echo $row['NOM_GU']  ?></td>
-                          <td><?php echo $row['PRENOM_GU']  ?></td>
-                          <td><?php echo $row['DATE_NAISSANCE_GU']  ?></td>
-                          <td><?php echo $row['EMAIL_GU']  ?></td>
-                          <td><?php echo $row['TELEPHONE_GU']  ?></td>
+                          <td><?php echo $row['NOM_RESP_PC']  ?></td>
+                          <td><?php echo $row['PRENOM_RESP_PC']  ?></td>
+                          <td><?php echo $row['DATE_NAISSANCE_PC']  ?></td>
+                          <td><?php echo $row['EMAIL_RESP_PC']  ?></td>
+                          <td><?php echo $row['TELEPHONE_PC']  ?></td>
+                          <td><?php echo $row['NOM_PC']  ?></td>
                           <td>
-                              <?php echo '<a href="index.php?action=detailGuichetUnique&&id='.$row['ID_GU'].'" class="btn btn-info btn-circle btn-sm" title="Ouvrir">'; ?>
                               
-                                <i class="far fa-folder-open"></i>
-                              </a>
-                              <?php echo '<a href="index.php?action=updateGuichetUnique&&id='.$row['ID_GU'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
+                              <?php echo '<a href="index.php?action=updateRspPoolCompetence&&id='.$row['ID_RESP_PC'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
                               
                                 <i class="fas fa-sync"></i>
                               </a>
                               <?php
-                                echo '<a href="index.php?action=deleteGuichetUnique&&id='.$row['ID_GU'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
+                                echo '<a href="index.php?action=deleteRspPoolCompetence&&id='.$row['ID_RESP_PC'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
                               ?>
                                 <i class="fas fa-trash"></i>
                               </a>

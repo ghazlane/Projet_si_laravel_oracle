@@ -22,9 +22,35 @@ class BrevetController {
 		$this->brevetRepository->Ajouter($this->brevet); 
 	}
 
-	public function Lister(){
-		$statement = $this->brevetRepository->Lister(); 
-		return $statement;
+	public function Lister($statut){
+		return $this->brevetRepository->Lister($statut); 
+	}
+
+	public function TransmettreBrevetCir($id){
+        $this->brevetRepository->TransmettreBrevetCir($id); 
+	}
+
+	public function TransmettreBrevetPc($id){
+        $this->brevetRepository->TransmettreBrevetPc($id); 
+	}
+
+	public function RefuserBrevetGu($id){
+        $this->brevetRepository->RefuserBrevetGu($id); 
+	}
+
+	public function RefuserBrevetCir($id){
+        $this->brevetRepository->RefuserBrevetCir($id); 
+	}
+	
+	public function ListePretes(){
+		return $this->brevetRepository->ListePretes(); 
+	}
+
+	public function ListeAccepterParGU(){
+		return $this->brevetRepository->ListeAccepterParGU(); 
+	}
+	public function ListeAccepterParGUEncours(){
+		return $this->brevetRepository->ListeAccepterParGUEncours(); 
 	}
 
 	public function getInfoDemandeur($id_demande){
@@ -46,6 +72,10 @@ class BrevetController {
 	public function Supprimer($id){
 		
         $this->brevetRepository->Supprimer($id); 
+	}
+
+	public function AccepterBrevetGu($id){
+		$this->brevetRepository->AccepterBrevetGu($id); 
 	}
 	
 }
