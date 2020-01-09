@@ -77,5 +77,13 @@ class BrevetController {
 	public function AccepterBrevetGu($id){
 		$this->brevetRepository->AccepterBrevetGu($id); 
 	}
+
+	public function ListeNouvelleDecalarationBrevetRspPoolCompetences($id_pc){
+		return $this->brevetRepository->ListeNouvelleDecalarationBrevetRspPoolCompetences($id_pc); 
+	}
+
+	public function setReponsePoolCompetences($id_dmd, $reponse){
+		$this->brevetRepository->setReponsePoolCompetences($id_dmd, $reponse); 
+	}
 	
 }

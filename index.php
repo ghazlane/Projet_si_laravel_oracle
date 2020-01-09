@@ -617,5 +617,15 @@ session_start();
 		$controller->setReponsePoolCompetences($_POST['id_dmd'], $_POST['reponseDemande']); 
 		$vue  = new Vue('RespPoolCompetenceBienFait'); 
 		$vue->generer(array()); 
+	}else if($action == "NouvelleDeclarationBrevetPoolsCompetences"){
+				$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationBrevet'); 
+		//echo $_SESSION['id_pc']; 
+		$vue->generer(array("statement" => $controller->ListeNouvelleDecalarationBrevetRspPoolCompetences($_SESSION['id_pc']))); 
+	}else if ($action =="RespPoolCompetenceBrevet"){
+		$controller = new BrevetController(); 
+		$controller->setReponsePoolCompetences($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue  = new Vue('RespPoolCompetenceBienFait'); 
+		$vue->generer(array()); 
 	}
 

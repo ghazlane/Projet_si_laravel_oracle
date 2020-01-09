@@ -80,7 +80,7 @@
                   </a>
   <?php }?>
 
-<?php if($_SESSION['type'] =='RespPoolCompetence' && $row['RPS_PC'] == ''){?>
+<?php if($_SESSION['type'] =='RespPoolCompetence' && $row['REPONSE_PC'] == ''){?>
   <div class="container">
   <form method="post" action="index.php?action=RespPoolCompetenceInvention">
     <input type="hidden" name="id_dmd" value="<?php echo $row['ID_DMD'] ; ?>">
