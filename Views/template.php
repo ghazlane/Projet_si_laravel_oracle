@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,13 +84,13 @@ session_start();
 				<div class="dropdown header-btn">
 						<button class="site-btn ">Login</button>
 							<div class="dropdown-content" >
-							<a href="loginProfesseur.php">Professeur</a>
+							<a href="Views/loginProfesseur.php">Professeur</a>
 							<a href="loginEtudiant.php">Etudiant</a>
 							<a href="loginGuichetUnique.php">Responsable GU</a>
 							<a href="loginAdministrateur.php">Administrateur</a>
 							</div>
 							</div>
-							<?php
+	<?php
       }else{ // Sinon s'il y a une session alors on verra les liens ci-dessous
     ?>				
 				<div class="col-lg-9 col-md-9 ">
@@ -142,7 +139,7 @@ session_start();
 						<div class="dropdown">
 						<button class="site-btn">S'inscrire</button>
 							<div class="dropdown-content" >
-							<a href="registerProfesseur.php">Professeur</a>
+							<a href="Views/registerProfesseur.php">Professeur</a>
 							<a href="index.php?action=registerEtudiant">Etudiant</a>
 							<a href="../index.php?action=ajouterGuichetUnique">Responsable GU</a>
 							<a href="index.php?action=registerAdministrateur">Administrateur</a>
@@ -160,16 +157,7 @@ session_start();
 	<!-- Hero section end -->
 	
 
-	<!-- Hero section -->
-	<section class="hero-section set-bg" data-setbg="css_js/img/bg.jpg" style = "height : 700px;">
-		<div class="container">
-			<div class="hero-text text-white ">
-				<h2>Bienvenue à la cité d'innovation UM5R</h2>
-				<p>La cité où tout est possible <br/>Déposez votre demande et lancez vous vers l'avenir.</p>
-			</div>
-		</div>
-	</section>
-	<!-- Hero section end -->
+
 	<!-- categories section -->
 	<section class="categories-section spad">
 		<div class="container">

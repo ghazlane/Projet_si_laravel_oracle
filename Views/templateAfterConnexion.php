@@ -81,13 +81,13 @@
 				<div class="col-lg-9 col-md-9 ">
 				
 				<div class="dropdown header-btn">
-					<!--	<button class="site-btn "> echo $row['NOM_PROF'].$row['PRENOM_PROF']  ?> </button>-->
+					<button class="site-btn "> <?php echo $_SESSION['nom'].'  '.$_SESSION['prenom']  ?> </button>
 							<div class="dropdown-content" >
 							<a href="profilProfesseur.php">Voir le profil</a>
 							<a href="template.php">Se déconnecter</a>
 							</div>
 							</div>			
-					<nav class="main-menu" style = "margin-left : 250px;">
+					<nav class="main-menu" >
 						<ul>
 							<li><a href="template..php">Accueil</a></li>
 							<li><a href="#">A propos de nous</a></li>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['code_prof'])) header("location:template.php")
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,13 +32,15 @@ if(isset($_SESSION['code_prof'])) header("location:template.php")
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Connexion Professeur</h1>
-                  </div>
-          <?php if(@$_GET['err']==1){ ?>
+                  <?php if(@$_GET['err']==1){ ?>
             <h1 class="h4 text-gray-900 mb-4">Mot de passe incorrect. Réessayez .</h1>
-          <?php }?>
+                <?php }else {?> 
+                    <h1 class="h4 text-gray-900 mb-4">Connexion Professeur</h1>
+                    <?php } ?> 
+                  </div>
                   <br>
                   <form class="user" method="post" action="../index.php?action=connexionProfesseur">
+           
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="email_prof" aria-describedby="emailHelp" placeholder="Email" name="email">
                     </div>

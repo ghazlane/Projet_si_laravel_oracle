@@ -106,17 +106,18 @@ session_start();
 		$statement = $controller->Lister(); 
 		while ($row = $statement->fetch()) {
 			if(($_POST['email'] == $row['EMAIL_PROF']) && ($_POST['password'] == $row['MOT_DE_PASSE_PROF'])){
-				session_start();
-				$_SESSION['code_prof'] = $row['CODE_PROF'];
+				//session_start();
+				$_SESSION['code'] = $row['CODE_PROF'];
 				$_SESSION['nom'] = $row['NOM_PROF'];
 				$_SESSION['prenom'] = $row['PRENOM_PROF'];
 				$_SESSION['type'] = 'Professeur'; 
 				$vue = new Vue('accueil'); 
-				$vue->genererHome();
+				$vue->genererHomeUser();
 				return;  
 			}
 		}
-				header("location : loginProfesseur.php?err=1");
+		$vue = new Vue('MotDePasseIncorrect');
+		$vue->genererPageSansTemplate();
 	}
 
 	//Guichet unique;
@@ -241,8 +242,8 @@ session_start();
 	
 	else if($action == 'Accueil'){
 		$vue = new Vue('accueil'); 
-		//$vue->genererHome();
-		$vue->generer(array()); 
+		$vue->genererHome();
+		//$vue->generer(array()); 
 	}
 	//Invention 
 	else if($action == 'declarationInvention'){
