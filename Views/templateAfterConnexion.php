@@ -84,7 +84,7 @@
 					<button class="site-btn "> <?php echo $_SESSION['nom'].'  '.$_SESSION['prenom']  ?> </button>
 							<div class="dropdown-content" >
 							<a href="profilProfesseur.php">Voir le profil</a>
-							<a href="template.php">Se déconnecter</a>
+							<a href="index.php?action=deconnexion">Se déconnecter</a>
 							</div>
 							</div>			
 					<nav class="main-menu" >
