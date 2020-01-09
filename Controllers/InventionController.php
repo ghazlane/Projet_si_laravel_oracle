@@ -37,8 +37,8 @@ class InventionController {
 		return $this->inventionRepository->getInfoDemandeur($id_demande); 
 	}
 
-	public function getInfoRespPc(){
-   		return $this->inventionRepository->getInfoRespPc(); 
+	public function getInfoPc(){
+   		return $this->inventionRepository->getInfoPc(); 
 	}
 
 	public function Details($id){

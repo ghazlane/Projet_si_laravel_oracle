@@ -51,9 +51,9 @@
         <div class="col">
            <form method="post" action="index.php?action=transmettreInventionPc&&id_dmd=<?php echo $row['ID_DMD']?>">
           <select name="respPC">
-              <option value="">--choisir un reponsable--</option>
-              <?php while($respPC = $listeRespPc->fetch()) {  ?> 
-              <option value="<?php echo $respPC['ID_RESP_PC']  ?> "><?php echo $respPC['NOM_RESP_PC']  ?> <?php echo $respPC['PRENOM_RESP_PC']  ?></option>
+              <option value="">--choisir un Pool de Compétence--</option>
+              <?php while($PC = $listePc->fetch()) {  ?> 
+              <option value="<?php echo $PC['ID_PC']  ?> "><?php echo $PC['NOM_PC']  ?> </option>
               <?php  }?>              
           </select>
         
