@@ -50,7 +50,7 @@ class FormationController {
 		return $this->formationRepository->getInfoDemandeur($id_demande); 
 	}
 
-		public function TransmettreFormationCir($id){
+	public function TransmettreFormationCir($id){
 		$this->formationRepository->TransmettreFormationCir($id); 		
 	}
     public function TransmettreFormationPc($id){

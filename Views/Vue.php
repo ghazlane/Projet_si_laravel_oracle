@@ -2,7 +2,7 @@
 
 class Vue {
 
-    /** Nom du fichier associé à la vue */
+    /** Nom du fichier associï¿½ ï¿½ la vue */
     private $fichier;
 
     public function __construct($view) {
@@ -14,16 +14,17 @@ class Vue {
     public function generer(array $donnees) {
 	
 		if (file_exists($this->fichier)) {
-            // Rend les éléments du tableau $donnees accessibles dans la vue
+            // Rend les ï¿½lï¿½ments du tableau $donnees accessibles dans la vue
             extract($donnees);
-            // Démarrage de la temporisation de sortie
+            // Dï¿½marrage de la temporisation de sortie
             ob_start();
             // Inclut le fichier vue
-            // Son résultat est placé dans le tampon de sortie
+            // Son rï¿½sultat est placï¿½ dans le tampon de sortie
             require $this->fichier;
-            // Arrêt de la temporisation et renvoi du tampon de sortie
+            // Arrï¿½t de la temporisation et renvoi du tampon de sortie
             $contenu= ob_get_clean();
-			include  ("navrar_template.php");
+            include  ("navrar_template.php");
+            //include  ("templateAfterConnexion.php");
         }
         else {
             throw new Exception("Fichier '$fichier' introuvable");
@@ -32,6 +33,10 @@ class Vue {
 	}
     public function genererHome(){
         include("template.php");
+    }
+
+    public function genererHomeUser(){
+        include("templateAfterConnexion.php");
     }
 
     public function genererPageSansTemplate(){

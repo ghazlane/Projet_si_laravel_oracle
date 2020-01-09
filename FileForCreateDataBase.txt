@@ -1,4 +1,4 @@
-//////**** fichier contier les tables créer ******///////
+ï»¿//////**** fichier contier les tables crï¿½er ******///////
 
 
 ///Creer la table responsable cir avec triigger d'autoincrementation
@@ -57,7 +57,7 @@ BEGIN
 END;
 /
 
----> inserer dans la base de données
+---> inserer dans la base de donnï¿½es
 insert into pool_Competences(nom_pc, fonc_pc , date_creation ) VALUES('Developpement', 'developper idee', '03/11/2019');
 
 
@@ -77,17 +77,29 @@ ALTER TABLE Administratif ADD (CONSTRAINT code_pk_admin PRIMARY KEY (code_admin)
 
 
 /////Professeur ///////
+	CREATE SEQUENCE professeur_seq START WITH 1;
 create table professeur (
-	Code_prof Varchar(50) not null,
-	Nom_prof Varchar(50),
+	code_prof INTEGER NOT null,
+	nom_prof Varchar(50),
 	prenom_prof Varchar(50), 
-	Date_naissance_prof VARCHAR(50),
-	Email_prof Varchar(50),
-	Mot_de_passe_prof Varchar(50),
-	Num_aff Varchar(50),
-	Telephone_prof Varchar(50)
+	date_naissance_prof VARCHAR(50),
+	email_prof Varchar(50),
+	mot_de_passe_prof Varchar(50),
+	num_aff INTEGER,
+	telephone_prof Varchar(50)
 );
 ALTER TABLE professeur ADD (CONSTRAINT code_pk_profess PRIMARY KEY (Code_prof));
+
+CREATE OR REPLACE TRIGGER professeur_auto_incre
+BEFORE INSERT ON professeur
+FOR EACH ROW
+
+BEGIN
+  SELECT professeur_seq.NEXTVAL
+  INTO   :new.code_prof
+  FROM   dual;
+END;
+/
 
 insert into administratif values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'ABCGDHG14587', '0655681244');
 insert into professeur values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'ABCGDHG14587', '0655681244');
@@ -261,6 +273,9 @@ alter table declaration_invention add ( decision_finale VARCHAR(200));
 alter table lancement_formation  add ( decision_finale VARCHAR(200));
 
 
+
+alter table declaration_invention ADD (REPONSE_PC VARCHAR2(1000));
+alter table declaration_invention drop column RPS_PC;
 //adapter affichage 
 set pagesize 9999
 set linesize 9999

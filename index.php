@@ -1,18 +1,127 @@
 <?php
 session_start();
-	require_once 'Views\Vue.php';
+	require_once 'Views\Vue.php';	
 	require_once ("Controllers/InventionController.php");
 	require_once ("Controllers/BrevetController.php");
 	require_once ("Controllers/FormationController.php");
 	require_once ("Controllers/GuichetUniqueController.php");
+	require_once ("Controllers/ProfesseurController.php");
+	require_once ("Controllers/ChercheurController.php");
 	require_once ("Controllers/PoolCompetenceController.php");
 	require_once ("Controllers/RespPoolCompetenceController.php");
 	require_once ("Controllers/ResponsableCirController.php");
 	//require_once("controllers\DeclarationInventionController.php");
 	
-	$action = empty($_GET["action"])?"Home":$_GET["action"];
+	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
+	
+	//Chercheur
+	if($action == "registerChercheur"){
+		$vue = new Vue('registerChercheur'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveAjoutChercheur"){
+		$controller = new ChercheurController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "listerChercheur"){
+		$controller = new ChercheurController(); 
+		$vue = new Vue('listeChercheur'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	else if($action == "updateChercheur"){
+		$controller = new ChercheurController();
+		$vue = new Vue('updateChercheur'); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
+	}
+	else if($action =="saveUpdateChercheur"){
+		$controller = new ChercheurController();
+		$resultat = $controller->Update($_POST); 
+		if($resultat == true){
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
+		}else {
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
+		}
+	}
+	else if($action == "detailChercheur"){
+		$controller = new ChercheurController(); 
+		$vue = new Vue('detailsChercheur');
+		$vue->generer(array("statement" => $controller->Details($_GET['id']))); 
+	}
+	else if($action == "deleteChercheur"){
+		$controller = new ChercheurController(); 
+		$controller->Delete($_GET['id']); 
+		$vue = new Vue('listeChercheur'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+
+	//Professeur
+	else if($action == "registerProfesseur"){
+		$vue = new Vue('registerProfesseur'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveAjoutProfesseur"){
+		$controller = new ProfesseurController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->genererHome(); 
+	}
+	else if($action == "listerProfesseur"){
+		$controller = new ProfesseurController(); 
+		$vue = new Vue('listeProfesseur'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	else if($action == "updateProfesseur"){
+		$controller = new ProfesseurController();
+		$vue = new Vue('updateProfesseur'); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
+	}
+	else if($action =="saveUpdateProfesseur"){
+		$controller = new ProfesseurController();
+		$resultat = $controller->Update($_POST); 
+		if($resultat == true){
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
+		}else {
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
+		}
+	}
+	else if($action == "detailProfesseur"){
+		$controller = new ProfesseurController(); 
+		$vue = new Vue('detailsProfesseur');
+		$vue->generer(array("statement" => $controller->Details($_GET['id']))); 
+	}
+	else if($action == "deleteProfesseur"){
+		$controller = new ProfesseurController(); 
+		$controller->Delete($_GET['id']); 
+		$vue = new Vue('listeProfesseur'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	else if($action == "connexionProfesseur"){
+		$controller = new ProfesseurController(); 
+		$statement = $controller->Lister(); 
+		while ($row = $statement->fetch()) {
+			if(($_POST['email'] == $row['EMAIL_PROF']) && ($_POST['password'] == $row['MOT_DE_PASSE_PROF'])){
+				//session_start();
+				$_SESSION['code'] = $row['CODE_PROF'];
+				$_SESSION['nom'] = $row['NOM_PROF'];
+				$_SESSION['prenom'] = $row['PRENOM_PROF'];
+				$_SESSION['type'] = 'Professeur'; 
+				$vue = new Vue('accueil'); 
+				$vue->genererHomeUser();
+				return;  
+			}
+		}
+		$vue = new Vue('MotDePasseIncorrect');
+		$vue->genererPageSansTemplate();
+	}
+
 	//Guichet unique;
-	if($action == "ajouterGuichetUnique"){
+	else if($action == "ajouterGuichetUnique"){
 		$vue = new Vue('ajouterGuichetUnique'); 
 		$vue->generer(array()); 
 	}
@@ -130,11 +239,13 @@ session_start();
 		$vue->genererHome();
 	}
 
-	//Invention 
+	
 	else if($action == 'Accueil'){
 		$vue = new Vue('accueil'); 
-		$vue->generer(array()); 
+		$vue->genererHome();
+		//$vue->generer(array()); 
 	}
+	//Invention 
 	else if($action == 'declarationInvention'){
 		$vue = new Vue('declarationInvention'); 
 		$vue->generer(array()); 
@@ -503,6 +614,16 @@ session_start();
 		$vue->generer(array("statement" => $controller->ListeNouvelleDecalarationInventionRspPoolCompetences($_SESSION['id_pc']))); 
 	}else if ($action =="RespPoolCompetenceInvention"){
 		$controller = new InventionController(); 
+		$controller->setReponsePoolCompetences($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue  = new Vue('RespPoolCompetenceBienFait'); 
+		$vue->generer(array()); 
+	}else if($action == "NouvelleDeclarationBrevetPoolsCompetences"){
+				$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationBrevet'); 
+		//echo $_SESSION['id_pc']; 
+		$vue->generer(array("statement" => $controller->ListeNouvelleDecalarationBrevetRspPoolCompetences($_SESSION['id_pc']))); 
+	}else if ($action =="RespPoolCompetenceBrevet"){
+		$controller = new BrevetController(); 
 		$controller->setReponsePoolCompetences($_POST['id_dmd'], $_POST['reponseDemande']); 
 		$vue  = new Vue('RespPoolCompetenceBienFait'); 
 		$vue->generer(array()); 

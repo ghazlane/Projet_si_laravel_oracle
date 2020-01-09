@@ -140,4 +140,22 @@ public function RefuserBrevetCir($id){
     $statement = $connexion->prepare($Rq);
     $statement->execute();
     }	
-    }
+    
+
+    public function ListeNouvelleDecalarationBrevetRspPoolCompetences($id_pc){
+    $Rq = "select * from declaration_brevet where STATUT_CIR IS NOT NULL and STATUT_DMD = 'En cours' and DECISION_FINALE IS NULL and REPONSE_PC IS NULL and ID_PC = ".$id_pc; 
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+} 
+
+public function setReponsePoolCompetences($id_dmd, $reponse){
+    $Rq = "update declaration_brevet set REPONSE_PC  = '".$reponse."' where id_dmd = ".$id_dmd; 
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");
+}
+
+
+}

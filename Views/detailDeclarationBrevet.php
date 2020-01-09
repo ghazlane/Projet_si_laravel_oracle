@@ -83,3 +83,19 @@
                     <span class="text">Refuser</span>
                   </a>
   <?php }?>
+  <?php if($_SESSION['type'] =='RespPoolCompetence' && $row['REPONSE_PC'] == ''){?>
+  <div class="container">
+  <form method="post" action="index.php?action=RespPoolCompetenceBrevet">
+    <input type="hidden" name="id_dmd" value="<?php echo $row['ID_DMD'] ; ?>">
+    <div class="form-group">
+      <textarea required="required" name="reponseDemande"></textarea>
+      <label for="textarea" class="control-label" style="left: 0;">Réponse sur la demandes </label><i class="bar"></i>
+    </div>
+
+    <div class="button-container">
+    <button type="Submit" class="button"><span>Valider réponse</span></button>
+  </div>
+  </form>
+
+</div>
+  <?php } ?>
