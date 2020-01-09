@@ -115,8 +115,8 @@ public function Lister($statut) {
 
 
 
-public function getInfoRespPc(){
-    $Rq= "select * from Responsable_pc ";  
+public function getInfoPc(){
+    $Rq= "select * from pool_Competences ";  
 
     $connexion = $this->getConnexion(); 
     $statement = $connexion->query($Rq);
