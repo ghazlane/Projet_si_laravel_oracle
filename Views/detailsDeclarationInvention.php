@@ -47,7 +47,7 @@
     		<div class="col"><strong><?php echo $row['TYPE_DEMANDEUR']  ?></strong></div>
      <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == ''){?>  
         <div class="w-100"></div><br> 
-        <div class="col">Responsable Pool Competence</div>
+        <div class="col">Pool Competence</div>
         <div class="col">
            <form method="post" action="index.php?action=transmettreInventionPc&&id_dmd=<?php echo $row['ID_DMD']?>">
           <select name="respPC">
