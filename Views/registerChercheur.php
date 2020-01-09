@@ -32,40 +32,40 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Créer un compte chercheur !</h1>
               </div>
-              <form method="post" action="index.php?action=saveAjoutChercheur" class="user">
+              <form method="post" action="../index.php?action=saveAjoutChercheur" class="user">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="nom_cher" placeholder="Nom">
+                    <input type="text" required="required" class="form-control form-control-user" name="nom_cher" placeholder="Nom">
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="prenom_cher" placeholder="Prénom">
+                    <input type="text" required="required" class="form-control form-control-user" name="prenom_cher" placeholder="Prénom">
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="date" class="form-control form-control-user" id="date_naissance_cher" placeholder="Date de naissance">
+                    <input type="date" class="form-control form-control-user" name="date_naissance_cher" placeholder="Date de naissance">
                   </div>
                   <div class="col-sm-6">
-                  <input type="text" class="form-control form-control-user" id="telephone_cher" placeholder="Téléphone">
+                  <input type="text" class="form-control form-control-user" name="telephone_cher" placeholder="Téléphone">
                   </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="theme_recherche" placeholder="Thème de recherche">
+                    <input type="text" class="form-control form-control-user" name="theme_recherche" placeholder="Thème de recherche">
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="email_cher" placeholder="E-mail">
+                  <input type="email" required="required" class="form-control form-control-user" name="email_cher" placeholder="E-mail">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="mot_de_passe_cher" placeholder="Mot de passe">
+                    <input type="password" required="required" class="form-control form-control-user" name="mot_de_passe_cher" placeholder="Mot de passe">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="mot_de_passe_cher" placeholder="Confirmer le mot de passe">
+                    <input type="password" required="required" class="form-control form-control-user" name="mot_de_passe_cher" placeholder="Confirmer le mot de passe">
                   </div>
                 </div>
-                <a href="templateAfterConnexion.php" class="btn btn-primary btn-user btn-block">
+                <button type="Submit" class="btn btn-primary btn-user btn-block">
                   Créer un compte
-                </a>
+                </button>
             </form>
             </div >
         </div>

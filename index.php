@@ -15,15 +15,11 @@ session_start();
 	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
 	
 	//Chercheur
-	if($action == "registerChercheur"){
-		$vue = new Vue('registerChercheur'); 
-		$vue->generer(array()); 
-	}
-	else if($action == "saveAjoutChercheur"){
+	if($action == "saveAjoutChercheur"){
 		$controller = new ChercheurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$vue->genererHome(); 
 	}
 	else if($action == "listerChercheur"){
 		$controller = new ChercheurController(); 
@@ -57,12 +53,26 @@ session_start();
 		$vue = new Vue('listeChercheur'); 
 		$vue->generer(array("statement" => $controller->Lister()));
 	}
-
-	//Professeur
-	else if($action == "registerProfesseur"){
-		$vue = new Vue('registerProfesseur'); 
-		$vue->generer(array()); 
+	else if($action == "connexionChercheur"){
+		$controller = new ChercheurController(); 
+		$statement = $controller->Lister(); 
+		while ($row = $statement->fetch()) {
+			if(($_POST['email'] == $row['EMAIL_CHER']) && ($_POST['password'] == $row['MOT_DE_PASSE_CHER'])){
+				//session_start();
+				$_SESSION['code'] = $row['CODE_CHER'];
+				$_SESSION['nom'] = $row['NOM_CHER'];
+				$_SESSION['prenom'] = $row['PRENOM_CHER'];
+				$_SESSION['type'] = 'chercheur'; 
+				$vue = new Vue('accueil'); 
+				$vue->genererHomeUser();
+				return;  
+			}
+		}
+		$vue = new Vue('MotDePasseIncorrectGU');
+		$vue->genererPageSansTemplate();
 	}
+	//Professeur
+	
 	else if($action == "saveAjoutProfesseur"){
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);
@@ -116,7 +126,7 @@ session_start();
 				return;  
 			}
 		}
-		$vue = new Vue('MotDePasseIncorrect');
+		$vue = new Vue('MotDePasseIncorrectGU');
 		$vue->genererPageSansTemplate();
 	}
 

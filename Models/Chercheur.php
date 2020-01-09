@@ -19,7 +19,7 @@ class Chercheur
 		$this->email_Cher = $email_Cher; 
         $this->mot_de_passe_Cher = $mot_de_passe_Cher; 
         $this->theme_recherche = $theme_recherche;
-		$this->telephone_Cher = $telephone; 
+		$this->telephone_Cher = $telephone_Cher; 
 	}
 
 	//setters;; 
