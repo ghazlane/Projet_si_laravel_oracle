@@ -42,13 +42,13 @@ session_start();
                   <form class="user" method="post" action="../index.php?action=connexionProfesseur">
            
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="email_prof" aria-describedby="emailHelp" placeholder="Email" name="email">
+                      <input type="email" required="required" class="form-control form-control-user" id="email_prof" aria-describedby="emailHelp" placeholder="Email" name="email">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="mot_de_passe_prof" placeholder="Mot de passe" name="password">
+                      <input type="password"  required="required" class="form-control form-control-user" id="mot_de_passe_prof" placeholder="Mot de passe" name="password">
                     </div>
                     <hr>
-                      <input type="submit" class="btn btn-primary btn-user btn-block" value="Se connecter">
+                      <input type="submit" required="required" class="btn btn-primary btn-user btn-block" value="Se connecter">
                   </form>
                 </div>
               </div>

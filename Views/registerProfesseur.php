@@ -35,32 +35,32 @@
               </div>             
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" name="nom_prof" placeholder="Nom">
+                    <input type="text"required="required" class="form-control form-control-user" name="nom_prof" placeholder="Nom">
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" name="prenom_prof" placeholder="Prénom">
+                    <input type="text" required="required" class="form-control form-control-user" name="prenom_prof" placeholder="Prénom">
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="date" class="form-control form-control-user" name="date_naissance_prof" placeholder="Date de naissance">
+                    <input type="date"  class="form-control form-control-user" name="date_naissance_prof" placeholder="Date de naissance">
                   </div>
                   <div class="col-sm-6">
-                  <input type="text" class="form-control form-control-user" name="telephone_prof" placeholder="Téléphone">
+                  <input type="text"  class="form-control form-control-user" name="telephone_prof" placeholder="Téléphone">
                   </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-user" name="num_aff" placeholder="Numéro d'affiliation">
+                    <input type="text" required="required" class="form-control form-control-user" name="num_aff" placeholder="Numéro d'affiliation">
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" name="email_prof" placeholder="E-mail">
+                  <input type="email" required="required" class="form-control form-control-user" name="email_prof" placeholder="E-mail">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" name="mot_de_passe_prof" placeholder="Mot de passe">
+                    <input type="password" required="required" class="form-control form-control-user" name="mot_de_passe_prof" placeholder="Mot de passe">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" name="mot_de_passe_prof" placeholder="Confirmer le mot de passe">
+                    <input type="password" required="required" class="form-control form-control-user" name="mot_de_passe_prof" placeholder="Confirmer le mot de passe">
                   </div>
                 </div>
                 <button type="Submit" class="btn btn-primary btn-user btn-block">
