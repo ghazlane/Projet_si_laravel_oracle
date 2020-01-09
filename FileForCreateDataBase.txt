@@ -1,4 +1,4 @@
-//////**** fichier contier les tables cr�er ******///////
+﻿//////**** fichier contier les tables cr�er ******///////
 
 
 ///Creer la table responsable cir avec triigger d'autoincrementation
@@ -286,6 +286,9 @@ alter table declaration_invention add ( decision_finale VARCHAR(200));
 alter table lancement_formation  add ( decision_finale VARCHAR(200));
 
 
+
+alter table declaration_invention ADD (REPONSE_PC VARCHAR2(1000));
+alter table declaration_invention drop column RPS_PC;
 //adapter affichage 
 set pagesize 9999
 set linesize 9999
