@@ -14,7 +14,7 @@ class ChercheurController
 	}
 
 	public funCtion Ajouter($inputs){
-		$this->chercheur = new Chercheur($inputs['nom_cher'],$inputs['prenom_cher'],$inputs['date_naissance_cher'],$inputs['email_cher'],$inputs['password_cher'],$inputs['theme_recherche'],$inputs['telephone_cher']); 
+		$this->chercheur = new Chercheur($inputs['nom_cher'],$inputs['prenom_cher'],$inputs['date_naissance_cher'],$inputs['email_cher'],$inputs['mot_de_passe_cher'],$inputs['theme_recherche'],$inputs['telephone_cher']); 
 		$this->chercheurRepository->Ajouter($this->chercheur); 
 	}
 

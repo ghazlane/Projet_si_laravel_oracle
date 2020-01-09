@@ -85,9 +85,10 @@
 						<button class="site-btn ">Login</button>
 							<div class="dropdown-content" >
 							<a href="Views/loginProfesseur.php">Professeur</a>
-							<a href="loginEtudiant.php">Etudiant</a>
-							<a href="loginGuichetUnique.php">Responsable GU</a>
-							<a href="loginAdministrateur.php">Administrateur</a>
+							<a href="Views/loginChercheur.php">Chercheur</a>
+							<a href="Views/loginEtudiant.php">Etudiant</a>
+							<a href="Views/loginGuichetUnique">Responsable GU</a>
+							<a href="Views/loginAdministrateur">Administrateur</a>
 							</div>
 							</div>
 	<?php
@@ -140,8 +141,9 @@
 						<button class="site-btn">S'inscrire</button>
 							<div class="dropdown-content" >
 							<a href="Views/registerProfesseur.php">Professeur</a>
-							<a href="index.php?action=registerEtudiant">Etudiant</a>
-							<a href="../index.php?action=ajouterGuichetUnique">Responsable GU</a>
+							<a href="Views/registerChercheur.php">Chercheur</a>
+							<a href="Views/registerEtudiant.php">Etudiant</a>
+							<a href="index.php?action=ajouterGuichetUnique">Responsable GU</a>
 							<a href="index.php?action=registerAdministrateur">Administrateur</a>
 							</div>
 						</div>

@@ -61,7 +61,7 @@
       <hr class="sidebar-divider">
       <!-- Heading -->
       <div class="sidebar-heading">
-        Nouveaux demandes 
+        Nouvellex demandes 
       </div>
       <?php if($_SESSION['type'] =='GuichetUnique' ){  ?>
         <li class="nav-item" >
@@ -412,7 +412,7 @@
         <div id="collapseseven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Cluster technologique</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
           </div>
@@ -426,7 +426,7 @@
         <div id="collapseNine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Financement d'action</h6>
-            <a class="collapse-item" href="index.php?action=declarationInvention">Nouveau Demande</a>
+            <a class="collapse-item" href="index.php?action=declarationInvention">Nouvelle Demande</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande prêt</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention">Demande traiter</a>
           </div>
@@ -842,7 +842,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['nom'].' '.$_SESSION['prenom']; ?></span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="css_js/img/user.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

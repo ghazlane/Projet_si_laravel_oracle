@@ -83,8 +83,8 @@
 				<div class="dropdown header-btn">
 					<button class="site-btn "> <?php echo $_SESSION['nom'].'  '.$_SESSION['prenom']  ?> </button>
 							<div class="dropdown-content" >
-							<a href="profilProfesseur.php">Voir le profil</a>
-							<a href="index.php?action=deconnexion">Se déconnecter</a>
+							<a href="profil.php">Voir le profil</a>
+							<a href="../index.php?action=deconnexion">Se déconnecter</a>
 							</div>
 							</div>			
 					<nav class="main-menu" >
@@ -153,7 +153,7 @@
 						<div class="ci-text">
 							<h5>Formation</h5>
 							<p>Cliquez pour lancer une formation</p><br/> 
-							<a href="index.php?action=declarationFormationtion" style="color :rgb(75, 20, 20); text-decoration: underline;">Ajouter </a>&nbsp;
+							<a href="index.php?action=declarationFormation" style="color :rgb(75, 20, 20); text-decoration: underline;">Ajouter </a>&nbsp;
 							<a href="index.php?action=listeDeclarationFormation" style="color :rgb(75, 20, 20); text-decoration: underline;">Lister</a>
 						</div>
 					</div>
