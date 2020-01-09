@@ -37,6 +37,10 @@ class InventionController {
 		return $this->inventionRepository->getInfoDemandeur($id_demande); 
 	}
 
+	public function getInfoRespPc(){
+   		return $this->inventionRepository->getInfoRespPc(); 
+	}
+
 	public function Details($id){
 		return $this->inventionRepository->Details($id); 
 	}
@@ -48,8 +52,8 @@ class InventionController {
 	public funCtion TransmettreInventionCir($id){
 		$this->inventionRepository->TransmettreInventionCir($id); 
 	}
-	public function TransmettreInventionPc($id){
-        $this->inventionRepository->TransmettreInventionPc($id); 
+	public function TransmettreInventionPc($id,$select){
+        $this->inventionRepository->TransmettreInventionPc($id,$select); 
 	}
 
 

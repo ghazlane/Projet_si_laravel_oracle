@@ -151,7 +151,7 @@ session_start();
 	}else if($action == "detailDeclarationInvention"){ 
 		$controller = new InventionController(); 
 		$vue = new Vue('detailsDeclarationInvention');
-		$vue->generer(array("statement" => $controller->Details($_GET['id']), "nomAndPrenomDemandeur"=> $controller->getInfoDemandeur($_GET['id']))); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id']), "nomAndPrenomDemandeur"=> $controller->getInfoDemandeur($_GET['id']),"listeRespPc" => $controller->getInfoRespPc())); 
 	}else if($action == "deleteDeclarationInvention"){
 		$controller = new InventionController(); 
 		$controller->Delete($_GET['id']); 
@@ -173,7 +173,7 @@ session_start();
 		$vue->generer(array()); 
 	}else if($action=="transmettreInventionPc"){
 		$controller = new InventionController();
-		$controller->TransmettreInventionPc($_GET['id_dmd']); 
+		$controller->TransmettreInventionPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array()); 
 	}else if($action == "RefuserDemandeGu"){

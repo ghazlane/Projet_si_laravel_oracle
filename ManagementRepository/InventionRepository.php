@@ -30,8 +30,8 @@ public function TransmettreInventionCir($id){
             $connexion->exec("commit");
 }
 
-public function TransmettreInventionPc($id){
-            $Rq = "update declaration_invention set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' where id_dmd =".$id;
+public function TransmettreInventionPc($id,$select){
+            $Rq = "update declaration_invention set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' ,RESP_PC =".$select['respPC']." where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
@@ -113,8 +113,21 @@ public function Lister($statut) {
     return $statement;
     }
 
+
+
+public function getInfoRespPc(){
+    $Rq= "select * from Responsable_pc ";  
+
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+}
+
+
+
 public function Details($id){
-    $Rq = "select * from declaration_invention where id_dmd = ".$id;     
+    $Rq = "select * from declaration_invention where id_dmd = ".$id; 
     $connexion = $this->getConnexion(); 
     $statement = $connexion->query($Rq);
     $statement->setFetchMode(PDO::FETCH_ASSOC);

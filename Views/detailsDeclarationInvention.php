@@ -45,6 +45,20 @@
     		<div class="w-100"></div><br>
     		<div class="col">Fonctionnalité Demandeur</div>
     		<div class="col"><strong><?php echo $row['TYPE_DEMANDEUR']  ?></strong></div>
+     <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == ''){?>  
+        <div class="w-100"></div><br> 
+        <div class="col">Responsable Pool Competence</div>
+        <div class="col">
+           <form method="post" action="index.php?action=transmettreInventionPc&&id_dmd=<?php echo $row['ID_DMD']?>">
+          <select name="respPC">
+              <option value="">--choisir un reponsable--</option>
+              <?php while($respPC = $listeRespPc->fetch()) {  ?> 
+              <option value="<?php echo $respPC['ID_RESP_PC']  ?> "><?php echo $respPC['NOM_RESP_PC']  ?> <?php echo $respPC['PRENOM_RESP_PC']  ?></option>
+              <?php  }?>              
+          </select>
+        
+        </div>
+      <?php } ?>
     	</div>
 	</div>
 
@@ -98,18 +112,15 @@
   <?php } ?>
 
   <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == ''){?>
-                  <a href="index.php?action=transmettreInventionPc&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
-                    <span class="icon text-white-50">
-                      <i class="fas fa-check"></i>
-                    </span>
-                    <span class="text">Transmettre le dossier au reponsable de pool de competence</span>
-                  </a><br><br>
+                  <button type="Submit" class="button"><span>Transmettre le dossier au reponsable de pool de competence</span></button>  
+                   <br><br>
                   <a href="index.php?action=RefuserInventionCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-danger btn-icon-split">
                     <span class="icon text-white-50">
                       <i class="fas fa-times"></i>
                     </span>
                     <span class="text">Refuser la demande</span>
                   </a>
+                  </form>
   <?php } ?>
 
 </div>
