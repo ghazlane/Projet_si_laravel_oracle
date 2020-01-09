@@ -1,5 +1,28 @@
 ﻿//////**** fichier contier les tables cr�er ******///////
+//Etudiant
+CREATE SEQUENCE professeur_seq START WITH 1;
+create table professeur (
+	code_prof INTEGER NOT null,
+	nom_prof Varchar(50),
+	prenom_prof Varchar(50), 
+	date_naissance_prof VARCHAR(50),
+	email_prof Varchar(50),
+	mot_de_passe_prof Varchar(50),
+	num_aff INTEGER,
+	telephone_prof Varchar(50)
+);
+ALTER TABLE professeur ADD (CONSTRAINT code_pk_profess PRIMARY KEY (Code_prof));
 
+CREATE OR REPLACE TRIGGER professeur_auto_incre
+BEFORE INSERT ON professeur
+FOR EACH ROW
+
+BEGIN
+  SELECT professeur_seq.NEXTVAL
+  INTO   :new.code_prof
+  FROM   dual;
+END;
+/
 
 ///Creer la table responsable cir avec triigger d'autoincrementation
 --> AUTO INCREMENTATION pour la table responsable CIR 

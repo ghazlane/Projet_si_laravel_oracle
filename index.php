@@ -72,7 +72,10 @@ session_start();
 		$vue->genererPageSansTemplate();
 	}
 	//Professeur
-	
+	else if($action == "ajouterProfesseur"){
+		$vue = new Vue('ajouterProfesseur'); 
+		$vue->generer(array()); 
+	}
 	else if($action == "saveAjoutProfesseur"){
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);

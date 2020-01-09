@@ -61,7 +61,7 @@
       <hr class="sidebar-divider">
       <!-- Heading -->
       <div class="sidebar-heading">
-        Nouvellex demandes 
+        Nouvelles demandes 
       </div>
       <?php if($_SESSION['type'] =='GuichetUnique' ){  ?>
         <li class="nav-item" >

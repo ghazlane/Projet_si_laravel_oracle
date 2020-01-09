@@ -88,6 +88,8 @@
 							<a href="Views/loginChercheur.php">Chercheur</a>
 							<a href="Views/loginEtudiant.php">Etudiant</a>
 							<a href="Views/loginGuichetUnique">Responsable GU</a>
+							<a href="Views/loginResponsableCir">Responsable CIR</a>
+							<a href="Views/loginRespPoolCompetence">Responsable Pool de compétences</a>
 							<a href="Views/loginAdministrateur">Administrateur</a>
 							</div>
 							</div>
@@ -144,6 +146,8 @@
 							<a href="Views/registerChercheur.php">Chercheur</a>
 							<a href="Views/registerEtudiant.php">Etudiant</a>
 							<a href="index.php?action=ajouterGuichetUnique">Responsable GU</a>
+							<a href="index.php?action=ajouterResponsableCir">Responsable CIR</a>
+							<a href="index.php?action=ajouterResponsablePoolCompetences">Responsable Pool de compétences</a>
 							<a href="index.php?action=registerAdministrateur">Administrateur</a>
 							</div>
 						</div>
