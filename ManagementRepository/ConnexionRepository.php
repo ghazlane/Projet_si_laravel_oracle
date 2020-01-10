@@ -5,7 +5,10 @@
     public function getConnexion() {
   
 
+    	//$db_username = "scott";
+		//$db_password = "tiztaztoz";
     	$db_username = "system";
+
 		//$db_password = "btna";
         $db_password = "0628452383moha";
 

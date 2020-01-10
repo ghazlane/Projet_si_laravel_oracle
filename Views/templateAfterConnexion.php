@@ -93,11 +93,6 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Accueil</span></a> 
       </li>
-       <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
       <!-- Divider -->
       <hr class="sidebar-divider">
       <!-- Heading -->
@@ -216,6 +211,9 @@
         </div>
       </li>
 
+<?php if( $_SESSION['type']!='professeur' || $_SESSION['type']!='chercheur' || $_SESSION['type']!='etudiant' ) {?>
+
+
       <!-- Divider -->
 	  <hr class="sidebar-divider">
       <div class="sidebar-heading">
@@ -237,7 +235,7 @@
       <li class="nav-item">
         <a class="nav-link" href="index.php?action=listeTousDemande">
           <i class="fas fa-tasks"></i>
-          <span>Toutes les demande</span></a>
+          <span>Toutes les demandes</span></a>
       </li>
       <!-- Heading -->
       <!-- Divider -->
@@ -319,7 +317,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Professeur</h6>
             <a class="collapse-item" href="index.php?action=ajouterProfesseur">Ajouter compte </a>
-            <a class="collapse-item" href="index.html">Lister les professeurs</a>
+            <a class="collapse-item" href="index.php?action=listeProfesseur">Lister les professeurs</a>
           </div>
         </div>
 	  </li>
@@ -331,7 +329,7 @@
         <div id="collapseOne" class="collapse" aria-labelledby="headingTh14" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Chercheur</h6>
-            <a class="collapse-item" href="Views/registerChercheur">Ajouter compte </a>
+            <a class="collapse-item" href="index.php?action=ajouterChercheur">Ajouter compte </a>
             <a class="collapse-item" href="index.html">Lister les chercheurs</a>
           </div>
         </div>
@@ -349,6 +347,9 @@
           </div>
         </div>
       </li>
+
+<?php } ?>
+
 
       <hr class="sidebar-divider">
       <div class="sidebar-heading">

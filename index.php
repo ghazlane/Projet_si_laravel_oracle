@@ -19,9 +19,19 @@ session_start();
 		$controller = new ChercheurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "ajouterChercheur"){
+		$vue = new Vue('ajouterChercheur'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveRegisterChercheur"){
+		$controller = new ChercheurController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess');
 		$vue->genererHome(array());
 	}
-	else if($action == "listerChercheur"){
+	else if($action == "listeChercheur"){
 		$controller = new ChercheurController(); 
 		$vue = new Vue('listeChercheur'); 
 		$vue->generer(array("statement" => $controller->Lister()));
@@ -80,11 +90,18 @@ session_start();
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
+
+		$vue->genererHomeUser(); 
+	}
+	else if($action == "saveRegisterProfesseur"){
+		$controller = new ProfesseurController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->genererHome(); 
 		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
 		$vue->genererHome(array("alert" => $alert)); 
-
 	}
-	else if($action == "listerProfesseur"){
+	else if($action == "listeProfesseur"){
 		$controller = new ProfesseurController(); 
 		$vue = new Vue('listeProfesseur'); 
 		$vue->generer(array("statement" => $controller->Lister()));
@@ -124,7 +141,7 @@ session_start();
 				$_SESSION['code'] = $row['CODE_PROF'];
 				$_SESSION['nom'] = $row['NOM_PROF'];
 				$_SESSION['prenom'] = $row['PRENOM_PROF'];
-				$_SESSION['type'] = 'Professeur'; 
+				$_SESSION['type'] = 'professeur'; 
 				$vue = new Vue('accueil'); 
 				$vue->generer(array());
 				return;  

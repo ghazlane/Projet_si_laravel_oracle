@@ -839,6 +839,45 @@
           </div>
         </div>
       </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh13" aria-expanded="true" aria-controls="collapseTh13">
+          <i class="fas fa-street-view"></i>
+          <span>Professeur </span>
+        </a>
+        <div id="collapseTh13" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Professeur</h6>
+            <a class="collapse-item" href="index.php?action=ajouterProfesseur">Ajouter compte </a>
+            <a class="collapse-item" href="index.php?action=listeProfesseur">Lister les professeurs</a>
+          </div>
+        </div>
+	  </li>
+	  <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <i class="fas fa-street-view"></i>
+          <span>Chercheur </span>
+        </a>
+        <div id="collapseOne" class="collapse" aria-labelledby="headingTh14" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Chercheur</h6>
+            <a class="collapse-item" href="index.php?action=ajouterChercheur">Ajouter compte </a>
+            <a class="collapse-item" href="index.php?action=listeChercheur">Lister les chercheurs</a>
+          </div>
+        </div>
+	  </li>
+	  <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh2" aria-expanded="true" aria-controls="collapseTh2">
+          <i class="fas fa-street-view"></i>
+          <span>Etudiant </span>
+        </a>
+        <div id="collapseTh2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Etudiant</h6>
+            <a class="collapse-item" href="index.html">Ajouter compte </a>
+            <a class="collapse-item" href="index.html">Lister les Etudiants</a>
+          </div>
+        </div>
+      </li>
 
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
