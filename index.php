@@ -267,7 +267,7 @@ session_start();
 			session_unset ();
 			session_destroy ();
 			$vue = new Vue('listeTousDemande');
-		$vue->genererHome();
+		$vue->genererHome(array());
 	}
 
 	
