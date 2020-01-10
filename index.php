@@ -119,13 +119,12 @@ session_start();
 		$statement = $controller->Lister(); 
 		while ($row = $statement->fetch()) {
 			if(($_POST['email'] == $row['EMAIL_PROF']) && ($_POST['password'] == $row['MOT_DE_PASSE_PROF'])){
-				//session_start();
 				$_SESSION['code'] = $row['CODE_PROF'];
 				$_SESSION['nom'] = $row['NOM_PROF'];
 				$_SESSION['prenom'] = $row['PRENOM_PROF'];
 				$_SESSION['type'] = 'Professeur'; 
 				$vue = new Vue('accueil'); 
-				$vue->genererHomeUser();
+				$vue->generer(array());
 				return;  
 			}
 		}
@@ -678,4 +677,7 @@ session_start();
 	else if($action =="loginProfesseur"){
 		$vue = new Vue("loginProfesseur"); 
 		$vue->genererPageSansTemplate(); 
+	}else if($action == "accueilClient"){
+		$vue = new Vue("accueil"); 
+		$vue->generer(array()); 
 	}

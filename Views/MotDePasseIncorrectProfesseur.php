@@ -1,7 +1,4 @@
-<?php
-session_start();
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +25,7 @@ session_start();
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block " style="background-image: url('img/Universite-Mohammed-V-de-Rabat.jpg');"></div>
+              <div class="col-lg-6 d-none d-lg-block " style="background-image: url('css_js/img/Universite-Mohammed-V-de-Rabat.jpg');"></div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
@@ -40,7 +37,7 @@ session_start();
                     <h5 style="color: red;">Mot de passe ou username est incorrect</h5>
                   </div>
                   <br>
-                  <form class="user" method="post" action="../index.php?action=connexionProfesseur">
+                  <form class="user" method="post" action="index.php?action=connexionProfesseur">
            
                     <div class="form-group">
                       <input type="email" required="required" class="form-control form-control-user" id="email_prof" aria-describedby="emailHelp" placeholder="Email" name="email">
