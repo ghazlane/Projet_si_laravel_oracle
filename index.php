@@ -78,9 +78,12 @@ session_start();
 	}
 	else if($action == "saveAjoutProfesseur"){
 		$controller = new ProfesseurController(); 
-		$controller->Ajouter($_POST);
-		$vue = new Vue('createSuccess'); 
-		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
+		$rep=$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess');
+		if ($rep == true) 
+		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès !";
+	    else  
+	    $alert="Vous n'êtes pas un professeur ! La création du compte est annulée ! ";
 		$vue->genererHome(array("alert" => $alert)); 
 
 	}

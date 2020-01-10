@@ -302,9 +302,29 @@ alter table declaration_invention drop column RPS_PC;
 alter table declaration_brevet drop column RPS_PC;
 alter table declaration_brevet ADD (REPONSE_PC VARCHAR2(1000));
 
+///// base de donnnes des prof de um5
 
+create table professeurs_um5 (
+	code_prof INTEGER NOT null,
+	nom_prof Varchar(50),
+	prenom_prof Varchar(50), 
+	num_aff Varchar(50));
+ALTER TABLE professeurs_um5 ADD (CONSTRAINT code_pk_profes_um5 PRIMARY KEY (Code_prof));
 
+CREATE SEQUENCE professeurs_um5_seq START WITH 1;
 
+CREATE OR REPLACE TRIGGER professeurs_um5_auto_incre
+BEFORE INSERT ON professeurs_um5
+FOR EACH ROW
+
+BEGIN
+  SELECT professeurs_um5_seq.NEXTVAL
+  INTO   :new.code_prof
+  FROM   dual;
+END;
+/
+insert into professeurs_um5 (nom_prof,prenom_prof,num_aff) values ('nachit','btissam', 12345);
+insert into professeurs_um5 (nom_prof,prenom_prof,num_aff) values ('nachit','asmae', 12348);
 //adapter affichage 
 set pagesize 9999
 set linesize 9999
