@@ -300,7 +300,7 @@ alter table lancement_formation  add ( decision_finale VARCHAR(200));
 alter table declaration_invention ADD (REPONSE_PC VARCHAR2(1000));
 alter table declaration_invention drop column RPS_PC;
 alter table declaration_brevet drop column RPS_PC;
-alter table declaration_brevet ADD (REPONPSE_PC VARCHAR2(1000));
+alter table declaration_brevet ADD (REPONSE_PC VARCHAR2(1000));
 
 
 

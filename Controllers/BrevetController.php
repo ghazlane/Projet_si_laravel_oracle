@@ -30,8 +30,8 @@ class BrevetController {
         $this->brevetRepository->TransmettreBrevetCir($id); 
 	}
 
-	public function TransmettreBrevetPc($id){
-        $this->brevetRepository->TransmettreBrevetPc($id); 
+	public function TransmettreBrevetPc($id,$select){
+        $this->brevetRepository->TransmettreBrevetPc($id,$select); 
 	}
 
 	public function RefuserBrevetGu($id){
@@ -55,6 +55,10 @@ class BrevetController {
 
 	public function getInfoDemandeur($id_demande){
 		return $this->brevetRepository->getInfoDemandeur($id_demande); 
+	}
+
+	public function getInfoPc(){
+   		return $this->brevetRepository->getInfoPc(); 
 	}
 
 
@@ -84,6 +88,13 @@ class BrevetController {
 
 	public function setReponsePoolCompetences($id_dmd, $reponse){
 		$this->brevetRepository->setReponsePoolCompetences($id_dmd, $reponse); 
+	}
+
+	public function DemandePretPourCir(){
+		return $this->brevetRepository->DemandePretPourCir(); 
+	}
+	public function setDecisionFinaleCir($id, $decision){
+		$this->brevetRepository->setDecisionFinaleCir($id, $decision); 
 	}
 	
 }

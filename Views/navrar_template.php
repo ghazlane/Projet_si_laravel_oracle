@@ -203,7 +203,7 @@
             <h6 class="collapse-header">Déclaration d'invention</h6>
 
              <a class="collapse-item" href="index.php?action=inventionsAccepterParGU">Demande transmis par GU</a>
-             <a class="collapse-item" href="index.php?action=DemandePretPourCir">Demande prêt</a>
+             <a class="collapse-item" href="index.php?action=DemandePretPourCirInvention">Demande prêt</a>
             <a class="collapse-item" href="index.php?action=inventionsEncoursCIR">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Acceptee">Demandes traitées</a>
           </div>
@@ -219,6 +219,7 @@
             <h6 class="collapse-header">Déclaration de brevets</h6>
          
              <a class="collapse-item" href="index.php?action=brevetsAccepterParGU">Demande transmis par GU</a>
+             <a class="collapse-item" href="index.php?action=DemandePretPourCirBrevet">Demande prêt</a>
             <a class="collapse-item" href="index.php?action=brevetsEncoursCIR">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationBrevet&statut=Acceptee">Demandes traitées</a>
           </div>
@@ -234,6 +235,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Lancer une formation</h6>
              <a class="collapse-item" href="index.php?action=formationsAccepterParGU">Demande transmis par GU</a>
+             <a class="collapse-item" href="index.php?action=DemandePretPourCirFormation">Demande prêt</a>
             <a class="collapse-item" href="index.php?action=formationsEncoursCIR">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Acceptee">Demandes traitées</a>
           </div>

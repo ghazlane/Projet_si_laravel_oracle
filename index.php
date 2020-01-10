@@ -300,11 +300,11 @@ session_start();
 		$controller->TransmettreInventionPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array()); 
-	}else if($action == "DemandePretPourCir"){
+	}else if($action == "DemandePretPourCirInvention"){
 		$controller = new InventionController(); 
 		$vue = new Vue('listeDeclarationInvention'); 
 		$vue->generer(array("statement" => $controller->DemandePretPourCir()));
-	}else if($action == "decisionFinaleCir"){
+	}else if($action == "decisionFinaleCirInvention"){
 		$controller = new InventionController(); 
 		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
 		$vue  = new Vue('decisionFinaleBienFait'); 
@@ -363,7 +363,7 @@ session_start();
 		$row= $controller->Detail($id);
 		$prof = $controller->getInfoDemandeur($id);
 		$vue = new Vue('detailDeclarationBrevet'); 
-		$vue->generer(array( "row" => $row, "nomAndPrenomDemandeur"=> $prof)); 
+		$vue->generer(array( "row" => $row, "nomAndPrenomDemandeur"=> $prof ,"listePc" => $controller->getInfoPc())); 
 	}
     else if($action == "detailModifierBrevet"){
 		$controller = new BrevetController();
@@ -409,7 +409,7 @@ session_start();
 		$vue->generer(array()); 
 	}else if($action=="transmettreBrevetPc"){
 		$controller = new BrevetController();
-		$controller->TransmettreBrevetPc($_GET['id_dmd']); 
+		$controller->TransmettreBrevetPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array()); 
 	}else if($action == "RefuserBrevetGu"){
@@ -427,6 +427,17 @@ session_start();
 		$controller->AccepterBrevetGu($_GET['id_dmd']); 
 		$vue = new Vue('AccepterDeamnde'); 
 		$vue->generer(array());
+	}
+	else if($action == "DemandePretPourCirBrevet"){
+		$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$vue->generer(array("statement" => $controller->DemandePretPourCir()));
+	}
+	else if($action == "decisionFinaleCirBrevet"){
+		$controller = new BrevetController(); 
+		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue  = new Vue('decisionFinaleBienFait'); 
+		$vue->generer(array()); 
 	}
 
 
@@ -474,7 +485,7 @@ session_start();
 		$vue->generer(array());
 	}else if($action=="transmettreFormationPc"){
 		$controller = new FormationController();
-		$controller->TransmettreFormationPc($_GET['id_dmd']); 
+		$controller->TransmettreFormationPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array()); 
 	}else if($action == "RefuserFormationGu"){
@@ -505,6 +516,17 @@ session_start();
 		$vue = new Vue('AccepterDeamnde'); 
 		$vue->generer(array());
 	}
+	else if($action == "DemandePretPourCirFormation"){
+		$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("statement" => $controller->DemandePretPourCir()));
+	}
+	else if($action == "decisionFinaleCirFormation"){
+		$controller = new FormationController(); 
+		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue  = new Vue('decisionFinaleBienFait'); 
+		$vue->generer(array()); 
+	}
 
     //liste demandes
     else if($action == "listeDemandeEnCours"){
@@ -534,6 +556,7 @@ session_start();
 		$vue = new Vue('listeTousDemande');
 		$vue->genererHome();
 	}
+
 
 
 	//services & gestions
@@ -650,4 +673,5 @@ session_start();
 		$vue  = new Vue('RespPoolCompetenceBienFait'); 
 		$vue->generer(array()); 
 	}
+
 

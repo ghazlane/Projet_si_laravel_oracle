@@ -127,7 +127,7 @@
                   <p style="font-size: 22px ;"> La réponse du pool de compétences est la suivante : <span style="color : green; "><?php echo $row['REPONSE_PC']; ?></span></p>
                   <hr>
                    <div class="container">
-  <form method="post" action="index.php?action=decisionFinaleCir">
+  <form method="post" action="index.php?action=decisionFinaleCirInvention">
     <input type="hidden" name="id_dmd" value="<?php echo $row['ID_DMD'] ; ?>">
     <div class="form-group">
       <textarea required="required" name="reponseDemande"></textarea>
