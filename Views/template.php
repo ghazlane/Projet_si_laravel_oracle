@@ -99,7 +99,7 @@
 							<div class="dropdown-content" >
 							<a href="index.php?action=loginProfesseur">Professeur</a>
 							<a href="index.php?action=loginChercheur">Chercheur</a>
-							<a href="index.php?action=loginEtudiant">Etudiant</a>
+							<a href="Views/loginEtudiant">Etudiant</a>
 							<a href="index.php?action=loginGuichetUnique">Responsable GU</a>
 							<a href="index.php?action=loginResponsableCir">Responsable CIR</a>
 							<a href="index.php?action=loginRespPoolCompetence">Responsable Pool de compétences</a>

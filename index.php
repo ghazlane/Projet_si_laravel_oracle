@@ -6,6 +6,7 @@ session_start();
 	require_once ("Controllers/FormationController.php");
 	require_once ("Controllers/GuichetUniqueController.php");
 	require_once ("Controllers/ProfesseurController.php");
+	require_once ("Controllers/EtudiantController.php");
 	require_once ("Controllers/ChercheurController.php");
 	require_once ("Controllers/PoolCompetenceController.php");
 	require_once ("Controllers/RespPoolCompetenceController.php");
@@ -14,8 +15,76 @@ session_start();
 	
 	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
 	
+	//Etudiant
+
+	if($action == "ajouterEtudiant"){
+		$vue = new Vue('ajouterEtudiant'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveAjoutEtudiant"){
+		$controller = new EtudiantController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->genererHomeUser(); 
+	}
+	else if($action == "saveRegisterEtudiant"){
+		$controller = new EtudiantController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$alert="Félicitations ! Votre nouveau compte etudiant a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
+		$vue->genererHome(array("alert" => $alert));   
+	}
+	else if($action == "listeEtudiant"){
+		$controller = new EtudiantController(); 
+		$vue = new Vue('listeEtudiant'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	else if($action == "updateEtudiant"){
+		$controller = new EtudiantController();
+		$vue = new Vue('updateEtudiant'); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
+	}
+	else if($action =="saveUpdateEtudiant"){
+		$controller = new EtudiantController();
+		$resultat = $controller->Update($_POST); 
+		if($resultat == true){
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
+		}else {
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
+		}
+	}
+	else if($action == "detailEtudiant"){
+		$controller = new EtudiantController(); 
+		$vue = new Vue('detailsEtudiant');
+		$vue->generer(array("statement" => $controller->Details($_GET['id']))); 
+	}
+	else if($action == "deleteEtudiant"){
+		$controller = new EtudiantController(); 
+		$controller->Delete($_GET['id']); 
+		$vue = new Vue('listeEtudiant'); 
+		$vue->generer(array("statement" => $controller->Lister()));
+	}
+	else if($action == "connexionEtudiant"){
+		$controller = new EtudiantController(); 
+		$statement = $controller->Lister(); 
+		while ($row = $statement->fetch()) {
+			if(($_POST['email'] == $row['EMAIL_ET']) && ($_POST['password'] == $row['MOT_DE_PASSE_ET'])){
+				$_SESSION['code'] = $row['CODE_ET'];
+				$_SESSION['nom'] = $row['NOM_ET'];
+				$_SESSION['prenom'] = $row['PRENOM_ET'];
+				$_SESSION['type'] = 'etudiant'; 
+				$vue = new Vue('accueil'); 
+				$vue->generer(array());
+				return;  
+			}
+		}
+		$vue = new Vue('MotDePasseIncorrectEtudiant');
+		$vue->genererPageSansTemplate();
+	}
 	//Chercheur
-	if($action == "saveAjoutChercheur"){
+	else if($action == "saveAjoutChercheur"){
 		$controller = new ChercheurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
@@ -79,7 +148,7 @@ session_start();
 				return;  
 			}
 		}
-		$vue = new Vue('MotDePasseIncorrectGU');
+		$vue = new Vue('MotDePasseIncorrectCher');
 		$vue->genererPageSansTemplate();
 	}
 	//Professeur

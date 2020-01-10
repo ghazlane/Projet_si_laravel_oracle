@@ -330,7 +330,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Chercheur</h6>
             <a class="collapse-item" href="index.php?action=ajouterChercheur">Ajouter compte </a>
-            <a class="collapse-item" href="index.html">Lister les chercheurs</a>
+            <a class="collapse-item" href="index.php?action=listeChercheur">Lister les chercheurs</a>
           </div>
         </div>
 	  </li>
@@ -342,8 +342,8 @@
         <div id="collapseTh2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Etudiant</h6>
-            <a class="collapse-item" href="index.html">Ajouter compte </a>
-            <a class="collapse-item" href="index.html">Lister les Etudiants</a>
+            <a class="collapse-item" href="index.php?action=ajouterEtudiant">Ajouter compte </a>
+            <a class="collapse-item" href="index.php?action=listeEtudiant">Lister les Etudiants</a>
           </div>
         </div>
       </li>
