@@ -19,7 +19,7 @@ session_start();
 		$controller = new ChercheurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
-		$vue->genererHome(); 
+		$vue->genererHome(array());
 	}
 	else if($action == "listerChercheur"){
 		$controller = new ChercheurController(); 
@@ -80,7 +80,9 @@ session_start();
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
-		$vue->genererHome(); 
+		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
+		$vue->genererHome(array("alert" => $alert)); 
+
 	}
 	else if($action == "listerProfesseur"){
 		$controller = new ProfesseurController(); 
@@ -255,7 +257,7 @@ session_start();
 	
 	else if($action == 'Accueil'){
 		$vue = new Vue('accueil'); 
-		$vue->genererHome();
+		$vue->genererHome(array());
 		//$vue->generer(array()); 
 	}
 	//Invention 

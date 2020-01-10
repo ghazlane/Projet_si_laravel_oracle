@@ -60,11 +60,24 @@
 	</div>-->
 
 	<!-- Header section -->
+
 	<header class="header-section">
+ <?php if(!empty($alert)){  ?>
+	 	
+  <div class="card mb-4  border-bottom-success">
+                <div class="card-body">
+                 <center><strong><?php  echo $alert; ?></strong></center> 
+                </div>
+              </div>
+              <br><br>
+    <?php  }?>
 		<div class="container">
+
 			<div class="row">
 				<div class="col-lg-2 col-md-2">
+
 					<div class="site-logo">
+
 						<a class="sidebar-brand d-flex align-items-center justify-content-center" href="template.php">
 							  <div class="sidebar-brand-icon rotate-n-15">
 								<i class="fas fa-network-wired"><img src="css_js/icon.jpg" alt=""></i>
