@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +28,7 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block " style="background-image: url('css_js/img/Universite-Mohammed-V-de-Rabat.jpg');"></div>
+              <div class="col-lg-6 d-none d-lg-block " style="background-image: url('img/Universite-Mohammed-V-de-Rabat.jpg');"></div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
@@ -36,6 +37,7 @@
                 <?php }else {?> 
                     <h1 class="h4 text-gray-900 mb-4">Connexion Professeur</h1>
                     <?php } ?> 
+                    <h5 style="color: red;">Mot de passe ou username est incorrect</h5>
                   </div>
                   <br>
                   <form class="user" method="post" action="../index.php?action=connexionProfesseur">
