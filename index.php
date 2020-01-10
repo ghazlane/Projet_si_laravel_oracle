@@ -129,7 +129,7 @@ session_start();
 				return;  
 			}
 		}
-		$vue = new Vue('MotDePasseIncorrectGU');
+		$vue = new Vue('MotDePasseIncorrectProfesseur');
 		$vue->genererPageSansTemplate();
 	}
 
@@ -674,4 +674,8 @@ session_start();
 		$vue->generer(array()); 
 	}
 
-
+	//action home 
+	else if($action =="loginProfesseur"){
+		$vue = new Vue("loginProfesseur"); 
+		$vue->genererPageSansTemplate(); 
+	}
