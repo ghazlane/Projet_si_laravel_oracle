@@ -107,20 +107,6 @@
 							</div>
 				</div>
 
-				<div class="col-lg-9 col-md-9 ">
-				<div class="dropdown header-btn">
-						<button class="site-btn">S'inscrire</button>
-							<div class="dropdown-content" >
-							<a href="Views/registerProfesseur.php">Professeur</a>
-							<a href="Views/registerChercheur.php">Chercheur</a>
-							<a href="Views/registerEtudiant.php">Etudiant</a>
-							<a href="index.php?action=ajouterGuichetUnique">Responsable GU</a>
-							<a href="index.php?action=ajouterResponsableCir">Responsable CIR</a>
-							<a href="index.php?action=ajouterResponsablePoolCompetences">Responsable Pool de compétences</a>
-							<a href="index.php?action=registerAdministrateur">Administrateur</a>
-							</div>
-<<<<<<< HEAD
-
 
 				<div class="col-lg-9 col-md-9 ">
 				<div class="dropdown header-btn">
@@ -132,10 +118,6 @@
 							<a href="index.php?action=registerAdministrateur">Administrateur</a>
 							</div>
 							</div>
-=======
-						
-			</div>
->>>>>>> 24b5de0fc134846b2925d4011191a9bc47c0b5d3
 	<?php
       }else{ // Sinon s'il y a une session alors on verra les liens ci-dessous
     ?>				
@@ -157,11 +139,6 @@
 						<ul>
 							<li><a href="template..php">Accueil</a></li>
 							<li><a href="#">A propos de nous</a></li>
-<<<<<<< HEAD
-=======
-							<li><a href="">Nos Centres</a></li>
-							
->>>>>>> 24b5de0fc134846b2925d4011191a9bc47c0b5d3
 						</ul>
 					</nav>
 				</div>
@@ -178,10 +155,6 @@
 				<h2>Bienvenue à la cité d'innovation UM5R</h2>
 				<p>La cité où tout est possible <br/>Déposez votre demande et lancez vous vers l'avenir.</p>
 			</div>
-<<<<<<< HEAD
-=======
-	
->>>>>>> 24b5de0fc134846b2925d4011191a9bc47c0b5d3
 		</div>
 	</section>
 	<!-- Hero section end -->
