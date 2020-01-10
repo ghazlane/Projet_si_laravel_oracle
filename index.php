@@ -300,6 +300,15 @@ session_start();
 		$controller->TransmettreInventionPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array()); 
+	}else if($action == "DemandePretPourCir"){
+		$controller = new InventionController(); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->DemandePretPourCir()));
+	}else if($action == "decisionFinaleCir"){
+		$controller = new InventionController(); 
+		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue  = new Vue('decisionFinaleBienFait'); 
+		$vue->generer(array()); 
 	}else if($action == "RefuserDemandeGu"){
 		$controller = new InventionController();
 		$controller->RefuserInventionGu($_GET['id_dmd']); 

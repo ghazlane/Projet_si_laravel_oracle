@@ -4,13 +4,9 @@
     
     public function getConnexion() {
   
-<<<<<<< HEAD
-    	$db_username = "scott";
-		$db_password = "tiztaztoz";
-=======
+
     	$db_username = "system";
-		$db_password = "btna";
->>>>>>> 4ce445ad68e2177cc288cbfca59bbb53d45b8131
+		$db_password = "0628452383moha";
 
 		$db = "oci:dbname=//localhost:1521/ORCL";
    

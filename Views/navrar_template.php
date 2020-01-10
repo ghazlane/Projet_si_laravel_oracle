@@ -203,6 +203,7 @@
             <h6 class="collapse-header">Déclaration d'invention</h6>
 
              <a class="collapse-item" href="index.php?action=inventionsAccepterParGU">Demande transmis par GU</a>
+             <a class="collapse-item" href="index.php?action=DemandePretPourCir">Demande prêt</a>
             <a class="collapse-item" href="index.php?action=inventionsEncoursCIR">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Acceptee">Demandes traitées</a>
           </div>
