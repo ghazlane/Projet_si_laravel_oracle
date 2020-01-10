@@ -493,7 +493,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration d’invention</h6>
-            <a class="collapse-item" href="index.php?action=declarationInventionClient">Ajouter déclaration</a>
+            <a class="collapse-item" href="index.php?action=declarationInvention">Ajouter déclaration</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInventionClient">Lister déclaration</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInventionClientTraitees">Lister déclarations traitées</a>
           </div>

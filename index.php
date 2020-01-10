@@ -88,7 +88,11 @@ session_start();
 		$controller = new ChercheurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
+<<<<<<< HEAD
 		$vue->genererHome(array()); 
+=======
+		$vue->generer(array()); 
+>>>>>>> 3f8177c7c0765bd8f1f9af2519cee74534655cdb
 	}
 	else if($action == "ajouterChercheur"){
 		$vue = new Vue('ajouterChercheur'); 
@@ -99,7 +103,10 @@ session_start();
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess');
 		$vue->genererHome(array());
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3f8177c7c0765bd8f1f9af2519cee74534655cdb
 	}
 	else if($action == "listeChercheur"){
 		$controller = new ChercheurController(); 
@@ -160,14 +167,24 @@ session_start();
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3f8177c7c0765bd8f1f9af2519cee74534655cdb
 		$vue->genererHomeUser(); 
 	}
 	else if($action == "saveRegisterProfesseur"){
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
+<<<<<<< HEAD
 		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
 		$vue->genererHome(array("alert" => $alert));   
+=======
+		$vue->genererHome(); 
+		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
+		$vue->genererHome(array("alert" => $alert)); 
+>>>>>>> 3f8177c7c0765bd8f1f9af2519cee74534655cdb
 	}
 	else if($action == "listeProfesseur"){
 		$controller = new ProfesseurController(); 
