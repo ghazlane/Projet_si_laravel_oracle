@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Inscription professeur</title>
+  <title>Inscription étudiant</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -26,41 +26,41 @@
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image" style="background-image: url('css_js/img/professor.jpg');"></div>
+          <div class="col-lg-5 d-none d-lg-block bg-register-image" style="background-image: url('css_js/img/etudiant.jpg');"></div>
           <div class="col-lg-7">
             <div class="p-5">
-            <form method="post" action="../index.php?action=saveRegisterProfesseur" class="user">
+            <form method="post" action="../index.php?action=saveRegisterEtudiant" class="user">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Créer un compte professeur !</h1>
+                <h1 class="h4 text-gray-900 mb-4">Créer un compte etudiant !</h1>
               </div>             
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text"required="required" class="form-control form-control-user" name="nom_prof" placeholder="Nom">
+                    <input type="text"required="required" class="form-control form-control-user" name="nom_et" placeholder="Nom">
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" required="required" class="form-control form-control-user" name="prenom_prof" placeholder="Prénom">
+                    <input type="text" required="required" class="form-control form-control-user" name="prenom_et" placeholder="Prénom">
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="date"  class="form-control form-control-user" name="date_naissance_prof" placeholder="Date de naissance">
+                    <input type="date"  class="form-control form-control-user" name="date_naissance_et" placeholder="Date de naissance">
                   </div>
                   <div class="col-sm-6">
-                  <input type="text"  class="form-control form-control-user" name="telephone_prof" placeholder="Téléphone">
+                  <input type="text"  class="form-control form-control-user" name="telephone_et" placeholder="Téléphone">
                   </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" required="required" class="form-control form-control-user" name="num_aff" placeholder="Numéro d'affiliation">
+                    <input type="text" required="required" class="form-control form-control-user" name="etablissement" placeholder="Etablissement">
                 </div>
                 <div class="form-group">
-                  <input type="email" required="required" class="form-control form-control-user" name="email_prof" placeholder="E-mail">
+                  <input type="email" required="required" class="form-control form-control-user" name="email_et" placeholder="E-mail">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" required="required" class="form-control form-control-user" name="mot_de_passe_prof" placeholder="Mot de passe">
+                    <input type="password" required="required" class="form-control form-control-user" name="mot_de_passe_et" placeholder="Mot de passe">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" required="required" class="form-control form-control-user" name="mot_de_passe_prof" placeholder="Confirmer le mot de passe">
+                    <input type="password" required="required" class="form-control form-control-user" name="mot_de_passe_et" placeholder="Confirmer le mot de passe">
                   </div>
                 </div>
                 <button type="Submit" class="btn btn-primary btn-user btn-block">

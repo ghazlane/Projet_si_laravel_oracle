@@ -12,7 +12,6 @@
                       <th>Nom</th>
                       <th>Prénom</th>
                       <th>Numéro d'affiliation</th>
-                      <th>Date naissance</th>
                       <th>Email</th>
                       <th>Téléphone</th>
                       <th>Outils</th>
@@ -23,7 +22,6 @@
                       <th>Nom</th>
                       <th>Prénom</th>
                       <th>Numéro d'affiliation</th>
-                      <th>Date naissance</th>
                       <th>Email</th>
                       <th>Téléphone</th>
                       <th>Outils</th>
@@ -34,7 +32,6 @@
                       <tr>
                           <td><?php echo $row['NOM_PROF']  ?></td>
                           <td><?php echo $row['PRENOM_PROF']  ?></td>
-                          <td><?php echo $row['DATE_NAISSANCE_PROF']  ?></td>
                           <td><?php echo $row['NUM_AFF']  ?></td>
                           <td><?php echo $row['EMAIL_PROF']  ?></td>
                           <td><?php echo $row['TELEPHONE_PROF']  ?></td>

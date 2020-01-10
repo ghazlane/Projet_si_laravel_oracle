@@ -1,6 +1,6 @@
 <div class="container-fluid" style="font-size: 16px; ">
           <br>
-          <h1 class="h3 mb-2 text-gray-800">Liste des chercheurs</h1>
+          <h1 class="h3 mb-2 text-gray-800">Liste des étudiants</h1>
           <br>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -11,7 +11,7 @@
                     <tr>
                       <th>Nom</th>
                       <th>Prénom</th>
-                      <th>Thème de recherche</th>
+                      <th>Etablissement</th>
                       <th>Email</th>
                       <th>Téléphone</th>
                       <th>Outils</th>
@@ -21,7 +21,7 @@
                     <tr>
                       <th>Nom</th>
                       <th>Prénom</th>
-                      <th>Thème de recherche</th>
+                      <th>Etablissement</th>
                       <th>Email</th>
                       <th>Téléphone</th>
                       <th>Outils</th>
@@ -30,22 +30,22 @@
                   <tbody style="color: black;">
                     <?php while($row = $statement->fetch()) { ?>
                       <tr>
-                          <td><?php echo $row['NOM_CHER']  ?></td>
-                          <td><?php echo $row['PRENOM_CHER']  ?></td>
-                          <td><?php echo $row['THEME_RECHERCHE']  ?></td>
-                          <td><?php echo $row['EMAIL_CHER']  ?></td>
-                          <td><?php echo $row['TELEPHONE_CHER']  ?></td>
+                          <td><?php echo $row['NOM_ET']  ?></td>
+                          <td><?php echo $row['PRENOM_ET']  ?></td>
+                          <td><?php echo $row['ETABLISSEMENT']  ?></td>
+                          <td><?php echo $row['EMAIL_ET']  ?></td>
+                          <td><?php echo $row['TELEPHONE_ET']  ?></td>
                           <td>
-                              <?php echo '<a href="index.php?action=detailChercheur&&id='.$row['CODE_CHER'].'" class="btn btn-info btn-circle btn-sm" title="Ouvrir">'; ?>
+                              <?php echo '<a href="index.php?action=detailEtudiant&&id='.$row['CODE_ET'].'" class="btn btn-info btn-circle btn-sm" title="Ouvrir">'; ?>
                               
                                 <i class="far fa-folder-open"></i>
                               </a>
-                              <?php echo '<a href="index.php?action=updateChercheur&&id='.$row['CODE_CHER'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
+                              <?php echo '<a href="index.php?action=updateEtudiant&&id='.$row['CODE_ET'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
                               
                                 <i class="fas fa-sync"></i>
                               </a>
                               <?php
-                                echo '<a href="index.php?action=deleteChercheur&&id='.$row['CODE_CHER'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
+                                echo '<a href="index.php?action=deleteEtudiant&&id='.$row['CODE_ET'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
                               ?>
                                 <i class="fas fa-trash"></i>
                               </a>

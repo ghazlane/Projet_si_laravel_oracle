@@ -7,24 +7,18 @@
               <div class="w3-content w3-display-container">
               
               <div class="w3-display-container mySlides">
-                <img src="s1.jpg" style="width:100%; height: 460px">
-                <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-                  Recherche
-                </div>
+                <img src="css_js/img/im1.jpg" style="width:100%; height: 460px">
+                
               </div>
              
               <div class="w3-display-container mySlides">
-                <img src="s2.jpg" style="width:100% ; height: 460px">
-                <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-                  Innovation
-                </div>
+                <img src="css_js/img/im2.jpg" style="width:100% ; height: 460px">
+                
               </div>
               
               <div class="w3-display-container mySlides">
-                <img src="inno3.jpg" style="width:100% ; height: 460px">
-                <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-                  Challenge
-                </div>
+                <img src="css_js/img/im3.jpg" style="width:100% ; height: 460px">
+                
               </div>
 
               <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>

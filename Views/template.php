@@ -93,15 +93,15 @@
 					</div>
 				</div>
 	<?php
-      if(!isset($_SESSION['code_prof'])){ // Si on ne détecte pas de session alors on verra les liens ci-dessous
+      if(!isset($_SESSION['code'])){ // Si on ne détecte pas de session alors on verra les liens ci-dessous
     ?>			
 				<div class="col-lg-10 col-md-10 ">
 				<div class="dropdown header-btn">
-						<button class="site-btn ">Login</button>
+						<button class="site-btn ">Se connecter</button>
 							<div class="dropdown-content" >
 							<a href="index.php?action=loginProfesseur">Professeur</a>
 							<a href="index.php?action=loginChercheur">Chercheur</a>
-							<a href="index.php?action=loginEtudiant">Etudiant</a>
+							<a href="Views/loginEtudiant">Etudiant</a>
 							<a href="index.php?action=loginGuichetUnique">Responsable GU</a>
 							<a href="index.php?action=loginResponsableCir">Responsable CIR</a>
 							<a href="index.php?action=loginRespPoolCompetence">Responsable Pool de compétences</a>
@@ -109,29 +109,26 @@
 							</div>
 				</div>
 
+
 				<div class="col-lg-9 col-md-9 ">
 				<div class="dropdown header-btn">
-						<button class="site-btn">S'inscrire</button>
+						<button class="site-btn ">S'inscrire</button>
 							<div class="dropdown-content" >
 							<a href="Views/registerProfesseur.php">Professeur</a>
 							<a href="Views/registerChercheur.php">Chercheur</a>
 							<a href="Views/registerEtudiant.php">Etudiant</a>
-							<a href="index.php?action=ajouterGuichetUnique">Responsable GU</a>
-							<a href="index.php?action=ajouterResponsableCir">Responsable CIR</a>
-							<a href="index.php?action=ajouterResponsablePoolCompetences">Responsable Pool de compétences</a>
 							<a href="index.php?action=registerAdministrateur">Administrateur</a>
 							</div>
-						
-			</div>
+							</div>
 	<?php
       }else{ // Sinon s'il y a une session alors on verra les liens ci-dessous
     ?>				
 				<div class="col-lg-9 col-md-9 ">
 					<div class="dropdown header-btn">
-						<button class="site-btn "><?php echo $row['NOM_PROF'].' '.$row['PRENOM_PROF']  ?> </button>-->
+						<button class="site-btn "><?php echo $_SESSION['nom'].' '.$_SESSION['prenom']  ?> </button>-->
 							<div class="dropdown-content" >
 							<a href="profilProfesseur.php">Voir le profil</a>
-							<a href="template.php">Se déconnecter</a>
+							<a href="index.php?action=deconnexion">Se déconnecter</a>
 							</div>
 							</div>			
 				
@@ -140,12 +137,10 @@
     ?>
 
 									
-					<nav class="main-menu">
+					<nav class="main-menu" >
 						<ul>
 							<li><a href="template..php">Accueil</a></li>
 							<li><a href="#">A propos de nous</a></li>
-							<li><a href="">Nos Centres</a></li>
-							
 						</ul>
 					</nav>
 				</div>
@@ -156,13 +151,12 @@
 
 
 	<!-- Hero section -->
-	<section class="hero-section set-bg" data-setbg="css_js/img/bg.jpg">
-		<div class="container">
+	<section class="hero-section set-bg" data-setbg="css_js/img/bg.jpg" style="height:700px;">
+		<div class="container" >
 			<div class="hero-text text-white ">
 				<h2>Bienvenue à la cité d'innovation UM5R</h2>
 				<p>La cité où tout est possible <br/>Déposez votre demande et lancez vous vers l'avenir.</p>
 			</div>
-	
 		</div>
 	</section>
 	<!-- Hero section end -->

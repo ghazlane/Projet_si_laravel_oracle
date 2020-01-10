@@ -1,33 +1,33 @@
 <div class="container">
-  <form method="post" action="index.php?action=saveAjoutProfesseur">
-    <h1>Ajouter un professeur</h1>
+  <form method="post" action="index.php?action=saveAjoutChercheur">
+    <h1>Ajouter un chercheur</h1>
 
     <div class="form-group">
-      <input type="text" required="required" name="nom_prof" />
+      <input type="text" required="required" name="nom_cher" />
       <label for="input" class="control-label" style="left: 0;">Nom</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="text" required="required" name="prenom_prof" />
+      <input type="text" required="required" name="prenom_cher" />
       <label for="input" class="control-label" style="left: 0;">Prenom</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="date"  name="date_naissance_prof" />
+      <input type="date"  name="date_naissance_cher" />
       <label for="input" class="control-label" style="left: 0;">Date naissance</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="number" required="required" name="telephone_prof" />
+      <input type="number" required="required" name="telephone_cher" />
       <label for="input" class="control-label" style="left: 0;">Numéro de téléphone</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="text" required="required" name="num_aff" />
-      <label for="input" class="control-label" style="left: 0;">Numéro d'affiliation</label><i class="bar"></i>
+      <input type="text" required="required" name="theme_recherche" />
+      <label for="input" class="control-label" style="left: 0;">Thème de recherche</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="email" required="required" name="email_prof" />
+      <input type="email" required="required" name="email_cher" />
       <label for="input" class="control-label" style="left: 0;">Email</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="password" required="required" name="mot_de_passe_prof" />
+      <input type="password" required="required" name="mot_de_passe_cher" />
       <label for="input" class="control-label" style="left: 0;">Mot de passe</label><i class="bar"></i>
     </div>
     <div class="form-group">

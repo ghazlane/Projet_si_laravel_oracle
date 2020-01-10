@@ -17,8 +17,8 @@ class InventionController {
 	//actions
 	public funCtion Ajouter($inputs){
 		$this->invention = new Invention($inputs['classement'],$inputs['objetInvention'],$inputs['categorieInvention'],$inputs['descriptionInvention'],$inputs['descriptionDeclaration']); 
-		$this->invention->setIdDemandeur('ABC123'); 
-		$this->invention->setTypeDemandeur("professeur");
+		$this->invention->setIdDemandeur($_SESSION['code']); 
+		$this->invention->setTypeDemandeur($_SESSION['type']);
 		$this->invention->setStatusDemande("En attente"); 
 		$this->invention->setDateDemande(date("j-n-Y")); 
 		$this->inventionRepository->Ajouter($this->invention); 

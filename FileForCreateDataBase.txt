@@ -1,25 +1,25 @@
 ﻿//////**** fichier contier les tables cr�er ******///////
 //Etudiant
-CREATE SEQUENCE professeur_seq START WITH 1;
-create table professeur (
-	code_prof INTEGER NOT null,
-	nom_prof Varchar(50),
-	prenom_prof Varchar(50), 
-	date_naissance_prof VARCHAR(50),
-	email_prof Varchar(50),
-	mot_de_passe_prof Varchar(50),
-	num_aff INTEGER,
-	telephone_prof Varchar(50)
+CREATE SEQUENCE etudiant_seq START WITH 1;
+create table etudiant (
+	code_et INTEGER NOT null,
+	nom_et Varchar(50),
+	prenom_et Varchar(50), 
+	date_naissance_et VARCHAR(50),
+	email_et Varchar(50),
+	mot_de_passe_et Varchar(50),
+	etablissement Varchar(50),
+	telephone_et Varchar(50)
 );
-ALTER TABLE professeur ADD (CONSTRAINT code_pk_profess PRIMARY KEY (Code_prof));
+ALTER TABLE etudiant ADD (CONSTRAINT code_pk_et PRIMARY KEY (Code_et));
 
-CREATE OR REPLACE TRIGGER professeur_auto_incre
-BEFORE INSERT ON professeur
+CREATE OR REPLACE TRIGGER etudiant_auto_incre
+BEFORE INSERT ON etudiant
 FOR EACH ROW
 
 BEGIN
-  SELECT professeur_seq.NEXTVAL
-  INTO   :new.code_prof
+  SELECT etudiant_seq.NEXTVAL
+  INTO   :new.code_et
   FROM   dual;
 END;
 /
