@@ -63,7 +63,7 @@
 	<header class="header-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-3">
+				<div class="col-lg-2 col-md-2">
 					<div class="site-logo">
 						<a class="sidebar-brand d-flex align-items-center justify-content-center" href="template.php">
 							  <div class="sidebar-brand-icon rotate-n-15">
@@ -80,7 +80,7 @@
 	<?php
       if(!isset($_SESSION['code_prof'])){ // Si on ne détecte pas de session alors on verra les liens ci-dessous
     ?>			
-				<div class="col-lg-9 col-md-9 ">
+				<div class="col-lg-10 col-md-10 ">
 				<div class="dropdown header-btn">
 						<button class="site-btn ">Login</button>
 							<div class="dropdown-content" >
@@ -92,7 +92,22 @@
 							<a href="Views/loginRespPoolCompetence">Responsable Pool de compétences</a>
 							<a href="Views/loginAdministrateur">Administrateur</a>
 							</div>
+				</div>
+
+				<div class="col-lg-9 col-md-9 ">
+				<div class="dropdown header-btn">
+						<button class="site-btn">S'inscrire</button>
+							<div class="dropdown-content" >
+							<a href="Views/registerProfesseur.php">Professeur</a>
+							<a href="Views/registerChercheur.php">Chercheur</a>
+							<a href="Views/registerEtudiant.php">Etudiant</a>
+							<a href="index.php?action=ajouterGuichetUnique">Responsable GU</a>
+							<a href="index.php?action=ajouterResponsableCir">Responsable CIR</a>
+							<a href="index.php?action=ajouterResponsablePoolCompetences">Responsable Pool de compétences</a>
+							<a href="index.php?action=registerAdministrateur">Administrateur</a>
 							</div>
+						
+			</div>
 	<?php
       }else{ // Sinon s'il y a une session alors on verra les liens ci-dessous
     ?>				
@@ -108,13 +123,14 @@
 	<?php
       }
     ?>
+
 									
 					<nav class="main-menu">
 						<ul>
 							<li><a href="template..php">Accueil</a></li>
 							<li><a href="#">A propos de nous</a></li>
 							<li><a href="">Nos Centres</a></li>
-							<li><a href="">Contact</a></li>
+							
 						</ul>
 					</nav>
 				</div>
@@ -131,33 +147,7 @@
 				<h2>Bienvenue à la cité d'innovation UM5R</h2>
 				<p>La cité où tout est possible <br/>Déposez votre demande et lancez vous vers l'avenir.</p>
 			</div>
-	<?php
-      if(!isset($_SESSION['code_prof'])){ // Si on ne détecte pas de session alors on verra les liens ci-dessous
-    ?>
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					<form class="intro-newslatter">
-						<input type="text" placeholder="Nom">
-						<input type="text" class="last-s" placeholder="E-mail">
-						<div class="dropdown">
-						<button class="site-btn">S'inscrire</button>
-							<div class="dropdown-content" >
-							<a href="Views/registerProfesseur.php">Professeur</a>
-							<a href="Views/registerChercheur.php">Chercheur</a>
-							<a href="Views/registerEtudiant.php">Etudiant</a>
-							<a href="index.php?action=ajouterGuichetUnique">Responsable GU</a>
-							<a href="index.php?action=ajouterResponsableCir">Responsable CIR</a>
-							<a href="index.php?action=ajouterResponsablePoolCompetences">Responsable Pool de compétences</a>
-							<a href="index.php?action=registerAdministrateur">Administrateur</a>
-							</div>
-						</div>
-						
-					</form>
-				</div>
-			</div>
-	<?php
-      }
-    ?>
+	
 		</div>
 	</section>
 	<!-- Hero section end -->
