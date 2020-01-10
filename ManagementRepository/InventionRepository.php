@@ -31,10 +31,25 @@ public function TransmettreInventionCir($id){
 }
 
 public function TransmettreInventionPc($id,$select){
-            $Rq = "update declaration_invention set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' ,RESP_PC =".$select['respPC']." where id_dmd =".$id;
+            $Rq = "update declaration_invention set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' ,ID_PC =".$select['respPC']." where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
+}
+
+public function DemandePretPourCir(){
+    $Rq = "select * from  declaration_invention where REPONSE_PC IS NOT NULL and DECISION_FINALE IS NULL and STATUT_DMD = 'En cours' ";
+           $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+}
+
+public function setDecisionFinaleCir($id, $reponse){
+     $Rq = "update declaration_invention set DECISION_FINALE = '".$reponse."' where id_dmd = ".$id; 
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");   
 }
 
 public function RefuserInventionGu($id){

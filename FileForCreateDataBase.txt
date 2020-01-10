@@ -126,32 +126,19 @@ END;
 
 insert into administratif values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'ABCGDHG14587', '0655681244');
 insert into professeur values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'ABCGDHG14587', '0655681244');
-
 //table Chercheur
-CREATE SEQUENCE chercheur_seq START WITH 1;
 create table chercheur (
 	code_cher Varchar(50) not null, 
-	nom_cher Varchar(50), 
-	prenom_cher Varchar(50),
-	date_naissance_cher VARCHAR(50),
+	Nom_cher Varchar(50), 
+	Prenom_cher Varchar(50),
+	Date_naissance_cher VARCHAR(50),
 	email_cher Varchar(50),
-	mot_de_passe_cher Varchar(50), 
-	theme_recherche Varchar(50),
-	telephone_cher Varchar(50)
+	Mot_de_passe_cher Varchar(50), 
+	Theme_recherche Varchar(50),
+	Telephone_cher Varchar(50)
 );
 
 ALTER TABLE chercheur ADD (CONSTRAINT code_pk_cherche PRIMARY KEY (Code_cher));
-
-CREATE OR REPLACE TRIGGER chercheur_auto_incre
-BEFORE INSERT ON chercheur
-FOR EACH ROW
-
-BEGIN
-  SELECT chercheur_seq.NEXTVAL
-  INTO   :new.code_cher
-  FROM   dual;
-END;
-/
 insert into chercheur values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'Theme de la recherche', '0655681244');
 
 //responsable pc
@@ -312,6 +299,12 @@ alter table lancement_formation  add ( decision_finale VARCHAR(200));
 
 alter table declaration_invention ADD (REPONSE_PC VARCHAR2(1000));
 alter table declaration_invention drop column RPS_PC;
+alter table declaration_brevet drop column RPS_PC;
+alter table declaration_brevet ADD (REPONSE_PC VARCHAR2(1000));
+
+
+
+
 //adapter affichage 
 set pagesize 9999
 set linesize 9999

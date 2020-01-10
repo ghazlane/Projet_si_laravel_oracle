@@ -22,19 +22,56 @@
   <link href="css_js/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="css_js/formularstyle.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+.mySlides {
+  display:none;
+  height: 470px;
+  
+  border: 5px solid rgb(152, 197, 252);
+}
+.hero-image {
+  
+  background-color: #cccccc;
+  background-image: linear-gradient(rgb(184, 209, 236), rgb(148, 194, 148), rgb(189, 175, 221));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover ;
+  position: relative;
+}
+
+.box {
+  background-color: white;
+  border: 9px solid rgb(96, 151, 165);
+  margin: 10px;
+  height : 480px;
+  
+}
+
+.hero-text h2 {
+  font-size: 55px;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 80px;
+  text-shadow: 3px 2px rgb(162, 188, 247);
+  color:rgb(5, 49, 100);
+  font-family:  'Arial', fantasy   ;
+  }
+  
+
+
+</style>
 
 </head>
 
 <body id="page-top">
 
-  <!-- Page Wrapper -->
-  <div id="wrapper">
 
-    <!-- Sidebar -->
-    <!--style="line-height: 0.4em; "--> 
+  <div id="wrapper">
+ 
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" >
 
-      <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-network-wired"></i>
@@ -42,10 +79,8 @@
         <div class="sidebar-brand-text mx-3" style="font-size: 24px;">IVON</div>
       </a>
 
-      <!-- Divider -->
       <hr class="sidebar-divider my-0">
       <?php if($_SESSION['type'] =='GuichetUnique' or $_SESSION['type'] =='ResponsableCir'){?>
-      <!-- Nav Item - Dashboard -->
       <li class="nav-item" >
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -203,6 +238,7 @@
             <h6 class="collapse-header">Déclaration d'invention</h6>
 
              <a class="collapse-item" href="index.php?action=inventionsAccepterParGU">Demande transmis par GU</a>
+             <a class="collapse-item" href="index.php?action=DemandePretPourCirInvention">Demande prêt</a>
             <a class="collapse-item" href="index.php?action=inventionsEncoursCIR">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationInvention&statut=Acceptee">Demandes traitées</a>
           </div>
@@ -218,6 +254,7 @@
             <h6 class="collapse-header">Déclaration de brevets</h6>
          
              <a class="collapse-item" href="index.php?action=brevetsAccepterParGU">Demande transmis par GU</a>
+             <a class="collapse-item" href="index.php?action=DemandePretPourCirBrevet">Demande prêt</a>
             <a class="collapse-item" href="index.php?action=brevetsEncoursCIR">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationBrevet&statut=Acceptee">Demandes traitées</a>
           </div>
@@ -233,6 +270,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Lancer une formation</h6>
              <a class="collapse-item" href="index.php?action=formationsAccepterParGU">Demande transmis par GU</a>
+             <a class="collapse-item" href="index.php?action=DemandePretPourCirFormation">Demande prêt</a>
             <a class="collapse-item" href="index.php?action=formationsEncoursCIR">Demandes en cours</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Acceptee">Demandes traitées</a>
           </div>
@@ -439,14 +477,164 @@
 
 
 
+<?php if($_SESSION['type'] == 'Professeur') {?>
+  <li class="nav-item" >
+        <a class="nav-link" href="index.php?action=accueilClient">
+          <i class="fas fa-home"></i>
+          <span>Accueil</span></a> 
+      </li>
+      <hr  class="sidebar-divider">
 
+  <li class="nav-item" >
+        <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-asterisk"></i>
+          <span>Déclaration d’invention</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Déclaration d’invention</h6>
+            <a class="collapse-item" href="index.php?action=declarationInventionClient">Ajouter déclaration</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInventionClient">Lister déclaration</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationInventionClientTraitees">Lister déclarations traitées</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+          <i class="far fa-plus-square"></i>
+          <span>Déclaration de brevets</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Déclaration de brevets</h6>
+            <a class="collapse-item" href="index.php?action=declarationClient">Ajouter Brevet</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationBrevetClient">Lister déclaration</a><a class="collapse-item" href="index.php?action=listeDeclarationBrevetClientTraitees">Lister déclarations traitées</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseeight" aria-expanded="true" aria-controls="collapseeight">
+          <i class="fas fa-receipt"></i>
+          <span>Lancer une formation</span>
+        </a>
+        <div id="collapseeight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Lancer une formation</h6>
+            <a class="collapse-item" href="index.php?action=declarationFormationClient">Ajouter demande </a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationFormationClient">Lister demande</a>
+            <a class="collapse-item" href="index.php?action=listeDeclarationFormationClientTraitees">Lister demandes traitées</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item" >
+        <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefoor" aria-expanded="true" aria-controls="collapsefoor">
+          <i class="fas fa-star"></i>
+          <span>Lancement de startups</span>
+        </a>
+        <div id="collapsefoor" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Lancement de startups</h6>
+            <a class="collapse-item" href="index.html">Ajouter demande</a>
+            <a class="collapse-item" href="index.html">Lister demande</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefive" aria-expanded="true" aria-controls="collapsefive">
+          <i class="fab fa-trello"></i>
+          <span>Demande de prototypage</span>
+        </a>
+        <div id="collapsefive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Demande de prototypage</h6>
+            <a class="collapse-item" href="index.html">Ajouter demande</a>
+            <a class="collapse-item" href="index.html">Lister demande</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesex" aria-expanded="true" aria-controls="collapsesex">
+          <i class="far fa-calendar-alt"></i>
+          <span>Organiser un événement</span>
+        </a>
+        <div id="collapsesex" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Organiser un événement</h6>
+            <a class="collapse-item" href="index.html">Ajouter demande</a>
+            <a class="collapse-item" href="index.html">Lister demande</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseseven" aria-expanded="true" aria-controls="collapseseven">
+          <i class="fas fa-cubes"></i>
+          <span>Cluster technologique</span>
+        </a>
+        <div id="collapseseven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Cluster technologique</h6>
+            <a class="collapse-item" href="index.html">Demande d'adhésion</a>
+            <a class="collapse-item" href="index.html">Lister demande</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
+          <i class="fas fa-funnel-dollar"></i>
+          <span>Financement d'action</span>
+        </a>
+        <div id="collapseNine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header" >Financement d'action</h6>
+            <a class="collapse-item" href="index.html">Ajouter demande </a>
+            <a class="collapse-item" href="index.html">Lister demande</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Demandes
+      </div>
+      <li class="nav-item" >
+        <a class="nav-link" href="index.php?action=listeDemandeEnCours">
+          <i class="fas fa-spinner"></i>
+          <span>Demandes en cours</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?action=listeDemandeTraite">
+          <i class="fas fa-list-ul"></i>
+          <span>Demandes traitées</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?action=listeTousDemande">
+          <i class="fas fa-tasks"></i>
+          <span>Toutes les demande</span></a>
+      </li>
+      
+     
+      
+      
+      
+      
+
+      
+      
+<?php }?>
 
 
 
 
 <!-- Ancienne artie --> 
       <!-- Nav Item - Pages Collapse Menu -->
-      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence") {?>
+      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'Professeur') {?>
       <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>

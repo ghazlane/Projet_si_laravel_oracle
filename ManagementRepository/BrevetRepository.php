@@ -28,13 +28,26 @@
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
-public function TransmettreBrevetPc($id){
-            $Rq = "update declaration_brevet set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' where id_dmd =".$id;
+public function TransmettreBrevetPc($id,$select){
+            $Rq = "update declaration_brevet set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' ,ID_PC =".$select['respPC']." where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
 
+public function DemandePretPourCir(){
+    $Rq = "select * from  declaration_brevet where REPONSE_PC IS NOT NULL and DECISION_FINALE IS NULL and STATUT_DMD = 'En cours' ";
+           $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+}
+public function setDecisionFinaleCir($id, $reponse){
+     $Rq = "update declaration_brevet set DECISION_FINALE = '".$reponse."' where id_dmd = ".$id; 
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");   
+}
 public function RefuserBrevetGu($id){
             $Rq = "update declaration_brevet set STATUT_DMD='Non accepter' where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
@@ -156,6 +169,17 @@ public function setReponsePoolCompetences($id_dmd, $reponse){
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
+
+
+public function getInfoPc(){
+    $Rq= "select * from pool_Competences ";  
+
+    $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+}
+
 
 
 }

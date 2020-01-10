@@ -26,11 +26,25 @@ public function TransmettreFormationCir($id){
             $connexion->exec("commit");
 }
 
-public function TransmettreFormationPc($id){
-            $Rq = "update lancement_formation set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' where id_dmd =".$id;
+public function TransmettreFormationPc($id,$select){
+             $Rq = "update lancement_formation set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' ,ID_PC =".$select['respPC']." where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
+}
+
+public function DemandePretPourCir(){
+    $Rq = "select * from  lancement_formation where REPONSE_PC IS NOT NULL and DECISION_FINALE IS NULL and STATUT_DMD = 'En cours' ";
+           $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+}
+public function setDecisionFinaleCir($id, $reponse){
+     $Rq = "update lancement_formation set DECISION_FINALE = '".$reponse."' where id_dmd = ".$id; 
+            $connexion = $this->getConnexion(); 
+            $connexion->exec($Rq);
+            $connexion->exec("commit");   
 }
 
 public function AccepterFormationGu($id){

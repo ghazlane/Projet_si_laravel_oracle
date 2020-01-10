@@ -45,7 +45,7 @@
     		<div class="w-100"></div><br>
     		<div class="col">Fonctionnalité Demandeur</div>
     		<div class="col"><strong><?php echo $row['TYPE_DEMANDEUR']  ?></strong></div>
-     <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == ''){?>  
+     <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] == ''){?>  
         <div class="w-100"></div><br> 
         <div class="col">Pool Competence</div>
         <div class="col">
@@ -111,7 +111,7 @@
 </div>
   <?php } ?>
 
-  <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == ''){?>
+  <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] == ''){?>
                   <button type="Submit" class="button"><span>Transmettre le dossier au reponsable de pool de competence</span></button>  
                    <br><br>
                   <a href="index.php?action=RefuserInventionCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-danger btn-icon-split">
@@ -122,5 +122,24 @@
                   </a>
                   </form>
   <?php } ?>
+
+  <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] != ''){?>
+                  <p style="font-size: 22px ;"> La réponse du pool de compétences est la suivante : <span style="color : green; "><?php echo $row['REPONSE_PC']; ?></span></p>
+                  <hr>
+                   <div class="container">
+  <form method="post" action="index.php?action=decisionFinaleCirInvention">
+    <input type="hidden" name="id_dmd" value="<?php echo $row['ID_DMD'] ; ?>">
+    <div class="form-group">
+      <textarea required="required" name="reponseDemande"></textarea>
+      <label for="textarea" class="control-label" style="left: 0;">Décision finale sur la demande </label><i class="bar"></i>
+    </div>
+
+    <div class="button-container">
+    <button type="Submit" class="button"><span>Confirmer la décision</span></button>
+  </div>
+  </form>
+
+</div>
+                    <?php } ?>
 
 </div>

@@ -19,6 +19,7 @@ session_start();
 		$controller = new ChercheurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
+<<<<<<< HEAD
 		$vue->generer(array()); 
 	}
 	else if($action == "ajouterChercheur"){
@@ -30,6 +31,9 @@ session_start();
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
 		$vue->genererHome(); 
+=======
+		$vue->genererHome(array());
+>>>>>>> 24b5de0fc134846b2925d4011191a9bc47c0b5d3
 	}
 	else if($action == "listeChercheur"){
 		$controller = new ChercheurController(); 
@@ -90,6 +94,7 @@ session_start();
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
+<<<<<<< HEAD
 		$vue->genererHomeUser(); 
 	}
 	else if($action == "saveRegisterProfesseur"){
@@ -97,6 +102,11 @@ session_start();
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
 		$vue->genererHome(); 
+=======
+		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
+		$vue->genererHome(array("alert" => $alert)); 
+
+>>>>>>> 24b5de0fc134846b2925d4011191a9bc47c0b5d3
 	}
 	else if($action == "listeProfesseur"){
 		$controller = new ProfesseurController(); 
@@ -135,17 +145,16 @@ session_start();
 		$statement = $controller->Lister(); 
 		while ($row = $statement->fetch()) {
 			if(($_POST['email'] == $row['EMAIL_PROF']) && ($_POST['password'] == $row['MOT_DE_PASSE_PROF'])){
-				//session_start();
 				$_SESSION['code'] = $row['CODE_PROF'];
 				$_SESSION['nom'] = $row['NOM_PROF'];
 				$_SESSION['prenom'] = $row['PRENOM_PROF'];
 				$_SESSION['type'] = 'professeur'; 
 				$vue = new Vue('accueil'); 
-				$vue->genererHomeUser();
+				$vue->generer(array());
 				return;  
 			}
 		}
-		$vue = new Vue('MotDePasseIncorrectGU');
+		$vue = new Vue('MotDePasseIncorrectProfesseur');
 		$vue->genererPageSansTemplate();
 	}
 
@@ -271,7 +280,7 @@ session_start();
 	
 	else if($action == 'Accueil'){
 		$vue = new Vue('accueil'); 
-		$vue->genererHome();
+		$vue->genererHome(array());
 		//$vue->generer(array()); 
 	}
 	//Invention 
@@ -315,6 +324,15 @@ session_start();
 		$controller = new InventionController();
 		$controller->TransmettreInventionPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('TransmettreDosiierCir'); 
+		$vue->generer(array()); 
+	}else if($action == "DemandePretPourCirInvention"){
+		$controller = new InventionController(); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->DemandePretPourCir()));
+	}else if($action == "decisionFinaleCirInvention"){
+		$controller = new InventionController(); 
+		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue  = new Vue('decisionFinaleBienFait'); 
 		$vue->generer(array()); 
 	}else if($action == "RefuserDemandeGu"){
 		$controller = new InventionController();
@@ -370,7 +388,7 @@ session_start();
 		$row= $controller->Detail($id);
 		$prof = $controller->getInfoDemandeur($id);
 		$vue = new Vue('detailDeclarationBrevet'); 
-		$vue->generer(array( "row" => $row, "nomAndPrenomDemandeur"=> $prof)); 
+		$vue->generer(array( "row" => $row, "nomAndPrenomDemandeur"=> $prof ,"listePc" => $controller->getInfoPc())); 
 	}
     else if($action == "detailModifierBrevet"){
 		$controller = new BrevetController();
@@ -416,7 +434,7 @@ session_start();
 		$vue->generer(array()); 
 	}else if($action=="transmettreBrevetPc"){
 		$controller = new BrevetController();
-		$controller->TransmettreBrevetPc($_GET['id_dmd']); 
+		$controller->TransmettreBrevetPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array()); 
 	}else if($action == "RefuserBrevetGu"){
@@ -434,6 +452,17 @@ session_start();
 		$controller->AccepterBrevetGu($_GET['id_dmd']); 
 		$vue = new Vue('AccepterDeamnde'); 
 		$vue->generer(array());
+	}
+	else if($action == "DemandePretPourCirBrevet"){
+		$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$vue->generer(array("statement" => $controller->DemandePretPourCir()));
+	}
+	else if($action == "decisionFinaleCirBrevet"){
+		$controller = new BrevetController(); 
+		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue  = new Vue('decisionFinaleBienFait'); 
+		$vue->generer(array()); 
 	}
 
 
@@ -481,7 +510,7 @@ session_start();
 		$vue->generer(array());
 	}else if($action=="transmettreFormationPc"){
 		$controller = new FormationController();
-		$controller->TransmettreFormationPc($_GET['id_dmd']); 
+		$controller->TransmettreFormationPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('TransmettreDosiierCir'); 
 		$vue->generer(array()); 
 	}else if($action == "RefuserFormationGu"){
@@ -512,6 +541,17 @@ session_start();
 		$vue = new Vue('AccepterDeamnde'); 
 		$vue->generer(array());
 	}
+	else if($action == "DemandePretPourCirFormation"){
+		$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("statement" => $controller->DemandePretPourCir()));
+	}
+	else if($action == "decisionFinaleCirFormation"){
+		$controller = new FormationController(); 
+		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue  = new Vue('decisionFinaleBienFait'); 
+		$vue->generer(array()); 
+	}
 
     //liste demandes
     else if($action == "listeDemandeEnCours"){
@@ -541,6 +581,7 @@ session_start();
 		$vue = new Vue('listeTousDemande');
 		$vue->genererHome();
 	}
+
 
 
 	//services & gestions
@@ -658,3 +699,11 @@ session_start();
 		$vue->generer(array()); 
 	}
 
+	//action home 
+	else if($action =="loginProfesseur"){
+		$vue = new Vue("loginProfesseur"); 
+		$vue->genererPageSansTemplate(); 
+	}else if($action == "accueilClient"){
+		$vue = new Vue("accueil"); 
+		$vue->generer(array()); 
+	}

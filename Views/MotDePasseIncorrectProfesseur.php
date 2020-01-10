@@ -1,6 +1,4 @@
-<?php
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +29,12 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-4">Connexion Professeur</h1>
+                  <?php if(@$_GET['err']==1){ ?>
+            <h1 class="h4 text-gray-900 mb-4">Mot de passe incorrect. Réessayez .</h1>
+                <?php }else {?> 
+                    <h1 class="h4 text-gray-900 mb-4">Connexion Professeur</h1>
+                    <?php } ?> 
+                    <h5 style="color: red;">Mot de passe ou username est incorrect</h5>
                   </div>
                   <br>
                   <form class="user" method="post" action="index.php?action=connexionProfesseur">

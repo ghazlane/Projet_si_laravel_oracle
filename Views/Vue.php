@@ -31,7 +31,8 @@ class Vue {
         }
 	
 	}
-    public function genererHome(){
+    public function genererHome(array $donnees){
+        extract($donnees);
         include("template.php");
     }
 

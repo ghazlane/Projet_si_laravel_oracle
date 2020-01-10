@@ -50,11 +50,15 @@ class FormationController {
 		return $this->formationRepository->getInfoDemandeur($id_demande); 
 	}
 
+	public function getInfoPc(){
+   		return $this->formationtionRepository->getInfoPc(); 
+	}
+
 	public function TransmettreFormationCir($id){
 		$this->formationRepository->TransmettreFormationCir($id); 		
 	}
-    public function TransmettreFormationPc($id){
-        $this->formationRepository->TransmettreFormationPc($id); 
+    public function TransmettreFormationPc($id,$select){
+        $this->formationRepository->TransmettreFormationPc($id,$select); 
 	}
 
 	public function RefuserFormationGu($id){
@@ -77,5 +81,12 @@ class FormationController {
 
 	public function AccepterFormationGu($id){
 		$this->formationRepository->AccepterFormationGu($id); 
+	}
+
+	public function DemandePretPourCir(){
+		return $this->formationRepository->DemandePretPourCir(); 
+	}
+	public function setDecisionFinaleCir($id, $decision){
+		$this->formationRepository->setDecisionFinaleCir($id, $decision); 
 	}
 }

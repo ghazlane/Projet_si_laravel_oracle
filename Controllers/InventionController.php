@@ -56,6 +56,13 @@ class InventionController {
         $this->inventionRepository->TransmettreInventionPc($id,$select); 
 	}
 
+	public function DemandePretPourCir(){
+		return $this->inventionRepository->DemandePretPourCir(); 
+	}
+	public function setDecisionFinaleCir($id, $decision){
+		$this->inventionRepository->setDecisionFinaleCir($id, $decision); 
+	}
+
 
 	public function RefuserInventionGu($id){
 		$this->inventionRepository->RefuserInventionGu($id); 
