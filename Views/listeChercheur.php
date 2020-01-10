@@ -12,7 +12,6 @@
                       <th>Nom</th>
                       <th>Prénom</th>
                       <th>Thème de recherche</th>
-                      <th>Date naissance</th>
                       <th>Email</th>
                       <th>Téléphone</th>
                       <th>Outils</th>
@@ -23,7 +22,6 @@
                       <th>Nom</th>
                       <th>Prénom</th>
                       <th>Thème de recherche</th>
-                      <th>Date naissance</th>
                       <th>Email</th>
                       <th>Téléphone</th>
                       <th>Outils</th>
@@ -34,21 +32,20 @@
                       <tr>
                           <td><?php echo $row['NOM_CHER']  ?></td>
                           <td><?php echo $row['PRENOM_CHER']  ?></td>
-                          <td><?php echo $row['DATE_NAISSANCE_CHER']  ?></td>
                           <td><?php echo $row['THEME_RECHERCHE']  ?></td>
                           <td><?php echo $row['EMAIL_CHER']  ?></td>
                           <td><?php echo $row['TELEPHONE_CHER']  ?></td>
                           <td>
-                              <?php echo '<a href="index.php?action=detailChercheur&&id='.$row['CODE_PROF'].'" class="btn btn-info btn-circle btn-sm" title="Ouvrir">'; ?>
+                              <?php echo '<a href="index.php?action=detailChercheur&&id='.$row['CODE_CHER'].'" class="btn btn-info btn-circle btn-sm" title="Ouvrir">'; ?>
                               
                                 <i class="far fa-folder-open"></i>
                               </a>
-                              <?php echo '<a href="index.php?action=updateChercheur&&id='.$row['CODE_PROF'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
+                              <?php echo '<a href="index.php?action=updateChercheur&&id='.$row['CODE_CHER'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
                               
                                 <i class="fas fa-sync"></i>
                               </a>
                               <?php
-                                echo '<a href="index.php?action=deleteChercheur&&id='.$row['CODE_PROF'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
+                                echo '<a href="index.php?action=deleteChercheur&&id='.$row['CODE_CHER'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
                               ?>
                                 <i class="fas fa-trash"></i>
                               </a>

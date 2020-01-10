@@ -29,7 +29,7 @@
           <div class="col-lg-5 d-none d-lg-block bg-register-image" style="background-image: url('css_js/img/professor.jpg');"></div>
           <div class="col-lg-7">
             <div class="p-5">
-            <form method="post" action="../index.php?action=saveAjoutProfesseur" class="user">
+            <form method="post" action="../index.php?action=saveRegisterProfesseur" class="user">
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Créer un compte professeur !</h1>
               </div>             
