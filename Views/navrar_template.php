@@ -507,7 +507,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration de brevets</h6>
-            <a class="collapse-item" href="index.php?action=declarationClient">Ajouter Brevet</a>
+            <a class="collapse-item" href="index.php?action=declarationBrevet">Ajouter Brevet</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationBrevetClient">Lister déclaration</a><a class="collapse-item" href="index.php?action=listeDeclarationBrevetClientTraitees">Lister déclarations traitées</a>
           </div>
         </div>
@@ -521,7 +521,7 @@
         <div id="collapseeight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Lancer une formation</h6>
-            <a class="collapse-item" href="index.php?action=declarationFormationClient">Ajouter demande </a>
+            <a class="collapse-item" href="index.php?action=declarationFormation">Ajouter demande </a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormationClient">Lister demande</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormationClientTraitees">Lister demandes traitées</a>
           </div>

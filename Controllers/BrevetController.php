@@ -15,8 +15,8 @@ class BrevetController {
 	//actions
 	public function Ajouter($inputs){
 		$this->brevet = new Brevet($inputs['nomBrevet'],$inputs['categorieBrevet'],$inputs['domaineBrevet'],$inputs['descriptionDeclaration']); 
-		$this->brevet->setIdDemandeur(1); 
-		$this->brevet->setTypeDemandeur("professeur"); 
+		$this->brevet->setIdDemandeur($_SESSION['code']); 
+		$this->brevet->setTypeDemandeur($_SESSION['type']); 
 		$this->brevet->setStatusDemande("En attente"); 
 		$this->brevet->setDateDemande(date("j-n-Y")); 
 		$this->brevetRepository->Ajouter($this->brevet); 
@@ -33,6 +33,14 @@ class BrevetController {
 	public function TransmettreBrevetPc($id,$select){
         $this->brevetRepository->TransmettreBrevetPc($id,$select); 
 	}
+
+	 public function listeDeclarationBrevetClient($type_demandeur, $id_demandeur){
+         return $this->brevetRepository->listeDeclarationBrevetClient($type_demandeur, $id_demandeur) ; 
+    }
+
+    public function listeDeclarationBrevetClientTraitees($type_demandeur, $id_demandeur){
+        return $this->brevetRepository->listeDeclarationBrevetClientTraitees($type_demandeur, $id_demandeur) ; 
+    }
 
 	public function RefuserBrevetGu($id){
         $this->brevetRepository->RefuserBrevetGu($id); 

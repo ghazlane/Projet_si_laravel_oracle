@@ -63,12 +63,14 @@
                   class="btn btn-info btn-circle btn-sm" title="Ouvrir">
                     <i class="far fa-folder-open"></i>
                   </a>
+                  <?php if($row['STATUT_DMD'] == 'En attente'){ ?>
                   <a href="index.php?action=detailModifierBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">
                     <i class="fas fa-sync"></i>
                   </a>
-                  <a href="index.php?action=supprimerBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-danger btn-circle btn-sm" title="Supprimer">
+                  <a href="index.php?action=supprimerBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-danger btn-circle btn-sm" title="Supprimer" onclick="return confirm('Voulez vous vraiment supprimer cette demande');">
                     <i class="fas fa-trash"></i>
                   </a>
+                <?php } ?>
                 </td>
               </tr>
             <?php  }?>

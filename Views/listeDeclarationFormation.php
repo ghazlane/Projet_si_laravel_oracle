@@ -1,6 +1,12 @@
 
         <div class="container-fluid" style="font-size: 16px; ">
-
+<?php if(!empty($alert)){  ?>
+  <div class="card mb-4 py-1 border-bottom-success">
+                <div class="card-body">
+                  <?php  echo $alert; ?>
+                </div>
+              </div>
+    <?php  }?>
 <!-- Page Heading -->
 <br>
 <h1 class="h3 mb-2 text-gray-800">Liste des déclarations des formations</h1>

@@ -11,7 +11,7 @@
       <label for="input" class="control-label" style="left: 0;">Theme de la formation</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="text" required="required" name="nombreParticipants" />
+      <input type="number" required="required" name="nombreParticipants" />
       <label for="input" class="control-label" style="left: 0;">Nombre de participants</label><i class="bar"></i>
     </div>
     <div class="form-group">
