@@ -9,7 +9,7 @@
   <!-- demande d invention  -->
   <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Tous les demandes de déclaration des inventions</h6>
+              <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Toutes les demandes de déclaration des inventions</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -47,15 +47,7 @@
                               
                                 <i class="far fa-folder-open"></i>
                               </a>
-                              <?php echo '<a href="index.php?action=updateDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
                               
-                                <i class="fas fa-sync"></i>
-                              </a>
-                              <?php
-                                echo '<a href="index.php?action=deleteDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
-                              ?>
-                                <i class="fas fa-trash"></i>
-                              </a>
                           </td>
                       </tr>
                     <?php  }}?>
@@ -67,7 +59,7 @@
   <!-- demande d brevet  -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Tous les demandes de déclaration des brevets</h6>
+      <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Toutes les demandes de déclaration des brevets</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -106,12 +98,7 @@
                   class="btn btn-info btn-circle btn-sm" title="Ouvrir">
                     <i class="far fa-folder-open"></i>
                   </a>
-                  <a href="index.php?action=detailModifierBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">
-                    <i class="fas fa-sync"></i>
-                  </a>
-                  <a href="index.php?action=supprimerBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-danger btn-circle btn-sm" title="Supprimer">
-                    <i class="fas fa-trash"></i>
-                  </a>
+                  
                 </td>
               </tr>
             <?php  }}?>
@@ -123,7 +110,7 @@
 
   <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Tous les demandes de déclaration des formations</h6>
+    <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Toutes les demandes de déclaration des formations</h6>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -161,15 +148,7 @@
                     
                       <i class="far fa-folder-open"></i>
                     </a>
-                    <?php echo '<a href="index.php?action=updateDeclarationFormation&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
                     
-                      <i class="fas fa-sync"></i>
-                    </a>
-                    <?php
-                      echo '<a href="index.php?action=deleteDeclarationFormation&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
-                    ?>
-                      <i class="fas fa-trash"></i>
-                    </a>
                 </td>
             </tr>
           <?php  }}?>

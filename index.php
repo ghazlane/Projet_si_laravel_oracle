@@ -27,6 +27,10 @@ session_start();
 		$vue = new Vue('createSuccess'); 
 		$vue->genererHomeUser(); 
 	}
+	else if($action == "registerEtudiant"){
+		$vue = new Vue("registerEtudiant"); 
+		$vue->genererPageSansTemplate();
+	}
 	else if($action == "saveRegisterEtudiant"){
 		$controller = new EtudiantController(); 
 		$controller->Ajouter($_POST);
@@ -74,7 +78,7 @@ session_start();
 				$_SESSION['code'] = $row['CODE_ET'];
 				$_SESSION['nom'] = $row['NOM_ET'];
 				$_SESSION['prenom'] = $row['PRENOM_ET'];
-				$_SESSION['type'] = 'Etudiant'; 
+				$_SESSION['type'] = 'etudiant'; 
 				$vue = new Vue('accueil'); 
 				$vue->generer(array());
 				return;  
@@ -84,6 +88,10 @@ session_start();
 		$vue->genererPageSansTemplate();
 	}
 	//Chercheur
+	else if($action == "registerChercheur"){
+		$vue = new Vue("registerChercheur"); 
+		$vue->genererPageSansTemplate();
+	}
 	else if($action == "saveAjoutChercheur"){
 		$controller = new ChercheurController(); 
 		$controller->Ajouter($_POST);
@@ -143,7 +151,7 @@ session_start();
 				$_SESSION['code'] = $row['CODE_CHER'];
 				$_SESSION['nom'] = $row['NOM_CHER'];
 				$_SESSION['prenom'] = $row['PRENOM_CHER'];
-				$_SESSION['type'] = 'Chercheur'; 
+				$_SESSION['type'] = 'chercheur'; 
 				$vue = new Vue('accueil'); 
 				$vue->generer(array());
 				return;  
@@ -153,6 +161,10 @@ session_start();
 		$vue->genererPageSansTemplate();
 	}
 	//Professeur
+	else if($action == "registerProfesseur"){
+		$vue = new Vue("registerProfesseur"); 
+		$vue->genererPageSansTemplate();
+	}
 	else if($action == "ajouterProfesseur"){
 		$vue = new Vue('ajouterProfesseur'); 
 		$vue->generer(array()); 
@@ -161,15 +173,18 @@ session_start();
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
-		$vue->genererHomeUser(); 
-	}
-	else if($action == "saveRegisterProfesseur"){
+		$vue->generer(array()); 
+
+	}else if($action == "saveRegisterProfesseur"){
 		$controller = new ProfesseurController(); 
-		$controller->Ajouter($_POST);
-		$vue = new Vue('createSuccess'); 
-		//$vue->genererHome(); 
-		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
-		$vue->genererHome(array("alert" => $alert)); 
+		$rep=$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess');
+		if ($rep == true) 
+		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès !";
+	    else  
+	    $alert="Vous n'êtes pas un professeur ! La création du compte est annulée ! ";
+
+		$vue->genererHome(array("alert" => $alert));   
 	}
 	else if($action == "listeProfesseur"){
 		$controller = new ProfesseurController(); 
@@ -211,7 +226,7 @@ session_start();
 				$_SESSION['code'] = $row['CODE_PROF'];
 				$_SESSION['nom'] = $row['NOM_PROF'];
 				$_SESSION['prenom'] = $row['PRENOM_PROF'];
-				$_SESSION['type'] = 'Professeur'; 
+				$_SESSION['type'] = 'professeur'; 
 				$vue = new Vue('accueil'); 
 				$vue->generer(array());
 				return;  
@@ -353,8 +368,8 @@ session_start();
 	}else if($action == "saveDeclarationInvention"){
 		$controller = new InventionController(); 
 		$controller->Ajouter($_POST);
-		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("alert"=>'La déclaration a bien été ajoutée', "statement" => $controller->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']))); 
 	}else if($action == "listeDeclarationInvention"){
 		$controller = new InventionController(); 
 		$statut = $_GET['statut']; 
@@ -368,16 +383,16 @@ session_start();
 		$controller = new InventionController(); 
 		$controller->Delete($_GET['id']); 
 		$vue = new Vue('listeDeclarationInvention'); 
-		$vue->generer(array("statement" => $controller->Lister($statut)));
+		$vue->generer(array("alert"=>'La demande est supprimée ',"statement" => $controller->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code'])));
 	}else if($action =="updateDeclarationInvention"){
 		$controller = new InventionController();
 		$vue = new Vue('updateDeclarationInvention'); 
 		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
 	}else if($action == "saveUpdateDeclarationInvention"){
 		$controller = new InventionController();
-		$controller->Update($_POST); 
-		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$controller->Update($_POST);
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("alert"=>'La déclaration est à jour', "statement" => $controller->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']))); 
 	}else if($action == "transmettreInventionCir"){
 		$controller = new InventionController();
 		$controller->TransmettreInventionCir($_GET['id_dmd']); 
@@ -434,10 +449,10 @@ session_start();
 	}else if($action == "saveDeclarationBrevet"){
 		$controller = new BrevetController(); 
 		$controller->Ajouter($_POST);
-		$statement= $controller->Lister($statut);
+		$statement= $controller->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$alert="la demande a été bien crée"; 
-		$vue->generer(array( "statement" => $statement,"alert"=>$alert)); 
+		$alert="la demande a été bien ajoutée"; 
+		$vue->generer(array("statement" => $statement,"alert"=>$alert)); 
 	}
 	else if($action == "listeDeclarationBrevet"){
 		$controller = new BrevetController(); 
@@ -464,7 +479,7 @@ session_start();
 		$controller = new BrevetController(); 
 		$id = $_GET["id"]; 
 		$controller->Modifier($_POST,$id);
-		$statement= $controller->Lister();
+		$statement= $controller->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeDeclarationBrevet'); 
 		$alert="la demande a été bien modifiée";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
@@ -473,9 +488,9 @@ session_start();
 		$controller = new BrevetController(); 
 		$id = $_GET["id"]; 
 		$controller->Supprimer($id);
-		$statement= $controller->Lister($statut);
+		$statement= $controller->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$alert="la demande a été bien supprimée";
+		$alert="la demande a été suppriméee";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}else if($action =="brevetsPretes"){
 		$controller = new BrevetController(); 
@@ -536,8 +551,8 @@ session_start();
 	}else if($action == "saveDeclarationFormation"){
 		$controller = new FormationController(); 
 		$controller->Ajouter($_POST);
-		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("alert"=>'La déclaration a bien été ajoutée', "statement" => $controller->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']))); 
 	}
 	else if($action == "listeDeclarationFormation"){
 		$controller = new FormationController(); 
@@ -554,7 +569,7 @@ session_start();
 		$controller = new FormationController(); 
 		$controller->Supprimer($_GET['id']); 
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array("statement" => $controller->Lister($statut)));
+		$vue->generer(array("alert"=>'La suppression est bien faite', "statement" => $controller->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code'])));
 	}
 	else if($action =="updateDeclarationFormation"){
 		$controller = new FormationController();
@@ -564,8 +579,9 @@ session_start();
 	else if($action == "saveUpdateDeclarationFormation"){
 		$controller = new FormationController();
 		$controller->Update($_POST); 
-		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("alert"=>'La mise à jour est bien faite', "statement" => $controller->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code'])));
+
 	}else if($action == "transmettreFormationCir"){
 		$controller = new FormationController();
 		$controller->TransmettreFormationCir($_GET['id_dmd']); 
@@ -657,7 +673,7 @@ session_start();
 		$controller->Ajouter($_POST);
 		$statement= $controller->Lister();
 		$vue = new Vue('listePoolCompetence'); 
-		$alert="la demande a été bien crée"; 
+		$alert="la demande a été bien créé"; 
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 	else if($action == "listePoolCompetence"){
@@ -686,7 +702,7 @@ session_start();
 		$controller->Supprimer($id);
 		$statement= $controller->Lister();
 		$vue = new Vue('listePoolCompetence'); 
-		$alert="la demande a été bien supprimée";
+		$alert="la demande a été bien suppriméee";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 
@@ -769,4 +785,63 @@ session_start();
 	}else if($action == "accueilClient"){
 		$vue = new Vue("accueil"); 
 		$vue->generer(array()); 
+	}
+
+	//action cient connecter
+	else if($action =="listeDeclarationInventionClient"){
+		$controller = new InventionController(); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']))); 
+	}else if($action == "listeDeclarationInventionClientTraitees"){
+		$controller = new InventionController(); 
+		$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("statement" => $controller->listeDeclarationInventionClientTraitees($_SESSION['type'], $_SESSION['code'])));
+	}else if($action == "listeDeclarationBrevetClient"){
+		$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$vue->generer(array("statement" => $controller->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code'])));
+	}else if($action == "listeDeclarationBrevetClientTraitees"){
+		$controller = new BrevetController(); 
+		$vue = new Vue('listeDeclarationBrevet'); 
+		$vue->generer(array("statement" => $controller->listeDeclarationBrevetClientTraitees($_SESSION['type'], $_SESSION['code'])));
+	}else if($action =="listeDeclarationFormationClient"){
+		$controller = new FormationController(); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("statement" => $controller->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code'])));
+	}else if($action == "listeDeclarationFormationClientTraitees"){
+		$controller = new FormationController(); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("statement" => $controller->listeDeclarationFormationClientTraitees($_SESSION['type'], $_SESSION['code'])));
+	}else if($action == "listeDemandeEnCoursClient"){
+		$brevet= (new BrevetController())->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
+		$invention= (new InventionController())->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']);
+		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
+		$vue = new Vue('listeDemandeEncours'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation)); 
+	}else if($action == "listeDemandeTraiteClient"){
+		$brevet= (new BrevetController())->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
+		$invention= (new InventionController())->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']);
+		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
+
+		$vue = new Vue('listeDemandeTraite'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));
+	}else if($action == "listeTousDemandeClient"){
+		$brevet= (new BrevetController())->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
+		$invention= (new InventionController())->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']);
+		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
+		$vue = new Vue('listeTousDemande'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));
+	}
+
+
+	//chercheur 
+	else if($action== "loginChercheur"){
+		$vue = new Vue("loginChercheur"); 
+		$vue->genererPageSansTemplate(); 
+	}
+
+	//etudiant
+	else if($action == "loginEtudiant"){
+		$vue = new Vue("loginEtudiant"); 
+		$vue->genererPageSansTemplate(); 
 	}

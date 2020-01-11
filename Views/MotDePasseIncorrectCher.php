@@ -32,6 +32,7 @@
                   <div class="text-center">
                   
                    <h1 class="h4 text-gray-900 mb-4">Connexion Chercheur</h1>
+                   <h5 style="color: red;">Mot de passe ou username est incorrect</h5>
                   <br>
                   <form class="user" method="post" action="index.php?action=connexionChercheur">
                     <div class="form-group">

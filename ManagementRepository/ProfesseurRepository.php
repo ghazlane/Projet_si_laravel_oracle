@@ -7,10 +7,25 @@ class ProfesseurRepository extends Connexion
 	private $connexion;
 
 	public function Ajouter(Professeur $professeur){
-		$Rq = "insert into professeur (NOM_PROF, PRENOM_PROF, DATE_NAISSANCE_PROF, EMAIL_PROF, MOT_DE_PASSE_PROF, NUM_AFF, TELEPHONE_PROF) values ('" . $professeur->getNomProf() . "','" . $professeur->getPrenomProf() . "','" . $professeur->getDateNaissanceProf() . "','" . $professeur->getEmailProf() . "','" . $professeur->getMotDePasseProf() . "','" . $professeur->getNumAff() ."','". $professeur->getTelephoneProf() . "')";
+		$Rq = "select * from professeurs_um5";
 		$connexion = $this->getConnexion(); 
-		$connexion->exec($Rq);
-		$connexion->exec("commit");
+    	$statement = $connexion->query($Rq);
+    	$statement->setFetchMode(PDO::FETCH_ASSOC);
+    	while ($row = $statement->fetch()) {
+    		if($row['NOM_PROF'] == $professeur->getNomProf() && $row['PRENOM_PROF'] == $professeur->getPrenomProf() && $row['NUM_AFF'] == $professeur->getNumAff() ){
+			$Rq = "insert into professeur (NOM_PROF, PRENOM_PROF, DATE_NAISSANCE_PROF, EMAIL_PROF, MOT_DE_PASSE_PROF, NUM_AFF, TELEPHONE_PROF) values ('" . $professeur->getNomProf() . "','" . $professeur->getPrenomProf() . "','" . $professeur->getDateNaissanceProf() . "','" . $professeur->getEmailProf() . "','" . $professeur->getMotDePasseProf() . "','" . $professeur->getNumAff() ."','". $professeur->getTelephoneProf() . "')";
+
+			$connexion = $this->getConnexion(); 
+			$connexion->exec($Rq);
+			$connexion->exec("commit");
+			
+			return true;
+		}
+    	}
+    	
+	    return false;
+		
+
 	}
 
 	public function Lister(){

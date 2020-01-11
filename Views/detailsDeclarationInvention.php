@@ -78,7 +78,7 @@
 
   <?php } ?>
   <hr>
-  <?php if($row['DECISION_FINALE'] != ''){?>
+  <?php if($row['DECISION_FINALE'] != '' && $_SESSION['type'] == 'GuichetUnique'){?>
                     <p style="font-size: 20px; ">La décision finale du CIR est : <strong style="color:green; "><?php echo $row['DECISION_FINALE'] ?> </strong></p>
                      <a href="index.php?action=AccepterInventionCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-50">

@@ -32,7 +32,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Créer un compte chercheur !</h1>
               </div>
-              <form method="post" action="../index.php?action=saveRegisterChercheur" class="user">
+              <form method="post" action="index.php?action=saveRegisterChercheur" class="user">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" required="required" class="form-control form-control-user" name="nom_cher" placeholder="Nom">

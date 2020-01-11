@@ -15,6 +15,22 @@
     		$connexion->exec("commit");
     }
 
+    public function listeDeclarationBrevetClient($type_demandeur, $id_demandeur){
+         $Rq = "select * from declaration_brevet where TYPE_DEMANDEUR = '".$type_demandeur."' and ID_DEMANDEUR = '".$id_demandeur."'"; 
+         $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+    }
+
+    public function listeDeclarationBrevetClientTraitees($type_demandeur, $id_demandeur){
+        $Rq = "select * from declaration_brevet where ( STATUT_DMD = 'Accepter' or STATUT_DMD = 'Non accepter' ) and TYPE_DEMANDEUR = '".$type_demandeur."' and ID_DEMANDEUR = '".$id_demandeur."'"; 
+         $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+    }
+
     public function AccepterBrevetGu($id){
             $Rq = "update declaration_brevet set STATUT_DMD='Accepter' where id_dmd =".$id;
             $connexion = $this->getConnexion(); 

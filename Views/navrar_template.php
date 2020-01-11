@@ -477,7 +477,7 @@
 
 
 
-<?php if($_SESSION['type'] == 'Professeur' || $_SESSION['type'] == 'Chercheur' || $_SESSION['type'] == 'Etudiant'  ) {?>
+<?php if($_SESSION['type'] == 'professeur'  || $_SESSION['type'] == 'chercheur' || $_SESSION['type'] == 'etudiant') {?>
   <li class="nav-item" >
         <a class="nav-link" href="index.php?action=accueilClient">
           <i class="fas fa-home"></i>
@@ -507,7 +507,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Déclaration de brevets</h6>
-            <a class="collapse-item" href="index.php?action=declarationClient">Ajouter Brevet</a>
+            <a class="collapse-item" href="index.php?action=declarationBrevet">Ajouter Brevet</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationBrevetClient">Lister déclaration</a><a class="collapse-item" href="index.php?action=listeDeclarationBrevetClientTraitees">Lister déclarations traitées</a>
           </div>
         </div>
@@ -521,7 +521,7 @@
         <div id="collapseeight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Lancer une formation</h6>
-            <a class="collapse-item" href="index.php?action=declarationFormationClient">Ajouter demande </a>
+            <a class="collapse-item" href="index.php?action=declarationFormation">Ajouter demande </a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormationClient">Lister demande</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormationClientTraitees">Lister demandes traitées</a>
           </div>
@@ -601,20 +601,20 @@
         Demandes
       </div>
       <li class="nav-item" >
-        <a class="nav-link" href="index.php?action=listeDemandeEnCours">
+        <a class="nav-link" href="index.php?action=listeDemandeEnCoursClient">
           <i class="fas fa-spinner"></i>
           <span>Demandes en cours</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="index.php?action=listeDemandeTraite">
+        <a class="nav-link" href="index.php?action=listeDemandeTraiteClient">
           <i class="fas fa-list-ul"></i>
           <span>Demandes traitées</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="index.php?action=listeTousDemande">
+        <a class="nav-link" href="index.php?action=listeTousDemandeClient">
           <i class="fas fa-tasks"></i>
           <span>Toutes les demandes</span></a>
       </li>
@@ -634,7 +634,7 @@
 
 <!-- Ancienne artie --> 
       <!-- Nav Item - Pages Collapse Menu -->
-      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'Professeur' && $_SESSION['type'] != 'Chercheur' && $_SESSION['type'] != 'Etudiant') {?>
+      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'professeur' && $_SESSION['type'] != 'chercheur' && $_SESSION['type'] != 'etudiant') {?>
       <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>

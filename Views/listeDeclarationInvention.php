@@ -1,7 +1,14 @@
 
         <div class="container-fluid" style="font-size: 16px; ">
 
-          <!-- Page Heading -->
+          <?php if(!empty($alert)){  ?>
+  <div class="card mb-4 py-1 border-bottom-success">
+                <div class="card-body">
+                  <?php  echo $alert; ?>
+                </div>
+              </div>
+    <?php  }?>
+
           <br>
           <h1 class="h3 mb-2 text-gray-800">Liste des déclarations des inventions</h1>
           <br>
@@ -55,15 +62,20 @@
                               
                                 <i class="far fa-folder-open"></i>
                               </a>
-                              <?php echo '<a href="index.php?action=updateDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
+                              <?php 
+                              if($row['STATUT_DMD'] == 'En attente'){
+                              echo '<a href="index.php?action=updateDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
                               
                                 <i class="fas fa-sync"></i>
                               </a>
                               <?php
-                                echo '<a href="index.php?action=deleteDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
+                                
+                                echo '<a href="index.php?action=deleteDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer" onclick="return confirm(\'Voulez vous vraiment supprimer cette demande\'); ">';
+
                               ?>
                                 <i class="fas fa-trash"></i>
                               </a>
+                            <?php } ?>
                           </td>
                       </tr>
                     <?php  }?>

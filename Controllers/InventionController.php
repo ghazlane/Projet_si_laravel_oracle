@@ -32,7 +32,15 @@ class InventionController {
 	public function Lister($statut){
 		return $this->inventionRepository->Lister($statut); 
 	}
-	
+
+	public function listeDeclarationInventionClient($type_demandeur, $id_demandeur){
+		return $this->inventionRepository->listeDeclarationInventionClient($type_demandeur, $id_demandeur); 
+	}
+
+	public function listeDeclarationInventionClientTraitees($type_demandeur, $id_demandeur){
+		return $this->inventionRepository->listeDeclarationInventionClientTraitees($type_demandeur, $id_demandeur); 
+	}
+
 	public function getInfoDemandeur($id_demande){
 		return $this->inventionRepository->getInfoDemandeur($id_demande); 
 	}

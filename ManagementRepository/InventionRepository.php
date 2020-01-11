@@ -128,6 +128,22 @@ public function Lister($statut) {
     return $statement;
     }
 
+    public function listeDeclarationInventionClient($type_demandeur, $id_demandeur){
+         $Rq = "select * from declaration_invention where TYPE_DEMANDEUR = '".$type_demandeur."' and ID_DEMANDEUR = '".$id_demandeur."'"; 
+         $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+    }
+
+    public function listeDeclarationInventionClientTraitees($type_demandeur, $id_demandeur){
+        $Rq = "select * from declaration_invention where ( STATUT_DMD = 'Accepter' or STATUT_DMD = 'Non accepter' ) and TYPE_DEMANDEUR = '".$type_demandeur."' and ID_DEMANDEUR = '".$id_demandeur."'"; 
+         $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+    }
+
 
 
 public function getInfoPc(){

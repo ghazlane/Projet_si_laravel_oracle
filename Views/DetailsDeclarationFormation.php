@@ -77,8 +77,8 @@
                   </a>
 
   <?php } ?>
-  <hr>
-  <?php if($row['DECISION_FINALE'] != ''){?>
+          
+          <?php if($row['DECISION_FINALE'] != '' && $_SESSION['type'] == 'GuichetUnique'){?>
                     <p style="font-size: 20px; ">La décision finale du CIR est : <strong style="color:green; "><?php echo $row['DECISION_FINALE'] ?> </strong></p>
                      <a href="index.php?action=AccepterFormationCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-50">
@@ -94,7 +94,7 @@
                   </a>
   <?php }?>
 
-<?php if($_SESSION['type'] =='RespPoolCompetence' && $row['REPONSE_PC'] == ''){?>
+  <?php if($_SESSION['type'] =='RespPoolCompetence' && $row['REPONSE_PC'] == ''){?>
   <div class="container">
   <form method="post" action="index.php?action=RespPoolCompetenceFormation">
     <input type="hidden" name="id_dmd" value="<?php echo $row['ID_DMD'] ; ?>">
@@ -142,11 +142,5 @@
 </div>
                     <?php } ?>
 
-</div>
-
-
-          
-                      
-          
-                      
-          
+</div>     
+    

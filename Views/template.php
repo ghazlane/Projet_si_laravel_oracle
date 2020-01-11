@@ -17,12 +17,6 @@
 	<link rel="stylesheet" href="css_js/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="css_js/css/owl.carousel.css"/>
 	<link rel="stylesheet" href="css_js/css/style.css"/>
-
-
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
 	
 <style>
 
@@ -54,12 +48,6 @@
 
 </head>
 <body>
-	<!-- Page Preloder -->
-	<!--<div id="preloder">
-		<div class="loader"></div>
-	</div>-->
-
-	<!-- Header section -->
 
 	<header class="header-section">
  <?php if(!empty($alert)){  ?>
@@ -70,7 +58,9 @@
                 </div>
               </div>
               <br><br>
-    <?php  }?>
+           <?php  }?>
+
+    
 		<div class="container">
 
 			<div class="row">
@@ -98,9 +88,9 @@
 						<button class="site-btn ">Se connecter</button>
 							<div class="dropdown-content" >
 							<a href="index.php?action=loginProfesseur">Professeur</a>
-							<a href="Views/loginChercheur">Chercheur</a>
-							<a href="Views/loginEtudiant">Etudiant</a>
-							<a href="Views/loginGuichetUnique">Responsable GU</a>
+							<a href="index.php?action=loginChercheur">Chercheur</a>
+							<a href="index.php?action=loginEtudiant">Etudiant</a>
+							<a href="index.php?action=loginGuichetUnique">Responsable GU</a>
 							<a href="index.php?action=loginResponsableCir">Responsable CIR</a>
 							<a href="index.php?action=loginRespPoolCompetence">Responsable Pool de compétences</a>
 							<a href="index.php?action=loginAdministrateur">Administrateur</a>
@@ -112,10 +102,10 @@
 				<div class="dropdown header-btn">
 						<button class="site-btn ">S'inscrire</button>
 							<div class="dropdown-content" >
-							<a href="Views/registerProfesseur.php">Professeur</a>
-							<a href="Views/registerChercheur.php">Chercheur</a>
-							<a href="Views/registerEtudiant.php">Etudiant</a>
-							<a href="index.php?action=registerAdministrateur">Administrateur</a>
+							<a href="index.php?action=registerProfesseur">Professeur</a>
+							<a href="index.php?action=registerChercheur">Chercheur</a>
+							<a href="index.php?action=registerEtudiant">Etudiant</a>
+							<!-- <a href="index.php?action=registerAdministrateur">Administrateur</a>-->
 							</div>
 							</div>
 	<?php
@@ -145,10 +135,7 @@
 			</div>
 		</div>
 	</header>
-	<!-- Header section end -->
 
-
-	<!-- Hero section -->
 	<section class="hero-section set-bg" data-setbg="css_js/img/bg.jpg" style="height:700px;">
 		<div class="container" >
 			<div class="hero-text text-white ">
@@ -157,11 +144,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- Hero section end -->
-	
 
-
-	<!-- categories section -->
 	<section class="categories-section spad">
 		<div class="container">
 			<div class="section-title">
@@ -232,10 +215,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- categories section end -->
 
-
-	<!-- search section -->
 	<section class="search-section">
 		<div class="container">
 			<div class="search-warp">
@@ -254,10 +234,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- search section end -->
 
-
-	<!-- course section -->
 	
 	<section class="categories-section spad">
 		<div class="container">
@@ -325,10 +302,6 @@
 		</div>
 	</section>
 	
-	<!-- course section end -->
-
-
-	<!-- footer section -->
 
 	<footer class="sticky-footer bg-white">
 	<div class="footer-bottom ">

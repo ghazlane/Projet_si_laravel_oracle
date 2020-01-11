@@ -11,9 +11,8 @@ class FormationRepository extends Connexion {
 
     public function Ajouter(Formation $formation) {	
 	
-    $Rq = "insert into lancement_formation (DESCRIPTION_DMD, SUJET_FORMATION , THEME_FORMATION , NOMBRE_PARTICIPANTS , PLAN_FORMATION, ID_DEMANDEUR, TYPE_DEMANDEUR) 
-           values ('" . $formation->getDescriptionDemande() . "','" . $formation->getSujetFormation() . "','" . $formation->getThemeFormation() . "','" . $formation->getNombreParticipants() . "','" . $formation->getPlanFormation() . "','" . $formation->getIdDemandeur() . "','" . $formation->getTypeDemandeur() . "')";
-    
+    $Rq = "insert into lancement_formation (DESCRIPTION_DMD, SUJET_FORMATION , THEME_FORMATION , NOMBRE_PARTICIPANTS , PLAN_FORMATION, ID_DEMANDEUR, TYPE_DEMANDEUR, DATE_DMD, STATUT_DMD) 
+           values ('" . $formation->getDescriptionDemande() . "','" . $formation->getSujetFormation() . "','" . $formation->getThemeFormation() . "','" . $formation->getNombreParticipants() . "','" . $formation->getPlanFormation() . "','" . $formation->getIdDemandeur() . "','" . $formation->getTypeDemandeur() . "','" . $formation->getDateDemande(). "','" . $formation->getStatusDemande() . "')";
     $connexion = $this->getConnexion(); 
 	$connexion->exec($Rq);
 	$connexion->exec("commit");
@@ -159,5 +158,21 @@ public function Lister($statut) {
         $statement->execute();
         $connexion->exec("commit");
     }	
+
+   public function listeDeclarationFormationClient($type_demandeur, $id_demandeur){
+         $Rq = "select * from lancement_formation where TYPE_DEMANDEUR = '".$type_demandeur."' and ID_DEMANDEUR = '".$id_demandeur."'"; 
+         $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+    }
+
+    public function listeDeclarationFormationClientTraitees($type_demandeur, $id_demandeur){
+        $Rq = "select * from lancement_formation where ( STATUT_DMD = 'Accepter' or STATUT_DMD = 'Non accepter' ) and TYPE_DEMANDEUR = '".$type_demandeur."' and ID_DEMANDEUR = '".$id_demandeur."'"; 
+         $connexion = $this->getConnexion(); 
+    $statement = $connexion->query($Rq);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    return $statement;
+    }
 
 }
