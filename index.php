@@ -74,7 +74,7 @@ session_start();
 				$_SESSION['code'] = $row['CODE_ET'];
 				$_SESSION['nom'] = $row['NOM_ET'];
 				$_SESSION['prenom'] = $row['PRENOM_ET'];
-				$_SESSION['type'] = 'etudiant'; 
+				$_SESSION['type'] = 'Etudiant'; 
 				$vue = new Vue('accueil'); 
 				$vue->generer(array());
 				return;  
@@ -98,7 +98,9 @@ session_start();
 		$controller = new ChercheurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess');
-		$vue->genererHome(array());
+		//$vue->genererHome(array());
+		$alert="Félicitations ! Votre nouveau compte chercheur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
+		$vue->genererHome(array("alert" => $alert)); 
 	}
 	else if($action == "listeChercheur"){
 		$controller = new ChercheurController(); 
@@ -141,9 +143,9 @@ session_start();
 				$_SESSION['code'] = $row['CODE_CHER'];
 				$_SESSION['nom'] = $row['NOM_CHER'];
 				$_SESSION['prenom'] = $row['PRENOM_CHER'];
-				$_SESSION['type'] = 'chercheur'; 
+				$_SESSION['type'] = 'Chercheur'; 
 				$vue = new Vue('accueil'); 
-				$vue->genererHomeUser();
+				$vue->generer(array());
 				return;  
 			}
 		}
@@ -165,7 +167,7 @@ session_start();
 		$controller = new ProfesseurController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess'); 
-		$vue->genererHome(); 
+		//$vue->genererHome(); 
 		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
 		$vue->genererHome(array("alert" => $alert)); 
 	}
@@ -209,7 +211,7 @@ session_start();
 				$_SESSION['code'] = $row['CODE_PROF'];
 				$_SESSION['nom'] = $row['NOM_PROF'];
 				$_SESSION['prenom'] = $row['PRENOM_PROF'];
-				$_SESSION['type'] = 'professeur'; 
+				$_SESSION['type'] = 'Professeur'; 
 				$vue = new Vue('accueil'); 
 				$vue->generer(array());
 				return;  
@@ -366,7 +368,7 @@ session_start();
 		$controller = new InventionController(); 
 		$controller->Delete($_GET['id']); 
 		$vue = new Vue('listeDeclarationInvention'); 
-		$vue->generer(array("statement" => $controller->Lister()));
+		$vue->generer(array("statement" => $controller->Lister($statut)));
 	}else if($action =="updateDeclarationInvention"){
 		$controller = new InventionController();
 		$vue = new Vue('updateDeclarationInvention'); 
@@ -471,7 +473,7 @@ session_start();
 		$controller = new BrevetController(); 
 		$id = $_GET["id"]; 
 		$controller->Supprimer($id);
-		$statement= $controller->Lister();
+		$statement= $controller->Lister($statut);
 		$vue = new Vue('listeDeclarationBrevet'); 
 		$alert="la demande a été bien supprimée";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
@@ -552,7 +554,7 @@ session_start();
 		$controller = new FormationController(); 
 		$controller->Supprimer($_GET['id']); 
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array("statement" => $controller->Lister()));
+		$vue->generer(array("statement" => $controller->Lister($statut)));
 	}
 	else if($action =="updateDeclarationFormation"){
 		$controller = new FormationController();
@@ -616,25 +618,25 @@ session_start();
 
     //liste demandes
     else if($action == "listeDemandeEnCours"){
-		$brevet= (new BrevetController())->Lister();
-		$invention= (new InventionController())->Lister();
-		$formation= (new FormationController())->Lister();
+		$brevet= (new BrevetController())->Lister($statut);
+		$invention= (new InventionController())->Lister($statut);
+		$formation= (new FormationController())->Lister($statut);
 
 		$vue = new Vue('listeDemandeEncours'); 
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
 	}
 	else if($action == "listeDemandeTraite"){
-		$brevet= (new BrevetController())->Lister();
-		$invention= (new InventionController())->Lister();
-		$formation= (new FormationController())->Lister();
+		$brevet= (new BrevetController())->Lister($statut);
+		$invention= (new InventionController())->Lister($statut);
+		$formation= (new FormationController())->Lister($statut);
 
 		$vue = new Vue('listeDemandeTraite'); 
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
 	}
 	else if($action == "listeTousDemande"){
-		$brevet= (new BrevetController())->Lister();
-		$invention= (new InventionController())->Lister();
-		$formation= (new FormationController())->Lister();
+		$brevet= (new BrevetController())->Lister($statut);
+		$invention= (new InventionController())->Lister($statut);
+		$formation= (new FormationController())->Lister($statut);
 
 		$vue = new Vue('listeTousDemande'); 
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  

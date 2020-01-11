@@ -17,8 +17,8 @@ class FormationController {
 	//actions
 	public function Ajouter($inputs){
 		$this->formation = new Formation($inputs['sujetFormation'],$inputs['themeFormation'],$inputs['nombreParticipants'],$inputs['planFormation'],$inputs['descriptionDeclaration']);  
-		$this->formation->setIdDemandeur(1); 
-		$this->formation->setTypeDemandeur("professeur"); 
+		$this->formation->setIdDemandeur($_SESSION['code']); 
+		$this->formation->setTypeDemandeur($_SESSION['type']);
 		$this->formation->setStatusDemande("En attente"); 
 		$this->formation->setDateDemande(date("j-n-Y")); 
 		$this->formationRepository->Ajouter($this->formation); 

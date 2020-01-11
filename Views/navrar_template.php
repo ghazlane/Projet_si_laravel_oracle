@@ -477,7 +477,7 @@
 
 
 
-<?php if($_SESSION['type'] == 'Professeur') {?>
+<?php if($_SESSION['type'] == 'Professeur' || $_SESSION['type'] == 'Chercheur' || $_SESSION['type'] == 'Etudiant'  ) {?>
   <li class="nav-item" >
         <a class="nav-link" href="index.php?action=accueilClient">
           <i class="fas fa-home"></i>
@@ -616,7 +616,7 @@
       <li class="nav-item">
         <a class="nav-link" href="index.php?action=listeTousDemande">
           <i class="fas fa-tasks"></i>
-          <span>Toutes les demande</span></a>
+          <span>Toutes les demandes</span></a>
       </li>
       
      
@@ -634,7 +634,7 @@
 
 <!-- Ancienne artie --> 
       <!-- Nav Item - Pages Collapse Menu -->
-      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'Professeur') {?>
+      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'Professeur' && $_SESSION['type'] != 'Chercheur' && $_SESSION['type'] != 'Etudiant') {?>
       <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>

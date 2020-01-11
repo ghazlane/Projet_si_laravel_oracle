@@ -32,7 +32,7 @@ class InventionController {
 	public function Lister($statut){
 		return $this->inventionRepository->Lister($statut); 
 	}
-
+	
 	public function getInfoDemandeur($id_demande){
 		return $this->inventionRepository->getInfoDemandeur($id_demande); 
 	}
