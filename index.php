@@ -145,7 +145,7 @@ session_start();
 				$_SESSION['prenom'] = $row['PRENOM_CHER'];
 				$_SESSION['type'] = 'chercheur'; 
 				$vue = new Vue('accueil'); 
-				$vue->genererHomeUser();
+				$vue->generer(array());
 				return;  
 			}
 		}
@@ -819,4 +819,17 @@ session_start();
 		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeTousDemande'); 
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));
+	}
+
+
+	//chercheur 
+	else if($action== "loginChercheur"){
+		$vue = new Vue("loginChercheur"); 
+		$vue->genererPageSansTemplate(); 
+	}
+
+	//etudiant
+	else if($action == "loginEtudiant"){
+		$vue = new Vue("loginEtudiant"); 
+		$vue->genererPageSansTemplate(); 
 	}
