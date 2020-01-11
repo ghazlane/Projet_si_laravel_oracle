@@ -47,15 +47,7 @@
                               
                                 <i class="far fa-folder-open"></i>
                               </a>
-                              <?php echo '<a href="index.php?action=updateDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
                               
-                                <i class="fas fa-sync"></i>
-                              </a>
-                              <?php
-                                echo '<a href="index.php?action=deleteDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
-                              ?>
-                                <i class="fas fa-trash"></i>
-                              </a>
                           </td>
                       </tr>
                     <?php  }}?>
@@ -106,12 +98,7 @@
                   class="btn btn-info btn-circle btn-sm" title="Ouvrir">
                     <i class="far fa-folder-open"></i>
                   </a>
-                  <a href="index.php?action=detailModifierBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">
-                    <i class="fas fa-sync"></i>
-                  </a>
-                  <a href="index.php?action=supprimerBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-danger btn-circle btn-sm" title="Supprimer">
-                    <i class="fas fa-trash"></i>
-                  </a>
+                  
                 </td>
               </tr>
             <?php  }}?>
@@ -161,15 +148,7 @@
                     
                       <i class="far fa-folder-open"></i>
                     </a>
-                    <?php echo '<a href="index.php?action=updateDeclarationFormation&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
                     
-                      <i class="fas fa-sync"></i>
-                    </a>
-                    <?php
-                      echo '<a href="index.php?action=deleteDeclarationFormation&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
-                    ?>
-                      <i class="fas fa-trash"></i>
-                    </a>
                 </td>
             </tr>
           <?php  }}?>

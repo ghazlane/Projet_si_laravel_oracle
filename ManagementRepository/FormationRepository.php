@@ -11,8 +11,8 @@ class FormationRepository extends Connexion {
 
     public function Ajouter(Formation $formation) {	
 	
-    $Rq = "insert into lancement_formation (DESCRIPTION_DMD, SUJET_FORMATION , THEME_FORMATION , NOMBRE_PARTICIPANTS , PLAN_FORMATION, ID_DEMANDEUR, TYPE_DEMANDEUR, DATE_DMD) 
-           values ('" . $formation->getDescriptionDemande() . "','" . $formation->getSujetFormation() . "','" . $formation->getThemeFormation() . "','" . $formation->getNombreParticipants() . "','" . $formation->getPlanFormation() . "','" . $formation->getIdDemandeur() . "','" . $formation->getTypeDemandeur() . "','" . $formation->getDateDemande() . "')";
+    $Rq = "insert into lancement_formation (DESCRIPTION_DMD, SUJET_FORMATION , THEME_FORMATION , NOMBRE_PARTICIPANTS , PLAN_FORMATION, ID_DEMANDEUR, TYPE_DEMANDEUR, DATE_DMD, STATUT_DMD) 
+           values ('" . $formation->getDescriptionDemande() . "','" . $formation->getSujetFormation() . "','" . $formation->getThemeFormation() . "','" . $formation->getNombreParticipants() . "','" . $formation->getPlanFormation() . "','" . $formation->getIdDemandeur() . "','" . $formation->getTypeDemandeur() . "','" . $formation->getDateDemande(). "','" . $formation->getStatusDemande() . "')";
     $connexion = $this->getConnexion(); 
 	$connexion->exec($Rq);
 	$connexion->exec("commit");
@@ -130,13 +130,17 @@ public function Lister($statut) {
     }	
 
         public function getInfoDemandeur($id_demande){
-            $Rq = "select * from lancement_invention where id_dmd = ".$id_demande;     
+            $Rq = "select * from lancement_formation where id_dmd = ".$id_demande;     
             $connexion = $this->getConnexion(); 
             $statement = $connexion->query($Rq);
             $statement->setFetchMode(PDO::FETCH_ASSOC);
             $row = $statement->fetch(); 
             if($row['TYPE_DEMANDEUR'] == 'professeur'){
                 $Rq = "select * from professeur where CODE_PROF = '".$row['ID_DEMANDEUR']."'";
+                $connexion = $this->getConnexion(); 
+            $statement = $connexion->query($Rq);
+            $statement->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $statement->fetch(); 
             return array("nom"=> $row['NOM_PROF'], "prenom"=>$row['PRENOM_PROF']); 
         }else if($row['TYPE_DEMANDEUR'] == 'administratif'){
             $Rq = "select * from administratif where CODE_ADMIN = '".$row['ID_DEMANDEUR']."'";

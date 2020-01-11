@@ -111,7 +111,7 @@
                   </a>
   <?php } ?>
           
-          <?php if($row['DECISION_FINALE'] != ''){?>
+          <?php if($row['DECISION_FINALE'] != '' && $_SESSION['type'] == 'GuichetUnique'){?>
                     <p style="font-size: 20px; ">La décision finale du CIR est : <strong style="color:green; "><?php echo $row['DECISION_FINALE'] ?> </strong></p>
                      <a href="index.php?action=AccepterFormationGu&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-50">
@@ -126,6 +126,23 @@
                     <span class="text">Refuser</span>
                   </a>
   <?php }?>
+
+  <?php if($_SESSION['type'] =='RespPoolCompetence' && $row['REPONSE_PC'] == ''){?>
+  <div class="container">
+  <form method="post" action="index.php?action=RespPoolCompetenceFormation">
+    <input type="hidden" name="id_dmd" value="<?php echo $row['ID_DMD'] ; ?>">
+    <div class="form-group">
+      <textarea required="required" name="reponseDemande"></textarea>
+      <label for="textarea" class="control-label" style="left: 0;">Réponse sur la demandes </label><i class="bar"></i>
+    </div>
+
+    <div class="button-container">
+    <button type="Submit" class="button"><span>Ajouter utilisateur</span></button>
+  </div>
+  </form>
+
+</div>
+  <?php } ?>
 
   <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] == ''){?>
                   <button type="Submit" class="button"><span>Transmettre le dossier au reponsable de pool de competence</span></button>  

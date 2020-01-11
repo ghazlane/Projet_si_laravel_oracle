@@ -601,20 +601,20 @@
         Demandes
       </div>
       <li class="nav-item" >
-        <a class="nav-link" href="index.php?action=listeDemandeEnCours">
+        <a class="nav-link" href="index.php?action=listeDemandeEnCoursClient">
           <i class="fas fa-spinner"></i>
           <span>Demandes en cours</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="index.php?action=listeDemandeTraite">
+        <a class="nav-link" href="index.php?action=listeDemandeTraiteClient">
           <i class="fas fa-list-ul"></i>
           <span>Demandes traitées</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="index.php?action=listeTousDemande">
+        <a class="nav-link" href="index.php?action=listeTousDemandeClient">
           <i class="fas fa-tasks"></i>
           <span>Toutes les demande</span></a>
       </li>

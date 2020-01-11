@@ -557,7 +557,7 @@ session_start();
 		$controller = new FormationController(); 
 		$controller->Supprimer($_GET['id']); 
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array("statement" => $controller->Lister()));
+		$vue->generer(array("alert"=>'La suppression est bien faite', "statement" => $controller->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code'])));
 	}
 	else if($action =="updateDeclarationFormation"){
 		$controller = new FormationController();
@@ -567,8 +567,9 @@ session_start();
 	else if($action == "saveUpdateDeclarationFormation"){
 		$controller = new FormationController();
 		$controller->Update($_POST); 
-		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$vue = new Vue('listeDeclarationFormation'); 
+		$vue->generer(array("alert"=>'La mise à jours est bien fait', "statement" => $controller->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code'])));
+
 	}else if($action == "transmettreFormationCir"){
 		$controller = new FormationController();
 		$controller->TransmettreFormationCir($_GET['id_dmd']); 
@@ -799,4 +800,23 @@ session_start();
 		$controller = new FormationController(); 
 		$vue = new Vue('listeDeclarationFormation'); 
 		$vue->generer(array("statement" => $controller->listeDeclarationFormationClientTraitees($_SESSION['type'], $_SESSION['code'])));
+	}else if($action == "listeDemandeEnCoursClient"){
+		$brevet= (new BrevetController())->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
+		$invention= (new InventionController())->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']);
+		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
+		$vue = new Vue('listeDemandeEncours'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation)); 
+	}else if($action == "listeDemandeTraiteClient"){
+		$brevet= (new BrevetController())->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
+		$invention= (new InventionController())->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']);
+		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
+
+		$vue = new Vue('listeDemandeTraite'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));
+	}else if($action == "listeTousDemandeClient"){
+		$brevet= (new BrevetController())->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
+		$invention= (new InventionController())->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']);
+		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
+		$vue = new Vue('listeTousDemande'); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));
 	}

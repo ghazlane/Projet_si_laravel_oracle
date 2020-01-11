@@ -56,15 +56,20 @@
                               
                                 <i class="far fa-folder-open"></i>
                               </a>
-                              <?php echo '<a href="index.php?action=updateDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
+                              <?php 
+                              if($row['STATUT_DMD'] == 'En attente'){
+                              echo '<a href="index.php?action=updateDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
                               
                                 <i class="fas fa-sync"></i>
                               </a>
                               <?php
-                                echo '<a href="index.php?action=deleteDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
+                                
+                                echo '<a href="index.php?action=deleteDeclarationInvention&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer" onclick="return confirm(\'Voulez vous vraiment supprimer cette demande\'); ">';
+
                               ?>
                                 <i class="fas fa-trash"></i>
                               </a>
+                            <?php } ?>
                           </td>
                       </tr>
                     <?php  }?>
@@ -101,7 +106,7 @@
               <th>Outils</th>
             </tr>
           </tfoot>
-          <tbody>
+          <tbody style="color:black; ">
             <?php while($row = $brevet->fetch()) { ?>
               <tr>
                 <td><?php echo $row['NOM_BREVET']  ?></td>
@@ -124,12 +129,14 @@
                   class="btn btn-info btn-circle btn-sm" title="Ouvrir">
                     <i class="far fa-folder-open"></i>
                   </a>
+                  <?php if($row['STATUT_DMD'] == 'En attente'){ ?>
                   <a href="index.php?action=detailModifierBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">
                     <i class="fas fa-sync"></i>
                   </a>
-                  <a href="index.php?action=supprimerBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-danger btn-circle btn-sm" title="Supprimer">
+                  <a href="index.php?action=supprimerBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-danger btn-circle btn-sm" title="Supprimer" onclick="return confirm('Voulez vous vraiment supprimer cette demande');">
                     <i class="fas fa-trash"></i>
                   </a>
+                <?php } ?>
                 </td>
               </tr>
             <?php  }?>
@@ -185,20 +192,25 @@
                       else
                         echo '<button type="button" class="btn btn-info btn-sm">En attente</button> '; 
                 ?></td>
-                <td>
+                 <td>
                     <?php echo '<a href="index.php?action=detailsDeclarationFormation&&id='.$row['ID_DMD'].'" class="btn btn-info btn-circle btn-sm" title="Ouvrir">'; ?>
                     
                       <i class="far fa-folder-open"></i>
                     </a>
-                    <?php echo '<a href="index.php?action=updateDeclarationFormation&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; ?>
+
+                    <?php 
+                    if($row['STATUT_DMD'] == 'En attente'){
+                    echo '<a href="index.php?action=updateDeclarationFormation&&id='.$row['ID_DMD'].'" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">'; 
+                    ?>
                     
                       <i class="fas fa-sync"></i>
                     </a>
                     <?php
-                      echo '<a href="index.php?action=deleteDeclarationFormation&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer">';
+                      echo '<a href="index.php?action=deleteDeclarationFormation&&id='.$row['ID_DMD'].'" class="btn btn-danger btn-circle btn-sm" title="Supprimer" onclick="return confirm(\'Voulez vous vraiment supprimer cette demande\'); ">';
                     ?>
                       <i class="fas fa-trash"></i>
                     </a>
+                  <?php } ?>
                 </td>
             </tr>
           <?php  }?>
