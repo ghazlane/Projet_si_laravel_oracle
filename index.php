@@ -372,7 +372,8 @@ session_start();
 		$vue->generer(array("alert"=>'La déclaration a bien été ajoutée', "statement" => $controller->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']))); 
 	}else if($action == "listeDeclarationInvention"){
 		$controller = new InventionController(); 
-		$statut = $_GET['statut']; 
+		if(!empty($statut)) $statut = $_GET['statut']; 
+		else $statut=null;
 		$vue = new Vue('listeDeclarationInvention'); 
 		$vue->generer(array("statement" => $controller->Lister($statut))); 
 	}else if($action == "detailDeclarationInvention"){ 
@@ -456,7 +457,8 @@ session_start();
 	}
 	else if($action == "listeDeclarationBrevet"){
 		$controller = new BrevetController(); 
-		$statut =$_GET['statut']; 
+		if(!empty($statut)) $statut = $_GET['statut']; 
+		else $statut=null; 
 		$vue = new Vue('listeDeclarationBrevet'); 
 		$vue->generer(array("statement" => $controller->Lister($statut))); 
 	}
@@ -556,7 +558,8 @@ session_start();
 	}
 	else if($action == "listeDeclarationFormation"){
 		$controller = new FormationController(); 
-		$statut =$_GET['statut']; 
+		if(!empty($statut)) $statut = $_GET['statut']; 
+		else $statut=null;
 		$vue = new Vue('listeDeclarationFormation'); 
 		$vue->generer(array( "statement" => $controller->Lister($statut))); 
 	}
