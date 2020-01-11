@@ -634,6 +634,7 @@ session_start();
 
     //liste demandes
     else if($action == "listeDemandeEnCours"){
+    	$statut=$_GET['statut'];
 		$brevet= (new BrevetController())->Lister($statut);
 		$invention= (new InventionController())->Lister($statut);
 		$formation= (new FormationController())->Lister($statut);
@@ -642,6 +643,7 @@ session_start();
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
 	}
 	else if($action == "listeDemandeTraite"){
+		$statut=$_GET['statut'];
 		$brevet= (new BrevetController())->Lister($statut);
 		$invention= (new InventionController())->Lister($statut);
 		$formation= (new FormationController())->Lister($statut);
@@ -650,9 +652,10 @@ session_start();
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
 	}
 	else if($action == "listeTousDemande"){
-		$brevet= (new BrevetController())->Lister($statut);
-		$invention= (new InventionController())->Lister($statut);
-		$formation= (new FormationController())->Lister($statut);
+
+		$brevet= (new BrevetController())->Lister(null);
+		$invention= (new InventionController())->Lister(null);
+		$formation= (new FormationController())->Lister(null);
 
 		$vue = new Vue('listeTousDemande'); 
 		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
@@ -845,3 +848,27 @@ session_start();
 		$vue = new Vue("loginEtudiant"); 
 		$vue->genererPageSansTemplate(); 
 	}
+
+
+	//administrateur
+	else if($action == "loginAdministrateur"){
+		$vue = new Vue("loginAdministrateur"); 
+		$vue->genererPageSansTemplate(); 
+	}
+	else if($action == "connexionAdministrateur"){
+		
+			if(($_POST['email'] == "amrani@gmail.com") && ($_POST['password'] == "123456")){
+				//session_start();
+				$_SESSION['code'] = "123456";
+				$_SESSION['nom'] = "AMRANI";
+				$_SESSION['prenom'] = "Ahmed";
+				$_SESSION['type'] = 'administrateur'; 
+				$vue = new Vue('accueil'); 
+				$vue->generer(array());
+				return;  
+			}
+		
+		$vue = new Vue('MotDePasseIncorrectAdmin');
+		$vue->genererPageSansTemplate();
+	}
+    
