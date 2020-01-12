@@ -171,9 +171,13 @@ session_start();
 	}
 	else if($action == "saveAjoutProfesseur"){
 		$controller = new ProfesseurController(); 
-		$controller->Ajouter($_POST);
-		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$rep=$controller->Ajouter($_POST);
+		$vue = new Vue('listeProfesseur'); 
+		if ($rep == true) 
+		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès !";
+	    else  
+	    $alert="Vous n'êtes pas un professeur ! La création du compte est annulée ! "; 
+		$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert));  
 
 	}else if($action == "saveRegisterProfesseur"){
 		$controller = new ProfesseurController(); 
@@ -200,11 +204,13 @@ session_start();
 		$controller = new ProfesseurController();
 		$resultat = $controller->Update($_POST); 
 		if($resultat == true){
-			$vue = new Vue('createSuccess'); 
-			$vue->generer(array()); 
+			$alert="le compte professeur a été bien modifiée";
+			$vue = new Vue('listeProfesseur');
+			$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
 		}else {
-			$vue = new Vue('createFailed'); 
-			$vue->generer(array()); 
+			$alert="le mot de passe est incorrecte";
+			$vue = new Vue('listeProfesseur');
+			$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
 		}
 	}
 	else if($action == "detailProfesseur"){
