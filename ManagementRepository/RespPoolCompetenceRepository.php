@@ -17,7 +17,7 @@ class RespPoolCompetenceRepository extends Connexion
 	}
 
 	public function Lister(){
-	 	$Rq = "select * from Responsable_pc, pool_competences where pool_competences.ID_PC = Responsable_pc.ID_PC ";     
+		$Rq = "select * from Responsable_pc, pool_competences where pool_competences.ID_PC = Responsable_pc.ID_PC ";     
     	$connexion = $this->getConnexion(); 
     	$statement = $connexion->query($Rq);
     	$statement->setFetchMode(PDO::FETCH_ASSOC);

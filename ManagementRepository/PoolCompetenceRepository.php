@@ -34,8 +34,7 @@
     public function Modifier(PoolCompetence $poolCompetence,$id){
     $Rq = "update pool_Competences set NOM_PC='" . 
     $poolCompetence->getNomPc(). "', FONC_PC = '" . 
-    $poolCompetence->getFonctionnalitePc(). "', DATE_CREATION= '" .
-    $poolCompetence->getDateCreationPC(). "' where id_pc =".$id;
+    $poolCompetence->getFonctionnalitePc(). "' where id_pc =".$id;
         
     $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);

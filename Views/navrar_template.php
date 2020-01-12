@@ -92,13 +92,14 @@
           <span>Dashboard</span></a>
       </li>
     <?php } ?>
-      <!-- Divider -->
+     
+      <?php if($_SESSION['type'] =='GuichetUnique' ){  ?>
+         <!-- Divider -->
       <hr class="sidebar-divider">
       <!-- Heading -->
       <div class="sidebar-heading">
         Nouvelles demandes 
       </div>
-      <?php if($_SESSION['type'] =='GuichetUnique' ){  ?>
         <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
@@ -228,6 +229,12 @@
 
 
  <?php if($_SESSION['type'] =='ResponsableCir'){  ?>
+         <!-- Divider -->
+      <hr class="sidebar-divider">
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Nouvelles demandes 
+      </div>
             <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
@@ -356,6 +363,12 @@
 
 
             <?php if($_SESSION['type'] =='RespPoolCompetence'){  ?>
+             <!-- Divider -->
+      <hr class="sidebar-divider">
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Nouvelles demandes 
+      </div>
          <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
@@ -635,7 +648,7 @@
 <!-- Ancienne artie --> 
       <!-- Nav Item - Pages Collapse Menu -->
       <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'professeur' && $_SESSION['type'] != 'chercheur' && $_SESSION['type'] != 'etudiant') {?>
-      <li class="nav-item" >
+       <!--<li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
           <span>Déclaration d’invention</span>
@@ -743,10 +756,10 @@
             <a class="collapse-item" href="index.html">Lister demande</a>
           </div>
         </div>
-      </li>
+      </li>-->
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
+      <!--<hr class="sidebar-divider">
       <div class="sidebar-heading">
         Demandes
       </div>
@@ -768,7 +781,7 @@
         <a class="nav-link" href="index.php?action=listeTousDemande">
           <i class="fas fa-tasks"></i>
           <span>Toutes les demande</span></a>
-      </li>
+      </li>-->
       <!-- Heading -->
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -815,7 +828,7 @@
           </div>
         </div>
       </li>
-      <li class="nav-item" >
+      <!--<li class="nav-item" >
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh6" aria-expanded="true" aria-controls="collapseTh6">
           <i class="fas fa-user"></i>
           <span>Administratif </span>
@@ -827,7 +840,7 @@
             <a class="collapse-item" href="index.html">Lister les comptes</a>
           </div>
         </div>
-      </li>
+      </li>-->
       <li class="nav-item" >
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh13" aria-expanded="true" aria-controls="collapseTh13">
           <i class="fas fa-street-view"></i>

@@ -299,8 +299,9 @@ session_start();
 	else if($action == "saveAjoutResponsableCir"){
 		$controller = new ResponsableCirController(); 
 		$controller->Ajouter($_POST);
-		$vue = new Vue('createSuccess'); 
-		$vue->generer(array()); 
+		$vue = new Vue('listeResponsableCir'); 
+		$alert="Le compte a été bien ajoutée"; 
+		$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert));  
 	}else if($action == "listerResponsableCir"){
 		$controller = new ResponsableCirController(); 
 		$vue = new Vue('listeResponsableCir'); 
@@ -679,7 +680,7 @@ session_start();
 		$controller->Ajouter($_POST);
 		$statement= $controller->Lister();
 		$vue = new Vue('listePoolCompetence'); 
-		$alert="la demande a été bien créé"; 
+		$alert="la services pool de compétence a été bien créé"; 
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 	else if($action == "listePoolCompetence"){
@@ -720,6 +721,9 @@ session_start();
 	}else if($action == "saveAjouterResponsablePoolCompetences"){
 		$controller = new RespPoolCompetenceController(); 
 		$controller->Ajouter($_POST);
+		$vue = new Vue('listerResponsablePoolCompetences'); 
+		$alert="le compte responsable pool de compétence a été bien ajoutée"; 
+		$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
 		$vue = new Vue('createSuccess');  
 		$vue->generer(array()); 
 	}else if($action == "ListerResponsablePoolCompetences"){
