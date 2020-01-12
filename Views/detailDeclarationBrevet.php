@@ -39,7 +39,7 @@
       <div class="w-100"></div><br>
       <div class="col">Fonctionnalité Demandeur</div>
       <div class="col"><?php echo $row['TYPE_DEMANDEUR']  ?></div>
-      <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] == ''){?>  
+      <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] == '' && $row['STATUT_CIR'] == '' && $row['STATUT_DMD'] == 'En cours'){?>  
         <div class="w-100"></div><br> 
         <div class="col">Pool Competence</div>
         <div class="col">
@@ -56,14 +56,14 @@
     </div>
   </div>
 
-  <?php if($_SESSION['type'] =='GuichetUnique' && $row['DECISION_FINALE'] == ''){?>
-    <a href="index.php?action=transmettreBrevetCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
+  <?php if($_SESSION['type'] =='GuichetUnique' && $row['DECISION_FINALE'] == '' && $row['STATUT_RESP_GU'] == ''  && $row['STATUT_DMD'] == 'En attente'){?>
+    <a href="index.php?action=transmettreBrevetCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split" onclick="return confirm('Voulez-vous vraiment transmettre le dossier'); ">
       <span class="icon text-white-50">
         <i class="fas fa-check"></i>
       </span>
       <span class="text">Transmettre le dossier au directeur de la CIR</span>
     </a><br><br>
-    <a href="index.php?action=RefuserBrevetGu&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-danger btn-icon-split">
+    <a href="index.php?action=RefuserBrevetGu&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-danger btn-icon-split" onclick="return confirm('Voulez-vous vraiment refuser la demande'); ">
       <span class="icon text-white-50">
         <i class="fas fa-times"></i>
       </span>
@@ -71,22 +71,22 @@
     </a>
   <?php } ?>
   
-  <?php if($row['DECISION_FINALE'] != '' && $_SESSION['type'] == 'GuichetUnique'){?>
+  <?php if($row['DECISION_FINALE'] != '' && $_SESSION['type'] == 'GuichetUnique' && ($row['STATUT_DMD'] != 'Accepter' && $row['STATUT_DMD'] != 'Non accepter')){?>
     <p style="font-size: 20px; ">La décision finale du CIR est : <strong style="color:green; "><?php echo $row['DECISION_FINALE'] ?> </strong></p>
-    <a href="index.php?action=AccepterBrevetGu&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split">
+    <a href="index.php?action=AccepterBrevetGu&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-success btn-icon-split" onclick="return confirm('Voulez-vous vraiment accepter le dossier'); ">
       <span class="icon text-white-50">
         <i class="fas fa-check"></i>
       </span>
       <span class="text">Accepter</span>
     </a>
-    <a href="index.php?action=RefuserBrevetGu&&id_dmd=<?php echo $row['ID_DMD'] ?>" class="btn btn-danger btn-icon-split">
+    <a href="index.php?action=RefuserBrevetGu&&id_dmd=<?php echo $row['ID_DMD'] ?>" class="btn btn-danger btn-icon-split" onclick="return confirm('Voulez-vous vraiment refuser le dossier');">
       <span class="icon text-white-50">
         <i class="fas fa-times"></i>
       </span>
       <span class="text">Refuser</span>
     </a>
   <?php }?>
-  <?php if($_SESSION['type'] =='RespPoolCompetence' && $row['REPONSE_PC'] == ''){?>
+  <?php if($_SESSION['type'] =='RespPoolCompetence' && $row['REPONSE_PC'] == '' && $row['STATUT_DMD'] == 'En cours'){?>
     <div class="container">
       <form method="post" action="index.php?action=RespPoolCompetenceBrevet">
         <input type="hidden" name="id_dmd" value="<?php echo $row['ID_DMD'] ; ?>">
@@ -96,16 +96,16 @@
         </div>
 
         <div class="button-container">
-          <button type="Submit" class="button"><span>Valider réponse</span></button>
+          <button type="Submit" class="button"><span>Envoyer réponse</span></button>
         </div>
       </form>
 
     </div>
   <?php } ?>
-  <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] == ''){?>
-    <button type="Submit" class="button"><span>Transmettre le dossier au reponsable de pool de competence</span></button>  
+  <?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] == '' && $row['STATUT_CIR'] == '' && $row['STATUT_DMD'] == 'En cours'){?>
+    <button type="Submit" class="button" onclick="return confirm('Voulez-vous vraiment transmettre le dossier'); "><span>Transmettre le dossier au reponsable de pool de competence</span></button>  
     <br><br>
-    <a href="index.php?action=RefuserBrevetCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-danger btn-icon-split">
+    <a href="index.php?action=RefuserBrevetCir&&id_dmd=<?php echo $row['ID_DMD']?>" class="btn btn-danger btn-icon-split" onclick="return confirm('Voulez-vous vraiment refuser le dossier'); ">
       <span class="icon text-white-50">
         <i class="fas fa-times"></i>
       </span>
@@ -114,7 +114,7 @@
   </form>
 <?php } ?>
 
-<?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] != ''){?>
+<?php if($_SESSION['type'] =='ResponsableCir' && $row['DECISION_FINALE'] == '' && $row['REPONSE_PC'] != '' ){?>
   <p style="font-size: 22px ;"> La réponse du pool de compétences est la suivante : <span style="color : green; "><?php echo $row['REPONSE_PC']; ?></span></p>
   <hr>
   <div class="container">
@@ -126,7 +126,7 @@
       </div>
 
       <div class="button-container">
-        <button type="Submit" class="button"><span>Confirmer la décision</span></button>
+        <button type="Submit" class="button" onclick="return confirm('Cliquez sur OK pour confirmer la décision');"><span>Confirmer la décision</span></button>
       </div>
     </form>
 

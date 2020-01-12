@@ -82,7 +82,7 @@
       <hr class="sidebar-divider my-0">
       <?php if($_SESSION['type'] =='GuichetUnique' or $_SESSION['type'] =='ResponsableCir'){?>
       <li class="nav-item" >
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php?action=accueilClient">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Accueil</span></a> 
       </li>
@@ -98,6 +98,15 @@
       <div class="sidebar-heading">
         Nouvelles demandes 
       </div>
+      <?php if($_SESSION['type'] == 'RespPoolCompetence') {?>
+<li class="nav-item" >
+        <a class="nav-link" href="index.php?action=accueilClient">
+          <i class="fas fa-home"></i>
+          <span>Accueil</span></a> 
+      </li>
+      <hr  class="sidebar-divider">
+<?php } ?>
+
       <?php if($_SESSION['type'] =='GuichetUnique' ){  ?>
         <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -393,7 +402,7 @@
         <div id="collapseeight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Lancer une formation</h6>
-            <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Enattente">Nouvelle formation</a>
+            <a class="collapse-item" href="index.php?action=NouvelleLancementFormationPoolsCompetences">Nouvelle formation</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Encours">Demandes en cours </a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Acceptee">Demandes traitées</a>
           </div>
@@ -472,9 +481,6 @@
       </li>
 
       <?php } ?>
-
-
-
 
 
 <?php if($_SESSION['type'] == 'professeur'  || $_SESSION['type'] == 'chercheur' || $_SESSION['type'] == 'etudiant') {?>
@@ -634,7 +640,7 @@
 
 <!-- Ancienne artie --> 
       <!-- Nav Item - Pages Collapse Menu -->
-      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'professeur' && $_SESSION['type'] != 'chercheur' && $_SESSION['type'] != 'etudiant') {?>
+      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'professeur' && $_SESSION['type'] != 'chercheur' && $_SESSION['type'] != 'etudiant' && $_SESSION['type'] != "ResponsableCir") {?>
       <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
