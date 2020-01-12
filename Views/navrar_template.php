@@ -40,7 +40,6 @@
   background-size: cover ;
   position: relative;
 }
-
 .box {
   background-color: white;
   border: 9px solid rgb(96, 151, 165);
@@ -48,7 +47,6 @@
   height : 480px;
   
 }
-
 .hero-text h2 {
   font-size: 55px;
   margin-top: 20px;
@@ -59,8 +57,6 @@
   font-family:  'Arial', fantasy   ;
   }
   
-
-
 </style>
 
 </head>
@@ -82,7 +78,7 @@
       <hr class="sidebar-divider my-0">
       <?php if($_SESSION['type'] =='GuichetUnique' or $_SESSION['type'] =='ResponsableCir'){?>
       <li class="nav-item" >
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php?action=accueilClient">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Accueil</span></a> 
       </li>
@@ -92,14 +88,24 @@
           <span>Dashboard</span></a>
       </li>
     <?php } ?>
-     
-      <?php if($_SESSION['type'] =='GuichetUnique' ){  ?>
-         <!-- Divider -->
+     <?php if($_SESSION['type'] != 'administrateur') {?>
+      <!-- Divider -->
       <hr class="sidebar-divider">
       <!-- Heading -->
       <div class="sidebar-heading">
         Nouvelles demandes 
       </div>
+      <?php } ?>
+      <?php if($_SESSION['type'] == 'RespPoolCompetence') {?>
+<li class="nav-item" >
+        <a class="nav-link" href="index.php?action=accueilClient">
+          <i class="fas fa-home"></i>
+          <span>Accueil</span></a> 
+      </li>
+      <hr  class="sidebar-divider">
+<?php } ?>
+
+      <?php if($_SESSION['type'] =='GuichetUnique' ){  ?>
         <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
@@ -229,12 +235,6 @@
 
 
  <?php if($_SESSION['type'] =='ResponsableCir'){  ?>
-         <!-- Divider -->
-      <hr class="sidebar-divider">
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Nouvelles demandes 
-      </div>
             <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
@@ -363,12 +363,6 @@
 
 
             <?php if($_SESSION['type'] =='RespPoolCompetence'){  ?>
-             <!-- Divider -->
-      <hr class="sidebar-divider">
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Nouvelles demandes 
-      </div>
          <li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
@@ -406,7 +400,7 @@
         <div id="collapseeight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Lancer une formation</h6>
-            <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Enattente">Nouvelle formation</a>
+            <a class="collapse-item" href="index.php?action=NouvelleLancementFormationPoolsCompetences">Nouvelle formation</a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Encours">Demandes en cours </a>
             <a class="collapse-item" href="index.php?action=listeDeclarationFormation&statut=Acceptee">Demandes traitées</a>
           </div>
@@ -485,9 +479,6 @@
       </li>
 
       <?php } ?>
-
-
-
 
 
 <?php if($_SESSION['type'] == 'professeur'  || $_SESSION['type'] == 'chercheur' || $_SESSION['type'] == 'etudiant') {?>
@@ -647,8 +638,8 @@
 
 <!-- Ancienne artie --> 
       <!-- Nav Item - Pages Collapse Menu -->
-      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'professeur' && $_SESSION['type'] != 'chercheur' && $_SESSION['type'] != 'etudiant') {?>
-       <!--<li class="nav-item" >
+      <?php if($_SESSION['type'] != 'GuichetUnique' && $_SESSION['type'] != "RespPoolCompetence" && $_SESSION['type'] != 'professeur' && $_SESSION['type'] != 'chercheur' && $_SESSION['type'] != 'etudiant' && $_SESSION['type'] != "ResponsableCir") {?>
+      <!--<li class="nav-item" >
         <a  class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-asterisk"></i>
           <span>Déclaration d’invention</span>
@@ -756,10 +747,10 @@
             <a class="collapse-item" href="index.html">Lister demande</a>
           </div>
         </div>
-      </li>-->
-
+      </li>
+-->
       <!-- Divider -->
-      <!--<hr class="sidebar-divider">
+    <!--  <hr class="sidebar-divider">
       <div class="sidebar-heading">
         Demandes
       </div>
@@ -828,7 +819,7 @@
           </div>
         </div>
       </li>
-      <!--<li class="nav-item" >
+      <!-- <li class="nav-item" >
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh6" aria-expanded="true" aria-controls="collapseTh6">
           <i class="fas fa-user"></i>
           <span>Administratif </span>
@@ -853,8 +844,8 @@
             <a class="collapse-item" href="index.php?action=listeProfesseur">Lister les professeurs</a>
           </div>
         </div>
-	  </li>
-	  <li class="nav-item" >
+    </li>
+    <li class="nav-item" >
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           <i class="fas fa-street-view"></i>
           <span>Chercheur </span>
@@ -866,8 +857,8 @@
             <a class="collapse-item" href="index.php?action=listeChercheur">Lister les chercheurs</a>
           </div>
         </div>
-	  </li>
-	  <li class="nav-item" >
+    </li>
+    <li class="nav-item" >
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTh2" aria-expanded="true" aria-controls="collapseTh2">
           <i class="fas fa-street-view"></i>
           <span>Etudiant </span>

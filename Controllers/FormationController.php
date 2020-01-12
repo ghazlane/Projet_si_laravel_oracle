@@ -97,4 +97,12 @@ class FormationController {
 	public function setDecisionFinaleCir($id, $decision){
 		$this->formationRepository->setDecisionFinaleCir($id, $decision); 
 	}
+
+	public function NouvelleLancementFormationPoolsCompetences($id_pc){
+		return $this->formationRepository->NouvelleLancementFormationPoolsCompetences($id_pc); 
+	}
+
+	public function setReponsePoolCompetences($id_dmd, $reponse){
+		$this->formationRepository->setReponsePoolCompetences($id_dmd, $reponse); 
+	}
 }
