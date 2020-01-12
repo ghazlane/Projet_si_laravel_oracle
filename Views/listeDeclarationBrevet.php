@@ -15,7 +15,7 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Tous les demandes de déclaration de brevet</h6>
+      <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Toutes les demandes de déclaration de brevet</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -26,7 +26,7 @@
               <th>Categorie Brevet</th>
               <th>Domaine Brevet</th>
               <th>Date déclaration</th>
-              <th>Status décision finale</th>
+              <th>Statut décision finale</th>
               <th>Outils</th>
             </tr>
           </thead>
@@ -36,7 +36,7 @@
               <th>Categorie Brevet</th>
               <th>Domaine Brevet</th>
               <th>Date déclaration</th>
-              <th>Status décision finale</th>
+              <th>Statut décision finale</th>
               <th>Outils</th>
             </tr>
           </tfoot>

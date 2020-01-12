@@ -4,6 +4,7 @@ session_start();
 	require_once ("Controllers/InventionController.php");
 	require_once ("Controllers/BrevetController.php");
 	require_once ("Controllers/FormationController.php");
+	require_once ("Controllers/StartupController.php");
 	require_once ("Controllers/GuichetUniqueController.php");
 	require_once ("Controllers/ProfesseurController.php");
 	require_once ("Controllers/EtudiantController.php");
@@ -301,7 +302,7 @@ session_start();
 		$controller = new ResponsableCirController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('listeResponsableCir'); 
-		$alert="Le compte a été bien ajoutée"; 
+		$alert="Le compte a bien été ajouté"; 
 		$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert));  
 	}else if($action == "listerResponsableCir"){
 		$controller = new ResponsableCirController(); 
@@ -413,17 +414,17 @@ session_start();
 		$controller = new InventionController(); 
 		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
 		$vue = new Vue('listeDeclarationInvention'); 
-		$vue->generer(array('alert'=>'Décision finale bien envoyer',"statement" => $controller->DemandePretPourCir()));
+		$vue->generer(array('alert'=>'Décision finale bien envoyée',"statement" => $controller->DemandePretPourCir()));
 	}else if($action == "RefuserDemandeGu"){
 		$controller = new InventionController();
 		$controller->RefuserInventionGu($_GET['id_dmd']); 
 		$vue = new Vue('listeDeclarationInvention'); 
-		$vue->generer(array("alert"=>'La déclaration a été refuser', "statement" => $controller->Lister('Enattente'))); 
+		$vue->generer(array("alert"=>'La déclaration a été refusée', "statement" => $controller->Lister('Enattente'))); 
 	}else if($action == "RefuserInventionCir"){
 		$controller = new InventionController();
 		$controller->RefuserInventionGu($_GET['id_dmd']); 
 		$vue = new Vue('listeDeclarationInvention'); 
-		$vue->generer(array('alert'=>'Le dessier a été refuser', "statement" => $controller->ListeAccepterParGU()));
+		$vue->generer(array('alert'=>'Le dessier a été refusé', "statement" => $controller->ListeAccepterParGU()));
 	}else if($action =="InventionPretes"){
 		$controller = new InventionController(); 
 		$vue = new Vue('listeDeclarationInvention'); 
@@ -440,7 +441,7 @@ session_start();
 		$controller = new InventionController();
 		$controller->AccepterInventionGu($_GET['id_dmd']); 
 		$vue = new Vue('listeDeclarationInvention'); 
-		$vue->generer(array('alert'=>'Demande accepter', "statement" => $controller->ListePretes()));
+		$vue->generer(array('alert'=>'Demande acceptée', "statement" => $controller->ListePretes()));
 	}
 
     //brevet
@@ -452,7 +453,7 @@ session_start();
 		$controller->Ajouter($_POST);
 		$statement= $controller->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$alert="la demande a été bien ajoutée"; 
+		$alert="la demande a bien été ajoutée"; 
 		$vue->generer(array("statement" => $statement,"alert"=>$alert)); 
 	}
 	else if($action == "listeDeclarationBrevet"){
@@ -482,7 +483,7 @@ session_start();
 		$controller->Modifier($_POST,$id);
 		$statement= $controller->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$alert="la demande a été bien modifiée";
+		$alert="la demande a bien été modifiée";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 	else if($action == "supprimerBrevet"){
@@ -515,22 +516,22 @@ session_start();
 		$controller = new BrevetController();
 		$controller->TransmettreBrevetPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$vue->generer(array('alert'=>'La demande a été transmis', "statement" => $controller->ListeAccepterParGU())); 
+		$vue->generer(array('alert'=>'La demande a été transmise', "statement" => $controller->ListeAccepterParGU())); 
 	}else if($action == "RefuserBrevetGu"){
 		$controller = new BrevetController();
 		$controller->RefuserBrevetGu($_GET['id_dmd']);
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$vue->generer(array("alert"=>'Le dossier a été refuser ', "statement" => $controller->Lister('Enattente'))); 
+		$vue->generer(array("alert"=>'Le dossier a été refusé ', "statement" => $controller->Lister('Enattente'))); 
 	}else if($action == "RefuserBrevetCir"){
 		$controller = new BrevetController();
 		$controller->RefuserBrevetGu($_GET['id_dmd']); 
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$vue->generer(array('alert'=>'Le dossier a été refuser', "statement" => $controller->ListeAccepterParGU()));
+		$vue->generer(array('alert'=>'Le dossier a été refusé', "statement" => $controller->ListeAccepterParGU()));
 	}else if($action =="AccepterBrevetGu"){
 		$controller = new BrevetController();
 		$controller->AccepterBrevetGu($_GET['id_dmd']); 
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$vue->generer(array('alert'=>'Demande accepter', "statement" => $controller->ListePretes()));
+		$vue->generer(array('alert'=>'Demande acceptée', "statement" => $controller->ListePretes()));
 	}
 	else if($action == "DemandePretPourCirBrevet"){
 		$controller = new BrevetController(); 
@@ -541,7 +542,7 @@ session_start();
 		$controller = new BrevetController(); 
 		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
 		$vue = new Vue('listeDeclarationBrevet'); 
-		$vue->generer(array('alert'=>'Décision finale bien envoyer',"statement" => $controller->DemandePretPourCir()));
+		$vue->generer(array('alert'=>'Décision finale bien envoyée',"statement" => $controller->DemandePretPourCir()));
 	}
 
 
@@ -593,7 +594,7 @@ session_start();
 		$controller = new FormationController();
 		$controller->TransmettreFormationPc($_GET['id_dmd'],$_POST); 
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array('alert'=>'La demande a été transmis', "statement" => $controller->ListeAccepterParGU())); 
+		$vue->generer(array('alert'=>'La demande a été transmise', "statement" => $controller->ListeAccepterParGU())); 
 	}else if($action == "RefuserFormationGu"){
 		$controller = new FormationController();
 		$controller->RefuserFormationGu($_GET['id_dmd']); 
@@ -603,7 +604,7 @@ session_start();
 		$controller = new FormationController();
 		$controller->RefuserFormationGu($_GET['id_dmd']);
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array('alert'=>'La demande a été refuser', "statement" => $controller->ListeAccepterParGU())); 		
+		$vue->generer(array('alert'=>'La demande a été refusée', "statement" => $controller->ListeAccepterParGU())); 		
 	}else if($action == "FormationPretes"){
 		$controller = new FormationController(); 
 		$vue = new Vue('listeDeclarationFormation'); 
@@ -620,7 +621,7 @@ session_start();
 		$controller = new FormationController();
 		$controller->AccepterFormationGu($_GET['id_dmd']); 
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array('alert'=>'La demande est accépter',"statement" => $controller->ListePretes()));
+		$vue->generer(array('alert'=>'La demande est acceptée',"statement" => $controller->ListePretes()));
 	}
 	else if($action == "DemandePretPourCirFormation"){
 		$controller = new FormationController(); 
@@ -631,7 +632,7 @@ session_start();
 		$controller = new FormationController(); 
 		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array('alert'=>'Décision finale bien envoyer', "statement" => $controller->DemandePretPourCir()));
+		$vue->generer(array('alert'=>'Décision finale bien envoyée', "statement" => $controller->DemandePretPourCir()));
 	}
 
     //liste demandes
@@ -640,27 +641,29 @@ session_start();
 		$brevet= (new BrevetController())->Lister($statut);
 		$invention= (new InventionController())->Lister($statut);
 		$formation= (new FormationController())->Lister($statut);
-
+		$startup= (new StartupController())->Lister($statut);
 		$vue = new Vue('listeDemandeEncours'); 
-		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation,"startup" => $startup));  
 	}
 	else if($action == "listeDemandeTraite"){
 		$statut=$_GET['statut'];
 		$brevet= (new BrevetController())->Lister($statut);
 		$invention= (new InventionController())->Lister($statut);
 		$formation= (new FormationController())->Lister($statut);
+		$startup= (new StartupController())->Lister($statut);
 
 		$vue = new Vue('listeDemandeTraite'); 
-		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation, "startup" => $startup));  
 	}
 	else if($action == "listeTousDemande"){
 
 		$brevet= (new BrevetController())->Lister(null);
 		$invention= (new InventionController())->Lister(null);
 		$formation= (new FormationController())->Lister(null);
+		$startup= (new StartupController())->Lister(null);
 
 		$vue = new Vue('listeTousDemande'); 
-		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));  
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation, "startup" => $startup));  
 	}else if($action == "Home"){
 		$vue = new Vue('listeTousDemande');
 		$vue->genererHome();
@@ -678,7 +681,7 @@ session_start();
 		$controller->Ajouter($_POST);
 		$statement= $controller->Lister();
 		$vue = new Vue('listePoolCompetence'); 
-		$alert="la services pool de compétence a été bien créé"; 
+		$alert="le service pool de compétence a bien été  créé"; 
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 	else if($action == "listePoolCompetence"){
@@ -698,7 +701,7 @@ session_start();
 		$controller->Modifier($_POST,$id);
 		$statement= $controller->Lister();
 		$vue = new Vue('listePoolCompetence'); 
-		$alert="la demande a été bien modifiée";
+		$alert="la demande a bien été modifiée";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert)); 
 	}
 	else if($action == "deletePoolCompetence"){
@@ -707,7 +710,7 @@ session_start();
 		$controller->Supprimer($id);
 		$statement= $controller->Lister();
 		$vue = new Vue('listePoolCompetence'); 
-		$alert="la demande a été bien suppriméee";
+		$alert="la demande a bien été suppriméee";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 
@@ -720,7 +723,7 @@ session_start();
 		$controller = new RespPoolCompetenceController(); 
 		$controller->Ajouter($_POST);
 		$vue = new Vue('listerResponsablePoolCompetences'); 
-		$alert="le compte responsable pool de compétence a été bien ajoutée"; 
+		$alert="le compte responsable pool de compétence a bien été ajoutée"; 
 		$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
 		$vue = new Vue('createSuccess');  
 		$vue->generer(array()); 
@@ -777,12 +780,12 @@ session_start();
 		$controller = new FormationController(); 
 		$controller->setReponsePoolCompetences($_POST['id_dmd'], $_POST['reponseDemande']); 
 		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array('alert'=>'Réponse envoyer' , "statement" => $controller->NouvelleLancementFormationPoolsCompetences($_SESSION['id_pc']))); 
+		$vue->generer(array('alert'=>'Réponse envoyée' , "statement" => $controller->NouvelleLancementFormationPoolsCompetences($_SESSION['id_pc']))); 
 	}else if ($action =="RespPoolCompetenceInvention"){
 		$controller = new InventionController(); 
 		$controller->setReponsePoolCompetences($_POST['id_dmd'], $_POST['reponseDemande']); 
 		$vue = new Vue('listeDeclarationInvention'); 
-		$vue->generer(array('alert'=>'Réponse envoyer', "statement" => $controller->ListeNouvelleDecalarationInventionRspPoolCompetences($_SESSION['id_pc']))); 
+		$vue->generer(array('alert'=>'Réponse envoyée', "statement" => $controller->ListeNouvelleDecalarationInventionRspPoolCompetences($_SESSION['id_pc']))); 
 	}else if($action == "NouvelleDeclarationBrevetPoolsCompetences"){
 				$controller = new BrevetController(); 
 		$vue = new Vue('listeDeclarationBrevet'); 
@@ -793,7 +796,7 @@ session_start();
 		$controller->setReponsePoolCompetences($_POST['id_dmd'], $_POST['reponseDemande']); 
 		$vue = new Vue('listeDeclarationBrevet'); 
 		//echo $_SESSION['id_pc']; 
-		$vue->generer(array('alert'=>'Réponse envoyer',"statement" => $controller->ListeNouvelleDecalarationBrevetRspPoolCompetences($_SESSION['id_pc'])));  
+		$vue->generer(array('alert'=>'Réponse envoyée',"statement" => $controller->ListeNouvelleDecalarationBrevetRspPoolCompetences($_SESSION['id_pc'])));  
 	}
 
 	//action home 
@@ -834,21 +837,23 @@ session_start();
 		$brevet= (new BrevetController())->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
 		$invention= (new InventionController())->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']);
 		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
+		$startup= (new StartupController())->listeDeclarationStartupClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeDemandeEncours'); 
-		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation)); 
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation, "startup" => $startup)); 
 	}else if($action == "listeDemandeTraiteClient"){
 		$brevet= (new BrevetController())->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
 		$invention= (new InventionController())->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']);
 		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
-
+		$startup= (new StartupController())->listeDeclarationStartupClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeDemandeTraite'); 
-		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation, "startup" => $startup));
 	}else if($action == "listeTousDemandeClient"){
 		$brevet= (new BrevetController())->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
 		$invention= (new InventionController())->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']);
 		$formation= (new FormationController())->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code']);
+		$startup= (new StartupController())->listeDeclarationStartupClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeTousDemande'); 
-		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation));
+		$vue->generer(array( "brevet" => $brevet,"invention" => $invention,"formation" => $formation, "startup" => $startup));
 	}
 
 
@@ -898,6 +903,7 @@ session_start();
 		$vue->genererPageSansTemplate();
 	}
 
+
 	//statistique 
 	else if($action == "getDahsboard"){
 		$controller = new StatistiqueController(); 
@@ -906,4 +912,113 @@ session_start();
 	}
 
 
+
+	//Startup 
+	else if($action == 'declarationStartup'){
+		$vue = new Vue('declarationStartup'); 
+		$vue->generer(array()); 
+	}else if($action == "saveDeclarationStartup"){
+		$controller = new StartupController(); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("alert"=>'La déclaration a bien été ajoutée', "statement" => $controller->listeDeclarationStartupClient($_SESSION['type'], $_SESSION['code']))); 
+	}
+	else if($action == "listeDeclarationStartup"){
+		$controller = new StartupController(); 
+		if(!empty($statut)) $statut = $_GET['statut']; 
+		else $statut=null;
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array( "statement" => $controller->Lister($statut))); 
+	}
+	else if($action == "detailsDeclarationStartup"){ 
+		$controller = new StartupController(); 
+		$vue = new Vue('detailsDeclarationStartup');
+		$controller2 = new BrevetController();
+		$vue->generer(array("listePc" => $controller2->getInfoPc(), "statement" => $controller->Details($_GET['id']), "nomAndPrenomDemandeur"=> $controller->getInfoDemandeur($_GET['id']))); 
+	}
+	else if($action == "deleteDeclarationStartup"){
+		$controller = new StartupController(); 
+		$controller->Supprimer($_GET['id']); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("alert"=>'La suppression est bien faite', "statement" => $controller->listeDeclarationStartupClient($_SESSION['type'], $_SESSION['code'])));
+	}
+	else if($action =="updateDeclarationStartup"){
+		$controller = new StartupController();
+		$vue = new Vue('updateDeclarationStartup'); 
+		$vue->generer(array("statement" => $controller->Details($_GET['id'])));
+	}
+	else if($action == "saveUpdateDeclarationStartup"){
+		$controller = new StartupController();
+		$controller->Update($_POST); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("alert"=>'La mise à jour est bien faite', "statement" => $controller->listeDeclarationStartupClient($_SESSION['type'], $_SESSION['code'])));
+
+	}else if($action == "transmettreStartupCir"){
+		$controller = new StartupController();
+		$controller->TransmettreStartupCir($_GET['id_dmd']); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array( "alert"=>'Le dessier est bien transmis', "statement" => $controller->Lister('Enattente'))); 
+	}else if($action == "transmettreStartupPc"){
+		$controller = new StartupController();
+		$controller->TransmettreStartupPc($_GET['id_dmd'],$_POST); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array('alert'=>'La demande a été transmise', "statement" => $controller->ListeAccepterParGU())); 
+	}else if($action == "RefuserStartupGu"){
+		$controller = new StartupController();
+		$controller->RefuserStartupGu($_GET['id_dmd']); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array( "alert"=>'Le dessier est bien transmis', "statement" => $controller->Lister('Enattente'))); 
+	}else if($action == "RefuserStartupCir"){
+		$controller = new StartupController();
+		$controller->RefuserStartupGu($_GET['id_dmd']);
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array('alert'=>'La demande a été refusée', "statement" => $controller->ListeAccepterParGU())); 		
+	}else if($action == "StartupPretes"){
+		$controller = new StartupController(); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("statement" => $controller->ListePretes()));
+	}else if($action =="StartupsAccepterParGU"){
+		$controller = new StartupController(); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("statement" => $controller->ListeAccepterParGU()));
+	}else if($action =="StartupsEncoursCIR"){
+		$controller = new StartupController(); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("statement" => $controller->Lister('Encours')));
+	}else if($action =="AccepterStartupGu"){
+		$controller = new StartupController();
+		$controller->AccepterStartupGu($_GET['id_dmd']); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array('alert'=>'La demande est acceptée',"statement" => $controller->ListePretes()));
+	}
+	else if($action == "DemandePretPourCirStartup"){
+		$controller = new StartupController(); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("statement" => $controller->DemandePretPourCir()));
+	}
+	else if($action == "decisionFinaleCirStartup"){
+		$controller = new StartupController(); 
+		$controller->setDecisionFinaleCir($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array('alert'=>'Décision finale bien envoyée', "statement" => $controller->DemandePretPourCir()));
+	}
+	else if($action == "NouvelleLancementStartupPoolsCompetences"){
+		$controller = new StartupController(); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("statement" => $controller->NouvelleLancementStartupPoolsCompetences($_SESSION['id_pc']))); 
+	}else if($action == "RespPoolCompetenceStartup"){
+		$controller = new StartupController(); 
+		$controller->setReponsePoolCompetences($_POST['id_dmd'], $_POST['reponseDemande']); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array('alert'=>'Réponse envoyée' , "statement" => $controller->NouvelleLancementStartupPoolsCompetences($_SESSION['id_pc']))); 
+	}else if($action =="listeDeclarationStartupClient"){
+		$controller = new StartupController(); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("statement" => $controller->listeDeclarationStartupClient($_SESSION['type'], $_SESSION['code'])));
+	}else if($action == "listeDeclarationStartupClientTraitees"){
+		$controller = new StartupController(); 
+		$vue = new Vue('listeDeclarationStartup'); 
+		$vue->generer(array("statement" => $controller->listeDeclarationStartupClientTraitees($_SESSION['type'], $_SESSION['code'])));
+	}
+	
 	
