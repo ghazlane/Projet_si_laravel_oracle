@@ -121,7 +121,7 @@
             <th>Sujet Formation</th>
             <th>Nombre de participants</th>
             <th>Date déclaration</th>
-            <th>Status décision finale</th>
+            <th>Statut décision finale</th>
             <th>Outils</th>
           </tr>
         </thead>
@@ -131,7 +131,7 @@
             <th>Sujet Formation</th>
             <th>Nombre de participants</th>
             <th>Date déclaration</th>
-            <th>Status décision finale</th>
+            <th>Statut décision finale</th>
             <th>Outils</th>
           </tr>
         </tfoot>
@@ -158,6 +158,55 @@
   </div>
 </div>
 
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary" style="float: left;">Toutes les demandes de déclaration des startups</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" width="100%" cellspacing="0" >
+        <thead>
+          <tr>
+            <th>Id Demande</th>
+            <th>Mondat</th>
+            <th>Capital</th>
+            <th>Date déclaration</th>
+            <th>Statut décision finale</th>
+            <th>Outils</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+          <th>Id Demande</th>
+            <th>Sujet Formation</th>
+            <th>Nombre de participants</th>
+            <th>Date déclaration</th>
+            <th>Statut décision finale</th>
+            <th>Outils</th>
+          </tr>
+        </tfoot>
+        <tbody style="color: black;">
+          <?php while($row = $formation->fetch()) { if ($row['STATUT_DMD'] == 'En cours' ){?>
+            <tr>
+                <td><?php echo $row['ID_DMD']  ?></td>
+                <td><?php echo $row['MONDAT_STARTUP']  ?></td>
+                <td><?php echo $row['CAPITAL_STARTUP']  ?></td>
+                <td><?php echo $row['DATE_DMD']  ?></td>
+                <td><button type="button" class="btn btn-warning btn-sm">En cours</button> </td>
+                <td>
+                    <?php echo '<a href="index.php?action=detailsDeclarationStartup&&id='.$row['ID_DMD'].'" class="btn btn-info btn-circle btn-sm" title="Ouvrir">'; ?>
+                    
+                      <i class="far fa-folder-open"></i>
+                    </a>
+                    
+                </td>
+            </tr>
+          <?php  }}?>
+</tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 </div>
 <!-- /.container-fluid -->

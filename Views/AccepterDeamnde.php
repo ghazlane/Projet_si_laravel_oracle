@@ -1,1 +1,1 @@
-<p> Demande est Acceptée </p>
+<p> La Demande est Acceptée </p>
