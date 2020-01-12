@@ -42,7 +42,7 @@ class ResponsableCirController
 			$password = $row['MOT_DE_PASSE_CIR']; 
 
 		$this->responsableCir = new ResponsableCir($inputs['nom_cir'],$inputs['prenom_cir'],$inputs['date_naissance_cir'],$row['EMAIL_CIR'],$password,$inputs['num_telephone_cir']);
-		$this->responsableCir->setIdGu($row['ID_CIR']) ; 
+		$this->responsableCir->setIdCir($row['ID_CIR']) ; 
 		$this->responsableCirRepository->Update($this->responsableCir); 
 		return true; 
 	}

@@ -38,7 +38,7 @@ class ProfesseurController
 		}else 
 			$password = $row['MOT_DE_PASSE_PROF']; 
 
-		$this->professeur = new Professeur($inputs['nom_prof'],$inputs['prenom_prof'],$inputs['date_naissance_prof'],$row['email_prof'],$password,$inputs['num_aff'],$inputs['telephone_prof']);
+		$this->professeur = new Professeur($inputs['nom_prof'],$inputs['prenom_prof'],$inputs['date_naissance_prof'],null,$password,$inputs['num_aff'],$inputs['telephone_prof']);
 		$this->professeur->setCodeProf($row['CODE_PROF']) ; 
 		$this->professeurRepository->Update($this->professeur); 
 		return true; 
