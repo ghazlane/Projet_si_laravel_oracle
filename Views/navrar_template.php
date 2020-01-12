@@ -757,14 +757,15 @@
         Demandes
       </div>
       <li class="nav-item" >
-        <a class="nav-link" href="index.php?action=listeDemandeEnCours">
+        <a class="nav-link" href="index.php?action=listeDemandeEnCours&statut=Encours">
           <i class="fas fa-spinner"></i>
           <span>Demandes en cours</span>
         </a>
       </li>
 
+
       <li class="nav-item">
-        <a class="nav-link" href="index.php?action=listeDemandeTraite">
+        <a class="nav-link" href="index.php?action=listeDemandeTraite&statut=Traite">
           <i class="fas fa-list-ul"></i>
           <span>Demandes traitées</span></a>
       </li>
@@ -780,19 +781,7 @@
       <div class="sidebar-heading">
         Comptes
       </div>
-      <li class="nav-item" >
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">
-          <i class="fas fa-street-view"></i>
-          <span>Directeur de la CIR </span>
-        </a>
-        <div id="collapseTen" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header" >Directeur de la CIR</h6>
-            <a class="collapse-item" href="index.html">Ajouter compte </a>
-            <a class="collapse-item" href="index.html">Lister les Directeur</a>
-          </div>
-        </div>
-      </li>
+      
       <li class="nav-item" >
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
           <i class="fas fa-user-shield"></i>
@@ -801,8 +790,8 @@
         <div id="collapseEleven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Responsable de la CIR</h6>
-            <a class="collapse-item" href="index.html">Ajouter compte </a>
-            <a class="collapse-item" href="index.html">Lister les comptes</a>
+            <a class="collapse-item" href="index.php?action=ajouterResponsableCir">Ajouter compte </a>
+            <a class="collapse-item" href="index.php?action=listerResponsableCir">Lister les comptes</a>
           </div>
         </div>
       </li>

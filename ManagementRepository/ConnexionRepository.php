@@ -4,6 +4,7 @@
     
     public function getConnexion() {
 
+
     	//$db_username = "scott";
 		//$db_password = "tiztaztoz";
 
