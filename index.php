@@ -11,8 +11,9 @@ session_start();
 	require_once ("Controllers/PoolCompetenceController.php");
 	require_once ("Controllers/RespPoolCompetenceController.php");
 	require_once ("Controllers/ResponsableCirController.php");
+	require_once ("Controllers/StatistiqueController.php");
+
 	//require_once("controllers\DeclarationInventionController.php");
-	
 	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
 	
 	//Etudiant
@@ -23,13 +24,9 @@ session_start();
 	}
 	else if($action == "saveAjoutEtudiant"){
 		$controller = new EtudiantController(); 
-		$rep=$controller->Ajouter($_POST);
-		$vue = new Vue('listeEtudiant'); 
-		if ($rep == true) 
-		$alert="Félicitations ! Votre nouveau compte étudiant a été créé avec succès !";
-	    else  
-	    $alert="Vous n'êtes pas un étudiant ! La création du compte est annulée ! "; 
-		$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->genererHomeUser(); 
 	}
 	else if($action == "registerEtudiant"){
 		$vue = new Vue("registerEtudiant"); 
@@ -37,14 +34,10 @@ session_start();
 	}
 	else if($action == "saveRegisterEtudiant"){
 		$controller = new EtudiantController(); 
-		$rep=$controller->Ajouter($_POST);
-		$vue = new Vue('createSuccess');
-		if ($rep == true) 
-		$alert="Félicitations ! Votre nouveau compte étudiant a été créé avec succès !";
-	    else  
-	    $alert="Vous n'êtes pas un étudiant ! La création du compte est annulée !";
-
-		$vue->genererHome(array("alert" => $alert));    
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$alert="Félicitations ! Votre nouveau compte etudiant a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
+		$vue->genererHome(array("alert" => $alert));   
 	}
 	else if($action == "listeEtudiant"){
 		$controller = new EtudiantController(); 
@@ -60,9 +53,8 @@ session_start();
 		$controller = new EtudiantController();
 		$resultat = $controller->Update($_POST); 
 		if($resultat == true){
-			$alert="le compte étudiant a été bien modifiée";
-			$vue = new Vue('listeEtudiant');
-			$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
 		}else {
 			$vue = new Vue('createFailed'); 
 			$vue->generer(array()); 
@@ -103,13 +95,9 @@ session_start();
 	}
 	else if($action == "saveAjoutChercheur"){
 		$controller = new ChercheurController(); 
-		$rep=$controller->Ajouter($_POST);
-		$vue = new Vue('listeChercheur'); 
-		if ($rep == true) 
-		$alert="Félicitations ! Votre nouveau compte chercheur a été créé avec succès !";
-	    else  
-	    $alert="Vous n'êtes pas un chercheur ! La création du compte est annulée ! "; 
-		$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
 	}
 	else if($action == "ajouterChercheur"){
 		$vue = new Vue('ajouterChercheur'); 
@@ -117,14 +105,11 @@ session_start();
 	}
 	else if($action == "saveRegisterChercheur"){
 		$controller = new ChercheurController(); 
-		$rep=$controller->Ajouter($_POST);
+		$controller->Ajouter($_POST);
 		$vue = new Vue('createSuccess');
-		if ($rep == true) 
-		$alert="Félicitations ! Votre nouveau compte chercheur a été créé avec succès !";
-	    else  
-	    $alert="Vous n'êtes pas un chercheur ! La création du compte est annulée ! ";
-
-		$vue->genererHome(array("alert" => $alert));
+		//$vue->genererHome(array());
+		$alert="Félicitations ! Votre nouveau compte chercheur a été créé avec succès ! veuillez attendre la réponse de l'administrateur !";
+		$vue->genererHome(array("alert" => $alert)); 
 	}
 	else if($action == "listeChercheur"){
 		$controller = new ChercheurController(); 
@@ -140,13 +125,11 @@ session_start();
 		$controller = new ChercheurController();
 		$resultat = $controller->Update($_POST); 
 		if($resultat == true){
-			$alert="le compte chercheur a été bien modifié";
-			$vue = new Vue('listechercheur');
-			$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
 		}else {
-			$alert="le mot de passe est incorrecte";
-			$vue = new Vue('listeChercheur');
-			$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
 		}
 	}
 	else if($action == "detailChercheur"){
@@ -189,13 +172,9 @@ session_start();
 	}
 	else if($action == "saveAjoutProfesseur"){
 		$controller = new ProfesseurController(); 
-		$rep=$controller->Ajouter($_POST);
-		$vue = new Vue('listeProfesseur'); 
-		if ($rep == true) 
-		$alert="Félicitations ! Votre nouveau compte professeur a été créé avec succès !";
-	    else  
-	    $alert="Vous n'êtes pas un professeur ! La création du compte est annulée ! "; 
-		$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert));  
+		$controller->Ajouter($_POST);
+		$vue = new Vue('createSuccess'); 
+		$vue->generer(array()); 
 
 	}else if($action == "saveRegisterProfesseur"){
 		$controller = new ProfesseurController(); 
@@ -222,13 +201,11 @@ session_start();
 		$controller = new ProfesseurController();
 		$resultat = $controller->Update($_POST); 
 		if($resultat == true){
-			$alert="le compte professeur a été bien modifiée";
-			$vue = new Vue('listeProfesseur');
-			$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
+			$vue = new Vue('createSuccess'); 
+			$vue->generer(array()); 
 		}else {
-			$alert="le mot de passe est incorrecte";
-			$vue = new Vue('listeProfesseur');
-			$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
+			$vue = new Vue('createFailed'); 
+			$vue->generer(array()); 
 		}
 	}
 	else if($action == "detailProfesseur"){
@@ -397,8 +374,7 @@ session_start();
 		$vue->generer(array("alert"=>'La déclaration a bien été ajoutée', "statement" => $controller->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']))); 
 	}else if($action == "listeDeclarationInvention"){
 		$controller = new InventionController(); 
-		if(!empty($statut)) $statut = $_GET['statut']; 
-		else $statut=null;
+		$statut = $_GET['statut']; 
 		$vue = new Vue('listeDeclarationInvention'); 
 		$vue->generer(array("statement" => $controller->Lister($statut))); 
 	}else if($action == "detailDeclarationInvention"){ 
@@ -481,8 +457,7 @@ session_start();
 	}
 	else if($action == "listeDeclarationBrevet"){
 		$controller = new BrevetController(); 
-		if(!empty($statut)) $statut = $_GET['statut']; 
-		else $statut=null; 
+		$statut = $_GET['statut']; 
 		$vue = new Vue('listeDeclarationBrevet'); 
 		$vue->generer(array("statement" => $controller->Lister($statut))); 
 	}
@@ -582,8 +557,7 @@ session_start();
 	}
 	else if($action == "listeDeclarationFormation"){
 		$controller = new FormationController(); 
-		if(!empty($statut)) $statut = $_GET['statut']; 
-		else $statut=null;
+		$statut = $_GET['statut']; 
 		$vue = new Vue('listeDeclarationFormation'); 
 		$vue->generer(array( "statement" => $controller->Lister($statut))); 
 	}
@@ -923,3 +897,13 @@ session_start();
 		$vue = new Vue('MotDePasseIncorrectAdmin');
 		$vue->genererPageSansTemplate();
 	}
+
+	//statistique 
+	else if($action == "getDahsboard"){
+		$controller = new StatistiqueController(); 
+		$vue = new Vue('dashboard'); 
+		$vue->generer(array('pourcentageDemanteNonAccepter'=>$controller->pourcentageDemande('Non accepter') ,'pourcentageDemanteEnCours'=>$controller->pourcentageDemande('En cours') , 'pourcentageDemanteEnAttente'=>$controller->pourcentageDemande('En attente') , 'pourcentageDemanteAccepter'=>$controller->pourcentageDemande('Accepter') ,'nombreDeamndeEnAttente'=>$controller->getNombreTotalDemandeStatus('En attente'),'nombreDeamndeNonAccepter'=>$controller->getNombreTotalDemandeStatus('Non accepter'),'nombreDeamndeEncours'=>$controller->getNombreTotalDemandeStatus('En cours'), 'nombreDeamndeAccepter'=> $controller->getNombreTotalDemandeStatus('Accepter')));
+	}
+
+
+	
