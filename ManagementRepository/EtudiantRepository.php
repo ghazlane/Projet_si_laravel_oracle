@@ -7,10 +7,25 @@ class EtudiantRepository extends Connexion
 	private $connexion;
 
 	public function Ajouter(Etudiant $etudiant){
-		$Rq = "insert into etudiant (NOM_ET, PRENOM_ET, DATE_NAISSANCE_ET, EMAIL_ET, MOT_DE_PASSE_ET, ETABLISSEMENT, TELEPHONE_ET) values ('" . $etudiant->getNomEt() . "','" . $etudiant->getPrenomEt() . "','" . $etudiant->getDateNaissanceEt() . "','" . $etudiant->getEmailEt() . "','" . $etudiant->getMotDePasseEt() . "','" . $etudiant->getEtablissement() ."','". $etudiant->getTelephoneEt() . "')";
+		$Rq = "select * from etudiants_um5";
 		$connexion = $this->getConnexion(); 
-		$connexion->exec($Rq);
-		$connexion->exec("commit");
+    	$statement = $connexion->query($Rq);
+    	$statement->setFetchMode(PDO::FETCH_ASSOC);
+    	while ($row = $statement->fetch()) {
+    		if($row['NOM_ET'] == $etudiant->getNomEt() && $row['PRENOM_ET'] == $etudiant->getPrenomEt() && $row['ETABLISSEMENT'] == $etudiant->getEtablissement() ){
+			$Rq = "insert into etudiant (NOM_ET, PRENOM_ET, DATE_NAISSANCE_ET, EMAIL_ET, MOT_DE_PASSE_ET, ETABLISSEMENT, TELEPHONE_ET) values ('" . $etudiant->getNomEt() . "','" . $etudiant->getPrenomEt() . "','" . $etudiant->getDateNaissanceEt() . "','" . $etudiant->getEmailEt() . "','" . $etudiant->getMotDePasseEt() . "','" . $etudiant->getEtablissement() ."','". $etudiant->getTelephoneEt() . "')";
+
+			$connexion = $this->getConnexion(); 
+			$connexion->exec($Rq);
+			$connexion->exec("commit");
+			
+			return true;
+		}
+    	}
+    	
+	    return false;
+		
+
 	}
 
 	public function Lister(){

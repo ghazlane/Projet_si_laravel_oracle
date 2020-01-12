@@ -7,10 +7,25 @@ class ChercheurRepository extends Connexion
 	private $connexion;
 
 	public function Ajouter(Chercheur $chercheur){
-		$Rq = "insert into chercheur (NOM_CHER, PRENOM_CHER, DATE_NAISSANCE_CHER, EMAIL_CHER, MOT_DE_PASSE_CHER, THEME_RECHERCHE, TELEPHONE_CHER) values ('" . $chercheur->getNomCher() . "','" . $chercheur->getPrenomCher() . "','" . $chercheur->getDateNaissanceCher() . "','" . $chercheur->getEmailCher() . "','" . $chercheur->getMotDePasseCher() . "','" . $chercheur->getThemeRecherche() ."','". $chercheur->getTelephoneCher() . "')";
+		$Rq = "select * from chercheurs_um5";
 		$connexion = $this->getConnexion(); 
-		$connexion->exec($Rq);
-		$connexion->exec("commit");
+    	$statement = $connexion->query($Rq);
+    	$statement->setFetchMode(PDO::FETCH_ASSOC);
+    	while ($row = $statement->fetch()) {
+    		if($row['NOM_CHER'] == $chercheur->getNomCher() && $row['PRENOM_CHER'] == $chercheur->getPrenomCher() && $row['THEME_RECHERCHE'] == $chercheur->getThemeRecherche() ){
+			$Rq = "insert into chercheur (NOM_CHER, PRENOM_CHER, DATE_NAISSANCE_CHER, EMAIL_CHER, MOT_DE_PASSE_CHER, THEME_RECHERCHE, TELEPHONE_CHER) values ('" . $chercheur->getNomCher() . "','" . $chercheur->getPrenomCher() . "','" . $chercheur->getDateNaissanceCher() . "','" . $chercheur->getEmailCher() . "','" . $chercheur->getMotDePasseCher() . "','" . $chercheur->getThemeRecherche() ."','". $chercheur->getTelephoneCher() . "')";
+
+			$connexion = $this->getConnexion(); 
+			$connexion->exec($Rq);
+			$connexion->exec("commit");
+			
+			return true;
+		}
+    	}
+    	
+	    return false;
+		
+
 	}
 
 	public function Lister(){

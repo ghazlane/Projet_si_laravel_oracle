@@ -325,6 +325,33 @@ END;
 /
 insert into professeurs_um5 (nom_prof,prenom_prof,num_aff) values ('nachit','btissam', 12345);
 insert into professeurs_um5 (nom_prof,prenom_prof,num_aff) values ('nachit','asmae', 12348);
+
+
+///// base de donnnes des etudiants de um5
+
+create table etudiants_um5 (
+	code_et INTEGER NOT null,
+	nom_et Varchar(50),
+	prenom_et Varchar(50), 
+	etablissement Varchar(50));
+ALTER TABLE etudiants_um5 ADD (CONSTRAINT code_pk_etes_um5 PRIMARY KEY (Code_et));
+
+CREATE SEQUENCE etudiants_um5_seq START WITH 1;
+
+CREATE OR REPLACE TRIGGER etudiants_um5_auto_incre
+BEFORE INSERT ON etudiants_um5
+FOR EACH ROW
+
+BEGIN
+  SELECT etudiants_um5_seq.NEXTVAL
+  INTO   :new.code_et
+  FROM   dual;
+END;
+/
+insert into etudiants_um5 (nom_et,prenom_et,etablissement) values ('nachit','btissam', 'ensias');
+insert into etudiants_um5 (nom_et,prenom_et,etablissement) values ('nachit','asmae', 'ensam');
+
+
 //adapter affichage 
 set pagesize 9999
 set linesize 9999
