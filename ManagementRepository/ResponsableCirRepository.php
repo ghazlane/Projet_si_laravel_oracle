@@ -28,7 +28,7 @@ private $connexion;
     return $statement;
 }
 
-    public function Update(GuichetUnique $responsableCir){
+    public function Update(ResponsableCir $responsableCir){
         $Rq = "update responsable_cir set NOM_CIR='" . $responsableCir->getNomCir() . "', PRENOM_CIR = '" . $responsableCir->getPrenomCir() . "', DATE_NAISSANCE_CIR= '" . $responsableCir->getDateNaissance() . "', MOT_DE_PASSE_CIR = '" . $responsableCir->getMotDePasse() . "', TELEPHONE_CIR = '" . $responsableCir->getTelephone() . "' where id_CIR =".$responsableCir->getIdCir();
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
