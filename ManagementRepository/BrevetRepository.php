@@ -32,7 +32,7 @@
     }
 
     public function AccepterBrevetGu($id){
-            $Rq = "update declaration_brevet set STATUT_DMD='Accepter' where id_dmd =".$id;
+            $Rq = "update declaration_brevet set STATUT_DMD='Accepter' , date_reponse = '".date("j-n-Y")."' where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
@@ -65,14 +65,14 @@ public function setDecisionFinaleCir($id, $reponse){
             $connexion->exec("commit");   
 }
 public function RefuserBrevetGu($id){
-            $Rq = "update declaration_brevet set STATUT_DMD='Non accepter' where id_dmd =".$id;
+            $Rq = "update declaration_brevet set STATUT_DMD='Non accepter' , date_reponse = '".date("j-n-Y")."' where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
 
 public function RefuserBrevetCir($id){
-            $Rq = "update declaration_brevet set STATUT_DMD='Non accepter' where id_dmd =".$id;
+            $Rq = "update declaration_brevet set STATUT_DMD='Non accepter' , date_reponse = '".date("j-n-Y")."' where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");

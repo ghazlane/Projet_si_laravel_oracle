@@ -47,20 +47,20 @@ public function setDecisionFinaleCir($id, $reponse){
 }
 
 public function AccepterFormationGu($id){
-    $Rq = "update lancement_formation set STATUT_DMD='Accepter' where id_dmd =".$id;
+    $Rq = "update lancement_formation set STATUT_DMD='Accepter' , date_reponse = '".date("j-n-Y")."' where id_dmd =".$id;
     $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
 public function RefuserFormationGu($id){
-    $Rq = "update lancement_formation set STATUT_DMD='Non accepter' where id_dmd =".$id;
+    $Rq = "update lancement_formation set STATUT_DMD='Non accepter' , date_reponse = '".date("j-n-Y")."' where id_dmd =".$id;
     $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
 
 public function RefuserFormationCir($id){
-            $Rq = "update lancement_formation set STATUT_DMD='Non accepter' where id_dmd =".$id;
+            $Rq = "update lancement_formation set STATUT_DMD='Non accepter' , date_reponse = '".date("j-n-Y")."' where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
