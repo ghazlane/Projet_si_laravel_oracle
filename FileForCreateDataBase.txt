@@ -400,3 +400,9 @@ END;
 alter table startup add ( decision_finale VARCHAR(200));
 alter table startup ADD (REPONSE_PC VARCHAR2(1000));
 alter table startup drop column RPS_PC;
+
+
+
+ALTER TABLE lancement_formation add date_reponse varchar(50);
+ALTER TABLE declaration_brevet add date_reponse varchar(50);
+ALTER TABLE declaration_invention add date_reponse varchar(50);

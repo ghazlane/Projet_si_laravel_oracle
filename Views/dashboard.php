@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
 
 
@@ -303,43 +304,17 @@
   <div class"row">
     
     <div class="col-sm-6 text-center">
-       <label class="label label-success">Bar stacked</label>
+       <label class="label label-success" style="color:#0380D1;">Nombre demandes traitées par mois </label>
       <div id="stacked" ></div>
+    </div>
+
+     <div class="col-sm-6 text-center">
+       <label class="label label-success" style="color:#0380D1;">Nombre demandes traitées par Chaque PC </label>
+      <div id="stacked2" ></div>
     </div>
     
     
   </div>
-    <?php 
-function getLatestMonth($dernierMois){
-    $arParMois = array();
-  $date_courant = date("Y-m-d");
-    $year = date("Y");
-    for($i = 0; $i < $dernierMois; $i++){
-           if($i === 0){
-                $arParMois[$i] = array(
-                  'month' => date("m"),
-          'year' => $year
-                );
-            }else{
-                //- 1 mois à la date du jour
-                $mois = date("m", strtotime("-1 month", strtotime($date_courant)));
-        if($mois == '12')
-        {
-        $year = date("Y", strtotime("-1 year", strtotime($date_courant)));
-        }
- 
-                $arParMois[$i] = array(
-                    'month' => $mois,
-          'year' => $year
-                );
-                $date_courant = date($year."-".$mois."-d");
-            }
-        }
- 
-  return $arParMois;
-}
-print_r(getLatestMonth('12'));
-  ?>
 
 
          <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
@@ -348,23 +323,23 @@ print_r(getLatestMonth('12'));
 <script>
 
   var data = [
-      { y: '2014', a: 10, b: 10},
-      { y: '2015', a: 10, b: 10},
-      { y: '2016', a: 10, b: 10},
-      { y: '2017', a: 10, b: 10},
-      { y: '2018', a: 10, b: 10},
-      { y: '2019', a: 10, b: 10},
-      { y: '2020', a: 10, b: 10},
-      { y: '2021', a: 10, b: 10},
-      { y: '2022', a: 10, b: 10},
-      { y: '2023', a: 10, b: 10},
-      { y: '2024', a: 10, b: 10}
+      { y: '<?php echo $liste_mois[10]["month"] ."/".$liste_mois[10]["year"]; ?>', a: <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[10]; ?> , b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[10]; ?>},
+      { y: '<?php echo $liste_mois[9]["month"] ."/".$liste_mois[9]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[9]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[9]; ?>},
+      { y: '<?php echo $liste_mois[8]["month"] ."/".$liste_mois[8]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[8]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[8]; ?>},
+      { y: '<?php echo $liste_mois[7]["month"] ."/".$liste_mois[7]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[7]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[7]; ?>},
+      { y: '<?php echo $liste_mois[6]["month"] ."/".$liste_mois[6]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[6]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[6]; ?>},
+      { y: '<?php echo $liste_mois[5]["month"] ."/".$liste_mois[5]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[5]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[5]; ?>},
+      { y: '<?php echo $liste_mois[4]["month"] ."/".$liste_mois[4]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[4]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[4]; ?>},
+      { y: '<?php echo $liste_mois[3]["month"] ."/".$liste_mois[3]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[3]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[3]; ?>},
+      { y: '<?php echo $liste_mois[2]["month"] ."/".$liste_mois[2]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[2]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[2]; ?>},
+      { y: '<?php echo $liste_mois[1]["month"] ."/".$liste_mois[1]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[1]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[1]; ?>},
+      { y: '<?php echo $liste_mois[0]["month"] ."/".$liste_mois[0]["year"]; ?>', a:  <?php echo $tableau_statistiqueNombreDemandeTraiterParMois[0]; ?>, b: <?php echo $tableau_statistiqueNombreDemandeAccepterParMois[0]; ?>}
     ],
-    config = {
+    config1 = {
       data: data,
       xkey: 'y',
       ykeys: ['a', 'b'],
-      labels: ['Total Income', 'Total Outcome'],
+      labels: ['# demandes refuser','# demandes accepter'],
       fillOpacity: 0.6,
       hideHover: 'auto',
       behaveLikeLine: true,
@@ -380,9 +355,34 @@ Morris.Line(config);
 config.element = 'bar-chart';
 Morris.Bar(config);
 */
-config.element = 'stacked';
-config.stacked = true;
-Morris.Bar(config);
+
+  var data2 = [
+  <?php $i=0; while ($row = $listePc->fetch()){?>
+       { y: '<?php echo $row["NOM_PC"] ?>', a: <?php echo $nombreDeamndePC[$i]?>},
+  <?php $i++; }?>
+   
+    ],
+    config2 = {
+      data: data2,
+      xkey: 'y',
+      ykeys: ['a'],
+      labels: ['# demandes traitées'],
+      fillOpacity: 0.6,
+      hideHover: 'auto',
+      behaveLikeLine: true,
+      resize: true,
+      pointFillColors:['#ffffff'],
+      pointStrokeColors: ['black'],
+      lineColors:['gray','red']
+  };
+config1.element = 'stacked';
+config1.stacked = true;
+Morris.Bar(config1);
+
+
+config2.element = 'stacked2';
+config2.stacked = true;
+Morris.Bar(config2);
 /*Morris.Donut({
   element: 'pie-chart',
   data: [

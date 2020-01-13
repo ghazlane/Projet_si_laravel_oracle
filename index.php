@@ -18,6 +18,33 @@ session_start();
 	$action = empty($_GET["action"])?"Accueil":$_GET["action"];
 	
 	//Etudiant
+	function getLatestMonth($dernierMois){
+    $arParMois = array();
+  $date_courant = date("Y-m-d");
+    $year = date("Y");
+    for($i = 0; $i < $dernierMois; $i++){
+           if($i === 0){
+                $arParMois[$i] = array(
+                  'month' => date("m"),
+          'year' => $year
+                );
+            }else{
+                $mois = date("m", strtotime("-1 month", strtotime($date_courant)));
+        if($mois == '12')
+        {
+        $year = date("Y", strtotime("-1 year", strtotime($date_courant)));
+        }
+ 
+                $arParMois[$i] = array(
+                    'month' => $mois,
+          'year' => $year
+                );
+                $date_courant = date($year."-".$mois."-d");
+            }
+        }
+  return $arParMois;
+}
+
 
 	if($action == "ajouterEtudiant"){
 		$vue = new Vue('ajouterEtudiant'); 
@@ -904,12 +931,31 @@ session_start();
 	}
 
 
+
 	//statistique 
 	else if($action == "getDahsboard"){
-		$controller = new StatistiqueController(); 
+		$controller = new StatistiqueController();
+		$controllerPoolCompetences = new PoolCompetenceController(); 
+		//statistique nombre demande traitrer par mois
+		$liste_mois = getLatestMonth('11'); 
+		$tableau_statistiqueNombreDemandeTraiterParMois;
+		$tableau_statistiqueNombreDemandeAccepterParMois ;  
+		$nombreDeamndePC; 
+		for ($i=10 ; $i>=0 ; $i--){
+			$tableau_statistiqueNombreDemandeTraiterParMois[$i] = $controller->demandeNonAccepterParMois($liste_mois[$i]['month'],$liste_mois[$i]['year'] );
+			$tableau_statistiqueNombreDemandeAccepterParMois[$i] = $controller->demandeAccepterParMois($liste_mois[$i]['month'],$liste_mois[$i]['year'] ); 
+		}
+		$listePoolCompetences = $controllerPoolCompetences->Lister(); 
+		$i=0; 
+		while ($row = $listePoolCompetences->fetch()){
+			$nombreDeamndePC[$i] = $controller->nombreDeamndeTraitePcById($row['ID_PC']); 
+			$i++; 
+		}
 		$vue = new Vue('dashboard'); 
-		$vue->generer(array('pourcentageDemanteNonAccepter'=>$controller->pourcentageDemande('Non accepter') ,'pourcentageDemanteEnCours'=>$controller->pourcentageDemande('En cours') , 'pourcentageDemanteEnAttente'=>$controller->pourcentageDemande('En attente') , 'pourcentageDemanteAccepter'=>$controller->pourcentageDemande('Accepter') ,'nombreDeamndeEnAttente'=>$controller->getNombreTotalDemandeStatus('En attente'),'nombreDeamndeNonAccepter'=>$controller->getNombreTotalDemandeStatus('Non accepter'),'nombreDeamndeEncours'=>$controller->getNombreTotalDemandeStatus('En cours'), 'nombreDeamndeAccepter'=> $controller->getNombreTotalDemandeStatus('Accepter')));
+		$vue->generer(array('nombreDeamndePC'=>$nombreDeamndePC, 'listePc'=>$controllerPoolCompetences->Lister(), 'tableau_statistiqueNombreDemandeAccepterParMois'=>$tableau_statistiqueNombreDemandeAccepterParMois, 'tableau_statistiqueNombreDemandeTraiterParMois'=>$tableau_statistiqueNombreDemandeTraiterParMois, 'liste_mois'=>$liste_mois , 'pourcentageDemanteNonAccepter'=>$controller->pourcentageDemande('Non accepter') ,'pourcentageDemanteEnCours'=>$controller->pourcentageDemande('En cours') , 'pourcentageDemanteEnAttente'=>$controller->pourcentageDemande('En attente') , 'pourcentageDemanteAccepter'=>$controller->pourcentageDemande('Accepter') ,'nombreDeamndeEnAttente'=>$controller->getNombreTotalDemandeStatus('En attente'),'nombreDeamndeNonAccepter'=>$controller->getNombreTotalDemandeStatus('Non accepter'),'nombreDeamndeEncours'=>$controller->getNombreTotalDemandeStatus('En cours'), 'nombreDeamndeAccepter'=> $controller->getNombreTotalDemandeStatus('Accepter')));
 	}
+
+
 
 
 
@@ -1020,5 +1066,5 @@ session_start();
 		$vue = new Vue('listeDeclarationStartup'); 
 		$vue->generer(array("statement" => $controller->listeDeclarationStartupClientTraitees($_SESSION['type'], $_SESSION['code'])));
 	}
-	
+
 	
