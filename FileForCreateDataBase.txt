@@ -413,7 +413,7 @@ etablissement
 );
 
 
-	ALTER TABLE etablissement ADD (CONSTRAINT pk_idetab PRIMARY KEY (id_pn));
+	ALTER TABLE etablissement ADD (CONSTRAINT pk_idetab PRIMARY KEY (id_etab));
 
 CREATE OR REPLACE TRIGGER etablissement_auto_incre
 BEFORE INSERT ON etablissement
