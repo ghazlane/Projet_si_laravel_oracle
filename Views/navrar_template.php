@@ -869,8 +869,8 @@
         <div id="collapseTh2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Etudiant</h6>
-            <a class="collapse-item" href="index.html">Ajouter compte </a>
-            <a class="collapse-item" href="index.html">Lister les Etudiants</a>
+            <a class="collapse-item" href="index.php?action=ajouterEtudiant">Ajouter compte </a>
+            <a class="collapse-item" href="index.php?action=listeEtudiant">Lister les Etudiants</a>
           </div>
         </div>
       </li>
@@ -900,8 +900,8 @@
         <div id="collapseTh7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >Point Nodal</h6>
-            <a class="collapse-item" href="index.html">Ajouter point nodal </a>
-            <a class="collapse-item" href="index.html">Lister les points nodaux</a>
+            <a class="collapse-item" href="index.php?action=ajouterPointNodal">Ajouter point nodal </a>
+            <a class="collapse-item" href="index.php?action=listePointNodal">Lister les points nodaux</a>
           </div>
         </div>
       </li>
@@ -913,8 +913,8 @@
         <div id="collapseTh8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header" >établissement</h6>
-            <a class="collapse-item" href="index.html">Ajouter établissement </a>
-            <a class="collapse-item" href="index.html">Lister les établissements</a>
+            <a class="collapse-item" href="index.php?action=ajouterEtablissement">Ajouter établissement </a>
+            <a class="collapse-item" href="index.php?action=listeEtablissement">Lister les établissements</a>
           </div>
         </div>
       </li>

@@ -12,6 +12,8 @@ session_start();
 	require_once ("Controllers/PoolCompetenceController.php");
 	require_once ("Controllers/RespPoolCompetenceController.php");
 	require_once ("Controllers/ResponsableCirController.php");
+	require_once ("Controllers/PointNodalController.php");
+	require_once ("Controllers/EtablissementController.php");
 	require_once ("Controllers/StatistiqueController.php");
 
 	//require_once("controllers\DeclarationInventionController.php");
@@ -52,9 +54,14 @@ session_start();
 	}
 	else if($action == "saveAjoutEtudiant"){
 		$controller = new EtudiantController(); 
-		$controller->Ajouter($_POST);
-		$vue = new Vue('createSuccess'); 
-		$vue->genererHomeUser(); 
+
+		$rep=$controller->Ajouter($_POST);
+		$vue = new Vue('listeEtudiant'); 
+		if ($rep == true) 
+		$alert="Félicitations ! Votre nouveau compte étudiant a été créé avec succès !";
+	    else if ($rep == false)
+	    $alert="Vous n'êtes pas un étudiant ! La création du compte est annulée ! "; 
+		$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
 	}
 	else if($action == "registerEtudiant"){
 		$vue = new Vue("registerEtudiant"); 
@@ -699,6 +706,7 @@ session_start();
 
 
 	//services & gestions
+	//pool comp
 	else if($action == "ajouterPoolCompetence"){
 		$vue = new Vue('ajouterPoolCompetence'); 
 		$vue->generer(array()); 
@@ -728,7 +736,7 @@ session_start();
 		$controller->Modifier($_POST,$id);
 		$statement= $controller->Lister();
 		$vue = new Vue('listePoolCompetence'); 
-		$alert="la demande a bien été modifiée";
+		$alert="le service a bien été modifié";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert)); 
 	}
 	else if($action == "deletePoolCompetence"){
@@ -737,7 +745,95 @@ session_start();
 		$controller->Supprimer($id);
 		$statement= $controller->Lister();
 		$vue = new Vue('listePoolCompetence'); 
-		$alert="la demande a bien été suppriméee";
+		$alert="le service a été bien supprimé";
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
+	}
+	//point nodal
+	else if($action == "ajouterPointNodal"){
+		$vue = new Vue('ajouterPointNodal'); 
+		$vue->generer(array()); 
+	}
+	else if($action == "saveAjoutPointNodal"){
+		$controller = new PointNodalController(); 
+		$controller->Ajouter($_POST);
+		$statement= $controller->Lister();
+		$vue = new Vue('listePointNodal'); 
+		$alert="le service point nodal a été bien créé"; 
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
+	}
+	else if($action == "listePointNodal"){
+		$controller = new PointNodalController(); 
+		$statement= $controller->Lister();
+		$vue = new Vue('listePointNodal'); 
+		$vue->generer(array( "statement" => $statement)); 
+	}
+	else if($action =="updatePointNodal"){
+		$controller = new PointNodalController(); 
+		$vue = new Vue('updatePointNodal'); 
+		$vue->generer(array("row" => $controller->Detail($_GET['id'])));
+	}
+	else if($action == "saveUpdatePointNodal"){
+		$controller = new PointNodalController(); 
+		$id = $_GET["id"]; 
+		$controller->Modifier($_POST,$id);
+		$statement= $controller->Lister();
+		$vue = new Vue('listePointNodal'); 
+		$alert="le service a été bien modifié";
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert)); 
+	}
+	else if($action == "deletePointNodal"){
+		$controller = new PointNodalController(); 
+		$id = $_GET["id"]; 
+		$controller->Supprimer($id);
+		$statement= $controller->Lister();
+		$vue = new Vue('listePointNodal'); 
+		$alert="le service a été bien supprimé";
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
+	}
+	//etablissement
+		else if($action == "ajouterEtablissement"){
+		$controller = new PointNodalController(); 
+		$statement= $controller->Lister();
+		
+		$vue = new Vue('ajouterEtablissement'); 
+		$vue->generer(array( "statement" => $statement));  
+	}
+	else if($action == "saveAjoutEtablissement"){
+		$controller = new EtablissementController(); 
+		$controller->Ajouter($_POST);
+		$statement= $controller->Lister();
+		$vue = new Vue('listeEtablissement'); 
+		$alert="le service établissement a été bien créé"; 
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
+	}
+	else if($action == "listeEtablissement"){
+		$controller = new EtablissementController(); 
+		$statement= $controller->Lister();
+		$vue = new Vue('listeEtablissement'); 
+		$vue->generer(array( "statement" => $statement)); 
+	}
+	else if($action =="updateEtablissement"){
+		$controller = new EtablissementController();
+		$pn = new PointNodalController();  
+		$vue = new Vue('updateEtablissement'); 
+		$vue->generer(array("row" => $controller->Detail($_GET['id']),"statement"=>$pn->Lister() ));
+	}
+	else if($action == "saveUpdateEtablissement"){
+		$controller = new EtablissementController(); 
+		$id = $_GET["id"]; 
+		$controller->Modifier($_POST,$id);
+		$statement= $controller->Lister();
+		$vue = new Vue('listeEtablissement'); 
+		$alert="le service été bien modifié";
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert)); 
+	}
+	else if($action == "deleteEtablissement"){
+		$controller = new EtablissementController(); 
+		$id = $_GET["id"]; 
+		$controller->Supprimer($id);
+		$statement= $controller->Lister();
+		$vue = new Vue('listeEtablissement'); 
+		$alert="le service a bien été supprimé";
 		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
 	}
 

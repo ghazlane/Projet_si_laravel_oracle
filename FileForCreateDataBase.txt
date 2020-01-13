@@ -127,6 +127,7 @@ END;
 insert into administratif values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'ABCGDHG14587', '0655681244');
 insert into professeur values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'ABCGDHG14587', '0655681244');
 //table Chercheur
+CREATE SEQUENCE chercheur_seq START WITH 1;
 create table chercheur (
 	code_cher Varchar(50) not null, 
 	Nom_cher Varchar(50), 
@@ -137,6 +138,17 @@ create table chercheur (
 	Theme_recherche Varchar(50),
 	Telephone_cher Varchar(50)
 );
+
+CREATE OR REPLACE TRIGGER chercheur_auto_incre
+BEFORE INSERT ON chercheur
+FOR EACH ROW
+
+BEGIN
+  SELECT chercheur_seq.NEXTVAL
+  INTO   :new.code_cher
+  FROM   dual;
+END;
+/
 
 ALTER TABLE chercheur ADD (CONSTRAINT code_pk_cherche PRIMARY KEY (Code_cher));
 insert into chercheur values('ABC123', 'ghazlane', 'mohammed', '03-11-1997', 'med.ghazlane@gmail.com', '123456789', 'Theme de la recherche', '0655681244');
@@ -356,46 +368,35 @@ insert into etudiants_um5 (nom_et,prenom_et,etablissement) values ('nachit','asm
 set pagesize 9999
 set linesize 9999
 
-//demande services declaration startup
----> auto increment
-CREATE SEQUENCE startup_seq START WITH 1;
----> creer la table
-create table startup(
-	Id_dmd INTEGER not null, 
-	Date_dmd VARCHAR(20), 
-	Statut_dmd Varchar(20),
-	Statut_resp_gu Varchar(50),
-	Statut_cir Varchar(50) ,
-	Rps_pc INTEGER, 
-	Description_dmd Varchar(50),
-	lieu_startup VARCHAR(50), 
-	service_startup VARCHAR(50),
-	mondat_startup VARCHAR(50), 
-	capital_satrtup INTEGER, 
-	id_pc INTEGER, 
-	code_admin VARCHAR(50), 
-	id_cir INTEGER, 
-	id_demandeur VARCHAR(50), 
-	type_demandeur VARCHAR(50)
-); 
-ALTER TABLE startup ADD (CONSTRAINT pk_id_dmd_st PRIMARY KEY (Id_dmd));
-ALTER TABLE startup ADD (CONSTRAINT fk_idRpc_st FOREIGN KEY (rps_pc) REFERENCES Responsable_pc(id_resp_pc));
-ALTER TABLE startup ADD (CONSTRAINT fk_id_pc_st FOREIGN KEY (id_pc) REFERENCES pool_Competences(id_pc));
-ALTER TABLE startup ADD (CONSTRAINT fk_code_admin_st FOREIGN KEY (code_admin) REFERENCES Administratif(code_admin)); 
-ALTER TABLE startup ADD (CONSTRAINT fk_id_cir_st FOREIGN KEY (id_cir) REFERENCES responsable_cir(id_cir));
 
-	--> trigger 
 
-CREATE OR REPLACE TRIGGER startup_auto_incre
-BEFORE INSERT ON startup
+
+point nodal
+---> Auto increment pour la table pools de competences 
+	CREATE SEQUENCE point_nodal_seq START WITH 1;
+
+---> creer la table pool de competence
+	CREATE TABLE point_nodal 
+( id_pn number(3) NOT NULL ,
+  nom_pn varchar2(50) NOT NULL,
+  nb_ense number,
+  nb_cher number
+);
+
+---> Foreinkey
+	ALTER TABLE point_nodal ADD (CONSTRAINT pk_idpn PRIMARY KEY (id_pn));
+---> Trigger 
+CREATE OR REPLACE TRIGGER point_nodal_auto_incre
+BEFORE INSERT ON point_nodal
 FOR EACH ROW
 
 BEGIN
-  SELECT startup_seq.NEXTVAL
-  INTO   :new.Id_dmd
+  SELECT point_nodal_seq.NEXTVAL
+  INTO   :new.id_pn
   FROM   dual;
 END;
 /
+
 
 alter table startup add ( decision_finale VARCHAR(200));
 alter table startup ADD (REPONSE_PC VARCHAR2(1000));
@@ -406,3 +407,34 @@ alter table startup drop column RPS_PC;
 ALTER TABLE lancement_formation add date_reponse varchar(50);
 ALTER TABLE declaration_brevet add date_reponse varchar(50);
 ALTER TABLE declaration_invention add date_reponse varchar(50);
+
+
+etablissement
+---> Auto increment pour la table etablissement 
+	CREATE SEQUENCE etablissement_seq START WITH 1;
+
+
+	CREATE TABLE etablissement 
+( id_etab number(3) NOT NULL ,
+  nom_etab varchar2(50) NOT NULL,
+  nb_ense_etab number,
+  nb_cher_etab number,
+  nb_fil_etab number,
+  id_pn number(3)
+);
+
+
+	ALTER TABLE etablissement ADD (CONSTRAINT pk_idetab PRIMARY KEY (id_etab));
+
+CREATE OR REPLACE TRIGGER etablissement_auto_incre
+BEFORE INSERT ON etablissement
+FOR EACH ROW
+
+BEGIN
+  SELECT etablissement_seq.NEXTVAL
+  INTO   :new.id_etab
+  FROM   dual;
+END;
+/
+
+
