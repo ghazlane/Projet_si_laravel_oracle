@@ -15,7 +15,7 @@ class EtudiantController
 
 	public funCtion Ajouter($inputs){
 		$this->etudiant = new Etudiant($inputs['nom_et'],$inputs['prenom_et'],$inputs['date_naissance_et'],$inputs['email_et'],$inputs['mot_de_passe_et'],$inputs['etablissement'],$inputs['telephone_et']); 
-		$this->etudiantRepository->Ajouter($this->etudiant); 
+		return $this->etudiantRepository->Ajouter($this->etudiant); 
 	}
 
 	public function Lister(){
