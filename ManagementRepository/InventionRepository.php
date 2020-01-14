@@ -24,14 +24,14 @@ public function Update(Invention $invention){
 }
 
 public function TransmettreInventionCir($id){
-    $Rq = "update declaration_invention set STATUT_RESP_GU='Demande accépter par le Guichet Unique', STATUT_DMD='En cours' where id_dmd =".$id;
+    $Rq = "update declaration_invention set ID_GU = ".$_SESSION['id_gu'].", STATUT_RESP_GU='Demande accépter par le Guichet Unique', STATUT_DMD='En cours' where id_dmd =".$id;
     $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
 }
 
 public function TransmettreInventionPc($id,$select){
-            $Rq = "update declaration_invention set STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' ,ID_PC =".$select['respPC']." where id_dmd =".$id;
+            $Rq = "update declaration_invention set ID_CIR = ".$_SESSION['id_cir'].", STATUT_CIR='Demande accépter par le CIR', STATUT_DMD='En cours' ,ID_PC =".$select['respPC']." where id_dmd =".$id;
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");

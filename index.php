@@ -1032,11 +1032,14 @@ session_start();
 	else if($action == "getDahsboard"){
 		$controller = new StatistiqueController();
 		$controllerPoolCompetences = new PoolCompetenceController(); 
+		$controllerResponsableCir = new ResponsableCirController(); 
+		$controllerResponsableGu = new GuichetUniqueController() ; 
 		//statistique nombre demande traitrer par mois
 		$liste_mois = getLatestMonth('11'); 
 		$tableau_statistiqueNombreDemandeTraiterParMois;
 		$tableau_statistiqueNombreDemandeAccepterParMois ;  
-		$nombreDeamndePC; 
+		$nombreDeamndePC;
+		$nbrDemandeTraiteGu;  
 		for ($i=10 ; $i>=0 ; $i--){
 			$tableau_statistiqueNombreDemandeTraiterParMois[$i] = $controller->demandeNonAccepterParMois($liste_mois[$i]['month'],$liste_mois[$i]['year'] );
 			$tableau_statistiqueNombreDemandeAccepterParMois[$i] = $controller->demandeAccepterParMois($liste_mois[$i]['month'],$liste_mois[$i]['year'] ); 
@@ -1047,8 +1050,21 @@ session_start();
 			$nombreDeamndePC[$i] = $controller->nombreDeamndeTraitePcById($row['ID_PC']); 
 			$i++; 
 		}
+		$listeResponsableCir = $controllerResponsableCir->Lister(); 
+		while ($row = $listeResponsableCir->fetch()) {
+			$nom = $row['NOM_CIR'] . " ". $row['PRENOM_CIR']; 
+			$nbrDemandeTraite[$nom] = $controller->nombreDeamndeTraiteByCirByIdCir($row['ID_CIR'] ); 
+		}
+
+		$listeResponsableGu = $controllerResponsableGu->Lister(); 
+		while ($row = $listeResponsableGu->fetch()) {
+			$nom = $row['NOM_GU'] . " ". $row['PRENOM_GU']; 
+			$nbrDemandeTraiteGu[$nom] = $controller->nombreDeamndeTraiteByGuByIdGu($row['ID_GU'] ); 
+		}
+
+
 		$vue = new Vue('dashboard'); 
-		$vue->generer(array('nombreDeamndePC'=>$nombreDeamndePC, 'listePc'=>$controllerPoolCompetences->Lister(), 'tableau_statistiqueNombreDemandeAccepterParMois'=>$tableau_statistiqueNombreDemandeAccepterParMois, 'tableau_statistiqueNombreDemandeTraiterParMois'=>$tableau_statistiqueNombreDemandeTraiterParMois, 'liste_mois'=>$liste_mois , 'pourcentageDemanteNonAccepter'=>$controller->pourcentageDemande('Non accepter') ,'pourcentageDemanteEnCours'=>$controller->pourcentageDemande('En cours') , 'pourcentageDemanteEnAttente'=>$controller->pourcentageDemande('En attente') , 'pourcentageDemanteAccepter'=>$controller->pourcentageDemande('Accepter') ,'nombreDeamndeEnAttente'=>$controller->getNombreTotalDemandeStatus('En attente'),'nombreDeamndeNonAccepter'=>$controller->getNombreTotalDemandeStatus('Non accepter'),'nombreDeamndeEncours'=>$controller->getNombreTotalDemandeStatus('En cours'), 'nombreDeamndeAccepter'=> $controller->getNombreTotalDemandeStatus('Accepter')));
+		$vue->generer(array('nbrDemandeTraiteGu'=>$nbrDemandeTraiteGu, 'nbrDemandeTraite'=>$nbrDemandeTraite, 'nombreDeamndePC'=>$nombreDeamndePC, 'listePc'=>$controllerPoolCompetences->Lister(), 'tableau_statistiqueNombreDemandeAccepterParMois'=>$tableau_statistiqueNombreDemandeAccepterParMois, 'tableau_statistiqueNombreDemandeTraiterParMois'=>$tableau_statistiqueNombreDemandeTraiterParMois, 'liste_mois'=>$liste_mois , 'pourcentageDemanteNonAccepter'=>$controller->pourcentageDemande('Non accepter') ,'pourcentageDemanteEnCours'=>$controller->pourcentageDemande('En cours') , 'pourcentageDemanteEnAttente'=>$controller->pourcentageDemande('En attente') , 'pourcentageDemanteAccepter'=>$controller->pourcentageDemande('Accepter') ,'nombreDeamndeEnAttente'=>$controller->getNombreTotalDemandeStatus('En attente'),'nombreDeamndeNonAccepter'=>$controller->getNombreTotalDemandeStatus('Non accepter'),'nombreDeamndeEncours'=>$controller->getNombreTotalDemandeStatus('En cours'), 'nombreDeamndeAccepter'=> $controller->getNombreTotalDemandeStatus('Accepter')));
 	}
 
 

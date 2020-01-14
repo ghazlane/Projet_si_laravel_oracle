@@ -38,4 +38,12 @@ class StatistiqueController
 		return $this->statistiqueRepository->nombreDeamndeTraitePcById($id); 
 	}
 
+	public function nombreDeamndeTraiteByCirByIdCir($id){
+		return $this->statistiqueRepository->nombreDeamndeTraiteByCirByIdCir($id); 
+	}
+
+	public function nombreDeamndeTraiteByGuByIdGu($id){
+		return $this->statistiqueRepository->nombreDeamndeTraiteByGuByIdGu($id); 
+	}
+
 }

@@ -160,4 +160,53 @@ public function demandeAccepterParMois($mois, $annee){
     	return $total ; 
 	}
 
+	public function nombreDeamndeTraiteByCirByIdCir($id){
+		$connexion = $this->getConnexion(); 
+        $total = 0 ;
+		$Rq = "select count(*) as nbr from declaration_invention where id_cir = ".$id." and STATUT_CIR IS NOT NULL";
+		$connexion = $this->getConnexion(); 
+    	$statement = $connexion->query($Rq);
+    	$statement->setFetchMode(PDO::FETCH_ASSOC);
+    	$nombre = $statement->fetch();
+    	$total += $nombre['NBR']; 
+
+    	$Rq = "select count(*) as nbr from declaration_brevet where id_cir = ".$id." and STATUT_CIR IS NOT NULL";
+        $statement = $connexion->query($Rq);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+    	$nombre = $statement->fetch();
+    	$total += $nombre['NBR']; 
+
+    	$Rq = "select count(*) as nbr from lancement_formation where id_cir = ".$id." and STATUT_CIR IS NOT NULL";
+        $statement = $connexion->query($Rq);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+    	$nombre = $statement->fetch();
+    	$total += $nombre['NBR'];
+    	 
+    	return $total ; 
+	}
+
+	public function nombreDeamndeTraiteByGuByIdGu($id){
+		$connexion = $this->getConnexion(); 
+        $total = 0 ;
+		$Rq = "select count(*) as nbr from declaration_invention where id_gu = ".$id." and STATUT_RESP_GU IS NOT NULL";
+		$connexion = $this->getConnexion(); 
+    	$statement = $connexion->query($Rq);
+    	$statement->setFetchMode(PDO::FETCH_ASSOC);
+    	$nombre = $statement->fetch();
+    	$total += $nombre['NBR']; 
+
+    	$Rq = "select count(*) as nbr from declaration_brevet where id_gu = ".$id." and STATUT_RESP_GU IS NOT NULL";
+        $statement = $connexion->query($Rq);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+    	$nombre = $statement->fetch();
+    	$total += $nombre['NBR']; 
+
+    	$Rq = "select count(*) as nbr from lancement_formation where id_gu = ".$id." and STATUT_RESP_GU IS NOT NULL";
+        $statement = $connexion->query($Rq);
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+    	$nombre = $statement->fetch();
+    	$total += $nombre['NBR'];
+    	 
+    	return $total ;
+	}
 }
