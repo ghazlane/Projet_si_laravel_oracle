@@ -50,11 +50,11 @@
                 <td><?php echo $row['DATE_DMD']  ?></td>
                 <td><?php 
                 if($row['STATUT_DMD'] == "Non accepter")
-                  echo '<button type="button" class="btn btn-danger btn-sm">Non accepter</button> ';
+                  echo '<button type="button" class="btn btn-danger btn-sm">Non acceptée</button> ';
                 else if ($row['STATUT_DMD'] == 'En cours')
                   echo '<button type="button" class="btn btn-warning btn-sm">En cours</button> ';
                 else if ($row['STATUT_DMD'] == 'Accepter')
-                  echo '<button type="button" class="btn btn-success btn-sm">Accepter</button> ';
+                  echo '<button type="button" class="btn btn-success btn-sm">Acceptée</button> ';
                 else
                   echo '<button type="button" class="btn btn-info btn-sm">En attente</button> '; 
                 ?></td>
@@ -64,7 +64,7 @@
                     <i class="far fa-folder-open"></i>
                   </a>
                   <?php if($row['STATUT_DMD'] == 'En attente'){ ?>
-                  <a href="index.php?action=detailModifierBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-warning btn-circle btn-sm" title="Mettre à jours">
+                  <a href="index.php?action=detailModifierBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-warning btn-circle btn-sm" title="Mettre à jour">
                     <i class="fas fa-sync"></i>
                   </a>
                   <a href="index.php?action=supprimerBrevet&id=<?php echo $row['ID_DMD']  ?>" class="btn btn-danger btn-circle btn-sm" title="Supprimer" onclick="return confirm('Voulez vous vraiment supprimer cette demande');">
