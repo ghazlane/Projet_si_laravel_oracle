@@ -23,8 +23,8 @@
       <label for="input" class="control-label" style="left: 0;">Numéro de téléphone</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="number" required="required" name="theme_recherche" value="<?php echo $row['THEME_RECHERCHE'] ; ?>"/>
-      <label for="input" class="control-label" style="left: 0;">Numéro de téléphone</label><i class="bar"></i>
+      <input type="text" required="required" name="theme_recherche" value="<?php echo $row['THEME_RECHERCHE'] ; ?>"/>
+      <label for="input" class="control-label" style="left: 0;">Théme recherche</label><i class="bar"></i>
     </div>
 
     <div class="checkbox">
@@ -32,7 +32,7 @@
         <input type="checkbox" onclick="modifierMotDePasse()" id="updatePassword" name="updatePassword" /><i class="helper"></i>Modifier le mot de passe
       </label>
     </div>
-  <input type="hidden" name="code_cher" value="<?php echo $row['CODE_cher'] ; ?>">
+  <input type="hidden" name="code_cher" value="<?php echo $row['CODE_CHER'] ; ?>">
 
     <div id="changeMotdepasse">
       <div class="form-group">

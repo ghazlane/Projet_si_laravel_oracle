@@ -37,7 +37,7 @@ class ChercheurRepository extends Connexion
 	}
 
 	public function Details($code){
-    $Rq = "select * from chercheur where code_cher = ".$code;     
+    $Rq = "select * from chercheur where code_cher = '".$code."'";     
     $connexion = $this->getConnexion(); 
     $statement = $connexion->query($Rq);
     $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -45,14 +45,14 @@ class ChercheurRepository extends Connexion
 }
 
 	public function Update(Chercheur $chercheur){
-		$Rq = "update chercheur set NOM_CHER='" . $chercheur->getNomCher() . "', PRENOM_CHER = '" . $chercheur->getPrenomCher() . "', DATE_NAISSANCE_CHER= '" . $chercheur->getDateNaissanceCher() . "', MOT_DE_PASSE_CHER = '" . $chercheur->getMotDePasseCher() . "', THEME_RECHERCHE = '" . $chercheur->getThemeRecherche() . "', TELEPHONE_CHER = '" . $chercheur->getTelephoneCher() . "' where code_cher =".$chercheur->getCodeCher();
+		$Rq = "update chercheur set NOM_CHER='" . $chercheur->getNomCher() . "', PRENOM_CHER = '" . $chercheur->getPrenomCher() . "', DATE_NAISSANCE_CHER= '" . $chercheur->getDateNaissanceCher() . "', MOT_DE_PASSE_CHER = '" . $chercheur->getMotDePasseCher() . "', THEME_RECHERCHE = '" . $chercheur->getThemeRecherche() . "', TELEPHONE_CHER = '" . $chercheur->getTelephoneCher() . "' where code_cher ='".$chercheur->getCodeCher()."'";
     		$connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
 	}
 
 	public funCtion Delete($code){
-		$Rq = "delete from chercheur where code_cher = ".$code;     
+		$Rq = "delete from chercheur where code_cher = '".$code."'";     
     	$connexion = $this->getConnexion(); 
     	$statement = $connexion->prepare($Rq);
     	$statement->execute();

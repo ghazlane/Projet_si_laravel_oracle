@@ -8,7 +8,6 @@
         public function Ajouter(PoolCompetence $poolCompetence) {	
     	
     $Rq = "insert into pool_Competences (NOM_PC,FONC_PC,DATE_CREATION) values ('".$poolCompetence->getNomPC()."','".$poolCompetence->getFonctionnalitePc()."','".$poolCompetence->getDateCreationPC()."')";
-    	
     $connexion = $this->getConnexion(); 
     		$connexion->exec($Rq);
     		$connexion->exec("commit");

@@ -38,8 +38,8 @@ class EtudiantController
 		}else 
 			$password = $row['MOT_DE_PASSE_ET']; 
 
-		$this->etudiant = new Etudiant($inputs['nom_et'],$inputs['prenom_et'],$inputs['date_naissance_et'],$row['email_et'],$password,$inputs['etablissement'],$inputs['telephone_et']);
-		$this->etudiant->setCodeEt($row['CODE_et']) ; 
+		$this->etudiant = new Etudiant($inputs['nom_et'],$inputs['prenom_et'],$inputs['date_naissance_et'],$inputs['email_et'],$password,$inputs['etablissement'],$inputs['telephone_et']);
+		$this->etudiant->setCodeEt($inputs['code_et']) ; 
 		$this->etudiantRepository->Update($this->etudiant); 
 		return true; 
 	}

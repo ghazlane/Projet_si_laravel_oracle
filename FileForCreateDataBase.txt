@@ -424,6 +424,54 @@ etablissement
 );
 
 
+
+
+//demande services declaration startup
+---> auto increment
+CREATE SEQUENCE startup_seq START WITH 1;
+---> creer la table
+create table startup(
+	Id_dmd INTEGER not null, 
+	Date_dmd VARCHAR(20), 
+	Statut_dmd Varchar(20),
+	Statut_resp_gu Varchar(50),
+	Statut_cir Varchar(50) ,
+	Rps_pc INTEGER, 
+	Description_dmd Varchar(50),
+	lieu_startup VARCHAR(50), 
+	service_startup VARCHAR(50),
+	mondat_startup VARCHAR(50), 
+	capital_satrtup INTEGER, 
+	id_pc INTEGER, 
+	code_admin VARCHAR(50), 
+	id_cir INTEGER, 
+	id_demandeur VARCHAR(50), 
+	type_demandeur VARCHAR(50)
+); 
+ALTER TABLE startup ADD (CONSTRAINT pk_id_dmd_st PRIMARY KEY (Id_dmd));
+ALTER TABLE startup ADD (CONSTRAINT fk_idRpc_st FOREIGN KEY (rps_pc) REFERENCES Responsable_pc(id_resp_pc));
+ALTER TABLE startup ADD (CONSTRAINT fk_id_pc_st FOREIGN KEY (id_pc) REFERENCES pool_Competences(id_pc));
+ALTER TABLE startup ADD (CONSTRAINT fk_code_admin_st FOREIGN KEY (code_admin) REFERENCES Administratif(code_admin)); 
+ALTER TABLE startup ADD (CONSTRAINT fk_id_cir_st FOREIGN KEY (id_cir) REFERENCES responsable_cir(id_cir));
+
+	--> trigger 
+
+CREATE OR REPLACE TRIGGER startup_auto_incre
+BEFORE INSERT ON startup
+FOR EACH ROW
+
+BEGIN
+  SELECT startup_seq.NEXTVAL
+  INTO   :new.Id_dmd
+  FROM   dual;
+END;
+/
+
+alter table startup add ( decision_finale VARCHAR(200));
+alter table startup ADD (REPONSE_PC VARCHAR2(1000));
+alter table startup drop column RPS_PC;
+
+
 	ALTER TABLE etablissement ADD (CONSTRAINT pk_idetab PRIMARY KEY (id_etab));
 
 CREATE OR REPLACE TRIGGER etablissement_auto_incre
@@ -436,5 +484,23 @@ BEGIN
   FROM   dual;
 END;
 /
+
+ALTER TABLE lancement_formation add date_reponse date;
+ALTER TABLE declaration_brevet add date_reponse date;
+ALTER TABLE declaration_invention add date_reponse date;
+
+alter table lancement_formation ADD ID_GU INTEGER;
+ALTER TABLE declaration_brevet add ID_GU INTEGER;
+ALTER TABLE declaration_invention add ID_GU INTEGER;
+
+
+
+
+alter table pool_competences add date_cre varchar(50);
+update pool_competences set date_cre = DATE_CREATION; 
+alter table pool_competences drop column date_creation;
+alter table pool_competences rename column date_cre to DATE_CREATION;
+
+
 
 

@@ -38,8 +38,8 @@ class ChercheurController
 		}else 
 			$password = $row['MOT_DE_PASSE_CHER']; 
 
-		$this->chercheur = new Chercheur($inputs['nom_cher'],$inputs['prenom_cher'],$inputs['date_naissance_cher'],$row['email_cher'],$password,$inputs['theme_recherche'],$inputs['telephone_cher']);
-		$this->chercheur->setCodecher($row['CODE_CHER']) ; 
+		$this->chercheur = new Chercheur($inputs['nom_cher'],$inputs['prenom_cher'],$inputs['date_naissance_cher'],$inputs['email_cher'],$password,$inputs['theme_recherche'],$inputs['telephone_cher']);
+		$this->chercheur->setCodecher($inputs['code_cher']) ; 
 		$this->chercheurRepository->Update($this->chercheur); 
 		return true; 
 	}

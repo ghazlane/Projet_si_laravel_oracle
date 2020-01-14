@@ -7,8 +7,7 @@
         private $connexion;
         public function Ajouter(PointNodal $pointNodal) {	
     	
-    $Rq = "insert into point_nodal (NOM_PN,NB_ENSE,NB_CHER) values ('".$pointNodal->getNomPn()."','".$pointNodal->getNbEnsePn()."','".$pointNodal->getNbCherPn()."')";
-    	
+    $Rq = "insert into point_nodal (NOM_PN,NB_ENSE,NB_CHER) values ('".$pointNodal->getNomPn()."',".$pointNodal->getNbEnsePn().",".$pointNodal->getNbCherPn().")";
     $connexion = $this->getConnexion(); 
     		$connexion->exec($Rq);
     		$connexion->exec("commit");

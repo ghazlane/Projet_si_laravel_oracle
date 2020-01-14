@@ -23,8 +23,8 @@
       <label for="input" class="control-label" style="left: 0;">Numéro de téléphone</label><i class="bar"></i>
     </div>
     <div class="form-group">
-      <input type="number" required="required" name="etablissemant" value="<?php echo $row['ETABLISSEMENT'] ; ?>"/>
-      <label for="input" class="control-label" style="left: 0;">Numéro de téléphone</label><i class="bar"></i>
+      <input type="text" required="required" name="etablissement" value="<?php echo $row['ETABLISSEMENT'] ; ?>"/>
+      <label for="input" class="control-label" style="left: 0;">etablissement</label><i class="bar"></i>
     </div>
 
     <div class="checkbox">

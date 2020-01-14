@@ -449,7 +449,13 @@ session_start();
 		$controller = new InventionController(); 
 		$controller->Delete($_GET['id']); 
 		$vue = new Vue('listeDeclarationInvention'); 
+		if($_SESSION['type'] != 'GuichetUnique'){
+			$vue = new Vue('listeDeclarationInvention');
 		$vue->generer(array("alert"=>'La demande est supprimée ',"statement" => $controller->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code'])));
+		}else {
+			$vue = new Vue('listeDeclarationInvention'); 
+		$vue->generer(array("alert"=>'La demande est supprimée', "statement" => $controller->Lister('Enattente')));
+		}		
 	}else if($action =="updateDeclarationInvention"){
 		$controller = new InventionController();
 		$vue = new Vue('updateDeclarationInvention'); 
@@ -457,8 +463,13 @@ session_start();
 	}else if($action == "saveUpdateDeclarationInvention"){
 		$controller = new InventionController();
 		$controller->Update($_POST);
-		$vue = new Vue('listeDeclarationInvention'); 
-		$vue->generer(array("alert"=>'La déclaration est à jour', "statement" => $controller->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']))); 
+		if($_SESSION['type'] != 'GuichetUnique'){
+			$vue = new Vue('listeDeclarationInvention');
+			$vue->generer(array("alert"=>'La déclaration est à jour', "statement" => $controller->listeDeclarationInventionClient($_SESSION['type'], $_SESSION['code']))); 
+		}else {
+			$vue = new Vue('listeDeclarationInvention'); 
+			$vue->generer(array("alert"=>'La déclaration est à jour', "statement" => $controller->Lister('Enattente')));
+		}
 	}else if($action == "transmettreInventionCir"){
 		$controller = new InventionController();
 		$controller->TransmettreInventionCir($_GET['id_dmd']);  
@@ -544,10 +555,15 @@ session_start();
 		$controller = new BrevetController(); 
 		$id = $_GET["id"]; 
 		$controller->Modifier($_POST,$id);
-		$statement= $controller->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
+		if($_SESSION['type'] != 'GuichetUnique'){
+			$statement= $controller->listeDeclarationBrevetClient($_SESSION['type'], $_SESSION['code']);
 		$vue = new Vue('listeDeclarationBrevet'); 
 		$alert="la demande a bien été modifiée";
-		$vue->generer(array( "statement" => $statement,"alert"=>$alert));  
+		$vue->generer(array( "statement" => $statement,"alert"=>$alert));   
+		}else {
+			$vue = new Vue('listeDeclarationBrevet'); 
+			$vue->generer(array("alert"=>'La déclaration est à jour', "statement" => $controller->Lister('Enattente')));
+		}
 	}
 	else if($action == "supprimerBrevet"){
 		$controller = new BrevetController(); 
@@ -645,8 +661,13 @@ session_start();
 	else if($action == "saveUpdateDeclarationFormation"){
 		$controller = new FormationController();
 		$controller->Update($_POST); 
-		$vue = new Vue('listeDeclarationFormation'); 
-		$vue->generer(array("alert"=>'La mise à jour est bien faite', "statement" => $controller->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code'])));
+		if($_SESSION['type'] != 'GuichetUnique'){
+			$vue = new Vue('listeDeclarationFormation'); 
+			$vue->generer(array("alert"=>'La mise à jour est bien faite', "statement" => $controller->listeDeclarationFormationClient($_SESSION['type'], $_SESSION['code'])));
+		}else {
+			$vue = new Vue('listeDeclarationFormation'); 
+			$vue->generer(array("alert"=>'La mise à jour est bien faite', "statement" => $controller->Lister('Enattente')));
+		}
 
 	}else if($action == "transmettreFormationCir"){
 		$controller = new FormationController();
@@ -898,11 +919,11 @@ session_start();
 		if($resultat == true){
 			$alert="le compte Responsable Pool de Compétence
  a été bien modifiée";
-			$vue = new Vue('listerResponsablePoolCompetencesr');
+			$vue = new Vue('listerResponsablePoolCompetences');
 			$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
 		}else {
 			$alert="le mot de passe est incorrecte";
-			$vue = new Vue('listerResponsablePoolCompetencesr');
+			$vue = new Vue('listerResponsablePoolCompetences');
 			$vue->generer(array("statement" => $controller->Lister(),"alert"=>$alert)); 
 		}
 	}else if($action =="connexionRespPoolCompetence"){
