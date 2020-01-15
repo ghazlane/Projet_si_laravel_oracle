@@ -35,7 +35,7 @@ tr:hover {
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="font-size: 15px;">Accepter</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="font-size: 15px;">Acceptée</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: 18px;"><?php echo $nombreDeamndeAccepter ; ?></div>
                     </div>
                     <div class="col-auto">
@@ -88,7 +88,7 @@ tr:hover {
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-size: 15px;">Non accepter</div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1" style="font-size: 15px;">Non acceptée</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800" style="font-size: 18px;"><?php echo $nombreDeamndeNonAccepter ; ?></div>
                     </div>
                     <div class="col-auto">
@@ -107,7 +107,7 @@ tr:hover {
                   <h6 class="m-0 font-weight-bold text-primary">Pourcentage des demandes</h6>
                 </div>
                 <div class="card-body">
-                  <h4 class="small font-weight-bold">Non accepter <span class="float-right"><?php echo $pourcentageDemanteNonAccepter; ?>%</span></h4>
+                  <h4 class="small font-weight-bold">Non acceptée <span class="float-right"><?php echo $pourcentageDemanteNonAccepter; ?>%</span></h4>
                   <div class="progress mb-4">
                     <div class="progress-bar bg-danger" role="progressbar" style="width: <?php echo $pourcentageDemanteNonAccepter; ?>%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
@@ -119,7 +119,7 @@ tr:hover {
                   <div class="progress mb-4">
                     <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $pourcentageDemanteEnAttente; ?>%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Accepter  <span class="float-right"><?php echo $pourcentageDemanteAccepter; ?>%</span></h4>
+                  <h4 class="small font-weight-bold">Acceptée  <span class="float-right"><?php echo $pourcentageDemanteAccepter; ?>%</span></h4>
                   <div class="progress">
                     <div class="progress-bar bg-success" role="progressbar" style="width: <?php echo $pourcentageDemanteAccepter; ?>%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="<?php echo $pourcentageDemanteAccepter; ?>"></div>
                   </div>
@@ -139,7 +139,8 @@ tr:hover {
       <div id="stacked2" ></div>
     </div>
 <br><br><br>
-<label class="label label-success" style="color:#0380D1;">Nmbre demande traites par chaque responsable de cir</label>
+<?php if($_SESSION['type'] == 'GuichetUnique') {?>
+<label class="label label-success" style="color:#0380D1;">Nombre demandes traitées par chaque responsable de cir</label>
 <br><br>
     <table class="my_table" style="margin: 0 auto; font-size: 20px; width: 70%">
       <tr>
@@ -156,7 +157,9 @@ tr:hover {
         
       </tbody>
     </table>
+  <?php }?>
 <br><br><br>
+<?php if($_SESSION['type'] == 'ResponsableCir') {?>
 <label class="label label-success" style="color:#0380D1;">Nombre demande traites par chaque responsable de GU</label>
     <table class="my_table" style="margin: 0 auto; font-size: 20px; width: 70%">
       <tr>
@@ -170,7 +173,7 @@ tr:hover {
             echo "<td>".$value."</td>";
           echo "</tr>"; 
         }?>
-        
+        <?php } ?>
       </tbody>
     </table>
     

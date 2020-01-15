@@ -424,7 +424,104 @@ etablissement
 );
 
 
+CREATE SEQUENCE sturture_de_recherche_seq START WITH 1;
 
+
+
+	CREATE TABLE sturture_de_recherche 
+( id_str number(3) NOT NULL ,
+  dom_str varchar2(50) NOT NULL,
+  nb_labo number,
+  nb_membre number,
+  id_etab number(3)
+);
+
+
+CREATE OR REPLACE TRIGGER sturture_de_recherche_stri
+BEFORE INSERT ON sturture_de_recherche
+FOR EACH ROW
+
+BEGIN
+  SELECT sturture_de_recherche_seq.NEXTVAL
+  INTO   :new.id_str
+  FROM   dual;
+END;
+/
+
+
+
+
+CREATE SEQUENCE sturture_de_recherche_seq START WITH 1;
+
+
+
+	CREATE TABLE sturture_de_recherche 
+( id_str number(3) NOT NULL ,
+  dom_str varchar2(50) NOT NULL,
+  nb_labo number,
+  nb_membre number,
+  id_etab number(3)
+);
+
+
+CREATE OR REPLACE TRIGGER sturture_de_recherche_stri
+BEFORE INSERT ON sturture_de_recherche
+FOR EACH ROW
+
+BEGIN
+  SELECT sturture_de_recherche_seq.NEXTVAL
+  INTO   :new.id_str
+  FROM   dual;
+END;
+/
+
+
+
+CREATE SEQUENCE clubs START WITH 1;
+
+
+
+	CREATE TABLE sturture_de_recherche 
+( id_str number(3) NOT NULL ,
+  dom_str varchar2(50) NOT NULL,
+  nb_labo number,
+  nb_membre number,
+  id_etab number(3)
+);
+
+
+CREATE OR REPLACE TRIGGER sturture_de_recherche_stri
+BEFORE INSERT ON sturture_de_recherche
+FOR EACH ROW
+
+BEGIN
+  SELECT sturture_de_recherche_seq.NEXTVAL
+  INTO   :new.id_str
+  FROM   dual;
+END;
+/
+
+
+
+	CREATE TABLE sturture_de_recherche 
+( id_str number(3) NOT NULL ,
+  dom_str varchar2(50) NOT NULL,
+  nb_labo number,
+  nb_membre number,
+  id_etab number(3)
+);
+
+
+CREATE OR REPLACE TRIGGER clubs_etudiant
+BEFORE INSERT ON sturture_de_recherche
+FOR EACH ROW
+
+BEGIN
+  SELECT sturture_de_recherche_seq.NEXTVAL
+  INTO   :new.id_str
+  FROM   dual;
+END;
+/
 
 //demande services declaration startup
 ---> auto increment

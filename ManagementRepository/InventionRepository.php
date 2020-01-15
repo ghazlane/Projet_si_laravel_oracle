@@ -54,7 +54,7 @@ public function setDecisionFinaleCir($id, $reponse){
 
 public function RefuserInventionGu($id){
      $Rq = "update declaration_invention set STATUT_DMD='Non accepter', DATE_REPONSE = (SELECT SYSDATE FROM DUAL) where id_dmd =".$id;
-            echo $Rq; 
+            //echo $Rq; 
             $connexion = $this->getConnexion(); 
             $connexion->exec($Rq);
             $connexion->exec("commit");
